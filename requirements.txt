@@ -1,4 +1,5 @@
-ytest
+pytest
 selenium
 python-dotenv
 allure-pytest
+Pillow
