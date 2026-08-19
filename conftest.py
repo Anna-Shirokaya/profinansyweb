@@ -18,11 +18,21 @@ def driver(request):
     current_domain = request.param
     print(f"\n[SETUP] Запуск браузера для окружения: {current_domain}")
     
-    browser = webdriver.Chrome()
-    browser.maximize_window()
+    options = webdriver.ChromeOptions()
+    # Задаем жесткое разрешение экрана. Это заменяет browser.maximize_window() 
+    # и гарантирует, что верстка не поедет на виртуальном сервере
+    options.add_argument("--window-size=1920,1080") 
     
-    # ХИТРЫЙ ХАК: записываем текущий домен прямо внутрь объекта browser.
-    # Теперь любая страница сможет прочитать его через driver.base_url!
+    # Проверяем, запускается ли код на сервере CI (например, в GitHub Actions)
+    if os.getenv("CI") == "true":
+        print("[SETUP] Обнаружена CI-среда. Запуск в фоновом (headless) режиме...")
+        options.add_argument("--headless=new")
+        options.add_argument("--no-sandbox")            # Обязательно для виртуальных Linux-серверов
+        options.add_argument("--disable-dev-shm-usage") # Спасает от крашей памяти в Docker-контейнерах
+        
+    browser = webdriver.Chrome(options=options)
+    
+    #записываем текущий домен прямо внутрь объекта browser.
     browser.base_url = current_domain
     
     yield browser
