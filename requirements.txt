@@ -1,0 +1,4 @@
+ytest
+selenium
+python-dotenv
+allure-pytest
