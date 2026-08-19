@@ -1,0 +1,20 @@
+
+[SETUP] Запуск браузера для окружения: https://profinansy.ru
+[SETUP] Обнаружена CI-среда. Запуск в фоновом (headless) режиме...
+
+[AUTH SETUP] Начало автоматической авторизации...
+
+[PAGE] Промо-модальное окно не появилось, продолжаем тест.
+[LOGIN PAGE] Введен email: anna1038@yandex.ru
+[LOGIN PAGE] Введен пароль.
+
+[LOGIN PAGE] Обычный клик перехвачен анимацией подложки, используем JavaScript-клик...
+[AUTH SETUP] Авторизация успешно завершена.
+
+[SETUP LOCAL] Создаем счет для модификации: 'Счет-Редакт-456'
+[DEBIT PAGE] Текущий URL страницы: https://profinansy.ru/wallet/accounts
+[DEBIT PAGE] Нажата кнопка 'Создать счёт +'
+[DEBIT PAGE] Обычный клик перехвачен, используем JavaScript-клик...
+[DEBIT PAGE] Кнопка 'Продолжить' не потребовалась
+
+[TEARDOWN] Закрытие браузера для https://profinansy.ru...
