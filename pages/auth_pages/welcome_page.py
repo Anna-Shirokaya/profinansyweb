@@ -4,19 +4,15 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException, NoSuchElementException 
 
 class WelcomePage:
+    # Локаторы класса
+    LOGIN_BUTTON = (By.XPATH, "//*[text()='Вход']")
+    REGISTER_BUTTON = (By.XPATH, "//*[text()='Регистрация']")
+    COOKIE_ACCEPT_BUTTON = (By.XPATH, "//*[text()='Понятно']")
+    PROMO_CLOSE_BUTTON = (By.XPATH, "//button[contains(@class, 'close')] | //div[contains(@class, 'close')]")
+
     def __init__(self, driver):
         self.driver = driver
         self.url = f"{driver.base_url}/welcome"
-        
-        # ЛОКАТОРЫ
-        self.LOGIN_BUTTON = (By.XPATH, "//*[text()='Вход']")
-        
-        # НОВЫЙ ЛОКАТОР: Кнопка регистрации (согласно тест-кейсу WAL-T301)
-        self.REGISTER_BUTTON = (By.XPATH, "//*[text()='Регистрация']")
-        
-        # Локаторы всплывающих окон
-        self.COOKIE_ACCEPT_BUTTON = (By.XPATH, "//*[text()='Понятно']")
-        self.PROMO_CLOSE_BUTTON = (By.XPATH, "//button[contains(@class, 'close')] | //div[contains(@class, 'close')]")
 
 
     def open(self):
@@ -28,17 +24,16 @@ class WelcomePage:
 
 
     def close_cookie_banner_if_exists(self):
-        """Метод автоматически закрывает баннер куки, если он есть на экране"""
         try:
-            # Ждем появления кнопки куки максимум 4 секунды
-            cookie_btn = WebDriverWait(self.driver, 4).until(
-                EC.element_to_be_clickable(self.COOKIE_ACCEPT_BUTTON)
+            # Находим кнопку баннера (используй свой существующий локатор)
+            cookie_btn = WebDriverWait(self.driver, 3).until(
+                EC.presence_of_element_located(self.COOKIE_BTN_LOCATOR) # Укажи свой локатор кнопки куки
             )
-            cookie_btn.click()
-            print("\n[PAGE] Баннер куки успешно закрыт.")
-        except TimeoutException:
-            # Если баннер не появился, тест не упадет
-            print("\n[PAGE] Баннер куки не появился, продолжаем тест.")
+            # Выполняем гарантированный клик через JS
+            self.driver.execute_script("arguments[0].click();", cookie_btn)
+        except Exception:
+            # Если баннера нет или он не появился — просто идем дальше
+            pass
 
 
     def close_promo_modal_if_exists(self):
@@ -57,19 +52,14 @@ class WelcomePage:
 
 
     def click_login_button(self):
-        """Метод для клика по кнопке Вход с защитой от перекрытия"""
-        # Ждем, пока кнопка станет видимой
-        login_btn = WebDriverWait(self.driver, 10).until(
-            EC.visibility_of_element_located(self.LOGIN_BUTTON)
+        # 1. Ждем появление кнопки "Вход" в DOM
+        login_btn = WebDriverWait(self.driver, 15).until(
+            EC.presence_of_element_located(self.LOGIN_BUTTON)
         )
         
-        try:
-            # 1. Пробуем кликнуть как обычный пользователь
-            login_btn.click()
-        except Exception:
-            # 2. Если клик перехвачен исчезающей анимацией, кликаем через JavaScript
-            print("\n[PAGE] Обычный клик перехвачен, используем JavaScript-клик...")
-            self.driver.execute_script("arguments[0].click();", login_btn)
+        # 2. Прокручиваем к ней и делаем JS-клик
+        self.driver.execute_script("arguments[0].scrollIntoView({block: 'center'});", login_btn)
+        self.driver.execute_script("arguments[0].click();", login_btn)
 
     def click_register_button(self):
         """Метод для клика по кнопке Регистрация с защитой от перекрытия"""

@@ -3,6 +3,9 @@ import pytest
 from selenium import webdriver
 from dotenv import load_dotenv
 
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
 from pages.auth_pages.welcome_page import WelcomePage
 from pages.auth_pages.login_page import LoginPage
 from pages.dashboard_pages.dashboard_page import DashboardPage
@@ -19,19 +22,23 @@ def driver(request):
     print(f"\n[SETUP] Запуск браузера для окружения: {current_domain}")
     
     options = webdriver.ChromeOptions()
+    options.page_load_strategy = 'eager'
     # Задаем жесткое разрешение экрана. Это заменяет browser.maximize_window() 
     # и гарантирует, что верстка не поедет на виртуальном сервере
     options.add_argument("--window-size=1920,1080") 
-    
+    options.add_argument("--disable-popup-blocking")
+    options.add_argument("--headless=new")  # Используем новый headless режим
+    options.add_argument("--no-sandbox")
+    options.add_argument("--disable-dev-shm-usage")
+    options.add_argument("--silent")
+    options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36")
+
     # Проверяем, запускается ли код на сервере CI (например, в GitHub Actions)
     if os.getenv("CI") == "true":
         print("[SETUP] Обнаружена CI-среда. Запуск в фоновом (headless) режиме...")
-        options.add_argument("--headless=new")
-        options.add_argument("--no-sandbox")            # Обязательно для виртуальных Linux-серверов
-        options.add_argument("--disable-dev-shm-usage") # Спасает от крашей памяти в Docker-контейнерах
         
     browser = webdriver.Chrome(options=options)
-    
+    browser.set_page_load_timeout(30)
     #записываем текущий домен прямо внутрь объекта browser.
     browser.base_url = current_domain
     
@@ -40,25 +47,39 @@ def driver(request):
     print(f"\n[TEARDOWN] Закрытие браузера для {current_domain}...")
     browser.quit()
 
-@pytest.fixture(scope="function")
+@pytest.fixture
 def logged_in_driver(driver):
     """Фикстура авторизации: использует параметризованный драйвер"""
     print("\n[AUTH SETUP] Начало автоматической авторизации...")
-    
+
     welcome_page = WelcomePage(driver)
     login_page = LoginPage(driver)
-    
-    welcome_page.open()
-    welcome_page.click_login_button()
-    
+
     email = os.getenv("PROFINANSY_USER_EMAIL")
     password = os.getenv("PROFINANSY_USER_PASSWORD")
     
+    # Защита: проверяем, что секреты вычитались из env
+    if not email or not password:
+        raise ValueError("[AUTH ERROR] Не найдены переменные окружения EMAIL или PASSWORD!")
+
+    welcome_page.open()
+    welcome_page.click_login_button()
+
+    # 1. ЖДЕМ, пока браузер действительно перейдет на форму входа
+    WebDriverWait(driver, 10).until(
+        EC.url_contains("/login")  # или EC.visibility_of_element_located((By.NAME, "email"))
+    )
+
     login_page.enter_email(email)
     login_page.enter_password(password)
     login_page.click_submit_button()
-    
-    print("[AUTH SETUP] Авторизация завершена.")
+
+    # 2. Ждем завершения авторизации
+    WebDriverWait(driver, 15).until_not(
+        EC.url_contains("/login")
+    )
+
+    print("[AUTH SETUP] Авторизация успешно завершена.")
     yield driver
 
 @pytest.fixture(scope="function")

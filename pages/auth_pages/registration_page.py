@@ -37,10 +37,10 @@ class RegistrationPage:
             "| //form//div[count(button)+count(div)>=4]"
         )
 
-        self.BTN_VK = (By.XPATH, f"({SOCIAL_BOX})[1]/*[1]")
-        self.BTN_YANDEX = (By.XPATH, f"({SOCIAL_BOX})[1]/*[2]")
-        self.BTN_MAX = (By.XPATH, f"({SOCIAL_BOX})[1]/*[3]")
-        self.BTN_TELEGRAM = (By.XPATH, f"({SOCIAL_BOX})[1]/*[4]")
+        self.BTN_VK = (By.CSS_SELECTOR, "form + div button")
+        self.BTN_YANDEX = (By.CSS_SELECTOR, "form + div > div > div")
+        self.BTN_MAX = (By.CSS_SELECTOR, "form + div > div > button:nth-child(3)")
+        self.BTN_TG = (By.CSS_SELECTOR, "form + div > div > button:nth-child(4)")
 
     def open_directly(self):
         """Прямой переход по ссылке из тест-кейсов с закрытием поп-апов"""
@@ -240,70 +240,81 @@ class RegistrationPage:
             print("\n[REGISTRATION PAGE] Капча пройдена без картинок, продолжаем тест.")
 
     def verify_social_button_opens_url(self, locator, expected_url_part):
-        """
-        Кликает по соцсети реальным кликом мыши (ActionChains),
-        проверяет URL открывшейся страницы и возвращается на форму.
-        """
-        import time
-        from selenium.webdriver.common.action_chains import ActionChains
-        from selenium.common.exceptions import TimeoutException, StaleElementReferenceException
-
-        main_window = self.driver.current_window_handle
-        initial_handles_count = len(self.driver.window_handles)
-
-        # 1. Ждем загрузки формы
-        WebDriverWait(self.driver, 10).until(
-            EC.visibility_of_element_located(self.INPUT_EMAIL)
-        )
-
-        # 2. Ищем элемент и делаем РЕАЛЬНЫЙ клик мыши через ActionChains
-        end_time = time.time() + 10
-        while True:
-            try:
-                target_element = WebDriverWait(self.driver, 10).until(
-                    EC.element_to_be_clickable(locator)
-                )
-                
-                # Скроллим к элементу
-                self.driver.execute_script("arguments[0].scrollIntoView({block: 'center'});", target_element)
-                time.sleep(0.5)
-
-                # Физический клик мыши по центру элемента
-                actions = ActionChains(self.driver)
-                actions.move_to_element(target_element).click().perform()
-                print(f"\n[REGISTRATION PAGE] Физический клик по элементу: {locator}")
-                break
-            except (StaleElementReferenceException, Exception):
-                if time.time() > end_time:
-                    # Запасной JS-клик, если ActionChains не сработал
-                    target_element = self.driver.find_element(*locator)
-                    self.driver.execute_script("arguments[0].click();", target_element)
-                    break
-                time.sleep(0.5)
-
-        # 3. Ждем открытия нового окна или редиректа в текущем
-        try:
-            WebDriverWait(self.driver, 10).until(
-                lambda d: len(d.window_handles) > initial_handles_count or expected_url_part in d.current_url
-            )
-        except TimeoutException:
-            time.sleep(2)
-
-        # 4. Проверяем URL и возвращаемся назад
-        if len(self.driver.window_handles) > initial_handles_count:
-            new_window = [handle for handle in self.driver.window_handles if handle != main_window][0]
-            self.driver.switch_to.window(new_window)
-            
-            WebDriverWait(self.driver, 10).until(EC.url_contains(expected_url_part))
-            current_url = self.driver.current_url
-
-            self.driver.close()
-            self.driver.switch_to.window(main_window)
-        else:
-            WebDriverWait(self.driver, 10).until(EC.url_contains(expected_url_part))
-            current_url = self.driver.current_url
-
-            self.driver.back()
-            WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(self.INPUT_EMAIL))
-
+        # 1. Ждем и кликаем по кнопке соцсети
+        btn = WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable(locator))
+        btn.click()
+        
+        # 2. Ждем, пока URL в ТЕКУЩЕЙ вкладке поменяется на нужный (например, id.vk.ru)
+        WebDriverWait(self.driver, 10).until(EC.url_contains(expected_url_part))
+        
+        # 3. Сохраняем новый URL в переменную
+        current_url = self.driver.current_url
+        
+        # 4. Возвращаемся назад на страницу регистрации (чтобы тест мог продолжить работу)
+        self.driver.back()
+        
+        # 5. Отдаем сохраненный URL в сам тест для финальной проверки
         return current_url
+
+    def verify_yandex_button_opens_new_window(self, expected_url_part):
+        original_window = self.driver.current_window_handle
+        
+        # 1. Находим iframe Яндекса и "заходим" внутрь него
+        iframe = WebDriverWait(self.driver, 10).until(
+            EC.presence_of_element_located((By.CSS_SELECTOR, "#yandexButtonContainer iframe"))
+        )
+        self.driver.switch_to.frame(iframe)
+        
+        # 2. Находим кнопку УЖЕ ВНУТРИ фрейма и кликаем по ней
+        btn_inside = WebDriverWait(self.driver, 10).until(
+            EC.element_to_be_clickable((By.CSS_SELECTOR, "button"))
+        )
+        btn_inside.click()
+        
+        # 3. ВАЖНО: "выходим" из фрейма обратно на главную страницу сайта
+        self.driver.switch_to.default_content()
+        
+        # 4. Ждем появления второго окна/вкладки
+        WebDriverWait(self.driver, 10).until(EC.number_of_windows_to_be(2))
+        
+        # 5. Переключаемся на новое окно Яндекса
+        for window_handle in self.driver.window_handles:
+            if window_handle != original_window:
+                self.driver.switch_to.window(window_handle)
+                break
+                
+        # 6. Ждем URL и сохраняем его
+        WebDriverWait(self.driver, 10).until(EC.url_contains(expected_url_part))
+        new_window_url = self.driver.current_url
+        
+        # 7. Закрываем вкладку Яндекса и возвращаемся в исходное окно
+        self.driver.close()
+        self.driver.switch_to.window(original_window)
+        
+        return new_window_url
+
+    def verify_social_button_opens_new_window(self, locator, expected_url_part):
+        original_window = self.driver.current_window_handle
+        
+        # 1. Находим кнопку и кликаем по ней (используем надежный JS-клик)
+        btn = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located(locator))
+        self.driver.execute_script("arguments[0].click();", btn)
+        
+        # 2. Ждем появления второй вкладки
+        WebDriverWait(self.driver, 10).until(EC.number_of_windows_to_be(2))
+        
+        # 3. Переключаемся на новую вкладку
+        for window_handle in self.driver.window_handles:
+            if window_handle != original_window:
+                self.driver.switch_to.window(window_handle)
+                break
+                
+        # 4. Ждем нужный URL и сохраняем его
+        WebDriverWait(self.driver, 10).until(EC.url_contains(expected_url_part))
+        new_window_url = self.driver.current_url
+        
+        # 5. Закрываем вкладку Макса/Телеграма и возвращаемся на главную
+        self.driver.close()
+        self.driver.switch_to.window(original_window)
+        
+        return new_window_url

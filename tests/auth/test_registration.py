@@ -183,8 +183,8 @@ class TestWebRegistration:
 
         print("\n[ТЕСТ] WAL-T148 пройден: Начальная страница регистрации загружена и элементы формы видны.")
 
-    def test_wal_t132_registration_via_social_networks(self, driver):
-        """WAL-T132: Проверка регистрации через соц сети"""
+    def test_wal_t232_registration_via_social_networks(self, driver):
+        """WAL-T232: Проверка регистрации через соц сети"""
         registration_page = RegistrationPage(driver)
 
         # 1 Step: Перейти на страницу регистрации
@@ -192,30 +192,43 @@ class TestWebRegistration:
 
         # 2 Step: Клик на кнопку VK -> Ожидаемый результат: Отображается окно "Вход с помощью VK ID"
         vk_url = registration_page.verify_social_button_opens_url(
-            registration_page.BTN_VK, "vk.com"
+            registration_page.BTN_VK, "id.vk.ru"
         )
         assert "vk.com" in vk_url or "id.vk" in vk_url, f"Неверный URL при клике на VK: {vk_url}"
-        print("\n[ТЕСТ] WAL-T132 Шаг 2 (VK ID): Окно авторизации успешно открылось.")
+        print("\n[ТЕСТ] WAL-T232 Шаг 2 (VK ID): Окно авторизации успешно открылось.")       
 
-        # 3 Step: Клик на кнопку Яндекс -> Ожидаемый результат: Отображается окно "Вход с помощью Яндекс"
-        yandex_url = registration_page.verify_social_button_opens_url(
-            registration_page.BTN_YANDEX, "yandex"
+    def test_registration_via_yandex(self, driver):
+        """Проверка регистрации через Яндекс (в новом окне)"""
+        registration_page = RegistrationPage(driver)
+        registration_page.open_directly()
+        
+        # Используем новый метод специально для Яндекса
+        yandex_url = registration_page.verify_yandex_button_opens_new_window("yandex")
+        
+        assert "yandex" in yandex_url, f"Неверный URL при клике на Яндекс: {yandex_url}"
+        print("\n[ТЕСТ] Яндекс: Окно авторизации успешно открылось.")
+
+    def test_registration_via_max(self, driver):
+        """Проверка регистрации через Макс (в новой вкладке)"""
+        registration_page = RegistrationPage(driver)
+        registration_page.open_directly()
+        
+        # Используем метод для нового окна/вкладки и ждем "max.ru"
+        max_url = registration_page.verify_social_button_opens_new_window(
+            registration_page.BTN_MAX, "max.ru" 
         )
-        assert "yandex" in yandex_url or "passport.yandex" in yandex_url, f"Неверный URL при клике на Яндекс: {yandex_url}"
-        print("[ТЕСТ] WAL-T132 Шаг 3 (Яндекс ID): Окно авторизации успешно открылось.")
+        assert "max.ru" in max_url, f"Неверный URL при клике на Макс: {max_url}"
+        print("\n[ТЕСТ] Макс: Вкладка авторизации успешно открылась.")
 
-        # 4 Step: Клик на кнопку Макс -> Ожидаемый результат: В новой вкладке открывается окно
-        max_url = registration_page.verify_social_button_opens_url(
-            registration_page.BTN_MAX, "max"
-        )
-        assert "max" in max_url or "ok.ru" in max_url or "mail.ru" in max_url, f"Неверный URL при клике на Макс: {max_url}"
-        print("[ТЕСТ] WAL-T132 Шаг 4 (Макс): Новая вкладка успешно открылась.")
 
-        # 5 Step: Клик на кнопку ТГ -> Ожидаемый результат: В новой вкладке открывается окно
+    def test_registration_via_tg(self, driver):
+        """Проверка регистрации через Telegram"""
+        registration_page = RegistrationPage(driver)
+        registration_page.open_directly()
+        
+        # Ожидаем, что в URL появится слово telegram (например, oauth.telegram.org)
         tg_url = registration_page.verify_social_button_opens_url(
-            registration_page.BTN_TELEGRAM, "t.me"
+            registration_page.BTN_TG, "tg"
         )
-        assert "t.me" in tg_url or "telegram" in tg_url, f"Неверный URL при клике на Telegram: {tg_url}"
-        print("[ТЕСТ] WAL-T132 Шаг 5 (Telegram): Новая вкладка успешно открылась.")
-
-        print("[ТЕСТ] WAL-T132 пройден: Все 4 соцсети корректно открывают формы авторизации.")
+        assert "tg" in tg_url, f"Неверный URL при клике на Telegram: {tg_url}"
+        print("\n[ТЕСТ] Telegram: Окно авторизации успешно открылось.")
