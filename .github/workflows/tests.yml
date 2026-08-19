@@ -25,8 +25,26 @@ jobs:
         pip install -r requirements.txt
 
     - name: Запуск тестов через Pytest
-      # Передаем секреты из GitHub в переменные окружения виртуального сервера
       env:
         PROFINANSY_USER_EMAIL: ${{ secrets.PROFINANSY_USER_EMAIL }}
         PROFINANSY_USER_PASSWORD: ${{ secrets.PROFINANSY_USER_PASSWORD }}
-      run: python -m pytest -v
+      # ДОБАВЛЕНО: флаг --alluredir для сбора результатов
+      run: python -m pytest -v --alluredir=allure-results
+
+    - name: Генерация отчета Allure
+      # if: always() гарантирует, что отчет соберется, даже если тесты упали (а они у нас падают)
+      if: always()
+      uses: simple-elf/allure-report-action@master
+      with:
+        allure_results: allure-results
+        gh_pages: gh-pages
+        allure_report: allure-report
+        allure_history: allure-history
+
+    - name: Публикация отчета на GitHub Pages
+      if: always()
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_branch: gh-pages
+        publish_dir: allure-history
