@@ -29,4 +29,4 @@ jobs:
       env:
         PROFINANSY_USER_EMAIL: ${{ secrets.PROFINANSY_USER_EMAIL }}
         PROFINANSY_USER_PASSWORD: ${{ secrets.PROFINANSY_USER_PASSWORD }}
-      run: pytest -v
+      run: python -m pytest -v
