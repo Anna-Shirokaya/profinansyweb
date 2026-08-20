@@ -4,8 +4,8 @@ import os
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.common.exceptions import TimeoutException, NoSuchElementException
 from PIL import Image, ImageChops
+from selenium.common.exceptions import TimeoutException, NoSuchElementException, StaleElementReferenceException
 
 class AccountsMainPage:
     def __init__(self, driver):
@@ -19,14 +19,14 @@ class AccountsMainPage:
         # ЛОКАТОРЫ ФОРМЫ СОЗДАНИЯ СЧЕТА
         self.DEBIT_TYPE_CARD = (By.XPATH, "//*[text()='Дебетовый']")
         self.CONTINUE_BUTTON = (By.XPATH, "//button[contains(., 'Продолжить')] | //*[text()='Продолжить']")
-        self.ACCOUNT_NAME_INPUT = (By.XPATH, "//input[@placeholder='Введите название']")
+        self.ACCOUNT_NAME_INPUT = (By.XPATH, "//input[@name='title' or @placeholder='Введите название']")
         self.BALANCE_INPUT = (By.XPATH, "//*[contains(text(), 'Баланс')]/following::input[1]")
         self.CURRENCY_SELECT_TRIGGER = (By.XPATH, "//input[@placeholder='Выберите валюту из списка']")
         self.FIRST_CURRENCY_OPTION = (By.XPATH, "//div[contains(@class, 'Select-dropdown')]//li[1]")
         self.SAVE_BUTTON = (By.XPATH, "//button[contains(., 'Сохранить')] | //*[text()='Сохранить']")
         
         # ЛОКАТОРЫ ОШИБОК И ВАЛИДАЦИИ
-        self.ACCOUNT_NAME_LABEL = (By.XPATH, "//*[contains(text(), 'Название счета')]")
+        self.ACCOUNT_NAME_INPUT = (By.XPATH, "//input[@name='title' or @placeholder='Введите название']")
         self.CURRENCY_LABEL = (By.XPATH, "//*[contains(text(), 'Валюта счета')]")
         self.TOO_LONG_ERROR_MSG = (By.XPATH, "//*[text()='Слишком длинное название']")
         self.NAME_REQUIRED_ERROR = (By.XPATH, "//*[contains(text(), 'Название счета')]/following::*[text()='Обязательное поле'][1]")
@@ -51,13 +51,26 @@ class AccountsMainPage:
         # ЛОКАТОР ДЛЯ КНОПКИ НАСТРОЙКИ СЧЕТА В ПАЛЕТКЕ СЧЕТА
         self.BTN_EDIT_IN_DROPDOWN = (By.XPATH, "//span[text()='Настроить счет']")
 
-    def is_page_loaded(self) -> bool:
-        """Проверяет загрузку страницы счетов"""
-        time.sleep(1)
-        current_url = self.driver.current_url
-        print(f"[DEBIT PAGE] Текущий URL страницы: {current_url}")
-        return "budget" in current_url or "account" in current_url
+    def is_page_loaded(self):
+        """Проверяет успешную загрузку раздела счетов"""
+        try:
+            # 1. Ждем появление нужного URL
+            WebDriverWait(self.driver, 15).until(
+                EC.url_contains("/wallet/accounts")
+            )
+            
+            # 2. Ждем появление элемента раздела (укажите любой ваш существующий локатор из класса)
+            WebDriverWait(self.driver, 15).until(
+                EC.presence_of_element_located(self.CREATE_ACCOUNT_BTN)  # Укажите ваш локатор
+            )
+            return True
+        except Exception as e:
+            print(f"\n[DEBUG ERROR] is_page_loaded не дождался загрузки!")
+            print(f"[DEBUG ERROR] Текущий URL: {self.driver.current_url}")
+            print(f"[DEBUG ERROR] Текст ошибки: {e}")
+            return False
 
+        
     def get_empty_state_title_text(self) -> str:
         element = WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(self.EMPTY_STATE_TITLE))
         return element.text
@@ -77,9 +90,18 @@ class AccountsMainPage:
 
     @allure.step("Нажать кнопку 'Создать счёт +'")
     def click_create_account_button(self):
-        btn = WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable(self.CREATE_ACCOUNT_BTN))
-        btn.click()
-        print("[DEBIT PAGE] Нажата кнопка 'Создать счёт +'")
+        """Нажатие кнопки 'Создать счёт' с защитой от re-render в React"""
+        for _ in range(3):
+            try:
+                btn = WebDriverWait(self.driver, 10).until(
+                    EC.element_to_be_clickable(self.CREATE_ACCOUNT_BTN)
+                )
+                self.driver.execute_script("arguments[0].click();", btn)
+                break
+            except StaleElementReferenceException:
+                # При обновлении DOM в React делаем повторный поиск на следующей итерации
+                continue
+
 
     @allure.step("Выбрать тип счёта 'Дебетовый'")
     def select_debit_account_type(self):
@@ -100,13 +122,15 @@ class AccountsMainPage:
         except TimeoutException:
             print("[DEBIT PAGE] Кнопка 'Продолжить' не потребовалась")
 
-    @allure.step("Ввести название счёта: {name_text}")
-    def enter_account_name(self, name_text: str):
-        input_field = WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable(self.ACCOUNT_NAME_INPUT))
-        input_field.clear()
-        input_field.send_keys(name_text)
-        print(f"[DEBIT PAGE] Введено название счёта длиной {len(name_text)} символов")
-
+    @allure.step("Ввести название счёта: {account_name}")  # Заменили name_text на account_name
+    def enter_account_name(self, account_name):
+        """Ввод имени счета"""
+        name_input = WebDriverWait(self.driver, 10).until(
+            EC.element_to_be_clickable(self.ACCOUNT_NAME_INPUT)
+        )
+        name_input.clear()
+        name_input.send_keys(account_name)
+        
     @allure.step("Ввести начальный баланс: {balance_text}")
     def enter_balance(self, balance_text: str):
         """Вводит сумму в поле 'Баланс' с предварительной очисткой через горячие клавиши"""

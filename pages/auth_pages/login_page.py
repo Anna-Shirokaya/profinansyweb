@@ -1,10 +1,20 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.common.exceptions import TimeoutException
 
 class LoginPage:
     def __init__(self, driver):
         self.driver = driver
+        self.url = f"{driver.base_url}/login"
+
+    def open(self):
+        """Прямой переход на страницу входа"""
+        try:
+            self.driver.get(self.url)
+        except TimeoutException:
+            # Сбрасываем зависшие метрики, если каркас формы уже загрузился
+            self.driver.execute_script("window.stop();")
 
         # ЛОКАТОРЫ
         # Поле Email ищем по атрибуту placeholder или типу поля

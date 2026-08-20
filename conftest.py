@@ -22,23 +22,30 @@ def driver(request):
     print(f"\n[SETUP] Запуск браузера для окружения: {current_domain}")
     
     options = webdriver.ChromeOptions()
+    # Блокируем системное окно "profinansy.ru wants to Show notifications"
+    prefs = {"profile.default_content_setting_values.notifications": 2}
+    options.add_experimental_option("prefs", prefs)
     options.page_load_strategy = 'eager'
-    # Задаем жесткое разрешение экрана. Это заменяет browser.maximize_window() 
-    # и гарантирует, что верстка не поедет на виртуальном сервере
     options.add_argument("--window-size=1920,1080") 
     options.add_argument("--disable-popup-blocking")
-    options.add_argument("--headless=new")  # Используем новый headless режим
     options.add_argument("--no-sandbox")
     options.add_argument("--disable-dev-shm-usage")
+    options.add_argument("--disable-renderer-backgrounding")
+    options.add_argument("--disable-background-timer-throttling")
+    options.add_argument("--log-level=3")
     options.add_argument("--silent")
+    options.add_argument("--disable-gpu")
+    options.add_argument("--disable-software-rasterizer")
+    options.add_argument("--mute-audio")
     options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36")
 
-    # Проверяем, запускается ли код на сервере CI (например, в GitHub Actions)
+    # Включаем headless ТОЛЬКО на CI-сервере (GitHub Actions и т.д.)
     if os.getenv("CI") == "true":
         print("[SETUP] Обнаружена CI-среда. Запуск в фоновом (headless) режиме...")
+        options.add_argument("--headless=new")
         
     browser = webdriver.Chrome(options=options)
-    browser.set_page_load_timeout(30)
+    
     #записываем текущий домен прямо внутрь объекта browser.
     browser.base_url = current_domain
     
@@ -49,34 +56,37 @@ def driver(request):
 
 @pytest.fixture
 def logged_in_driver(driver):
-    """Фикстура авторизации: использует параметризованный драйвер"""
+    """Фикстура авторизации: переход напрямую на страницу входа"""
     print("\n[AUTH SETUP] Начало автоматической авторизации...")
 
-    welcome_page = WelcomePage(driver)
     login_page = LoginPage(driver)
+    dashboard_page = DashboardPage(driver)
 
     email = os.getenv("PROFINANSY_USER_EMAIL")
     password = os.getenv("PROFINANSY_USER_PASSWORD")
     
-    # Защита: проверяем, что секреты вычитались из env
     if not email or not password:
         raise ValueError("[AUTH ERROR] Не найдены переменные окружения EMAIL или PASSWORD!")
 
-    welcome_page.open()
-    welcome_page.click_login_button()
+    # 1. Переходим сразу на страницу входа
+    login_page.open()
 
-    # 1. ЖДЕМ, пока браузер действительно перейдет на форму входа
-    WebDriverWait(driver, 10).until(
-        EC.url_contains("/login")  # или EC.visibility_of_element_located((By.NAME, "email"))
-    )
-
+    # 2. Вводим данные и отправляем форму
     login_page.enter_email(email)
     login_page.enter_password(password)
     login_page.click_submit_button()
 
-    # 2. Ждем завершения авторизации
+    # 3. Ждем ухода с /login
     WebDriverWait(driver, 15).until_not(
         EC.url_contains("/login")
+    )
+
+    # 4. Закрываем промо-окно, если оно всплыло сразу после логина
+    dashboard_page.close_popup_if_exists()
+
+    # 5. Ждем полной отрисовки интерфейса (заголовка "Мои деньги")
+    WebDriverWait(driver, 15).until(
+        EC.visibility_of_element_located(dashboard_page.MY_MONEY_HEADER)
     )
 
     print("[AUTH SETUP] Авторизация успешно завершена.")

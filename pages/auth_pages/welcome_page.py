@@ -17,7 +17,13 @@ class WelcomePage:
 
     def open(self):
         """Метод для открытия страницы"""
-        self.driver.get(self.url)
+        try:
+            self.driver.get(self.url)
+        except TimeoutException:
+            # Прерываем загрузку фоновых скриптов, если DOM уже готов
+            print("\n[WELCOME PAGE] Страница превысила лимит загрузки, останавливаем фоновые метрики...")
+            self.driver.execute_script("window.stop();")
+
         # После открытия проверяем и закрываем куки и промо-модалку
         self.close_cookie_banner_if_exists()
         self.close_promo_modal_if_exists()
