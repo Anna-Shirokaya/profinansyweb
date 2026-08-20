@@ -105,13 +105,26 @@ class AccountsMainPage:
 
     @allure.step("Выбрать тип счёта 'Дебетовый'")
     def select_debit_account_type(self):
-        card = WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable(self.DEBIT_TYPE_CARD))
+        card = WebDriverWait(self.driver, 10).until(
+            EC.presence_of_element_located(self.DEBIT_TYPE_CARD)
+        )
+        self.driver.execute_script("arguments[0].scrollIntoView({block: 'center'});", card)
+        
         try:
-            card.click()
-            print("[DEBIT PAGE] Выбран тип счёта: Дебетовый (обычный клик)")
+            # ActionChains генерирует честные события движения мыши и нажатия для React
+            from selenium.webdriver.common.action_chains import ActionChains
+            ActionChains(self.driver).move_to_element(card).click().perform()
+            print("[DEBIT PAGE] Выбран тип счёта: Дебетовый (через ActionChains)")
         except Exception:
-            print("[DEBIT PAGE] Обычный клик перехвачен, используем JavaScript-клик...")
-            self.driver.execute_script("arguments[0].click();", card)
+            # Резервный запуск цепочки событий DOM (mousedown/pointerdown/click)
+            self.driver.execute_script("""
+                var el = arguments[0];
+                el.dispatchEvent(new PointerEvent('pointerdown', {bubbles: true}));
+                el.dispatchEvent(new MouseEvent('mousedown', {bubbles: true}));
+                el.click();
+            """, card)
+            print("[DEBIT PAGE] Выбран тип счёта: Дебетовый (через JS Events)")
+            
 
     @allure.step("Кликнуть 'Продолжить', если кнопка отображается")
     def click_continue_if_exists(self):
@@ -130,7 +143,7 @@ class AccountsMainPage:
         )
         name_input.clear()
         name_input.send_keys(account_name)
-        
+
     @allure.step("Ввести начальный баланс: {balance_text}")
     def enter_balance(self, balance_text: str):
         """Вводит сумму в поле 'Баланс' с предварительной очисткой через горячие клавиши"""
