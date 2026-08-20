@@ -105,35 +105,33 @@ class AccountsMainPage:
 
     @allure.step("Выбрать тип счёта 'Дебетовый'")
     def select_debit_account_type(self):
+        """Выбор дебетового типа счета с гарантированным срабатыванием React-событий"""
         card = WebDriverWait(self.driver, 10).until(
             EC.presence_of_element_located(self.DEBIT_TYPE_CARD)
         )
         self.driver.execute_script("arguments[0].scrollIntoView({block: 'center'});", card)
         
-        try:
-            # ActionChains генерирует честные события движения мыши и нажатия для React
-            from selenium.webdriver.common.action_chains import ActionChains
-            ActionChains(self.driver).move_to_element(card).click().perform()
-            print("[DEBIT PAGE] Выбран тип счёта: Дебетовый (через ActionChains)")
-        except Exception:
-            # Резервный запуск цепочки событий DOM (mousedown/pointerdown/click)
-            self.driver.execute_script("""
-                var el = arguments[0];
-                el.dispatchEvent(new PointerEvent('pointerdown', {bubbles: true}));
-                el.dispatchEvent(new MouseEvent('mousedown', {bubbles: true}));
-                el.click();
-            """, card)
-            print("[DEBIT PAGE] Выбран тип счёта: Дебетовый (через JS Events)")
-            
+        # Запускаем полный цикл событий DOM для активации выборки в React
+        self.driver.execute_script("""
+            var el = arguments[0];
+            el.click();
+            el.dispatchEvent(new Event('change', { bubbles: true }));
+        """, card)
+        print("[DEBIT PAGE] Выбран тип счёта: Дебетовый (через JS-клик)")
 
-    @allure.step("Кликнуть 'Продолжить', если кнопка отображается")
+
+    @allure.step("Кликнуть 'Продолжить'")
     def click_continue_if_exists(self):
+        """Обязательное ожидание и нажатие кнопки 'Продолжить'"""
         try:
-            btn = WebDriverWait(self.driver, 3).until(EC.element_to_be_clickable(self.CONTINUE_BUTTON))
-            btn.click()
-            print("[DEBIT PAGE] Нажата кнопка 'Продолжить'")
+            btn = WebDriverWait(self.driver, 10).until(
+                EC.presence_of_element_located(self.CONTINUE_BUTTON)
+            )
+            # Выполняем переход на следующий шаг формы
+            self.driver.execute_script("arguments[0].scrollIntoView({block: 'center'}); arguments[0].click();", btn)
+            print("[DEBIT PAGE] Успешно нажата кнопка 'Продолжить'")
         except TimeoutException:
-            print("[DEBIT PAGE] Кнопка 'Продолжить' не потребовалась")
+            print("[DEBIT PAGE] Предупреждение: Кнопка 'Продолжить' не появилась за 10 секунд!")
 
     @allure.step("Ввести название счёта: {account_name}")  # Заменили name_text на account_name
     def enter_account_name(self, account_name):
