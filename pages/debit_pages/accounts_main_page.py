@@ -105,42 +105,55 @@ class AccountsMainPage:
 
     @allure.step("Выбрать тип счёта 'Дебетовый'")
     def select_debit_account_type(self):
-        """Выбор дебетового типа счета с гарантированным срабатыванием React-событий"""
+        """Выбор дебетового типа счета с задержкой для обновления React-стейта"""
         card = WebDriverWait(self.driver, 10).until(
-            EC.presence_of_element_located(self.DEBIT_TYPE_CARD)
+            EC.element_to_be_clickable(self.DEBIT_TYPE_CARD)
         )
         self.driver.execute_script("arguments[0].scrollIntoView({block: 'center'});", card)
         
-        # Запускаем полный цикл событий DOM для активации выборки в React
-        self.driver.execute_script("""
-            var el = arguments[0];
-            el.click();
-            el.dispatchEvent(new Event('change', { bubbles: true }));
-        """, card)
-        print("[DEBIT PAGE] Выбран тип счёта: Дебетовый (через JS-клик)")
+        try:
+            card.click()
+        except Exception:
+            self.driver.execute_script("arguments[0].click();", card)
+            
+        print("[DEBIT PAGE] Выбран тип счёта: Дебетовый")
+        time.sleep(0.5)  # Даем React время активировать кнопку "Продолжить"
 
 
     @allure.step("Кликнуть 'Продолжить'")
     def click_continue_if_exists(self):
-        """Обязательное ожидание и нажатие кнопки 'Продолжить'"""
+        """Ожидание активности и клик по кнопке 'Продолжить'"""
         try:
+            # Ждем именно кликабельности (активного состояния без disabled)
             btn = WebDriverWait(self.driver, 10).until(
-                EC.presence_of_element_located(self.CONTINUE_BUTTON)
+                EC.element_to_be_clickable(self.CONTINUE_BUTTON)
             )
-            # Выполняем переход на следующий шаг формы
-            self.driver.execute_script("arguments[0].scrollIntoView({block: 'center'}); arguments[0].click();", btn)
+            try:
+                btn.click()
+            except Exception:
+                self.driver.execute_script("arguments[0].click();", btn)
+                
             print("[DEBIT PAGE] Успешно нажата кнопка 'Продолжить'")
+            time.sleep(0.5)  # Даем время на анимацию появления второго шага формы
         except TimeoutException:
-            print("[DEBIT PAGE] Предупреждение: Кнопка 'Продолжить' не появилась за 10 секунд!")
+            print("[DEBIT PAGE] Кнопка 'Продолжить' не потребовалась")
 
-    @allure.step("Ввести название счёта: {account_name}")  # Заменили name_text на account_name
+    @allure.step("Ввести название счёта: {account_name}")
     def enter_account_name(self, account_name):
-        """Ввод имени счета"""
+        """Ввод имени счета с ожиданием отрисовки элемента в React"""
+        # Использование visibility устойчивее к анимациям, чем element_to_be_clickable
         name_input = WebDriverWait(self.driver, 10).until(
-            EC.element_to_be_clickable(self.ACCOUNT_NAME_INPUT)
+            EC.visibility_of_element_located(self.ACCOUNT_NAME_INPUT)
         )
+        
+        try:
+            name_input.click()
+        except Exception:
+            self.driver.execute_script("arguments[0].click();", name_input)
+            
         name_input.clear()
         name_input.send_keys(account_name)
+        print(f"[DEBIT PAGE] Успешно введено название счета: '{account_name}'")
 
     @allure.step("Ввести начальный баланс: {balance_text}")
     def enter_balance(self, balance_text: str):
