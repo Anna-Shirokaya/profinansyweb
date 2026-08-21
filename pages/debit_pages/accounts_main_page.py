@@ -20,7 +20,7 @@ class AccountsMainPage:
         self.DEBIT_TYPE_CARD = (By.XPATH, "//*[text()='Дебетовый']")
         self.CONTINUE_BUTTON = (By.XPATH, "//button[contains(., 'Продолжить')] | //*[text()='Продолжить']")
         self.ACCOUNT_NAME_INPUT = (By.XPATH, "//input[@name='title' or @placeholder='Введите название']")
-        self.BALANCE_INPUT = (By.XPATH, "//*[contains(text(), 'Баланс')]/following::input[1]")
+        self.BALANCE_INPUT = (By.XPATH, "//input[@name='balance']")
         self.CURRENCY_SELECT_TRIGGER = (By.XPATH, "//input[@placeholder='Выберите валюту из списка']")
         self.FIRST_CURRENCY_OPTION = (By.XPATH, "//div[contains(@class, 'Select-dropdown')]//li[1]")
         self.SAVE_BUTTON = (By.XPATH, "//button[contains(., 'Сохранить')] | //*[text()='Сохранить']")
@@ -175,14 +175,19 @@ class AccountsMainPage:
 
     @allure.step("Ввести начальный баланс: {balance_text}")
     def enter_balance(self, balance_text: str):
-        """Вводит сумму в поле 'Баланс' с предварительной очисткой через горячие клавиши"""
-        input_field = WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable(self.BALANCE_INPUT))
-        input_field.click()
+        """Вводит сумму в поле 'Баланс'"""
+        input_field = WebDriverWait(self.driver, 10).until(
+            EC.visibility_of_element_located(self.BALANCE_INPUT)
+        )
         
+        try:
+            input_field.click()
+        except Exception:
+            self.driver.execute_script("arguments[0].click();", input_field)
+            
         from selenium.webdriver.common.keys import Keys
         input_field.send_keys(Keys.CONTROL + "a")
         input_field.send_keys(Keys.BACKSPACE)
-        
         input_field.send_keys(balance_text)
         print(f"[DEBIT PAGE] Введен баланс счета: {balance_text}")
 
@@ -307,7 +312,8 @@ class AccountsMainPage:
     @allure.step("Дождаться создания счета и появления карточки '{name}'")
     def wait_until_account_created(self, name: str):
         print(f"[DEBIT PAGE] Ждем появления карточки с именем: {name}...")
-        card_title_locator = (By.XPATH, f"//*[text()='{name}']")
+        # normalize-space(.) очищает заголовок от любых переносов строк и лишних пробелов React
+        card_title_locator = (By.XPATH, f"//*[contains(normalize-space(.), '{name}')]")
         WebDriverWait(self.driver, 15).until(EC.visibility_of_element_located(card_title_locator))
         print(f"[DEBIT PAGE] Карточка '{name}' успешно появилась.")
 
