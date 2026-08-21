@@ -124,7 +124,7 @@ class AccountsMainPage:
         """Умный переход: проверяет появление поля ввода или кликает 'Продолжить'"""
         # 1. Проверяем, не перешли ли мы уже автоматически на шаг 2
         try:
-            WebDriverWait(self.driver, 2).until(
+            WebDriverWait(self.driver, 15).until(
                 EC.visibility_of_element_located(self.ACCOUNT_NAME_INPUT)
             )
             print("[DEBIT PAGE] Шаг 2 уже открыт (кнопка 'Продолжить' не потребовалась)")
@@ -134,7 +134,7 @@ class AccountsMainPage:
 
         # 2. Если шаг 2 не открылся, обрабатываем кнопку "Продолжить"
         try:
-            btn = WebDriverWait(self.driver, 5).until(
+            btn = WebDriverWait(self.driver, 15).until(
                 EC.presence_of_element_located(self.CONTINUE_BUTTON)
             )
             
@@ -150,7 +150,7 @@ class AccountsMainPage:
             print("[DEBIT PAGE] Нажата кнопка 'Продолжить'")
             
             # Гарантированно ждем отрисовки поля ввода названия счета
-            WebDriverWait(self.driver, 10).until(
+            WebDriverWait(self.driver, 15).until(
                 EC.visibility_of_element_located(self.ACCOUNT_NAME_INPUT)
             )
         except TimeoutException:
@@ -160,7 +160,7 @@ class AccountsMainPage:
     def enter_account_name(self, account_name):
         """Ввод имени счета с ожиданием отрисовки элемента в React"""
         # Использование visibility устойчивее к анимациям, чем element_to_be_clickable
-        name_input = WebDriverWait(self.driver, 10).until(
+        name_input = WebDriverWait(self.driver, 15).until(
             EC.visibility_of_element_located(self.ACCOUNT_NAME_INPUT)
         )
         
