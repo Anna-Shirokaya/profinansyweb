@@ -59,6 +59,14 @@ def test_success_create_account_with_max_balance_and_regular_icon(logged_in_driv
     
     # 12. Глубокая проверка счета внутри модального списка "Все счета"
     accounts_page.check_account_in_all_accounts_modal(test_account_name)
+
+    with allure.step(f"Удалить созданный счет '{test_account_name}'"):
+        accounts_page.click_three_dots_for_account(test_account_name)
+        accounts_page.click_delete_account_in_dropdown()
+        accounts_page.click_confirm_delete_first_stage()
+        accounts_page.tick_both_delete_checkboxes()
+        accounts_page.click_confirm_delete_final_stage()
+        accounts_page.assert_account_is_deleted(test_account_name)
     
     time.sleep(1)
     print(f"\n[ТЕСТ] Полный триумф! Счет '{test_account_name}' проверен на карусели и в общем списке 'Все счета'.")
