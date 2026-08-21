@@ -25,6 +25,7 @@ jobs:
       env:
         PROFINANSY_USER_EMAIL: ${{ secrets.PROFINANSY_USER_EMAIL }}
         PROFINANSY_USER_PASSWORD: ${{ secrets.PROFINANSY_USER_PASSWORD }}
+        CI: "true"
       # ДОБАВЛЕНО: флаг --alluredir для сбора результатов
       run: python -m pytest -v --alluredir=allure-results
 

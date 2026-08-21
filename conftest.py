@@ -3,6 +3,9 @@ import pytest
 from selenium import webdriver
 from dotenv import load_dotenv
 
+import allure
+from allure_commons.types import AttachmentType
+
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
@@ -111,3 +114,26 @@ def account_cleanup_registry(logged_in_driver):
                 print(f"[TEARDOWN] Счет '{account_name}' успешно удален.")
         except Exception as e:
             print(f"[TEARDOWN] Предупреждение: Не удалось очистить счета. Ошибка: {e}")
+
+
+@pytest.hookimpl(tryfirst=True, hookwrapper=True)
+def pytest_runtest_makereport(item, call):
+    outcome = yield
+    rep = outcome.get_result()
+    
+    # Если ошибка произошла на этапе setup или call
+    if rep.when in ("setup", "call") and rep.failed:
+        driver = item.funcargs.get("driver") or item.funcargs.get("logged_in_driver")
+        if driver:
+            # Делаем скриншот
+            allure.attach(
+                driver.get_screenshot_as_png(),
+                name=f"screenshot_{rep.when}_failure",
+                attachment_type=AttachmentType.PNG
+            )
+            # Сохраняем HTML-код страницы
+            allure.attach(
+                driver.page_source,
+                name=f"page_source_{rep.when}_failure",
+                attachment_type=AttachmentType.HTML
+            )
