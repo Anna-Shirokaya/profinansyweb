@@ -226,9 +226,9 @@ class TestWebRegistration:
         registration_page = RegistrationPage(driver)
         registration_page.open_directly()
         
-        # Ожидаем, что в URL появится слово telegram (например, oauth.telegram.org)
-        tg_url = registration_page.verify_social_button_opens_url(
-            registration_page.BTN_TG, "tg"
+        # Вызываем правильный метод, умеющий работать со вторым окном
+        tg_url = registration_page.verify_social_button_opens_new_window(
+            registration_page.BTN_TG, "t.me/"
         )
-        assert "tg" in tg_url, f"Неверный URL при клике на Telegram: {tg_url}"
+        assert "t.me/" in tg_url, f"Неверный URL при клике на Telegram: {tg_url}"
         print("\n[ТЕСТ] Telegram: Окно авторизации успешно открылось.")
