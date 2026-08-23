@@ -17,7 +17,7 @@ class AccountsMainPage:
         self.CREATE_ACCOUNT_BTN = (By.XPATH, "//button[contains(., 'Создать счёт')]")
         
         # ЛОКАТОРЫ ФОРМЫ СОЗДАНИЯ СЧЕТА
-        self.DEBIT_TYPE_CARD = (By.XPATH, "//*[text()='Дебетовый']")
+        self.DEBIT_TYPE_CARD = (By.XPATH, "//button[contains(., 'Дебетовый')] | //img[@alt='Дебетовый']/ancestor::button[1]")
         self.CONTINUE_BUTTON = (By.XPATH, "//button[contains(., 'Продолжить')] | //*[text()='Продолжить']")
         self.ACCOUNT_NAME_INPUT = (By.XPATH, "//input[@name='title' or @placeholder='Введите название']")
         self.BALANCE_INPUT = (By.XPATH, "//input[@name='balance']")
