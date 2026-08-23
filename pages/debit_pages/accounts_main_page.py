@@ -120,11 +120,12 @@ class AccountsMainPage:
 
 
     @allure.step("Обработать переход к вводу названия счёта")
+    @allure.step("Обработать переход к вводу названия счёта")
     def click_continue_if_exists(self):
-        """Умный переход: проверяет появление поля ввода или кликает 'Продолжить'"""
-        # 1. Проверяем, не перешли ли мы уже автоматически на шаг 2
+        """Умный переход: дожидаемся активности кнопки 'Продолжить' и переходим на Шаг 2"""
+        # 1. Если шаг 2 уже открыт — выходим
         try:
-            WebDriverWait(self.driver, 15).until(
+            WebDriverWait(self.driver, 2).until(
                 EC.visibility_of_element_located(self.ACCOUNT_NAME_INPUT)
             )
             print("[DEBIT PAGE] Шаг 2 уже открыт (кнопка 'Продолжить' не потребовалась)")
@@ -132,29 +133,24 @@ class AccountsMainPage:
         except TimeoutException:
             pass
 
-        # 2. Если шаг 2 не открылся, обрабатываем кнопку "Продолжить"
+        # 2. Ждем, пока кнопка станет полностью кликабельной (Selenium сам дождется удаления disabled)
         try:
-            btn = WebDriverWait(self.driver, 15).until(
-                EC.presence_of_element_located(self.CONTINUE_BUTTON)
+            btn = WebDriverWait(self.driver, 10).until(
+                EC.element_to_be_clickable(self.CONTINUE_BUTTON)
             )
+            try:
+                btn.click()
+            except Exception:
+                self.driver.execute_script("arguments[0].click();", btn)
+                
+            print("[DEBIT PAGE] Успешно нажата кнопка 'Продолжить'")
             
-            # Если кнопка заблокирована — делаем повторный клик по карточке "Дебетовый"
-            if btn.get_attribute("disabled") is not None or "disabled" in (btn.get_attribute("class") or ""):
-                print("[DEBIT PAGE] Кнопка 'Продолжить' заблокирована. Повторяем клик по карточке 'Дебетовый'...")
-                card = self.driver.find_element(*self.DEBIT_TYPE_CARD)
-                self.driver.execute_script("arguments[0].click();", card)
-                time.sleep(0.5)
-
-            # Нажимаем "Продолжить" через JS
-            self.driver.execute_script("arguments[0].scrollIntoView({block: 'center'}); arguments[0].click();", btn)
-            print("[DEBIT PAGE] Нажата кнопка 'Продолжить'")
-            
-            # Гарантированно ждем отрисовки поля ввода названия счета
-            WebDriverWait(self.driver, 15).until(
+            # 3. Гарантированно дожидаемся появления поля ввода названия
+            WebDriverWait(self.driver, 10).until(
                 EC.visibility_of_element_located(self.ACCOUNT_NAME_INPUT)
             )
         except TimeoutException:
-            print("[DEBIT PAGE] Предупреждение: Не удалось дождаться Шага 2.")
+            raise AssertionError("[DEBIT PAGE] Ошибка: Форма не перешла на Шаг 2 за 10 секунд!")
 
     @allure.step("Ввести название счёта: {account_name}")
     def enter_account_name(self, account_name):
