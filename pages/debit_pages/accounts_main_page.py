@@ -56,14 +56,18 @@ class AccountsMainPage:
         # ЛОКАТОРЫ ДЛЯ ОКНА "ВСЕ СЧЕТА"
         self.ALL_ACCOUNTS_BTN = (By.XPATH, "//div[contains(@class, 'ButtonsBlock')]//button[1]")
         self.ALL_ACCOUNTS_HEADER = (By.XPATH, "//*[text()='Все счета']")
-        self.BTN_EDIT_IN_DROPDOWN = (By.XPATH, "//span[text()='Настроить счет']")
+        
         # Динамический локатор строки счета в модальном окне "Все счета"
         self.MODAL_ACCOUNT_CARD_BY_NAME = lambda name: (
             By.XPATH, f"//span[contains(text(), '{name}')]/ancestor::div[contains(@class, 'AccountListCardstyled__Root')][1]"
         )
 
-        # ЛОКАТОРЫ ПРОЦЕССА УДАЛЕНИЯ СЧЕТА
+        # ЛОКАТОРЫ при тапе на 3 точки на карточке счета
         self.DELETE_DROPDOWN_ITEM = (By.XPATH, "//button[@class='removeBtn'] | //*[text()='Удалить счет']")
+        self.BTN_EDIT_IN_DROPDOWN = (
+        By.XPATH, 
+        "//button[contains(., 'Настроить счёт') or contains(., 'Настроить счет')]"
+    )
         self.CONFIRM_DELETE_FIRST_BTN = (By.XPATH, "//button[contains(., 'Удалить счет')]")
         self.DELETE_CHECKBOX_1 = (By.XPATH, "//*[contains(text(), 'Я понимаю, что удаление счета')]")
         self.DELETE_CHECKBOX_2 = (By.XPATH, "//*[contains(text(), 'Я осознаю, что мое решение')]")
@@ -379,12 +383,31 @@ class AccountsMainPage:
             print("[DEBIT PAGE] Обычный клик заблокирован, используем JavaScript-клик для 'Сохранить'...")
             self.driver.execute_script("arguments[0].click();", btn)
 
+    @allure.step("Нажать 'Настроить счет' в выпадающем меню")
     def click_edit_account_in_dropdown(self):
-        """Кликает по кнопке 'Настроить счет' в выпадающем меню счетов"""
-        edit_btn = WebDriverWait(self.driver, 10).until(
-            EC.element_to_be_clickable(self.BTN_EDIT_IN_DROPDOWN)
+        """Ожидает появления выпадающего меню и нажимает видимую кнопку 'Настроить счет'"""
+        # Ждем присутствия всех таких кнопок в коде страницы
+        buttons = WebDriverWait(self.driver, 10).until(
+            EC.presence_of_all_elements_located(self.BTN_EDIT_IN_DROPDOWN)
         )
-        edit_btn.click()
+        
+        clicked = False
+        for btn in buttons:
+            # Ищем именно ту кнопку, меню которой мы только что открыли
+            if btn.is_displayed():
+                self.driver.execute_script("arguments[0].scrollIntoView({block: 'center'});", btn)
+                time.sleep(0.3)  # Пауза на окончание анимации появления меню
+                try:
+                    btn.click()
+                except Exception:
+                    self.driver.execute_script("arguments[0].click();", btn)
+                
+                print("[DEBIT PAGE] Успешно нажата кнопка 'Настроить счёт'")
+                clicked = True
+                break
+                
+        if not clicked:
+            raise TimeoutException("Ни одна кнопка 'Настроить счёт' не стала видимой. Возможно, меню не раскрылось.")
 
     # === МЕТОДЫ ВАЛИДАЦИИ И ОШИБОК ===
 
@@ -615,14 +638,30 @@ class AccountsMainPage:
         print(f"[DEBIT PAGE] Нажаты 3 точки строго у карточки '{name}'")
         time.sleep(0.5)
 
-    @allure.step("Выбрать пункт 'Удалить счет' в раскрывающемся списке")
+    @allure.step("Нажать 'Удалить' в выпадающем меню")
     def click_delete_account_in_dropdown(self):
-        item = WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable(self.DELETE_DROPDOWN_ITEM))
-        try:
-            item.click()
-            print("[DEBIT PAGE] В меню выбран пункт 'Удалить счет'")
-        except Exception:
-            self.driver.execute_script("arguments[0].click();", item)
+        """Ожидает появления выпадающего меню и нажимает видимую кнопку 'Удалить'"""
+        # Предполагается, что ваш локатор называется self.BTN_DELETE_IN_DROPDOWN
+        buttons = WebDriverWait(self.driver, 10).until(
+            EC.presence_of_all_elements_located(self.DELETE_DROPDOWN_ITEM)
+        )
+        
+        clicked = False
+        for btn in buttons:
+            if btn.is_displayed():
+                self.driver.execute_script("arguments[0].scrollIntoView({block: 'center'});", btn)
+                time.sleep(0.3)
+                try:
+                    btn.click()
+                except Exception:
+                    self.driver.execute_script("arguments[0].click();", btn)
+                
+                print("[DEBIT PAGE] Успешно нажата кнопка 'Удалить счет'")
+                clicked = True
+                break
+                
+        if not clicked:
+            raise TimeoutException("Ни одна кнопка 'Удалить' не стала видимой.")
 
     @allure.step("В первом модальном окне подтверждения нажать 'Удалить счет'")
     def click_confirm_delete_first_stage(self):

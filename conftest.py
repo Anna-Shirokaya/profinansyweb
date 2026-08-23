@@ -25,7 +25,7 @@ def driver(request):
     prefs = {"profile.default_content_setting_values.notifications": 2}
     options.add_experimental_option("prefs", prefs)
     
-    # 1. Возвращаем нормальную стратегию загрузки ('normal' вместо 'eager')
+    # Нормальная стратегия загрузки ('normal' вместо 'eager')
     options.page_load_strategy = 'normal'
     
     # Базовые флаги для стабильности
@@ -43,7 +43,7 @@ def driver(request):
     options.add_argument("--disable-blink-features=AutomationControlled")
     options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36")
 
-    # 2. Убираем дублирование: headless включается ТОЛЬКО на CI
+    # Headless включается ТОЛЬКО на CI
     if os.getenv("CI") == "true":
         print("[SETUP] Обнаружена CI-среда. Запуск в фоновом (headless) режиме...")
         options.add_argument("--headless=new")
@@ -56,12 +56,14 @@ def driver(request):
     print(f"\n[TEARDOWN] Закрытие браузера для {current_domain}...")
     browser.quit()
 
+
 @pytest.fixture
 def logged_in_driver(driver):
     print("\n[AUTH SETUP] Начало автоматической авторизации...")
 
     login_page = LoginPage(driver)
     dashboard_page = DashboardPage(driver)
+    accounts_page = AccountsMainPage(driver)
 
     email = os.getenv("PROFINANSY_USER_EMAIL")
     password = os.getenv("PROFINANSY_USER_PASSWORD")
@@ -71,7 +73,7 @@ def logged_in_driver(driver):
 
     login_page.open()
 
-    # 3. Ввод данных с неявным ожиданием готовности формы
+    # Ввод данных 
     login_page.enter_email(email)
     login_page.enter_password(password)
     login_page.click_submit_button()
@@ -80,7 +82,9 @@ def logged_in_driver(driver):
         EC.url_contains("/login")
     )
 
+    # Закрываем системные баннеры сразу после входа
     dashboard_page.close_popup_if_exists()
+    accounts_page.close_promo_popup_if_present()
 
     WebDriverWait(driver, 15).until(
         EC.visibility_of_element_located(dashboard_page.MY_MONEY_HEADER)
@@ -89,31 +93,37 @@ def logged_in_driver(driver):
     print("[AUTH SETUP] Авторизация успешно завершена.")
     yield driver
 
+
 @pytest.fixture(scope="function")
 def account_cleanup_registry(logged_in_driver):
-    accounts_to_delete = []
-    yield accounts_to_delete
+    """Единая фикстура для регистрации и автоматического удаления созданных счетов"""
+    created_accounts = []
     
-    if accounts_to_delete and "/login" not in logged_in_driver.current_url:
+    yield created_accounts  
+    
+    if created_accounts and "/login" not in logged_in_driver.current_url:
         print("\n[TEARDOWN] Начинаем автоматическую очистку...")
         dashboard_page = DashboardPage(logged_in_driver)
         accounts_page = AccountsMainPage(logged_in_driver)
         
         try:
+            # Если мы не на странице счетов, переходим туда
             if not accounts_page.is_page_loaded():
                 dashboard_page.open_accounts_section()
                 
-            for account_name in accounts_to_delete:
-                # 📍 Закрываем любые промо-окна ПЕРЕД попыткой взаимодействия с карточкой
-                accounts_page.close_promo_popup_if_present()
-                
-                print(f"[TEARDOWN] Удаляем счет: '{account_name}'")
-                accounts_page.click_three_dots_for_account(account_name)
-                accounts_page.click_delete_account_in_dropdown()
-                accounts_page.click_confirm_delete_first_stage()
-                accounts_page.tick_both_delete_checkboxes()
-                accounts_page.click_confirm_delete_final_stage()
-                print(f"[TEARDOWN] Счет '{account_name}' успешно удален.")
+            for account_name in created_accounts:
+                with allure.step(f"[TEARDOWN] Очистка: удаление счета '{account_name}'"):
+                    # Закрываем любые промо-окна ПЕРЕД попыткой удаления
+                    accounts_page.close_promo_popup_if_present()
+                    
+                    print(f"[TEARDOWN] Удаляем счет: '{account_name}'")
+                    accounts_page.click_three_dots_for_account(account_name)
+                    accounts_page.click_delete_account_in_dropdown()
+                    accounts_page.click_confirm_delete_first_stage()
+                    accounts_page.tick_both_delete_checkboxes()
+                    accounts_page.click_confirm_delete_final_stage()
+                    print(f"[TEARDOWN] Счет '{account_name}' успешно удален.")
+                    
         except Exception as e:
             print(f"[TEARDOWN] Предупреждение: Не удалось очистить счета. Ошибка: {e}")
 
@@ -139,41 +149,3 @@ def pytest_runtest_makereport(item, call):
                 name=f"page_source_{rep.when}_failure",
                 attachment_type=AttachmentType.HTML
             )
-
-
-@pytest.fixture
-def account_cleanup_registry(logged_in_driver):
-    created_accounts = []
-    
-    # 1. Передаем реестр в тест
-    yield created_accounts  
-    
-    # 2. TEARDOWN: Выполняется ПОСЛЕ завершения теста (даже при упавших assert!)
-    if created_accounts:
-        accounts_page = AccountsMainPage(logged_in_driver)
-        for account_name in created_accounts:
-            with allure.step(f"[TEARDOWN] Очистка: удаление счета '{account_name}'"):
-                try:
-                    print(f"\n[TEARDOWN] Удаляем счет: '{account_name}'")
-                    accounts_page.click_three_dots_for_account(account_name)
-                    accounts_page.click_delete_account_in_dropdown()
-                    accounts_page.click_confirm_delete_first_stage()
-                    accounts_page.tick_both_delete_checkboxes()
-                    accounts_page.click_confirm_delete_final_stage()
-                    print(f"[TEARDOWN] Счет '{account_name}' успешно удален.")
-                except Exception as e:
-                    print(f"[TEARDOWN] Предупреждение: не удалось удалить счет '{account_name}'. Ошибка: {e}")
-
-@pytest.fixture(autouse=True)
-def clear_popups_before_test(logged_in_driver):
-    """Автоматически проверяет и закрывает случайные баннеры перед началом каждого теста"""
-    from pages.debit_pages.accounts_main_page import AccountsMainPage
-    
-    try:
-        # Инициализируем страницу и закрываем баннер, если он уже на экране
-        accounts_page = AccountsMainPage(logged_in_driver)
-        accounts_page.close_promo_popup_if_present()
-    except Exception as e:
-        print(f"[FIXTURE AUTO] Не удалось выполнить предпроверку баннеров: {e}")
-        
-    yield

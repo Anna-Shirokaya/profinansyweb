@@ -7,6 +7,11 @@ class LoginPage:
     def __init__(self, driver):
         self.driver = driver
         self.url = f"{driver.base_url}/login"
+        
+        # === ЛОКАТОРЫ ДОЛЖНЫ БЫТЬ ЗДЕСЬ ===
+        self.EMAIL_INPUT = (By.XPATH, "//input[@placeholder='E-mail' or @type='email']")
+        self.PASSWORD_INPUT = (By.XPATH, "//input[@placeholder='Введите пароль' or @type='password']")
+        self.SUBMIT_BUTTON = (By.XPATH, "//button[contains(., 'Войти')] | //input[@type='submit']")
 
     def open(self):
         """Прямой переход на страницу входа"""
@@ -15,17 +20,6 @@ class LoginPage:
         except TimeoutException:
             # Сбрасываем зависшие метрики, если каркас формы уже загрузился
             self.driver.execute_script("window.stop();")
-
-        # ЛОКАТОРЫ
-        # Поле Email ищем по атрибуту placeholder или типу поля
-        self.EMAIL_INPUT = (By.XPATH, "//input[@placeholder='E-mail' or @type='email']")
-        
-        # Поле Пароль ищем аналогично
-        self.PASSWORD_INPUT = (By.XPATH, "//input[@placeholder='Введите пароль' or @type='password']")
-        
-        # Кнопка "Войти" — строго ищем тег кнопки (button), внутри которого текст "Войти"
-        # Это защитит нас от случайного клика по заголовку страницы
-        self.SUBMIT_BUTTON = (By.XPATH, "//button[contains(., 'Войти')] | //input[@type='submit']")
 
     def enter_email(self, email: str):
         """Очищает поле и вводит Email с ожиданием появления элемента"""

@@ -67,6 +67,7 @@ def test_success_create_account_with_max_balance_and_regular_icon(logged_in_driv
         accounts_page.tick_both_delete_checkboxes()
         accounts_page.click_confirm_delete_final_stage()
         accounts_page.assert_account_is_deleted(test_account_name)
+        
     
     time.sleep(1)
     print(f"\n[ТЕСТ] Полный триумф! Счет '{test_account_name}' проверен на карусели и в общем списке 'Все счета'.")
