@@ -1,4 +1,5 @@
 import time
+import allure
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -10,13 +11,28 @@ class DashboardPage:
         self.driver = driver
 
     # ЛОКАТОРЫ
+    # ЛОКАТОРЫ
     MY_MONEY_HEADER = (By.XPATH, "//*[text()='Мои деньги']")
     POPUP_CLOSE_BUTTON = (By.XPATH, (
         "//button[contains(@class, 'close')] | //div[contains(@class, 'close')] | "
         "//*[contains(@class, 'Close')] | //button[@aria-label='Close']"
     ))
-    BUDGET_MENU_BUTTON = (By.XPATH, "//nav//a[contains(., 'Бюджет')] | //*[text()='Бюджет']")
+    # Точный локатор тега <a> с опорой на aria-label и href со скриншота
+    BUDGET_MENU_BUTTON = (
+        By.XPATH, 
+        "//a[@aria-label='Бюджет' or contains(@href, '/wallet')]"
+    )
     ACCOUNTS_TEXT_ELEMENTS = (By.XPATH, "//*[text()='Счета']")
+
+    def is_my_money_header_visible(self) -> bool:
+        """Проверяет отображение шапки дашборда"""
+        try:
+            WebDriverWait(self.driver, 15).until(
+                EC.visibility_of_element_located(self.MY_MONEY_HEADER)
+            )
+            return True
+        except Exception:
+            return False
 
     def close_popup_if_exists(self):
         """Универсальное закрытие промо-окон через ESC и клик по крестику/подложке"""
@@ -54,23 +70,22 @@ class DashboardPage:
         except Exception:
             return False
 
+    @allure.step("Перейти в раздел 'Счета'")
     def open_accounts_section(self):
-        """Переход в раздел счетов через клик по меню с сохранением авторизации"""
-        # 1. Принудительно удаляем из DOM любые прозрачные подложки и модалки, блокирующие клик
-        self.driver.execute_script("""
-            var overlays = document.querySelectorAll("div[class*='gLWLmN'], div[class*='modal'], [class*='overlay']");
-            overlays.forEach(function(el) { el.remove(); });
-        """)
-
-        # 2. Ждем появление кнопки "Бюджет" в DOM
-        budget_btn = WebDriverWait(self.driver, 15).until(
-            EC.presence_of_element_located(self.BUDGET_MENU_BUTTON)
-        )
-
-        # 3. Прокручиваем к ней и делаем чистый клик без перезагрузки страницы
-        self.driver.execute_script("arguments[0].scrollIntoView({block: 'center'});", budget_btn)
-        
-        try:
-            budget_btn.click()
-        except Exception:
-            self.driver.execute_script("arguments[0].click();", budget_btn)
+        """Переход в раздел счетов с защитой от StaleElementReferenceException при перерендере"""
+        for step in range(3):
+            try:
+                budget_btn = WebDriverWait(self.driver, 10).until(
+                    EC.element_to_be_clickable(self.BUDGET_MENU_BUTTON)
+                )
+                self.driver.execute_script("arguments[0].scrollIntoView({block: 'center'});", budget_btn)
+                
+                try:
+                    budget_btn.click()
+                except Exception:
+                    self.driver.execute_script("arguments[0].click();", budget_btn)
+                break
+            except StaleElementReferenceException:
+                time.sleep(0.5)
+                if step == 2:
+                    raise

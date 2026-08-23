@@ -94,7 +94,6 @@ def account_cleanup_registry(logged_in_driver):
     accounts_to_delete = []
     yield accounts_to_delete
     
-    # 4. Защита Teardown: не пытаемся чистить счета, если всё еще висим на странице /login
     if accounts_to_delete and "/login" not in logged_in_driver.current_url:
         print("\n[TEARDOWN] Начинаем автоматическую очистку...")
         dashboard_page = DashboardPage(logged_in_driver)
@@ -105,6 +104,9 @@ def account_cleanup_registry(logged_in_driver):
                 dashboard_page.open_accounts_section()
                 
             for account_name in accounts_to_delete:
+                # 📍 Закрываем любые промо-окна ПЕРЕД попыткой взаимодействия с карточкой
+                accounts_page.close_promo_popup_if_present()
+                
                 print(f"[TEARDOWN] Удаляем счет: '{account_name}'")
                 accounts_page.click_three_dots_for_account(account_name)
                 accounts_page.click_delete_account_in_dropdown()
@@ -137,3 +139,41 @@ def pytest_runtest_makereport(item, call):
                 name=f"page_source_{rep.when}_failure",
                 attachment_type=AttachmentType.HTML
             )
+
+
+@pytest.fixture
+def account_cleanup_registry(logged_in_driver):
+    created_accounts = []
+    
+    # 1. Передаем реестр в тест
+    yield created_accounts  
+    
+    # 2. TEARDOWN: Выполняется ПОСЛЕ завершения теста (даже при упавших assert!)
+    if created_accounts:
+        accounts_page = AccountsMainPage(logged_in_driver)
+        for account_name in created_accounts:
+            with allure.step(f"[TEARDOWN] Очистка: удаление счета '{account_name}'"):
+                try:
+                    print(f"\n[TEARDOWN] Удаляем счет: '{account_name}'")
+                    accounts_page.click_three_dots_for_account(account_name)
+                    accounts_page.click_delete_account_in_dropdown()
+                    accounts_page.click_confirm_delete_first_stage()
+                    accounts_page.tick_both_delete_checkboxes()
+                    accounts_page.click_confirm_delete_final_stage()
+                    print(f"[TEARDOWN] Счет '{account_name}' успешно удален.")
+                except Exception as e:
+                    print(f"[TEARDOWN] Предупреждение: не удалось удалить счет '{account_name}'. Ошибка: {e}")
+
+@pytest.fixture(autouse=True)
+def clear_popups_before_test(logged_in_driver):
+    """Автоматически проверяет и закрывает случайные баннеры перед началом каждого теста"""
+    from pages.debit_pages.accounts_main_page import AccountsMainPage
+    
+    try:
+        # Инициализируем страницу и закрываем баннер, если он уже на экране
+        accounts_page = AccountsMainPage(logged_in_driver)
+        accounts_page.close_promo_popup_if_present()
+    except Exception as e:
+        print(f"[FIXTURE AUTO] Не удалось выполнить предпроверку баннеров: {e}")
+        
+    yield
