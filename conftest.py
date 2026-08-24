@@ -16,7 +16,13 @@ from pages.debit_pages.accounts_main_page import AccountsMainPage
 
 load_dotenv()
 
-@pytest.fixture(params=["https://profinansy.ru"], scope="function")
+@pytest.fixture(
+    params=[
+        "https://profinansy.ru", 
+        "https://qa.profinansy.dev"
+    ], 
+    scope="function"
+)
 def driver(request):
     current_domain = request.param
     print(f"\n[SETUP] Запуск браузера для окружения: {current_domain}")
