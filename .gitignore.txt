@@ -15,3 +15,5 @@ screenshots/diff/
 
 # Файлы сред и секреты
 .env
+
+actions-runner/

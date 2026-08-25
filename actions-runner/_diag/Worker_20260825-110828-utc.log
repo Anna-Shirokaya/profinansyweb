@@ -4516,3 +4516,2047 @@
 [2026-08-25 11:08:34Z INFO JobServerQueue] Try to append 1 batches web console lines for record '436a6459-f1c2-4a00-a707-813fc6300b42', success rate: 1/1.
 [2026-08-25 11:08:35Z INFO JobServerQueue] Tried to upload 1 file(s) to results, success rate: 1/1.
 [2026-08-25 11:08:35Z INFO JobServerQueue] Try to append 1 batches web console lines for record '436a6459-f1c2-4a00-a707-813fc6300b42', success rate: 1/1.
+[2026-08-25 11:08:36Z INFO JobServerQueue] Try to append 1 batches web console lines for record '436a6459-f1c2-4a00-a707-813fc6300b42', success rate: 1/1.
+[2026-08-25 11:08:37Z INFO JobServerQueue] Try to append 1 batches web console lines for record '436a6459-f1c2-4a00-a707-813fc6300b42', success rate: 1/1.
+[2026-08-25 11:08:37Z INFO JobServerQueue] Try to append 1 batches web console lines for record '436a6459-f1c2-4a00-a707-813fc6300b42', success rate: 1/1.
+[2026-08-25 11:08:38Z INFO JobServerQueue] Try to append 1 batches web console lines for record '436a6459-f1c2-4a00-a707-813fc6300b42', success rate: 1/1.
+[2026-08-25 11:08:39Z INFO JobServerQueue] Try to append 1 batches web console lines for record '436a6459-f1c2-4a00-a707-813fc6300b42', success rate: 1/1.
+[2026-08-25 11:08:39Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2026-08-25 11:08:39Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2026-08-25 11:08:39Z INFO ProcessInvokerWrapper] Finished process 30260 with exit code 0, and elapsed time 00:00:05.3701756.
+[2026-08-25 11:08:39Z INFO CreateStepSummaryCommand] Step Summary file (D:\profinansy_tests_web\actions-runner\_work\_temp\_runner_file_commands\step_summary_7254b268-b127-4536-89c9-387c3458bdca) is empty; skipping attachment upload
+[2026-08-25 11:08:39Z INFO StepsRunner] Step result: 
+[2026-08-25 11:08:39Z INFO ExecutionContext] Publish step telemetry for current step {
+  "action": "actions/checkout",
+  "ref": "v4",
+  "type": "node24",
+  "stage": "Main",
+  "stepId": "436a6459-f1c2-4a00-a707-813fc6300b42",
+  "stepContextName": "__actions_checkout",
+  "hasPreStep": false,
+  "hasPostStep": true,
+  "result": "succeeded",
+  "errorMessages": [],
+  "executionTimeInSeconds": 6,
+  "startTime": "2026-08-25T11:08:33.6449003Z",
+  "finishTime": "2026-08-25T11:08:39.1792184Z"
+}.
+[2026-08-25 11:08:39Z INFO StepsRunner] No need for updating job result with current step result 'Succeeded'.
+[2026-08-25 11:08:39Z INFO StepsRunner] Current state: job state = ''
+[2026-08-25 11:08:39Z INFO StepsRunner] Processing step: DisplayName='Настройка Python 3.12'
+[2026-08-25 11:08:39Z INFO StepsRunner] Evaluating: success()
+[2026-08-25 11:08:39Z INFO StepsRunner] Result: true
+[2026-08-25 11:08:39Z INFO StepsRunner] Starting the step.
+[2026-08-25 11:08:39Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:08:39Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:08:39Z INFO HostContext] Well known directory 'Work': 'D:\profinansy_tests_web\actions-runner\_work'
+[2026-08-25 11:08:39Z INFO StepsRunner] Which2: 'chcp'
+[2026-08-25 11:08:39Z INFO StepsRunner] Location: 'C:\Windows\system32\chcp.COM'
+[2026-08-25 11:08:39Z INFO ProcessInvokerWrapper] Starting process:
+[2026-08-25 11:08:39Z INFO ProcessInvokerWrapper]   File name: 'C:\Windows\system32\chcp.COM'
+[2026-08-25 11:08:39Z INFO ProcessInvokerWrapper]   Arguments: '65001'
+[2026-08-25 11:08:39Z INFO ProcessInvokerWrapper]   Working directory: 'D:\profinansy_tests_web\actions-runner\_work'
+[2026-08-25 11:08:39Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2026-08-25 11:08:39Z INFO ProcessInvokerWrapper]   Encoding web name:  ; code page: ''
+[2026-08-25 11:08:39Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2026-08-25 11:08:39Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2026-08-25 11:08:39Z INFO ProcessInvokerWrapper]   Persist current code page: 'True'
+[2026-08-25 11:08:39Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2026-08-25 11:08:39Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2026-08-25 11:08:39Z INFO ProcessInvokerWrapper] Process started with process id 25092, waiting for process exit.
+[2026-08-25 11:08:39Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2026-08-25 11:08:39Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2026-08-25 11:08:39Z INFO ProcessInvokerWrapper] Finished process 25092 with exit code 0, and elapsed time 00:00:00.0150184.
+[2026-08-25 11:08:39Z INFO StepsRunner] Successfully returned to code page 65001 (UTF8)
+[2026-08-25 11:08:39Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:08:39Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:08:39Z INFO HostContext] Well known directory 'Work': 'D:\profinansy_tests_web\actions-runner\_work'
+[2026-08-25 11:08:39Z INFO HostContext] Well known directory 'Actions': 'D:\profinansy_tests_web\actions-runner\_work\_actions'
+[2026-08-25 11:08:39Z INFO ActionManager] Load action that reference repository from 'D:\profinansy_tests_web\actions-runner\_work\_actions\actions\setup-python\v5'
+[2026-08-25 11:08:39Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:08:39Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:08:39Z INFO HostContext] Well known directory 'Work': 'D:\profinansy_tests_web\actions-runner\_work'
+[2026-08-25 11:08:39Z INFO HostContext] Well known directory 'Actions': 'D:\profinansy_tests_web\actions-runner\_work\_actions'
+[2026-08-25 11:08:39Z INFO ActionManifestManagerLegacy] Ignore action property author.
+[2026-08-25 11:08:39Z INFO ActionManifestManagerLegacy] Ignore action property branding.
+[2026-08-25 11:08:39Z INFO ActionManifestManagerLegacy] Loaded action.yml file: {
+  "name": "Setup Python",
+  "description": "Set up a specific version of Python and add the command-line tools to the PATH.",
+  "inputs": {
+    "type": 2,
+    "map": [
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 6,
+          "col": 3,
+          "lit": "python-version"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 8,
+          "col": 3,
+          "lit": "python-version-file"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 10,
+          "col": 3,
+          "lit": "cache"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 13,
+          "col": 3,
+          "lit": "architecture"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 15,
+          "col": 3,
+          "lit": "check-latest"
+        },
+        "value": {
+          "type": 0,
+          "file": 3,
+          "line": 17,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 18,
+          "col": 3,
+          "lit": "token"
+        },
+        "value": {
+          "type": 3,
+          "file": 3,
+          "line": 20,
+          "col": 14,
+          "expr": "github.server_url == 'https://github.com' && github.token || ''"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 21,
+          "col": 3,
+          "lit": "cache-dependency-path"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 23,
+          "col": 3,
+          "lit": "update-environment"
+        },
+        "value": {
+          "type": 0,
+          "file": 3,
+          "line": 25,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 26,
+          "col": 3,
+          "lit": "allow-prereleases"
+        },
+        "value": {
+          "type": 0,
+          "file": 3,
+          "line": 28,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 29,
+          "col": 3,
+          "lit": "freethreaded"
+        },
+        "value": {
+          "type": 0,
+          "file": 3,
+          "line": 31,
+          "col": 14,
+          "lit": "false"
+        }
+      }
+    ]
+  },
+  "execution": {
+    "executionType": "nodeJS",
+    "hasPre": false,
+    "hasPost": true,
+    "script": "dist/setup/index.js",
+    "pre": null,
+    "post": "dist/cache-save/index.js",
+    "nodeVersion": "node20",
+    "cleanupCondition": "success()",
+    "initCondition": "always()"
+  },
+  "deprecated": null
+}
+[2026-08-25 11:08:39Z INFO ActionManager] Action pre node.js file: N/A.
+[2026-08-25 11:08:39Z INFO ActionManager] Action node.js file: dist/setup/index.js.
+[2026-08-25 11:08:39Z INFO ActionManager] Action post node.js file: dist/cache-save/index.js.
+[2026-08-25 11:08:39Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:08:39Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:08:39Z INFO HostContext] Well known directory 'Diag': 'D:\profinansy_tests_web\actions-runner\_diag'
+[2026-08-25 11:08:39Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:08:39Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:08:39Z INFO HostContext] Well known directory 'Diag': 'D:\profinansy_tests_web\actions-runner\_diag'
+[2026-08-25 11:08:39Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:08:39Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:08:39Z INFO HostContext] Well known directory 'Work': 'D:\profinansy_tests_web\actions-runner\_work'
+[2026-08-25 11:08:39Z INFO HostContext] Well known directory 'Temp': 'D:\profinansy_tests_web\actions-runner\_work\_temp'
+[2026-08-25 11:08:39Z INFO ExecutionContext] Write event payload to D:\profinansy_tests_web\actions-runner\_work\_temp\_github_workflow\event.json
+[2026-08-25 11:08:39Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:08:39Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:08:39Z INFO HostContext] Well known directory 'Work': 'D:\profinansy_tests_web\actions-runner\_work'
+[2026-08-25 11:08:39Z INFO HostContext] Well known directory 'Temp': 'D:\profinansy_tests_web\actions-runner\_work\_temp'
+[2026-08-25 11:08:39Z INFO ExtensionManager] Getting extensions for interface: 'GitHub.Runner.Worker.IFileCommandExtension'
+[2026-08-25 11:08:39Z INFO ActionManifestManagerLegacy] Input 'python-version-file': default value evaluate result: ""
+[2026-08-25 11:08:39Z INFO ActionManifestManagerLegacy] Input 'cache': default value evaluate result: ""
+[2026-08-25 11:08:39Z INFO ActionManifestManagerLegacy] Input 'architecture': default value evaluate result: ""
+[2026-08-25 11:08:39Z INFO ActionManifestManagerLegacy] Input 'check-latest': default value evaluate result: {
+  "type": 0,
+  "file": 3,
+  "line": 17,
+  "col": 14,
+  "lit": "false"
+}
+[2026-08-25 11:08:39Z INFO ActionManifestManagerLegacy] Input 'token': default value evaluate result: {
+  "type": 0,
+  "file": 3,
+  "line": 20,
+  "col": 14,
+  "lit": "***"
+}
+[2026-08-25 11:08:39Z INFO ActionManifestManagerLegacy] Input 'cache-dependency-path': default value evaluate result: ""
+[2026-08-25 11:08:39Z INFO ActionManifestManagerLegacy] Input 'update-environment': default value evaluate result: {
+  "type": 0,
+  "file": 3,
+  "line": 25,
+  "col": 14,
+  "lit": "true"
+}
+[2026-08-25 11:08:39Z INFO ActionManifestManagerLegacy] Input 'allow-prereleases': default value evaluate result: {
+  "type": 0,
+  "file": 3,
+  "line": 28,
+  "col": 14,
+  "lit": "false"
+}
+[2026-08-25 11:08:39Z INFO ActionManifestManagerLegacy] Input 'freethreaded': default value evaluate result: {
+  "type": 0,
+  "file": 3,
+  "line": 31,
+  "col": 14,
+  "lit": "false"
+}
+[2026-08-25 11:08:39Z INFO ExtensionManager] Getting extensions for interface: 'GitHub.Runner.Worker.IActionCommandExtension'
+[2026-08-25 11:08:39Z INFO ActionCommandManager] Register action command extension for command internal-set-repo-path
+[2026-08-25 11:08:39Z INFO ActionCommandManager] Register action command extension for command set-env
+[2026-08-25 11:08:39Z INFO ActionCommandManager] Register action command extension for command set-output
+[2026-08-25 11:08:39Z INFO ActionCommandManager] Register action command extension for command save-state
+[2026-08-25 11:08:39Z INFO ActionCommandManager] Register action command extension for command add-path
+[2026-08-25 11:08:39Z INFO ActionCommandManager] Register action command extension for command add-mask
+[2026-08-25 11:08:39Z INFO ActionCommandManager] Register action command extension for command add-matcher
+[2026-08-25 11:08:39Z INFO ActionCommandManager] Register action command extension for command remove-matcher
+[2026-08-25 11:08:39Z INFO ActionCommandManager] Register action command extension for command warning
+[2026-08-25 11:08:39Z INFO ActionCommandManager] Register action command extension for command error
+[2026-08-25 11:08:39Z INFO ActionCommandManager] Register action command extension for command notice
+[2026-08-25 11:08:39Z INFO ActionCommandManager] Register action command extension for command debug
+[2026-08-25 11:08:39Z INFO ActionCommandManager] Register action command extension for command group
+[2026-08-25 11:08:39Z INFO ActionCommandManager] Register action command extension for command endgroup
+[2026-08-25 11:08:39Z INFO ActionCommandManager] Register action command extension for command echo
+[2026-08-25 11:08:39Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:08:39Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:08:39Z INFO HostContext] Well known directory 'Externals': 'D:\profinansy_tests_web\actions-runner\externals'
+[2026-08-25 11:08:39Z INFO ProcessInvokerWrapper] Starting process:
+[2026-08-25 11:08:39Z INFO ProcessInvokerWrapper]   File name: 'D:\profinansy_tests_web\actions-runner\externals\node24\bin\node.exe'
+[2026-08-25 11:08:39Z INFO ProcessInvokerWrapper]   Arguments: '"D:\profinansy_tests_web\actions-runner\_work\_actions\actions\setup-python\v5\dist/setup/index.js"'
+[2026-08-25 11:08:39Z INFO ProcessInvokerWrapper]   Working directory: 'D:\profinansy_tests_web\actions-runner\_work\profinansyweb\profinansyweb'
+[2026-08-25 11:08:39Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2026-08-25 11:08:39Z INFO ProcessInvokerWrapper]   Encoding web name: utf-8 ; code page: '65001'
+[2026-08-25 11:08:39Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2026-08-25 11:08:39Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2026-08-25 11:08:39Z INFO ProcessInvokerWrapper]   Persist current code page: 'True'
+[2026-08-25 11:08:39Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2026-08-25 11:08:39Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2026-08-25 11:08:39Z INFO JobServerQueue] Got a step log file to send to results service.
+[2026-08-25 11:08:39Z INFO JobServerQueue] Starting upload of step log file to results service ResultsLog, D:\profinansy_tests_web\actions-runner\_diag\blocks\9c803566-11fc-4b10-b288-6152e9530fdf_436a6459-f1c2-4a00-a707-813fc6300b42.1
+[2026-08-25 11:08:39Z INFO JobServerQueue] Try to append 1 batches web console lines for record '687487fa-c99d-40be-b75c-7bcd088272b9', success rate: 1/1.
+[2026-08-25 11:08:39Z INFO ProcessInvokerWrapper] Process started with process id 22572, waiting for process exit.
+[2026-08-25 11:08:39Z INFO JobServerQueue] Try to append 1 batches web console lines for record '687487fa-c99d-40be-b75c-7bcd088272b9', success rate: 1/1.
+[2026-08-25 11:08:39Z INFO JobServerQueue] Tried to upload 1 file(s) to results, success rate: 1/1.
+[2026-08-25 11:08:40Z INFO JobServerQueue] Try to upload 1 log files or attachments, success rate: 1/1.
+[2026-08-25 11:08:41Z INFO JobServerQueue] Try to append 1 batches web console lines for record '687487fa-c99d-40be-b75c-7bcd088272b9', success rate: 1/1.
+[2026-08-25 11:08:43Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:08:43Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:08:43Z INFO HostContext] Well known directory 'Work': 'D:\profinansy_tests_web\actions-runner\_work'
+[2026-08-25 11:08:53Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:08:53Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:08:53Z INFO HostContext] Well known directory 'Work': 'D:\profinansy_tests_web\actions-runner\_work'
+[2026-08-25 11:09:03Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:09:03Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:09:03Z INFO HostContext] Well known directory 'Work': 'D:\profinansy_tests_web\actions-runner\_work'
+[2026-08-25 11:09:13Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:09:13Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:09:13Z INFO HostContext] Well known directory 'Work': 'D:\profinansy_tests_web\actions-runner\_work'
+[2026-08-25 11:09:23Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:09:23Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:09:23Z INFO HostContext] Well known directory 'Work': 'D:\profinansy_tests_web\actions-runner\_work'
+[2026-08-25 11:09:30Z INFO JobServerQueue] Stop aggressive process web console line queue.
+[2026-08-25 11:09:33Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:09:33Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:09:33Z INFO HostContext] Well known directory 'Work': 'D:\profinansy_tests_web\actions-runner\_work'
+[2026-08-25 11:09:43Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:09:43Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:09:43Z INFO HostContext] Well known directory 'Work': 'D:\profinansy_tests_web\actions-runner\_work'
+[2026-08-25 11:09:53Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:09:53Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:09:53Z INFO HostContext] Well known directory 'Work': 'D:\profinansy_tests_web\actions-runner\_work'
+[2026-08-25 11:10:03Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:10:03Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:10:03Z INFO HostContext] Well known directory 'Work': 'D:\profinansy_tests_web\actions-runner\_work'
+[2026-08-25 11:10:13Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:10:13Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:10:13Z INFO HostContext] Well known directory 'Work': 'D:\profinansy_tests_web\actions-runner\_work'
+[2026-08-25 11:10:23Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:10:23Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:10:23Z INFO HostContext] Well known directory 'Work': 'D:\profinansy_tests_web\actions-runner\_work'
+[2026-08-25 11:10:25Z INFO JobServerQueue] Try to append 1 batches web console lines for record '687487fa-c99d-40be-b75c-7bcd088272b9', success rate: 1/1.
+[2026-08-25 11:10:26Z INFO JobServerQueue] Try to append 1 batches web console lines for record '687487fa-c99d-40be-b75c-7bcd088272b9', success rate: 1/1.
+[2026-08-25 11:10:26Z INFO JobServerQueue] Try to append 1 batches web console lines for record '687487fa-c99d-40be-b75c-7bcd088272b9', success rate: 1/1.
+[2026-08-25 11:10:27Z INFO JobServerQueue] Try to append 1 batches web console lines for record '687487fa-c99d-40be-b75c-7bcd088272b9', success rate: 1/1.
+[2026-08-25 11:10:33Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:10:33Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:10:33Z INFO HostContext] Well known directory 'Work': 'D:\profinansy_tests_web\actions-runner\_work'
+[2026-08-25 11:10:43Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:10:43Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:10:43Z INFO HostContext] Well known directory 'Work': 'D:\profinansy_tests_web\actions-runner\_work'
+[2026-08-25 11:10:53Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:10:53Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:10:53Z INFO HostContext] Well known directory 'Work': 'D:\profinansy_tests_web\actions-runner\_work'
+[2026-08-25 11:11:03Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:11:03Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:11:03Z INFO HostContext] Well known directory 'Work': 'D:\profinansy_tests_web\actions-runner\_work'
+[2026-08-25 11:11:13Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:11:13Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:11:13Z INFO HostContext] Well known directory 'Work': 'D:\profinansy_tests_web\actions-runner\_work'
+[2026-08-25 11:11:23Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:11:23Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:11:23Z INFO HostContext] Well known directory 'Work': 'D:\profinansy_tests_web\actions-runner\_work'
+[2026-08-25 11:11:33Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:11:33Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:11:33Z INFO HostContext] Well known directory 'Work': 'D:\profinansy_tests_web\actions-runner\_work'
+[2026-08-25 11:11:43Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:11:43Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:11:43Z INFO HostContext] Well known directory 'Work': 'D:\profinansy_tests_web\actions-runner\_work'
+[2026-08-25 11:11:53Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:11:53Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:11:53Z INFO HostContext] Well known directory 'Work': 'D:\profinansy_tests_web\actions-runner\_work'
+[2026-08-25 11:12:03Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:12:03Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:12:03Z INFO HostContext] Well known directory 'Work': 'D:\profinansy_tests_web\actions-runner\_work'
+[2026-08-25 11:12:10Z INFO JobServerQueue] Try to append 1 batches web console lines for record '687487fa-c99d-40be-b75c-7bcd088272b9', success rate: 1/1.
+[2026-08-25 11:12:10Z INFO JobServerQueue] Try to append 1 batches web console lines for record '687487fa-c99d-40be-b75c-7bcd088272b9', success rate: 1/1.
+[2026-08-25 11:12:12Z INFO JobServerQueue] Try to append 1 batches web console lines for record '687487fa-c99d-40be-b75c-7bcd088272b9', success rate: 1/1.
+[2026-08-25 11:12:13Z INFO JobServerQueue] Try to append 1 batches web console lines for record '687487fa-c99d-40be-b75c-7bcd088272b9', success rate: 1/1.
+[2026-08-25 11:12:13Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:12:13Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:12:13Z INFO HostContext] Well known directory 'Work': 'D:\profinansy_tests_web\actions-runner\_work'
+[2026-08-25 11:12:16Z INFO JobServerQueue] Try to append 1 batches web console lines for record '687487fa-c99d-40be-b75c-7bcd088272b9', success rate: 1/1.
+[2026-08-25 11:12:18Z INFO JobServerQueue] Try to append 1 batches web console lines for record '687487fa-c99d-40be-b75c-7bcd088272b9', success rate: 1/1.
+[2026-08-25 11:12:19Z INFO JobServerQueue] Try to append 1 batches web console lines for record '687487fa-c99d-40be-b75c-7bcd088272b9', success rate: 1/1.
+[2026-08-25 11:12:19Z INFO JobServerQueue] Try to append 1 batches web console lines for record '687487fa-c99d-40be-b75c-7bcd088272b9', success rate: 1/1.
+[2026-08-25 11:12:23Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:12:23Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:12:23Z INFO HostContext] Well known directory 'Work': 'D:\profinansy_tests_web\actions-runner\_work'
+[2026-08-25 11:12:24Z INFO JobServerQueue] Try to append 1 batches web console lines for record '687487fa-c99d-40be-b75c-7bcd088272b9', success rate: 1/1.
+[2026-08-25 11:12:25Z INFO JobServerQueue] Try to append 1 batches web console lines for record '687487fa-c99d-40be-b75c-7bcd088272b9', success rate: 1/1.
+[2026-08-25 11:12:28Z INFO JobServerQueue] Try to append 1 batches web console lines for record '687487fa-c99d-40be-b75c-7bcd088272b9', success rate: 1/1.
+[2026-08-25 11:12:28Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2026-08-25 11:12:28Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2026-08-25 11:12:28Z INFO ProcessInvokerWrapper] Finished process 22572 with exit code 0, and elapsed time 00:03:49.7575721.
+[2026-08-25 11:12:28Z INFO CreateStepSummaryCommand] Step Summary file (D:\profinansy_tests_web\actions-runner\_work\_temp\_runner_file_commands\step_summary_7af7c8e1-58a1-4f3a-ab3d-715997f18d07) is empty; skipping attachment upload
+[2026-08-25 11:12:28Z INFO StepsRunner] Step result: 
+[2026-08-25 11:12:28Z INFO ExecutionContext] Publish step telemetry for current step {
+  "action": "actions/setup-python",
+  "ref": "v5",
+  "type": "node24",
+  "stage": "Main",
+  "stepId": "687487fa-c99d-40be-b75c-7bcd088272b9",
+  "stepContextName": "__actions_setup-python",
+  "hasPreStep": false,
+  "hasPostStep": true,
+  "result": "succeeded",
+  "errorMessages": [
+    "Remove-Item : Requested registry access is not allowed.\r\nAt D:\\profinansy_tests_web\\actions-runner\\_work\\_temp\\164580c9-7eb0-4fb9-9245-dc2c58c5a59f\\setup.ps1:57 char:13",
+    "+             Remove-Item Registry::$_ -Recurse -Force -Verbose\r\n+             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\r\n    + CategoryInfo          : PermissionDenied: (HKEY_LOCAL_MACH...rsion\\Uninstall:String) [Remove-Item], SecurityExce \r\n   pt",
+    "Remove-Item : Requested registry access is not allowed.\r\nAt D:\\profinansy_tests_web\\actions-runner\\_work\\_temp\\164580c9-7eb0-4fb9-9245-dc2c58c5a59f\\setup.ps1:57 char:13"
+  ],
+  "executionTimeInSeconds": 230,
+  "startTime": "2026-08-25T11:08:39.1810481Z",
+  "finishTime": "2026-08-25T11:12:28.9740399Z"
+}.
+[2026-08-25 11:12:28Z INFO StepsRunner] No need for updating job result with current step result 'Succeeded'.
+[2026-08-25 11:12:28Z INFO StepsRunner] Current state: job state = ''
+[2026-08-25 11:12:28Z INFO StepsRunner] Processing step: DisplayName='Установка зависимостей'
+[2026-08-25 11:12:28Z INFO StepsRunner] Evaluating: success()
+[2026-08-25 11:12:28Z INFO StepsRunner] Result: true
+[2026-08-25 11:12:28Z INFO StepsRunner] Starting the step.
+[2026-08-25 11:12:28Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:12:28Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:12:28Z INFO HostContext] Well known directory 'Work': 'D:\profinansy_tests_web\actions-runner\_work'
+[2026-08-25 11:12:28Z INFO StepsRunner] Which2: 'chcp'
+[2026-08-25 11:12:28Z INFO StepsRunner] Location: 'C:\Windows\system32\chcp.COM'
+[2026-08-25 11:12:28Z INFO ProcessInvokerWrapper] Starting process:
+[2026-08-25 11:12:28Z INFO ProcessInvokerWrapper]   File name: 'C:\Windows\system32\chcp.COM'
+[2026-08-25 11:12:28Z INFO ProcessInvokerWrapper]   Arguments: '65001'
+[2026-08-25 11:12:28Z INFO ProcessInvokerWrapper]   Working directory: 'D:\profinansy_tests_web\actions-runner\_work'
+[2026-08-25 11:12:28Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2026-08-25 11:12:28Z INFO ProcessInvokerWrapper]   Encoding web name:  ; code page: ''
+[2026-08-25 11:12:28Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2026-08-25 11:12:28Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2026-08-25 11:12:28Z INFO ProcessInvokerWrapper]   Persist current code page: 'True'
+[2026-08-25 11:12:28Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2026-08-25 11:12:28Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2026-08-25 11:12:28Z INFO ProcessInvokerWrapper] Process started with process id 30076, waiting for process exit.
+[2026-08-25 11:12:28Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2026-08-25 11:12:28Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2026-08-25 11:12:28Z INFO ProcessInvokerWrapper] Finished process 30076 with exit code 0, and elapsed time 00:00:00.0142867.
+[2026-08-25 11:12:28Z INFO StepsRunner] Successfully returned to code page 65001 (UTF8)
+[2026-08-25 11:12:28Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:12:28Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:12:28Z INFO HostContext] Well known directory 'Work': 'D:\profinansy_tests_web\actions-runner\_work'
+[2026-08-25 11:12:28Z INFO HostContext] Well known directory 'Temp': 'D:\profinansy_tests_web\actions-runner\_work\_temp'
+[2026-08-25 11:12:29Z INFO ExecutionContext] Write event payload to D:\profinansy_tests_web\actions-runner\_work\_temp\_github_workflow\event.json
+[2026-08-25 11:12:29Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:12:29Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:12:29Z INFO HostContext] Well known directory 'Work': 'D:\profinansy_tests_web\actions-runner\_work'
+[2026-08-25 11:12:29Z INFO HostContext] Well known directory 'Temp': 'D:\profinansy_tests_web\actions-runner\_work\_temp'
+[2026-08-25 11:12:29Z INFO ExtensionManager] Getting extensions for interface: 'GitHub.Runner.Worker.IFileCommandExtension'
+[2026-08-25 11:12:29Z INFO ExtensionManager] Getting extensions for interface: 'GitHub.Runner.Worker.IActionCommandExtension'
+[2026-08-25 11:12:29Z INFO ActionCommandManager] Register action command extension for command internal-set-repo-path
+[2026-08-25 11:12:29Z INFO ActionCommandManager] Register action command extension for command set-env
+[2026-08-25 11:12:29Z INFO ActionCommandManager] Register action command extension for command set-output
+[2026-08-25 11:12:29Z INFO ActionCommandManager] Register action command extension for command save-state
+[2026-08-25 11:12:29Z INFO ActionCommandManager] Register action command extension for command add-path
+[2026-08-25 11:12:29Z INFO ActionCommandManager] Register action command extension for command add-mask
+[2026-08-25 11:12:29Z INFO ActionCommandManager] Register action command extension for command add-matcher
+[2026-08-25 11:12:29Z INFO ActionCommandManager] Register action command extension for command remove-matcher
+[2026-08-25 11:12:29Z INFO ActionCommandManager] Register action command extension for command warning
+[2026-08-25 11:12:29Z INFO ActionCommandManager] Register action command extension for command error
+[2026-08-25 11:12:29Z INFO ActionCommandManager] Register action command extension for command notice
+[2026-08-25 11:12:29Z INFO ActionCommandManager] Register action command extension for command debug
+[2026-08-25 11:12:29Z INFO ActionCommandManager] Register action command extension for command group
+[2026-08-25 11:12:29Z INFO ActionCommandManager] Register action command extension for command endgroup
+[2026-08-25 11:12:29Z INFO ActionCommandManager] Register action command extension for command echo
+[2026-08-25 11:12:29Z INFO ScriptHandler] Which2: 'pwsh'
+[2026-08-25 11:12:29Z INFO ScriptHandler] pwsh: command not found. Make sure 'pwsh' is installed and its location included in the 'Path' environment variable.
+[2026-08-25 11:12:29Z INFO ScriptHandler] Defaulting to powershell
+[2026-08-25 11:12:29Z INFO ScriptHandler] Which2: 'powershell'
+[2026-08-25 11:12:29Z INFO ScriptHandler] Location: 'C:\Windows\System32\WindowsPowerShell\v1.0\powershell.EXE'
+[2026-08-25 11:12:29Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:12:29Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:12:29Z INFO HostContext] Well known directory 'Work': 'D:\profinansy_tests_web\actions-runner\_work'
+[2026-08-25 11:12:29Z INFO HostContext] Well known directory 'Temp': 'D:\profinansy_tests_web\actions-runner\_work\_temp'
+[2026-08-25 11:12:29Z INFO ScriptHandler] Which2: 'pwsh'
+[2026-08-25 11:12:29Z INFO ScriptHandler] pwsh: command not found. Make sure 'pwsh' is installed and its location included in the 'Path' environment variable.
+[2026-08-25 11:12:29Z INFO ScriptHandler] Defaulting to powershell
+[2026-08-25 11:12:29Z INFO ScriptHandler] Which2: 'powershell'
+[2026-08-25 11:12:29Z INFO ScriptHandler] Location: 'C:\Windows\System32\WindowsPowerShell\v1.0\powershell.EXE'
+[2026-08-25 11:12:29Z INFO ProcessInvokerWrapper] Starting process:
+[2026-08-25 11:12:29Z INFO ProcessInvokerWrapper]   File name: 'C:\Windows\System32\WindowsPowerShell\v1.0\powershell.EXE'
+[2026-08-25 11:12:29Z INFO ProcessInvokerWrapper]   Arguments: '-command ". 'D:\profinansy_tests_web\actions-runner\_work\_temp\1d8f3f33-9dcc-482c-839f-3d8e2300e520.ps1'"'
+[2026-08-25 11:12:29Z INFO ProcessInvokerWrapper]   Working directory: 'D:\profinansy_tests_web\actions-runner\_work\profinansyweb\profinansyweb'
+[2026-08-25 11:12:29Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2026-08-25 11:12:29Z INFO ProcessInvokerWrapper]   Encoding web name:  ; code page: ''
+[2026-08-25 11:12:29Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2026-08-25 11:12:29Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2026-08-25 11:12:29Z INFO ProcessInvokerWrapper]   Persist current code page: 'True'
+[2026-08-25 11:12:29Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2026-08-25 11:12:29Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2026-08-25 11:12:29Z INFO ProcessInvokerWrapper] Process started with process id 24752, waiting for process exit.
+[2026-08-25 11:12:29Z INFO JobServerQueue] Try to append 1 batches web console lines for record '687487fa-c99d-40be-b75c-7bcd088272b9', success rate: 1/1.
+[2026-08-25 11:12:29Z INFO JobServerQueue] Try to append 1 batches web console lines for record '5cb8d0a2-da68-48a2-82dd-a14df9ea42e8', success rate: 1/1.
+[2026-08-25 11:12:29Z INFO JobServerQueue] Got a step log file to send to results service.
+[2026-08-25 11:12:29Z INFO JobServerQueue] Starting upload of step log file to results service ResultsLog, D:\profinansy_tests_web\actions-runner\_diag\blocks\9c803566-11fc-4b10-b288-6152e9530fdf_687487fa-c99d-40be-b75c-7bcd088272b9.1
+[2026-08-25 11:12:29Z INFO JobServerQueue] Try to upload 1 log files or attachments, success rate: 1/1.
+[2026-08-25 11:12:29Z INFO JobServerQueue] Try to append 1 batches web console lines for record '5cb8d0a2-da68-48a2-82dd-a14df9ea42e8', success rate: 1/1.
+[2026-08-25 11:12:30Z INFO JobServerQueue] Tried to upload 1 file(s) to results, success rate: 1/1.
+[2026-08-25 11:12:30Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2026-08-25 11:12:30Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2026-08-25 11:12:30Z INFO ProcessInvokerWrapper] Finished process 24752 with exit code 1, and elapsed time 00:00:01.5018920.
+[2026-08-25 11:12:30Z INFO CreateStepSummaryCommand] Step Summary file (D:\profinansy_tests_web\actions-runner\_work\_temp\_runner_file_commands\step_summary_360ee594-0fcb-4844-8cbf-a20036760efc) is empty; skipping attachment upload
+[2026-08-25 11:12:30Z INFO StepsRunner] Step result: Failed
+[2026-08-25 11:12:30Z INFO ExecutionContext] Publish step telemetry for current step {
+  "action": "powershell",
+  "type": "run",
+  "stage": "Main",
+  "stepId": "5cb8d0a2-da68-48a2-82dd-a14df9ea42e8",
+  "stepContextName": "__run",
+  "result": "failed",
+  "errorMessages": [
+    "Process completed with exit code 1."
+  ],
+  "executionTimeInSeconds": 2,
+  "startTime": "2026-08-25T11:12:28.977654Z",
+  "finishTime": "2026-08-25T11:12:30.5687762Z"
+}.
+[2026-08-25 11:12:30Z INFO StepsRunner] Update job result with current step result 'Failed'.
+[2026-08-25 11:12:30Z INFO StepsRunner] Current state: job state = 'Failed'
+[2026-08-25 11:12:30Z INFO StepsRunner] Processing step: DisplayName='Запуск тестов через Pytest (Параллельно на 2 стендах)'
+[2026-08-25 11:12:30Z INFO StepsRunner] Evaluating: success()
+[2026-08-25 11:12:30Z INFO StepsRunner] Result: false
+[2026-08-25 11:12:30Z INFO StepsRunner] Skipping step due to condition evaluation.
+[2026-08-25 11:12:30Z INFO StepsRunner] No need for updating job result with current step result 'Skipped'.
+[2026-08-25 11:12:30Z INFO StepsRunner] Current state: job state = 'Failed'
+[2026-08-25 11:12:30Z INFO StepsRunner] Processing step: DisplayName='Генерация отчета Allure'
+[2026-08-25 11:12:30Z INFO StepsRunner] Evaluating: always()
+[2026-08-25 11:12:30Z INFO StepsRunner] Result: true
+[2026-08-25 11:12:30Z INFO StepsRunner] Starting the step.
+[2026-08-25 11:12:30Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:12:30Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:12:30Z INFO HostContext] Well known directory 'Work': 'D:\profinansy_tests_web\actions-runner\_work'
+[2026-08-25 11:12:30Z INFO StepsRunner] Which2: 'chcp'
+[2026-08-25 11:12:30Z INFO StepsRunner] Location: 'C:\Windows\system32\chcp.COM'
+[2026-08-25 11:12:30Z INFO ProcessInvokerWrapper] Starting process:
+[2026-08-25 11:12:30Z INFO ProcessInvokerWrapper]   File name: 'C:\Windows\system32\chcp.COM'
+[2026-08-25 11:12:30Z INFO ProcessInvokerWrapper]   Arguments: '65001'
+[2026-08-25 11:12:30Z INFO ProcessInvokerWrapper]   Working directory: 'D:\profinansy_tests_web\actions-runner\_work'
+[2026-08-25 11:12:30Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2026-08-25 11:12:30Z INFO ProcessInvokerWrapper]   Encoding web name:  ; code page: ''
+[2026-08-25 11:12:30Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2026-08-25 11:12:30Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2026-08-25 11:12:30Z INFO ProcessInvokerWrapper]   Persist current code page: 'True'
+[2026-08-25 11:12:30Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2026-08-25 11:12:30Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2026-08-25 11:12:30Z INFO ProcessInvokerWrapper] Process started with process id 25048, waiting for process exit.
+[2026-08-25 11:12:30Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2026-08-25 11:12:30Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2026-08-25 11:12:30Z INFO ProcessInvokerWrapper] Finished process 25048 with exit code 0, and elapsed time 00:00:00.0125170.
+[2026-08-25 11:12:30Z INFO StepsRunner] Successfully returned to code page 65001 (UTF8)
+[2026-08-25 11:12:30Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:12:30Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:12:30Z INFO HostContext] Well known directory 'Work': 'D:\profinansy_tests_web\actions-runner\_work'
+[2026-08-25 11:12:30Z INFO HostContext] Well known directory 'Actions': 'D:\profinansy_tests_web\actions-runner\_work\_actions'
+[2026-08-25 11:12:30Z INFO ActionManager] Load action that reference repository from 'D:\profinansy_tests_web\actions-runner\_work\_actions\simple-elf\allure-report-action\master'
+[2026-08-25 11:12:30Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:12:30Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:12:30Z INFO HostContext] Well known directory 'Work': 'D:\profinansy_tests_web\actions-runner\_work'
+[2026-08-25 11:12:30Z INFO HostContext] Well known directory 'Actions': 'D:\profinansy_tests_web\actions-runner\_work\_actions'
+[2026-08-25 11:12:30Z INFO ActionManifestManagerLegacy] Ignore action property author.
+[2026-08-25 11:12:30Z INFO ActionManifestManagerLegacy] Ignore action property branding.
+[2026-08-25 11:12:30Z INFO ActionManifestManagerLegacy] Loaded action.yml file: {
+  "name": "Allure Report with history",
+  "description": "Generate Allure Report with history",
+  "inputs": {
+    "type": 2,
+    "map": [
+      {
+        "key": {
+          "type": 0,
+          "file": 4,
+          "line": 8,
+          "col": 3,
+          "lit": "allure_results"
+        },
+        "value": {
+          "type": 0,
+          "file": 4,
+          "line": 11,
+          "col": 14,
+          "lit": "allure-results"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 4,
+          "line": 12,
+          "col": 3,
+          "lit": "allure_report"
+        },
+        "value": {
+          "type": 0,
+          "file": 4,
+          "line": 15,
+          "col": 14,
+          "lit": "allure-report"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 4,
+          "line": 16,
+          "col": 3,
+          "lit": "gh_pages"
+        },
+        "value": {
+          "type": 0,
+          "file": 4,
+          "line": 19,
+          "col": 14,
+          "lit": "gh-pages"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 4,
+          "line": 20,
+          "col": 3,
+          "lit": "allure_history"
+        },
+        "value": {
+          "type": 0,
+          "file": 4,
+          "line": 23,
+          "col": 14,
+          "lit": "allure-history"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 4,
+          "line": 24,
+          "col": 3,
+          "lit": "subfolder"
+        },
+        "value": {
+          "type": 0,
+          "file": 4,
+          "line": 27,
+          "col": 14,
+          "lit": ""
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 4,
+          "line": 28,
+          "col": 3,
+          "lit": "keep_reports"
+        },
+        "value": {
+          "type": 0,
+          "file": 4,
+          "line": 31,
+          "col": 14,
+          "lit": "20"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 4,
+          "line": 32,
+          "col": 3,
+          "lit": "github_run_num"
+        },
+        "value": {
+          "type": 3,
+          "file": 4,
+          "line": 35,
+          "col": 14,
+          "expr": "github.run_number"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 4,
+          "line": 36,
+          "col": 3,
+          "lit": "github_run_id"
+        },
+        "value": {
+          "type": 3,
+          "file": 4,
+          "line": 39,
+          "col": 14,
+          "expr": "github.run_id"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 4,
+          "line": 40,
+          "col": 3,
+          "lit": "github_repo"
+        },
+        "value": {
+          "type": 3,
+          "file": 4,
+          "line": 43,
+          "col": 14,
+          "expr": "github.repository"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 4,
+          "line": 44,
+          "col": 3,
+          "lit": "github_repo_owner"
+        },
+        "value": {
+          "type": 3,
+          "file": 4,
+          "line": 47,
+          "col": 14,
+          "expr": "github.repository_owner"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 4,
+          "line": 48,
+          "col": 3,
+          "lit": "github_tests_repo"
+        },
+        "value": {
+          "type": 3,
+          "file": 4,
+          "line": 51,
+          "col": 14,
+          "expr": "github.repository"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 4,
+          "line": 52,
+          "col": 3,
+          "lit": "report_url"
+        },
+        "value": {
+          "type": 0,
+          "file": 4,
+          "line": 55,
+          "col": 14,
+          "lit": ""
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 4,
+          "line": 56,
+          "col": 3,
+          "lit": "github_server_url"
+        },
+        "value": {
+          "type": 3,
+          "file": 4,
+          "line": 59,
+          "col": 14,
+          "expr": "github.server_url"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 4,
+          "line": 60,
+          "col": 3,
+          "lit": "report_name"
+        },
+        "value": ""
+      }
+    ]
+  },
+  "execution": {
+    "executionType": "container",
+    "hasPre": false,
+    "hasPost": false,
+    "image": "Dockerfile",
+    "entryPoint": null,
+    "arguments": null,
+    "environment": null,
+    "pre": null,
+    "post": null,
+    "cleanupCondition": "always()",
+    "initCondition": "always()"
+  },
+  "deprecated": null
+}
+[2026-08-25 11:12:30Z INFO ActionManager] Action container Dockerfile/image: Dockerfile.
+[2026-08-25 11:12:30Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:12:30Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:12:30Z INFO HostContext] Well known directory 'Work': 'D:\profinansy_tests_web\actions-runner\_work'
+[2026-08-25 11:12:30Z INFO HostContext] Well known directory 'Temp': 'D:\profinansy_tests_web\actions-runner\_work\_temp'
+[2026-08-25 11:12:30Z INFO ExecutionContext] Write event payload to D:\profinansy_tests_web\actions-runner\_work\_temp\_github_workflow\event.json
+[2026-08-25 11:12:30Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:12:30Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:12:30Z INFO HostContext] Well known directory 'Work': 'D:\profinansy_tests_web\actions-runner\_work'
+[2026-08-25 11:12:30Z INFO HostContext] Well known directory 'Temp': 'D:\profinansy_tests_web\actions-runner\_work\_temp'
+[2026-08-25 11:12:30Z INFO ExtensionManager] Getting extensions for interface: 'GitHub.Runner.Worker.IFileCommandExtension'
+[2026-08-25 11:12:30Z INFO ActionManifestManagerLegacy] Input 'subfolder': default value evaluate result: {
+  "type": 0,
+  "file": 4,
+  "line": 27,
+  "col": 14,
+  "lit": ""
+}
+[2026-08-25 11:12:30Z INFO ActionManifestManagerLegacy] Input 'keep_reports': default value evaluate result: {
+  "type": 0,
+  "file": 4,
+  "line": 31,
+  "col": 14,
+  "lit": "20"
+}
+[2026-08-25 11:12:30Z INFO ActionManifestManagerLegacy] Input 'github_run_num': default value evaluate result: {
+  "type": 0,
+  "file": 4,
+  "line": 35,
+  "col": 14,
+  "lit": "26"
+}
+[2026-08-25 11:12:30Z INFO ActionManifestManagerLegacy] Input 'github_run_id': default value evaluate result: {
+  "type": 0,
+  "file": 4,
+  "line": 39,
+  "col": 14,
+  "lit": "32840837675"
+}
+[2026-08-25 11:12:30Z INFO ActionManifestManagerLegacy] Input 'github_repo': default value evaluate result: {
+  "type": 0,
+  "file": 4,
+  "line": 43,
+  "col": 14,
+  "lit": "Anna-Shirokaya/profinansyweb"
+}
+[2026-08-25 11:12:30Z INFO ActionManifestManagerLegacy] Input 'github_repo_owner': default value evaluate result: {
+  "type": 0,
+  "file": 4,
+  "line": 47,
+  "col": 14,
+  "lit": "Anna-Shirokaya"
+}
+[2026-08-25 11:12:30Z INFO ActionManifestManagerLegacy] Input 'github_tests_repo': default value evaluate result: {
+  "type": 0,
+  "file": 4,
+  "line": 51,
+  "col": 14,
+  "lit": "Anna-Shirokaya/profinansyweb"
+}
+[2026-08-25 11:12:30Z INFO ActionManifestManagerLegacy] Input 'report_url': default value evaluate result: {
+  "type": 0,
+  "file": 4,
+  "line": 55,
+  "col": 14,
+  "lit": ""
+}
+[2026-08-25 11:12:30Z INFO ActionManifestManagerLegacy] Input 'github_server_url': default value evaluate result: {
+  "type": 0,
+  "file": 4,
+  "line": 59,
+  "col": 14,
+  "lit": "https://github.com"
+}
+[2026-08-25 11:12:30Z INFO ActionManifestManagerLegacy] Input 'report_name': default value evaluate result: ""
+[2026-08-25 11:12:30Z INFO ExtensionManager] Getting extensions for interface: 'GitHub.Runner.Worker.IActionCommandExtension'
+[2026-08-25 11:12:30Z INFO ActionCommandManager] Register action command extension for command internal-set-repo-path
+[2026-08-25 11:12:30Z INFO ActionCommandManager] Register action command extension for command set-env
+[2026-08-25 11:12:30Z INFO ActionCommandManager] Register action command extension for command set-output
+[2026-08-25 11:12:30Z INFO ActionCommandManager] Register action command extension for command save-state
+[2026-08-25 11:12:30Z INFO ActionCommandManager] Register action command extension for command add-path
+[2026-08-25 11:12:30Z INFO ActionCommandManager] Register action command extension for command add-mask
+[2026-08-25 11:12:30Z INFO ActionCommandManager] Register action command extension for command add-matcher
+[2026-08-25 11:12:30Z INFO ActionCommandManager] Register action command extension for command remove-matcher
+[2026-08-25 11:12:30Z INFO ActionCommandManager] Register action command extension for command warning
+[2026-08-25 11:12:30Z INFO ActionCommandManager] Register action command extension for command error
+[2026-08-25 11:12:30Z INFO ActionCommandManager] Register action command extension for command notice
+[2026-08-25 11:12:30Z INFO ActionCommandManager] Register action command extension for command debug
+[2026-08-25 11:12:30Z INFO ActionCommandManager] Register action command extension for command group
+[2026-08-25 11:12:30Z INFO ActionCommandManager] Register action command extension for command endgroup
+[2026-08-25 11:12:30Z INFO ActionCommandManager] Register action command extension for command echo
+[2026-08-25 11:12:30Z INFO CreateStepSummaryCommand] Step Summary file (D:\profinansy_tests_web\actions-runner\_work\_temp\_runner_file_commands\step_summary_93737381-74bc-4ff2-b168-6fea4abee6de) is empty; skipping attachment upload
+[2026-08-25 11:12:30Z ERR  StepsRunner] Caught exception from step: System.NotSupportedException: Container action is only supported on Linux
+   at GitHub.Runner.Worker.Handlers.ContainerActionHandler.RunAsync(ActionRunStage stage)
+   at GitHub.Runner.Worker.ActionRunner.RunAsync()
+   at GitHub.Runner.Worker.StepsRunner.RunStepAsync(IStep step, CancellationToken jobCancellationToken)
+[2026-08-25 11:12:30Z INFO StepsRunner] Step result: Failed
+[2026-08-25 11:12:30Z INFO ExecutionContext] Publish step telemetry for current step {
+  "action": "simple-elf/allure-report-action",
+  "ref": "master",
+  "type": "repository",
+  "stage": "Main",
+  "stepId": "29c96121-ab5a-4398-acec-84759af87df4",
+  "stepContextName": "__simple-elf_allure-report-action",
+  "result": "failed",
+  "errorMessages": [
+    "Container action is only supported on Linux"
+  ],
+  "executionTimeInSeconds": 1,
+  "startTime": "2026-08-25T11:12:30.5713354Z",
+  "finishTime": "2026-08-25T11:12:30.6404429Z"
+}.
+[2026-08-25 11:12:30Z INFO StepsRunner] Update job result with current step result 'Failed'.
+[2026-08-25 11:12:30Z INFO StepsRunner] Current state: job state = 'Failed'
+[2026-08-25 11:12:30Z INFO StepsRunner] Processing step: DisplayName='Публикация отчета на GitHub Pages'
+[2026-08-25 11:12:30Z INFO StepsRunner] Evaluating: always()
+[2026-08-25 11:12:30Z INFO StepsRunner] Result: true
+[2026-08-25 11:12:30Z INFO StepsRunner] Starting the step.
+[2026-08-25 11:12:30Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:12:30Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:12:30Z INFO HostContext] Well known directory 'Work': 'D:\profinansy_tests_web\actions-runner\_work'
+[2026-08-25 11:12:30Z INFO StepsRunner] Which2: 'chcp'
+[2026-08-25 11:12:30Z INFO StepsRunner] Location: 'C:\Windows\system32\chcp.COM'
+[2026-08-25 11:12:30Z INFO ProcessInvokerWrapper] Starting process:
+[2026-08-25 11:12:30Z INFO ProcessInvokerWrapper]   File name: 'C:\Windows\system32\chcp.COM'
+[2026-08-25 11:12:30Z INFO ProcessInvokerWrapper]   Arguments: '65001'
+[2026-08-25 11:12:30Z INFO ProcessInvokerWrapper]   Working directory: 'D:\profinansy_tests_web\actions-runner\_work'
+[2026-08-25 11:12:30Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2026-08-25 11:12:30Z INFO ProcessInvokerWrapper]   Encoding web name:  ; code page: ''
+[2026-08-25 11:12:30Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2026-08-25 11:12:30Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2026-08-25 11:12:30Z INFO ProcessInvokerWrapper]   Persist current code page: 'True'
+[2026-08-25 11:12:30Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2026-08-25 11:12:30Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2026-08-25 11:12:30Z INFO ProcessInvokerWrapper] Process started with process id 30164, waiting for process exit.
+[2026-08-25 11:12:30Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2026-08-25 11:12:30Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2026-08-25 11:12:30Z INFO ProcessInvokerWrapper] Finished process 30164 with exit code 0, and elapsed time 00:00:00.0132359.
+[2026-08-25 11:12:30Z INFO StepsRunner] Successfully returned to code page 65001 (UTF8)
+[2026-08-25 11:12:30Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:12:30Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:12:30Z INFO HostContext] Well known directory 'Work': 'D:\profinansy_tests_web\actions-runner\_work'
+[2026-08-25 11:12:30Z INFO HostContext] Well known directory 'Actions': 'D:\profinansy_tests_web\actions-runner\_work\_actions'
+[2026-08-25 11:12:30Z INFO ActionManager] Load action that reference repository from 'D:\profinansy_tests_web\actions-runner\_work\_actions\peaceiris\actions-gh-pages\v3'
+[2026-08-25 11:12:30Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:12:30Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:12:30Z INFO HostContext] Well known directory 'Work': 'D:\profinansy_tests_web\actions-runner\_work'
+[2026-08-25 11:12:30Z INFO HostContext] Well known directory 'Actions': 'D:\profinansy_tests_web\actions-runner\_work\_actions'
+[2026-08-25 11:12:30Z INFO ActionManifestManagerLegacy] Ignore action property author.
+[2026-08-25 11:12:30Z INFO ActionManifestManagerLegacy] Ignore action property branding.
+[2026-08-25 11:12:30Z INFO ActionManifestManagerLegacy] Loaded action.yml file: {
+  "name": "GitHub Pages action",
+  "description": "GitHub Actions for GitHub Pages 🚀 Deploy static files and publish your site easily. Static-Site-Generators-friendly.",
+  "inputs": {
+    "type": 2,
+    "map": [
+      {
+        "key": {
+          "type": 0,
+          "file": 5,
+          "line": 11,
+          "col": 3,
+          "lit": "deploy_key"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 5,
+          "line": 14,
+          "col": 3,
+          "lit": "github_token"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 5,
+          "line": 17,
+          "col": 3,
+          "lit": "personal_token"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 5,
+          "line": 20,
+          "col": 3,
+          "lit": "publish_branch"
+        },
+        "value": {
+          "type": 0,
+          "file": 5,
+          "line": 23,
+          "col": 14,
+          "lit": "gh-pages"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 5,
+          "line": 24,
+          "col": 3,
+          "lit": "publish_dir"
+        },
+        "value": {
+          "type": 0,
+          "file": 5,
+          "line": 27,
+          "col": 14,
+          "lit": "public"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 5,
+          "line": 28,
+          "col": 3,
+          "lit": "destination_dir"
+        },
+        "value": {
+          "type": 0,
+          "file": 5,
+          "line": 31,
+          "col": 14,
+          "lit": ""
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 5,
+          "line": 32,
+          "col": 3,
+          "lit": "external_repository"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 5,
+          "line": 35,
+          "col": 3,
+          "lit": "allow_empty_commit"
+        },
+        "value": {
+          "type": 0,
+          "file": 5,
+          "line": 38,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 5,
+          "line": 39,
+          "col": 3,
+          "lit": "keep_files"
+        },
+        "value": {
+          "type": 0,
+          "file": 5,
+          "line": 42,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 5,
+          "line": 43,
+          "col": 3,
+          "lit": "force_orphan"
+        },
+        "value": {
+          "type": 0,
+          "file": 5,
+          "line": 46,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 5,
+          "line": 47,
+          "col": 3,
+          "lit": "user_name"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 5,
+          "line": 50,
+          "col": 3,
+          "lit": "user_email"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 5,
+          "line": 53,
+          "col": 3,
+          "lit": "commit_message"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 5,
+          "line": 56,
+          "col": 3,
+          "lit": "full_commit_message"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 5,
+          "line": 59,
+          "col": 3,
+          "lit": "tag_name"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 5,
+          "line": 62,
+          "col": 3,
+          "lit": "tag_message"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 5,
+          "line": 65,
+          "col": 3,
+          "lit": "enable_jekyll"
+        },
+        "value": {
+          "type": 0,
+          "file": 5,
+          "line": 68,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 5,
+          "line": 69,
+          "col": 3,
+          "lit": "disable_nojekyll"
+        },
+        "value": {
+          "type": 0,
+          "file": 5,
+          "line": 72,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 5,
+          "line": 73,
+          "col": 3,
+          "lit": "cname"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 5,
+          "line": 76,
+          "col": 3,
+          "lit": "exclude_assets"
+        },
+        "value": {
+          "type": 0,
+          "file": 5,
+          "line": 79,
+          "col": 14,
+          "lit": ".github"
+        }
+      }
+    ]
+  },
+  "execution": {
+    "executionType": "nodeJS",
+    "hasPre": false,
+    "hasPost": false,
+    "script": "lib/index.js",
+    "pre": null,
+    "post": null,
+    "nodeVersion": "node16",
+    "cleanupCondition": "always()",
+    "initCondition": "always()"
+  },
+  "deprecated": null
+}
+[2026-08-25 11:12:30Z INFO ActionManager] Action pre node.js file: N/A.
+[2026-08-25 11:12:30Z INFO ActionManager] Action node.js file: lib/index.js.
+[2026-08-25 11:12:30Z INFO ActionManager] Action post node.js file: N/A.
+[2026-08-25 11:12:30Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:12:30Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:12:30Z INFO HostContext] Well known directory 'Work': 'D:\profinansy_tests_web\actions-runner\_work'
+[2026-08-25 11:12:30Z INFO HostContext] Well known directory 'Temp': 'D:\profinansy_tests_web\actions-runner\_work\_temp'
+[2026-08-25 11:12:30Z INFO ExecutionContext] Write event payload to D:\profinansy_tests_web\actions-runner\_work\_temp\_github_workflow\event.json
+[2026-08-25 11:12:30Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:12:30Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:12:30Z INFO HostContext] Well known directory 'Work': 'D:\profinansy_tests_web\actions-runner\_work'
+[2026-08-25 11:12:30Z INFO HostContext] Well known directory 'Temp': 'D:\profinansy_tests_web\actions-runner\_work\_temp'
+[2026-08-25 11:12:30Z INFO ExtensionManager] Getting extensions for interface: 'GitHub.Runner.Worker.IFileCommandExtension'
+[2026-08-25 11:12:30Z INFO ActionManifestManagerLegacy] Input 'deploy_key': default value evaluate result: ""
+[2026-08-25 11:12:30Z INFO ActionManifestManagerLegacy] Input 'personal_token': default value evaluate result: ""
+[2026-08-25 11:12:30Z INFO ActionManifestManagerLegacy] Input 'destination_dir': default value evaluate result: {
+  "type": 0,
+  "file": 5,
+  "line": 31,
+  "col": 14,
+  "lit": ""
+}
+[2026-08-25 11:12:30Z INFO ActionManifestManagerLegacy] Input 'external_repository': default value evaluate result: ""
+[2026-08-25 11:12:30Z INFO ActionManifestManagerLegacy] Input 'allow_empty_commit': default value evaluate result: {
+  "type": 0,
+  "file": 5,
+  "line": 38,
+  "col": 14,
+  "lit": "false"
+}
+[2026-08-25 11:12:30Z INFO ActionManifestManagerLegacy] Input 'keep_files': default value evaluate result: {
+  "type": 0,
+  "file": 5,
+  "line": 42,
+  "col": 14,
+  "lit": "false"
+}
+[2026-08-25 11:12:30Z INFO ActionManifestManagerLegacy] Input 'force_orphan': default value evaluate result: {
+  "type": 0,
+  "file": 5,
+  "line": 46,
+  "col": 14,
+  "lit": "false"
+}
+[2026-08-25 11:12:30Z INFO ActionManifestManagerLegacy] Input 'user_name': default value evaluate result: ""
+[2026-08-25 11:12:30Z INFO ActionManifestManagerLegacy] Input 'user_email': default value evaluate result: ""
+[2026-08-25 11:12:30Z INFO ActionManifestManagerLegacy] Input 'commit_message': default value evaluate result: ""
+[2026-08-25 11:12:30Z INFO ActionManifestManagerLegacy] Input 'full_commit_message': default value evaluate result: ""
+[2026-08-25 11:12:30Z INFO ActionManifestManagerLegacy] Input 'tag_name': default value evaluate result: ""
+[2026-08-25 11:12:30Z INFO ActionManifestManagerLegacy] Input 'tag_message': default value evaluate result: ""
+[2026-08-25 11:12:30Z INFO ActionManifestManagerLegacy] Input 'enable_jekyll': default value evaluate result: {
+  "type": 0,
+  "file": 5,
+  "line": 68,
+  "col": 14,
+  "lit": "false"
+}
+[2026-08-25 11:12:30Z INFO ActionManifestManagerLegacy] Input 'disable_nojekyll': default value evaluate result: {
+  "type": 0,
+  "file": 5,
+  "line": 72,
+  "col": 14,
+  "lit": "false"
+}
+[2026-08-25 11:12:30Z INFO ActionManifestManagerLegacy] Input 'cname': default value evaluate result: ""
+[2026-08-25 11:12:30Z INFO ActionManifestManagerLegacy] Input 'exclude_assets': default value evaluate result: {
+  "type": 0,
+  "file": 5,
+  "line": 79,
+  "col": 14,
+  "lit": ".github"
+}
+[2026-08-25 11:12:30Z INFO ExtensionManager] Getting extensions for interface: 'GitHub.Runner.Worker.IActionCommandExtension'
+[2026-08-25 11:12:30Z INFO ActionCommandManager] Register action command extension for command internal-set-repo-path
+[2026-08-25 11:12:30Z INFO ActionCommandManager] Register action command extension for command set-env
+[2026-08-25 11:12:30Z INFO ActionCommandManager] Register action command extension for command set-output
+[2026-08-25 11:12:30Z INFO ActionCommandManager] Register action command extension for command save-state
+[2026-08-25 11:12:30Z INFO ActionCommandManager] Register action command extension for command add-path
+[2026-08-25 11:12:30Z INFO ActionCommandManager] Register action command extension for command add-mask
+[2026-08-25 11:12:30Z INFO ActionCommandManager] Register action command extension for command add-matcher
+[2026-08-25 11:12:30Z INFO ActionCommandManager] Register action command extension for command remove-matcher
+[2026-08-25 11:12:30Z INFO ActionCommandManager] Register action command extension for command warning
+[2026-08-25 11:12:30Z INFO ActionCommandManager] Register action command extension for command error
+[2026-08-25 11:12:30Z INFO ActionCommandManager] Register action command extension for command notice
+[2026-08-25 11:12:30Z INFO ActionCommandManager] Register action command extension for command debug
+[2026-08-25 11:12:30Z INFO ActionCommandManager] Register action command extension for command group
+[2026-08-25 11:12:30Z INFO ActionCommandManager] Register action command extension for command endgroup
+[2026-08-25 11:12:30Z INFO ActionCommandManager] Register action command extension for command echo
+[2026-08-25 11:12:30Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:12:30Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:12:30Z INFO HostContext] Well known directory 'Externals': 'D:\profinansy_tests_web\actions-runner\externals'
+[2026-08-25 11:12:30Z INFO ProcessInvokerWrapper] Starting process:
+[2026-08-25 11:12:30Z INFO ProcessInvokerWrapper]   File name: 'D:\profinansy_tests_web\actions-runner\externals\node24\bin\node.exe'
+[2026-08-25 11:12:30Z INFO ProcessInvokerWrapper]   Arguments: '"D:\profinansy_tests_web\actions-runner\_work\_actions\peaceiris\actions-gh-pages\v3\lib/index.js"'
+[2026-08-25 11:12:30Z INFO ProcessInvokerWrapper]   Working directory: 'D:\profinansy_tests_web\actions-runner\_work\profinansyweb\profinansyweb'
+[2026-08-25 11:12:30Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2026-08-25 11:12:30Z INFO ProcessInvokerWrapper]   Encoding web name: utf-8 ; code page: '65001'
+[2026-08-25 11:12:30Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2026-08-25 11:12:30Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2026-08-25 11:12:30Z INFO ProcessInvokerWrapper]   Persist current code page: 'True'
+[2026-08-25 11:12:30Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2026-08-25 11:12:30Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2026-08-25 11:12:30Z INFO JobServerQueue] Try to append 1 batches web console lines for record '5cb8d0a2-da68-48a2-82dd-a14df9ea42e8', success rate: 1/1.
+[2026-08-25 11:12:30Z INFO JobServerQueue] Try to append 1 batches web console lines for record '29c96121-ab5a-4398-acec-84759af87df4', success rate: 1/1.
+[2026-08-25 11:12:30Z INFO JobServerQueue] Try to append 1 batches web console lines for record '2f67efba-7e5f-40b9-aeb0-0e1217189ff2', success rate: 1/1.
+[2026-08-25 11:12:30Z INFO ProcessInvokerWrapper] Process started with process id 29720, waiting for process exit.
+[2026-08-25 11:12:31Z INFO JobServerQueue] Try to append 1 batches web console lines for record '2f67efba-7e5f-40b9-aeb0-0e1217189ff2', success rate: 1/1.
+[2026-08-25 11:12:31Z INFO JobServerQueue] Try to upload 2 log files or attachments, success rate: 2/2.
+[2026-08-25 11:12:31Z INFO JobServerQueue] Got a step log file to send to results service.
+[2026-08-25 11:12:31Z INFO JobServerQueue] Starting upload of step log file to results service ResultsLog, D:\profinansy_tests_web\actions-runner\_diag\blocks\9c803566-11fc-4b10-b288-6152e9530fdf_5cb8d0a2-da68-48a2-82dd-a14df9ea42e8.1
+[2026-08-25 11:12:32Z INFO JobServerQueue] Got a step log file to send to results service.
+[2026-08-25 11:12:32Z INFO JobServerQueue] Starting upload of step log file to results service ResultsLog, D:\profinansy_tests_web\actions-runner\_diag\blocks\9c803566-11fc-4b10-b288-6152e9530fdf_29c96121-ab5a-4398-acec-84759af87df4.1
+[2026-08-25 11:12:32Z INFO JobServerQueue] Tried to upload 2 file(s) to results, success rate: 2/2.
+[2026-08-25 11:12:32Z INFO JobServerQueue] Try to append 1 batches web console lines for record '2f67efba-7e5f-40b9-aeb0-0e1217189ff2', success rate: 1/1.
+[2026-08-25 11:12:33Z INFO JobServerQueue] Try to append 1 batches web console lines for record '2f67efba-7e5f-40b9-aeb0-0e1217189ff2', success rate: 1/1.
+[2026-08-25 11:12:33Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:12:33Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:12:33Z INFO HostContext] Well known directory 'Work': 'D:\profinansy_tests_web\actions-runner\_work'
+[2026-08-25 11:12:34Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2026-08-25 11:12:34Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2026-08-25 11:12:34Z INFO ProcessInvokerWrapper] Finished process 29720 with exit code 0, and elapsed time 00:00:03.5505440.
+[2026-08-25 11:12:34Z INFO CreateStepSummaryCommand] Step Summary file (D:\profinansy_tests_web\actions-runner\_work\_temp\_runner_file_commands\step_summary_9af01207-fc4a-4c93-94dc-220ef10111eb) is empty; skipping attachment upload
+[2026-08-25 11:12:34Z INFO StepsRunner] Step result: 
+[2026-08-25 11:12:34Z INFO ExecutionContext] Publish step telemetry for current step {
+  "action": "peaceiris/actions-gh-pages",
+  "ref": "v3",
+  "type": "node24",
+  "stage": "Main",
+  "stepId": "2f67efba-7e5f-40b9-aeb0-0e1217189ff2",
+  "stepContextName": "__peaceiris_actions-gh-pages",
+  "hasPreStep": false,
+  "hasPostStep": false,
+  "result": "succeeded",
+  "errorMessages": [],
+  "executionTimeInSeconds": 4,
+  "startTime": "2026-08-25T11:12:30.6415551Z",
+  "finishTime": "2026-08-25T11:12:34.2279561Z"
+}.
+[2026-08-25 11:12:34Z INFO StepsRunner] No need for updating job result with current step result 'Succeeded'.
+[2026-08-25 11:12:34Z INFO StepsRunner] Current state: job state = 'Failed'
+[2026-08-25 11:12:34Z INFO StepsRunner] Processing step: DisplayName='Post Настройка Python 3.12'
+[2026-08-25 11:12:34Z INFO StepsRunner] Evaluating: success()
+[2026-08-25 11:12:34Z INFO StepsRunner] Result: false
+[2026-08-25 11:12:34Z INFO StepsRunner] Skipping step due to condition evaluation.
+[2026-08-25 11:12:34Z INFO StepsRunner] No need for updating job result with current step result 'Skipped'.
+[2026-08-25 11:12:34Z INFO StepsRunner] Current state: job state = 'Failed'
+[2026-08-25 11:12:34Z INFO StepsRunner] Processing step: DisplayName='Post Скачивание кода из репозитория'
+[2026-08-25 11:12:34Z INFO StepsRunner] Evaluating: always()
+[2026-08-25 11:12:34Z INFO StepsRunner] Result: true
+[2026-08-25 11:12:34Z INFO StepsRunner] Starting the step.
+[2026-08-25 11:12:34Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:12:34Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:12:34Z INFO HostContext] Well known directory 'Work': 'D:\profinansy_tests_web\actions-runner\_work'
+[2026-08-25 11:12:34Z INFO StepsRunner] Which2: 'chcp'
+[2026-08-25 11:12:34Z INFO StepsRunner] Location: 'C:\Windows\system32\chcp.COM'
+[2026-08-25 11:12:34Z INFO ProcessInvokerWrapper] Starting process:
+[2026-08-25 11:12:34Z INFO ProcessInvokerWrapper]   File name: 'C:\Windows\system32\chcp.COM'
+[2026-08-25 11:12:34Z INFO ProcessInvokerWrapper]   Arguments: '65001'
+[2026-08-25 11:12:34Z INFO ProcessInvokerWrapper]   Working directory: 'D:\profinansy_tests_web\actions-runner\_work'
+[2026-08-25 11:12:34Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2026-08-25 11:12:34Z INFO ProcessInvokerWrapper]   Encoding web name:  ; code page: ''
+[2026-08-25 11:12:34Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2026-08-25 11:12:34Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2026-08-25 11:12:34Z INFO ProcessInvokerWrapper]   Persist current code page: 'True'
+[2026-08-25 11:12:34Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2026-08-25 11:12:34Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2026-08-25 11:12:34Z INFO ProcessInvokerWrapper] Process started with process id 31556, waiting for process exit.
+[2026-08-25 11:12:34Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2026-08-25 11:12:34Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2026-08-25 11:12:34Z INFO ProcessInvokerWrapper] Finished process 31556 with exit code 0, and elapsed time 00:00:00.0160400.
+[2026-08-25 11:12:34Z INFO StepsRunner] Successfully returned to code page 65001 (UTF8)
+[2026-08-25 11:12:34Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:12:34Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:12:34Z INFO HostContext] Well known directory 'Work': 'D:\profinansy_tests_web\actions-runner\_work'
+[2026-08-25 11:12:34Z INFO HostContext] Well known directory 'Actions': 'D:\profinansy_tests_web\actions-runner\_work\_actions'
+[2026-08-25 11:12:34Z INFO ActionManager] Load action that reference repository from 'D:\profinansy_tests_web\actions-runner\_work\_actions\actions\checkout\v4'
+[2026-08-25 11:12:34Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:12:34Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:12:34Z INFO HostContext] Well known directory 'Work': 'D:\profinansy_tests_web\actions-runner\_work'
+[2026-08-25 11:12:34Z INFO HostContext] Well known directory 'Actions': 'D:\profinansy_tests_web\actions-runner\_work\_actions'
+[2026-08-25 11:12:34Z INFO ActionManifestManagerLegacy] Loaded action.yml file: {
+  "name": "Checkout",
+  "description": "Checkout a Git repository at a particular version",
+  "inputs": {
+    "type": 2,
+    "map": [
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 4,
+          "col": 3,
+          "lit": "repository"
+        },
+        "value": {
+          "type": 3,
+          "file": 2,
+          "line": 6,
+          "col": 14,
+          "expr": "github.repository"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 7,
+          "col": 3,
+          "lit": "ref"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 12,
+          "col": 3,
+          "lit": "token"
+        },
+        "value": {
+          "type": 3,
+          "file": 2,
+          "line": 24,
+          "col": 14,
+          "expr": "github.token"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 25,
+          "col": 3,
+          "lit": "ssh-key"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 37,
+          "col": 3,
+          "lit": "ssh-known-hosts"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 42,
+          "col": 3,
+          "lit": "ssh-strict"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 47,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 48,
+          "col": 3,
+          "lit": "ssh-user"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 51,
+          "col": 14,
+          "lit": "git"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 52,
+          "col": 3,
+          "lit": "persist-credentials"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 54,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 55,
+          "col": 3,
+          "lit": "path"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 57,
+          "col": 3,
+          "lit": "clean"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 59,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 60,
+          "col": 3,
+          "lit": "filter"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 64,
+          "col": 14,
+          "lit": ""
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 65,
+          "col": 3,
+          "lit": "sparse-checkout"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 69,
+          "col": 14,
+          "lit": ""
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 70,
+          "col": 3,
+          "lit": "sparse-checkout-cone-mode"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 73,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 74,
+          "col": 3,
+          "lit": "fetch-depth"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 76,
+          "col": 14,
+          "lit": "1"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 77,
+          "col": 3,
+          "lit": "fetch-tags"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 79,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 80,
+          "col": 3,
+          "lit": "show-progress"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 82,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 83,
+          "col": 3,
+          "lit": "lfs"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 85,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 86,
+          "col": 3,
+          "lit": "submodules"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 94,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 95,
+          "col": 3,
+          "lit": "set-safe-directory"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 97,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 98,
+          "col": 3,
+          "lit": "github-server-url"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 101,
+          "col": 3,
+          "lit": "allow-unsafe-pr-checkout"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 109,
+          "col": 14,
+          "lit": "false"
+        }
+      }
+    ]
+  },
+  "execution": {
+    "executionType": "nodeJS",
+    "hasPre": false,
+    "hasPost": true,
+    "script": "dist/index.js",
+    "pre": null,
+    "post": "dist/index.js",
+    "nodeVersion": "node20",
+    "cleanupCondition": "always()",
+    "initCondition": "always()"
+  },
+  "deprecated": null
+}
+[2026-08-25 11:12:34Z INFO ActionManager] Action pre node.js file: N/A.
+[2026-08-25 11:12:34Z INFO ActionManager] Action node.js file: dist/index.js.
+[2026-08-25 11:12:34Z INFO ActionManager] Action post node.js file: dist/index.js.
+[2026-08-25 11:12:34Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:12:34Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:12:34Z INFO HostContext] Well known directory 'Work': 'D:\profinansy_tests_web\actions-runner\_work'
+[2026-08-25 11:12:34Z INFO HostContext] Well known directory 'Temp': 'D:\profinansy_tests_web\actions-runner\_work\_temp'
+[2026-08-25 11:12:34Z INFO ExecutionContext] Write event payload to D:\profinansy_tests_web\actions-runner\_work\_temp\_github_workflow\event.json
+[2026-08-25 11:12:34Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:12:34Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:12:34Z INFO HostContext] Well known directory 'Work': 'D:\profinansy_tests_web\actions-runner\_work'
+[2026-08-25 11:12:34Z INFO HostContext] Well known directory 'Temp': 'D:\profinansy_tests_web\actions-runner\_work\_temp'
+[2026-08-25 11:12:34Z INFO ExtensionManager] Getting extensions for interface: 'GitHub.Runner.Worker.IFileCommandExtension'
+[2026-08-25 11:12:34Z INFO ActionManifestManagerLegacy] Input 'repository': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 6,
+  "col": 14,
+  "lit": "Anna-Shirokaya/profinansyweb"
+}
+[2026-08-25 11:12:34Z INFO ActionManifestManagerLegacy] Input 'ref': default value evaluate result: ""
+[2026-08-25 11:12:34Z INFO ActionManifestManagerLegacy] Input 'token': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 24,
+  "col": 14,
+  "lit": "***"
+}
+[2026-08-25 11:12:34Z INFO ActionManifestManagerLegacy] Input 'ssh-key': default value evaluate result: ""
+[2026-08-25 11:12:34Z INFO ActionManifestManagerLegacy] Input 'ssh-known-hosts': default value evaluate result: ""
+[2026-08-25 11:12:34Z INFO ActionManifestManagerLegacy] Input 'ssh-strict': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 47,
+  "col": 14,
+  "lit": "true"
+}
+[2026-08-25 11:12:34Z INFO ActionManifestManagerLegacy] Input 'ssh-user': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 51,
+  "col": 14,
+  "lit": "git"
+}
+[2026-08-25 11:12:34Z INFO ActionManifestManagerLegacy] Input 'persist-credentials': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 54,
+  "col": 14,
+  "lit": "true"
+}
+[2026-08-25 11:12:34Z INFO ActionManifestManagerLegacy] Input 'path': default value evaluate result: ""
+[2026-08-25 11:12:34Z INFO ActionManifestManagerLegacy] Input 'clean': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 59,
+  "col": 14,
+  "lit": "true"
+}
+[2026-08-25 11:12:34Z INFO ActionManifestManagerLegacy] Input 'filter': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 64,
+  "col": 14,
+  "lit": ""
+}
+[2026-08-25 11:12:34Z INFO ActionManifestManagerLegacy] Input 'sparse-checkout': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 69,
+  "col": 14,
+  "lit": ""
+}
+[2026-08-25 11:12:34Z INFO ActionManifestManagerLegacy] Input 'sparse-checkout-cone-mode': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 73,
+  "col": 14,
+  "lit": "true"
+}
+[2026-08-25 11:12:34Z INFO ActionManifestManagerLegacy] Input 'fetch-depth': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 76,
+  "col": 14,
+  "lit": "1"
+}
+[2026-08-25 11:12:34Z INFO ActionManifestManagerLegacy] Input 'fetch-tags': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 79,
+  "col": 14,
+  "lit": "false"
+}
+[2026-08-25 11:12:34Z INFO ActionManifestManagerLegacy] Input 'show-progress': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 82,
+  "col": 14,
+  "lit": "true"
+}
+[2026-08-25 11:12:34Z INFO ActionManifestManagerLegacy] Input 'lfs': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 85,
+  "col": 14,
+  "lit": "false"
+}
+[2026-08-25 11:12:34Z INFO ActionManifestManagerLegacy] Input 'submodules': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 94,
+  "col": 14,
+  "lit": "false"
+}
+[2026-08-25 11:12:34Z INFO ActionManifestManagerLegacy] Input 'set-safe-directory': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 97,
+  "col": 14,
+  "lit": "true"
+}
+[2026-08-25 11:12:34Z INFO ActionManifestManagerLegacy] Input 'github-server-url': default value evaluate result: ""
+[2026-08-25 11:12:34Z INFO ActionManifestManagerLegacy] Input 'allow-unsafe-pr-checkout': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 109,
+  "col": 14,
+  "lit": "false"
+}
+[2026-08-25 11:12:34Z INFO ExtensionManager] Getting extensions for interface: 'GitHub.Runner.Worker.IActionCommandExtension'
+[2026-08-25 11:12:34Z INFO ActionCommandManager] Register action command extension for command internal-set-repo-path
+[2026-08-25 11:12:34Z INFO ActionCommandManager] Register action command extension for command set-env
+[2026-08-25 11:12:34Z INFO ActionCommandManager] Register action command extension for command set-output
+[2026-08-25 11:12:34Z INFO ActionCommandManager] Register action command extension for command save-state
+[2026-08-25 11:12:34Z INFO ActionCommandManager] Register action command extension for command add-path
+[2026-08-25 11:12:34Z INFO ActionCommandManager] Register action command extension for command add-mask
+[2026-08-25 11:12:34Z INFO ActionCommandManager] Register action command extension for command add-matcher
+[2026-08-25 11:12:34Z INFO ActionCommandManager] Register action command extension for command remove-matcher
+[2026-08-25 11:12:34Z INFO ActionCommandManager] Register action command extension for command warning
+[2026-08-25 11:12:34Z INFO ActionCommandManager] Register action command extension for command error
+[2026-08-25 11:12:34Z INFO ActionCommandManager] Register action command extension for command notice
+[2026-08-25 11:12:34Z INFO ActionCommandManager] Register action command extension for command debug
+[2026-08-25 11:12:34Z INFO ActionCommandManager] Register action command extension for command group
+[2026-08-25 11:12:34Z INFO ActionCommandManager] Register action command extension for command endgroup
+[2026-08-25 11:12:34Z INFO ActionCommandManager] Register action command extension for command echo
+[2026-08-25 11:12:34Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:12:34Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:12:34Z INFO HostContext] Well known directory 'Externals': 'D:\profinansy_tests_web\actions-runner\externals'
+[2026-08-25 11:12:34Z INFO ProcessInvokerWrapper] Starting process:
+[2026-08-25 11:12:34Z INFO ProcessInvokerWrapper]   File name: 'D:\profinansy_tests_web\actions-runner\externals\node24\bin\node.exe'
+[2026-08-25 11:12:34Z INFO ProcessInvokerWrapper]   Arguments: '"D:\profinansy_tests_web\actions-runner\_work\_actions\actions\checkout\v4\dist/index.js"'
+[2026-08-25 11:12:34Z INFO ProcessInvokerWrapper]   Working directory: 'D:\profinansy_tests_web\actions-runner\_work\profinansyweb\profinansyweb'
+[2026-08-25 11:12:34Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2026-08-25 11:12:34Z INFO ProcessInvokerWrapper]   Encoding web name: utf-8 ; code page: '65001'
+[2026-08-25 11:12:34Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2026-08-25 11:12:34Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2026-08-25 11:12:34Z INFO ProcessInvokerWrapper]   Persist current code page: 'True'
+[2026-08-25 11:12:34Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2026-08-25 11:12:34Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2026-08-25 11:12:34Z INFO JobServerQueue] Try to append 1 batches web console lines for record '2f67efba-7e5f-40b9-aeb0-0e1217189ff2', success rate: 1/1.
+[2026-08-25 11:12:34Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'e5c63686-04cf-4666-a842-10303affb4ab', success rate: 1/1.
+[2026-08-25 11:12:34Z INFO JobServerQueue] Try to upload 1 log files or attachments, success rate: 1/1.
+[2026-08-25 11:12:34Z INFO ProcessInvokerWrapper] Process started with process id 31688, waiting for process exit.
+[2026-08-25 11:12:34Z INFO JobServerQueue] Got a step log file to send to results service.
+[2026-08-25 11:12:34Z INFO JobServerQueue] Starting upload of step log file to results service ResultsLog, D:\profinansy_tests_web\actions-runner\_diag\blocks\9c803566-11fc-4b10-b288-6152e9530fdf_2f67efba-7e5f-40b9-aeb0-0e1217189ff2.1
+[2026-08-25 11:12:34Z INFO AddMaskCommandExtension] Add new secret mask with length of 32
+[2026-08-25 11:12:34Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'e5c63686-04cf-4666-a842-10303affb4ab', success rate: 1/1.
+[2026-08-25 11:12:35Z INFO JobServerQueue] Tried to upload 1 file(s) to results, success rate: 1/1.
+[2026-08-25 11:12:35Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'e5c63686-04cf-4666-a842-10303affb4ab', success rate: 1/1.
+[2026-08-25 11:12:35Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'e5c63686-04cf-4666-a842-10303affb4ab', success rate: 1/1.
+[2026-08-25 11:12:36Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'e5c63686-04cf-4666-a842-10303affb4ab', success rate: 1/1.
+[2026-08-25 11:12:37Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2026-08-25 11:12:37Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2026-08-25 11:12:37Z INFO ProcessInvokerWrapper] Finished process 31688 with exit code 0, and elapsed time 00:00:02.9964469.
+[2026-08-25 11:12:37Z INFO CreateStepSummaryCommand] Step Summary file (D:\profinansy_tests_web\actions-runner\_work\_temp\_runner_file_commands\step_summary_64ddb196-9ff2-4a09-8133-d162881501cd) is empty; skipping attachment upload
+[2026-08-25 11:12:37Z INFO StepsRunner] Step result: 
+[2026-08-25 11:12:37Z INFO ExecutionContext] Publish step telemetry for current step {
+  "action": "actions/checkout",
+  "ref": "v4",
+  "type": "node24",
+  "stage": "Post",
+  "stepId": "e5c63686-04cf-4666-a842-10303affb4ab",
+  "result": "succeeded",
+  "errorMessages": [],
+  "executionTimeInSeconds": 4,
+  "startTime": "2026-08-25T11:12:34.2330997Z",
+  "finishTime": "2026-08-25T11:12:37.2642408Z"
+}.
+[2026-08-25 11:12:37Z INFO StepsRunner] No need for updating job result with current step result 'Succeeded'.
+[2026-08-25 11:12:37Z INFO StepsRunner] Current state: job state = 'Failed'
+[2026-08-25 11:12:37Z INFO JobRunner] Finalize job.
+[2026-08-25 11:12:37Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:12:37Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:12:37Z INFO HostContext] Well known directory 'Diag': 'D:\profinansy_tests_web\actions-runner\_diag'
+[2026-08-25 11:12:37Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:12:37Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:12:37Z INFO HostContext] Well known directory 'Diag': 'D:\profinansy_tests_web\actions-runner\_diag'
+[2026-08-25 11:12:37Z INFO JobExtension] Initialize Env context
+[2026-08-25 11:12:37Z INFO JobExtension] Initialize steps context
+[2026-08-25 11:12:37Z INFO JobExtension] Total accessible running process: 332.
+[2026-08-25 11:12:37Z INFO JobServerQueue] Got a step log file to send to results service.
+[2026-08-25 11:12:37Z INFO JobServerQueue] Starting upload of step log file to results service ResultsLog, D:\profinansy_tests_web\actions-runner\_diag\blocks\9c803566-11fc-4b10-b288-6152e9530fdf_e5c63686-04cf-4666-a842-10303affb4ab.1
+[2026-08-25 11:12:37Z INFO JobExtension] Inspecting process environment variables. PID: 15572 (svchost)
+[2026-08-25 11:12:37Z INFO JobExtension] Inspecting process environment variables. PID: 10136 (chrome)
+[2026-08-25 11:12:37Z INFO JobExtension] Inspecting process environment variables. PID: 15804 (svchost)
+[2026-08-25 11:12:37Z WARN JobExtension] Ignore exception during read process environment variables: Access is denied.
+[2026-08-25 11:12:37Z INFO JobExtension] Inspecting process environment variables. PID: 27152 (chrome)
+[2026-08-25 11:12:37Z INFO JobExtension] Inspecting process environment variables. PID: 28976 (chrome)
+[2026-08-25 11:12:37Z INFO JobExtension] Inspecting process environment variables. PID: 30332 (chrome)
+[2026-08-25 11:12:37Z INFO JobExtension] Inspecting process environment variables. PID: 10508 (chrome)
+[2026-08-25 11:12:37Z INFO JobExtension] Inspecting process environment variables. PID: 28428 (chrome)
+[2026-08-25 11:12:37Z INFO JobExtension] Inspecting process environment variables. PID: 25908 (chrome)
+[2026-08-25 11:12:37Z INFO JobExtension] Inspecting process environment variables. PID: 14196 (VSSVC)
+[2026-08-25 11:12:37Z WARN JobExtension] Ignore exception during read process environment variables: Access is denied.
+[2026-08-25 11:12:37Z INFO JobExtension] Inspecting process environment variables. PID: 27104 (svchost)
+[2026-08-25 11:12:37Z WARN JobExtension] Ignore exception during read process environment variables: Access is denied.
+[2026-08-25 11:12:37Z INFO JobExtension] Inspecting process environment variables. PID: 8012 (msiexec)
+[2026-08-25 11:12:37Z WARN JobExtension] Ignore exception during read process environment variables: Access is denied.
+[2026-08-25 11:12:37Z INFO JobExtension] Inspecting process environment variables. PID: 5944 (backgroundTaskHost)
+[2026-08-25 11:12:37Z INFO JobExtension] Inspecting process environment variables. PID: 1836 (SearchProtocolHost)
+[2026-08-25 11:12:37Z WARN JobExtension] Ignore exception during read process environment variables: Access is denied.
+[2026-08-25 11:12:37Z INFO JobExtension] Inspecting process environment variables. PID: 24668 (chrome)
+[2026-08-25 11:12:37Z INFO JobExtension] Inspecting process environment variables. PID: 25192 (chrome)
+[2026-08-25 11:12:37Z INFO JobExtension] Inspecting process environment variables. PID: 13840 (chrome)
+[2026-08-25 11:12:37Z INFO JobExtension] Inspecting process environment variables. PID: 29276 (chrome)
+[2026-08-25 11:12:37Z INFO JobServerQueue] Try to upload 1 log files or attachments, success rate: 1/1.
+[2026-08-25 11:12:37Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f3be72d1-6ea7-4908-bedb-b4a856369ec5', success rate: 1/1.
+[2026-08-25 11:12:37Z INFO JobExtension] Inspecting process environment variables. PID: 25828 (chrome)
+[2026-08-25 11:12:37Z INFO JobExtension] Wait for all connectivity checks to finish.
+[2026-08-25 11:12:37Z INFO JobExtension] Connectivity check result: {
+  "endpointUrl": "https://broker.actions.githubusercontent.com/health",
+  "endpointIPs": null,
+  "startTime": "2026-08-25T11:08:33.6212Z",
+  "statusCode": "http_OK",
+  "requestId": "D871:2D677E:26659:31EA2:6A8D77E7",
+  "httpRequestDurationInMs": 505,
+  "dnsResolutionDurationInMs": 0,
+  "dnsError": null
+}
+[2026-08-25 11:12:37Z INFO JobExtension] Connectivity check result: {
+  "endpointUrl": "https://token.actions.githubusercontent.com/ready",
+  "endpointIPs": null,
+  "startTime": "2026-08-25T11:08:33.6224691Z",
+  "statusCode": "http_NoContent",
+  "requestId": "D873:11B325:A307:C128:6A8D77E7",
+  "httpRequestDurationInMs": 489,
+  "dnsResolutionDurationInMs": 0,
+  "dnsError": null
+}
+[2026-08-25 11:12:37Z INFO JobExtension] Connectivity check result: {
+  "endpointUrl": "https://run.actions.githubusercontent.com/health",
+  "endpointIPs": null,
+  "startTime": "2026-08-25T11:08:33.6227489Z",
+  "statusCode": "http_OK",
+  "requestId": "D872:1F0A0:1C8AA:2581D:6A8D77E7",
+  "httpRequestDurationInMs": 476,
+  "dnsResolutionDurationInMs": 0,
+  "dnsError": null
+}
+[2026-08-25 11:12:37Z INFO ExecutionContext] Publish step telemetry for current step {
+  "action": "complete_job",
+  "type": "runner",
+  "stage": "Post",
+  "stepId": "f3be72d1-6ea7-4908-bedb-b4a856369ec5",
+  "result": "succeeded",
+  "errorMessages": [
+    "Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5, peaceiris/actions-gh-pages@v3. For more information see: https://github.blog/changelog/2025-09-19-dep"
+  ],
+  "executionTimeInSeconds": 1,
+  "startTime": "2026-08-25T11:12:37.2715221Z",
+  "finishTime": "2026-08-25T11:12:37.4786537Z"
+}.
+[2026-08-25 11:12:37Z INFO JobRunner] Job result after all job steps finish: Failed
+[2026-08-25 11:12:37Z INFO JobRunner] Completing the job execution context.
+[2026-08-25 11:12:37Z INFO JobRunner] Shutting down the job server queue.
+[2026-08-25 11:12:37Z INFO JobServerQueue] Fire signal to shutdown all queues.
+[2026-08-25 11:12:37Z INFO JobServerQueue] Tried to upload 1 file(s) to results, success rate: 1/1.
+[2026-08-25 11:12:38Z INFO JobServerQueue] All queue process task stopped.
+[2026-08-25 11:12:38Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f3be72d1-6ea7-4908-bedb-b4a856369ec5', success rate: 1/1.
+[2026-08-25 11:12:38Z INFO JobServerQueue] Web console line queue drained.
+[2026-08-25 11:12:38Z INFO JobServerQueue] Uploading 2 files in one shot.
+[2026-08-25 11:12:38Z INFO JobServerQueue] Try to upload 2 log files or attachments, success rate: 2/2.
+[2026-08-25 11:12:38Z INFO JobServerQueue] File upload queue drained.
+[2026-08-25 11:12:38Z INFO JobServerQueue] Starting results-based upload queue...
+[2026-08-25 11:12:38Z INFO JobServerQueue] Uploading 2 file(s) in one shot through results service.
+[2026-08-25 11:12:38Z INFO JobServerQueue] Got a step log file to send to results service.
+[2026-08-25 11:12:38Z INFO JobServerQueue] Starting upload of step log file to results service ResultsLog, D:\profinansy_tests_web\actions-runner\_diag\blocks\9c803566-11fc-4b10-b288-6152e9530fdf_f3be72d1-6ea7-4908-bedb-b4a856369ec5.1
+[2026-08-25 11:12:39Z INFO JobServerQueue] Got a job log file to send to results service.
+[2026-08-25 11:12:39Z INFO JobServerQueue] Starting upload of job log file to results service ResultsLog, D:\profinansy_tests_web\actions-runner\_diag\blocks\9c803566-11fc-4b10-b288-6152e9530fdf_f6610348-1c83-5a16-916a-67f15d5fbea7.1
+[2026-08-25 11:12:39Z INFO JobServerQueue] Tried to upload 2 file(s) to results, success rate: 2/2.
+[2026-08-25 11:12:39Z INFO JobServerQueue] Results upload queue drained.
+[2026-08-25 11:12:40Z INFO JobServerQueue] Timeline update queue drained.
+[2026-08-25 11:12:40Z INFO JobServerQueue] Disposing job server ...
+[2026-08-25 11:12:40Z INFO JobServerQueue] Disposing results server ...
+[2026-08-25 11:12:40Z INFO JobServerQueue] All queue process tasks have been stopped, and all queues are drained.
+[2026-08-25 11:12:40Z INFO TempDirectoryManager] Cleaning runner temp folder: D:\profinansy_tests_web\actions-runner\_work\_temp
+[2026-08-25 11:12:40Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:12:40Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:12:40Z INFO HostContext] Well known directory 'Diag': 'D:\profinansy_tests_web\actions-runner\_diag'
+[2026-08-25 11:12:40Z INFO HostContext] Well known config file 'Telemetry': 'D:\profinansy_tests_web\actions-runner\_diag\.telemetry'
+[2026-08-25 11:12:40Z INFO JobRunner] Raising job completed against run service
+[2026-08-25 11:12:40Z INFO Worker] Job completed.
