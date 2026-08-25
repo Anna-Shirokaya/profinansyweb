@@ -1,0 +1,171 @@
+[2026-08-25 11:04:49Z INFO HostContext] No proxy settings were found based on environmental variables (http_proxy/https_proxy/HTTP_PROXY/HTTPS_PROXY)
+[2026-08-25 11:04:49Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:04:49Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:04:49Z INFO HostContext] Well known config file 'Credentials': 'D:\profinansy_tests_web\actions-runner\.credentials'
+[2026-08-25 11:04:49Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:04:49Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:04:49Z INFO HostContext] Well known config file 'Runner': 'D:\profinansy_tests_web\actions-runner\.runner'
+[2026-08-25 11:04:49Z INFO Listener] Runner is built for Windows (X64) - win-x64.
+[2026-08-25 11:04:49Z INFO Listener] RuntimeInformation: Microsoft Windows 10.0.26200.
+[2026-08-25 11:04:49Z INFO Listener] Version: 2.336.0
+[2026-08-25 11:04:49Z INFO Listener] Commit: 98aabcd429c4e8402406c56ce2d26387fed3b9ce
+[2026-08-25 11:04:49Z INFO Listener] Culture: en-US
+[2026-08-25 11:04:49Z INFO Listener] UI Culture: en-US
+[2026-08-25 11:04:49Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:04:49Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:04:49Z INFO Listener] Validating directory permissions for: 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:04:49Z INFO CommandLineParser] Parse
+[2026-08-25 11:04:49Z INFO CommandLineParser] Parsing 1 args
+[2026-08-25 11:04:49Z INFO CommandLineParser] parsing argument
+[2026-08-25 11:04:49Z INFO CommandLineParser] HasArgs: False
+[2026-08-25 11:04:49Z INFO CommandLineParser] Adding Command: run
+[2026-08-25 11:04:49Z INFO Listener] Arguments parsed
+[2026-08-25 11:04:49Z INFO Runner] ExecuteCommand
+[2026-08-25 11:04:49Z INFO ConfigurationStore] currentAssemblyLocation: D:\profinansy_tests_web\actions-runner\bin\Runner.Listener.dll
+[2026-08-25 11:04:49Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:04:49Z INFO ConfigurationStore] binPath: D:\profinansy_tests_web\actions-runner\bin
+[2026-08-25 11:04:49Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:04:49Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:04:49Z INFO ConfigurationStore] RootFolder: D:\profinansy_tests_web\actions-runner
+[2026-08-25 11:04:49Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:04:49Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:04:49Z INFO HostContext] Well known config file 'Runner': 'D:\profinansy_tests_web\actions-runner\.runner'
+[2026-08-25 11:04:49Z INFO ConfigurationStore] ConfigFilePath: D:\profinansy_tests_web\actions-runner\.runner
+[2026-08-25 11:04:49Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:04:49Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:04:49Z INFO HostContext] Well known config file 'MigratedRunner': 'D:\profinansy_tests_web\actions-runner\.runner_migrated'
+[2026-08-25 11:04:49Z INFO ConfigurationStore] MigratedConfigFilePath: D:\profinansy_tests_web\actions-runner\.runner_migrated
+[2026-08-25 11:04:49Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:04:49Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:04:49Z INFO HostContext] Well known config file 'Credentials': 'D:\profinansy_tests_web\actions-runner\.credentials'
+[2026-08-25 11:04:49Z INFO ConfigurationStore] CredFilePath: D:\profinansy_tests_web\actions-runner\.credentials
+[2026-08-25 11:04:49Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:04:49Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:04:49Z INFO HostContext] Well known config file 'MigratedCredentials': 'D:\profinansy_tests_web\actions-runner\.credentials_migrated'
+[2026-08-25 11:04:49Z INFO ConfigurationStore] MigratedCredFilePath: D:\profinansy_tests_web\actions-runner\.credentials_migrated
+[2026-08-25 11:04:49Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:04:49Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:04:49Z INFO HostContext] Well known config file 'Service': 'D:\profinansy_tests_web\actions-runner\.service'
+[2026-08-25 11:04:49Z INFO ConfigurationStore] ServiceConfigFilePath: D:\profinansy_tests_web\actions-runner\.service
+[2026-08-25 11:04:49Z INFO CommandSettings] Flag 'help': 'False'
+[2026-08-25 11:04:49Z INFO CommandSettings] Flag 'version': 'False'
+[2026-08-25 11:04:49Z INFO CommandSettings] Flag 'commit': 'False'
+[2026-08-25 11:04:49Z INFO CommandSettings] Flag 'check': 'False'
+[2026-08-25 11:04:49Z INFO CommandSettings] Command 'configure': 'False'
+[2026-08-25 11:04:49Z INFO CommandSettings] Command 'remove': 'False'
+[2026-08-25 11:04:49Z INFO CommandSettings] Command 'warmup': 'False'
+[2026-08-25 11:04:49Z INFO ConfigurationManager] LoadSettings
+[2026-08-25 11:04:49Z INFO ConfigurationStore] IsConfigured()
+[2026-08-25 11:04:49Z INFO ConfigurationStore] IsConfigured: True
+[2026-08-25 11:04:49Z INFO ConfigurationManager] Is configured: True
+[2026-08-25 11:04:49Z INFO ConfigurationStore] Read setting file: 408 chars
+[2026-08-25 11:04:49Z INFO ConfigurationManager] Settings Loaded
+[2026-08-25 11:04:49Z INFO ConfigurationStore] IsServiceConfigured()
+[2026-08-25 11:04:49Z INFO ConfigurationStore] IsServiceConfigured: False
+[2026-08-25 11:04:49Z INFO CommandSettings] Command 'run': 'True'
+[2026-08-25 11:04:49Z INFO ConfigurationStore] IsConfigured()
+[2026-08-25 11:04:49Z INFO ConfigurationStore] IsConfigured: True
+[2026-08-25 11:04:49Z INFO ConfigurationManager] Is configured: True
+[2026-08-25 11:04:49Z INFO Runner] Could not parse the argument value '' for StartupType. Defaulting to Manual
+[2026-08-25 11:04:49Z INFO Runner] Set runner startup type - Manual
+[2026-08-25 11:04:49Z INFO CommandSettings] Flag 'once': 'False'
+[2026-08-25 11:04:49Z INFO CommandSettings] Flag 'once': 'False'
+[2026-08-25 11:04:49Z INFO Runner] RunAsync
+[2026-08-25 11:04:49Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:04:49Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:04:49Z INFO HostContext] Well known directory 'Work': 'D:\profinansy_tests_web\actions-runner\_work'
+[2026-08-25 11:04:49Z INFO Runner] Validating directory permissions for: 'D:\profinansy_tests_web\actions-runner\_work'
+[2026-08-25 11:04:49Z INFO ConfigurationManager] LoadMigratedSettings
+[2026-08-25 11:04:49Z INFO ConfigurationStore] IsMigratedConfigured()
+[2026-08-25 11:04:49Z INFO ConfigurationStore] IsMigratedConfigured: False
+[2026-08-25 11:04:49Z INFO Runner] Failed to load migrated settings: No migrated configuration found.
+[2026-08-25 11:04:49Z INFO Runner] Falling back to original .runner settings
+[2026-08-25 11:04:49Z INFO Runner] Using BrokerMessageListener
+[2026-08-25 11:04:49Z INFO BrokerMessageListener] Using provided settings
+[2026-08-25 11:04:49Z INFO BrokerMessageListener] {
+  "AgentId": 21,
+  "AgentName": "LAPTOP-63033Q89",
+  "PoolId": 1,
+  "PoolName": "Default",
+  "ServerUrl": "https://pipelinesghubeus26.actions.githubusercontent.com/xxU0y6aUoufkT5GIT4EsNGqJKe1Bvf538hGe4ns44DSEXFgj0K/",
+  "GitHubUrl": "https://github.com/Anna-Shirokaya/profinansyweb",
+  "WorkFolder": "_work",
+  "UseV2Flow": true,
+  "ServerUrlV2": "https://broker.actions.githubusercontent.com/"
+}
+[2026-08-25 11:04:49Z INFO BrokerMessageListener] Loading Credentials
+[2026-08-25 11:04:49Z INFO ConfigurationStore] HasCredentials()
+[2026-08-25 11:04:49Z INFO ConfigurationStore] stored True
+[2026-08-25 11:04:49Z INFO CredentialManager] GetCredentialProvider
+[2026-08-25 11:04:49Z INFO CredentialManager] Creating type OAuth
+[2026-08-25 11:04:49Z INFO CredentialManager] Creating credential type: OAuth
+[2026-08-25 11:04:49Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:04:49Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:04:49Z INFO HostContext] Well known config file 'RSACredentials': 'D:\profinansy_tests_web\actions-runner\.credentials_rsaparams'
+[2026-08-25 11:04:49Z INFO RSAEncryptedFileKeyManager] Loading RSA key parameters from file D:\profinansy_tests_web\actions-runner\.credentials_rsaparams
+[2026-08-25 11:04:49Z INFO BrokerMessageListener] Attempt to create session.
+[2026-08-25 11:04:49Z INFO BrokerMessageListener] Connecting to the Broker Server...
+[2026-08-25 11:04:49Z INFO ConfigurationStore] HasCredentials()
+[2026-08-25 11:04:49Z INFO ConfigurationStore] stored True
+[2026-08-25 11:04:49Z INFO CredentialManager] GetCredentialProvider
+[2026-08-25 11:04:49Z INFO CredentialManager] Creating type OAuth
+[2026-08-25 11:04:49Z INFO CredentialManager] Creating credential type: OAuth
+[2026-08-25 11:04:49Z INFO RSAEncryptedFileKeyManager] Loading RSA key parameters from file D:\profinansy_tests_web\actions-runner\.credentials_rsaparams
+[2026-08-25 11:04:49Z INFO BrokerMessageListener] VssConnection created
+[2026-08-25 11:04:49Z INFO BrokerMessageListener] Connecting to the Runner server...
+[2026-08-25 11:04:49Z INFO RunnerServer] EstablishVssConnection
+[2026-08-25 11:04:49Z INFO RunnerServer] Establish connection with 100 seconds timeout.
+[2026-08-25 11:04:49Z INFO GitHubActionsService] Starting operation Location.GetConnectionData
+[2026-08-25 11:04:49Z INFO RunnerServer] EstablishVssConnection
+[2026-08-25 11:04:49Z INFO RunnerServer] Establish connection with 60 seconds timeout.
+[2026-08-25 11:04:49Z INFO GitHubActionsService] Starting operation Location.GetConnectionData
+[2026-08-25 11:04:49Z INFO RunnerServer] EstablishVssConnection
+[2026-08-25 11:04:49Z INFO RunnerServer] Establish connection with 60 seconds timeout.
+[2026-08-25 11:04:49Z INFO GitHubActionsService] Starting operation Location.GetConnectionData
+[2026-08-25 11:04:50Z INFO GitHubActionsService] Finished operation Location.GetConnectionData
+[2026-08-25 11:04:50Z INFO GitHubActionsService] Finished operation Location.GetConnectionData
+[2026-08-25 11:04:50Z INFO GitHubActionsService] Finished operation Location.GetConnectionData
+[2026-08-25 11:04:50Z INFO BrokerMessageListener] VssConnection created
+[2026-08-25 11:04:50Z INFO Terminal] WRITE LINE: 
+[2026-08-25 11:04:50Z INFO Terminal] WRITE LINE: 
+[2026-08-25 11:04:50Z INFO RSAEncryptedFileKeyManager] Loading RSA key parameters from file D:\profinansy_tests_web\actions-runner\.credentials_rsaparams
+[2026-08-25 11:04:50Z INFO RSAEncryptedFileKeyManager] Loading RSA key parameters from file D:\profinansy_tests_web\actions-runner\.credentials_rsaparams
+[2026-08-25 11:04:51Z INFO GitHubActionsService] AAD Correlation ID for this token request: Unknown
+[2026-08-25 11:04:52Z INFO BrokerMessageListener] Session created.
+[2026-08-25 11:04:52Z INFO Terminal] WRITE LINE: Current runner version: '2.336.0'
+[2026-08-25 11:04:52Z INFO Terminal] WRITE LINE: 2026-08-25 11:04:52Z: Listening for Jobs
+[2026-08-25 11:04:52Z INFO JobDispatcher] Set runner/worker IPC timeout to 30 seconds.
+[2026-08-25 11:04:52Z INFO BrokerMessageListener] Acknowledging runner request '18ed539d-1fdb-584b-b2bf-51f82c6df653'.
+[2026-08-25 11:04:52Z INFO ConfigurationStore] HasCredentials()
+[2026-08-25 11:04:52Z INFO ConfigurationStore] stored True
+[2026-08-25 11:04:52Z INFO CredentialManager] GetCredentialProvider
+[2026-08-25 11:04:52Z INFO CredentialManager] Creating type OAuth
+[2026-08-25 11:04:52Z INFO CredentialManager] Creating credential type: OAuth
+[2026-08-25 11:04:52Z INFO RSAEncryptedFileKeyManager] Loading RSA key parameters from file D:\profinansy_tests_web\actions-runner\.credentials_rsaparams
+[2026-08-25 11:04:52Z INFO RSAEncryptedFileKeyManager] Loading RSA key parameters from file D:\profinansy_tests_web\actions-runner\.credentials_rsaparams
+[2026-08-25 11:04:52Z INFO RSAEncryptedFileKeyManager] Loading RSA key parameters from file D:\profinansy_tests_web\actions-runner\.credentials_rsaparams
+[2026-08-25 11:04:53Z INFO GitHubActionsService] AAD Correlation ID for this token request: Unknown
+[2026-08-25 11:04:54Z INFO JobDispatcher] Job request 0 for plan b61037b3-76e1-4e5b-9864-6dcdf7de43f7 job 18ed539d-1fdb-584b-b2bf-51f82c6df653 received.
+[2026-08-25 11:04:54Z INFO JobDispatcher] Pull OrchestrationId b61037b3-76e1-4e5b-9864-6dcdf7de43f7.run-tests.__default from JWT claims
+[2026-08-25 11:04:54Z INFO BrokerMessageListener] Received job status event. JobState: Busy
+[2026-08-25 11:04:54Z INFO BrokerMessageListener] _getMessagesTokenSource is already disposed.
+[2026-08-25 11:04:54Z INFO Terminal] WRITE LINE: 2026-08-25 11:04:54Z: Running job: run-tests
+[2026-08-25 11:04:54Z INFO JobDispatcher] Start renew job request 0 for job 18ed539d-1fdb-584b-b2bf-51f82c6df653.
+[2026-08-25 11:04:55Z INFO JobDispatcher] Successfully renew job 18ed539d-1fdb-584b-b2bf-51f82c6df653, job is valid till 8/25/2026 11:15:49 AM
+[2026-08-25 11:04:55Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:04:55Z INFO ProcessInvokerWrapper] Starting process:
+[2026-08-25 11:04:55Z INFO ProcessInvokerWrapper]   File name: 'D:\profinansy_tests_web\actions-runner\bin\Runner.Worker.exe'
+[2026-08-25 11:04:55Z INFO ProcessInvokerWrapper]   Arguments: 'spawnclient 2288 2268'
+[2026-08-25 11:04:55Z INFO ProcessInvokerWrapper]   Working directory: 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:04:55Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2026-08-25 11:04:55Z INFO ProcessInvokerWrapper]   Encoding web name:  ; code page: ''
+[2026-08-25 11:04:55Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'True'
+[2026-08-25 11:04:55Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2026-08-25 11:04:55Z INFO ProcessInvokerWrapper]   Persist current code page: 'False'
+[2026-08-25 11:04:55Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2026-08-25 11:04:55Z INFO ProcessInvokerWrapper]   High priority process: 'True'
+[2026-08-25 11:04:55Z INFO ProcessInvokerWrapper] Process started with process id 29044, waiting for process exit.
+[2026-08-25 11:04:55Z INFO JobDispatcher] Send job request message to worker for job 18ed539d-1fdb-584b-b2bf-51f82c6df653.
+[2026-08-25 11:04:55Z INFO ProcessChannel] Sending message of length 25828, with hash '0c30dbaad4f6a7159e3a397768b643a308dd3bb8d7796d7970f5116eb1d2f71f'
+[2026-08-25 11:04:56Z INFO JobNotification] Entering JobStarted Notification
+[2026-08-25 11:04:56Z INFO JobNotification] Entering StartMonitor

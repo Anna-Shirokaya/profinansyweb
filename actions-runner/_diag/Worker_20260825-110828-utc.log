@@ -1,0 +1,4518 @@
+[2026-08-25 11:08:28Z INFO HostContext] No proxy settings were found based on environmental variables (http_proxy/https_proxy/HTTP_PROXY/HTTPS_PROXY)
+[2026-08-25 11:08:28Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:08:28Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:08:28Z INFO HostContext] Well known config file 'Credentials': 'D:\profinansy_tests_web\actions-runner\.credentials'
+[2026-08-25 11:08:28Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:08:28Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:08:28Z INFO HostContext] Well known config file 'Runner': 'D:\profinansy_tests_web\actions-runner\.runner'
+[2026-08-25 11:08:28Z INFO Worker] Version: 2.336.0
+[2026-08-25 11:08:28Z INFO Worker] Commit: 98aabcd429c4e8402406c56ce2d26387fed3b9ce
+[2026-08-25 11:08:28Z INFO Worker] Culture: en-US
+[2026-08-25 11:08:28Z INFO Worker] UI Culture: en-US
+[2026-08-25 11:08:28Z INFO Worker] Waiting to receive the job message from the channel.
+[2026-08-25 11:08:28Z INFO ProcessChannel] Receiving message of length 25843, with hash '265d44a137235a54784554a9634ddd6ecb3632bd0fccc0ad1955d48e1919608e'
+[2026-08-25 11:08:28Z INFO Worker] Message received.
+[2026-08-25 11:08:28Z INFO Worker] Job message:
+ {
+  "fileTable": [
+    ".github/workflows/tests.yml"
+  ],
+  "mask": [
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    }
+  ],
+  "steps": [
+    {
+      "type": "action",
+      "reference": {
+        "type": "repository",
+        "name": "actions/checkout",
+        "ref": "v4",
+        "repositoryType": "GitHub"
+      },
+      "displayNameToken": {
+        "type": 0,
+        "file": 1,
+        "line": 17,
+        "col": 13,
+        "lit": "Скачивание кода из репозитория"
+      },
+      "contextName": "__actions_checkout",
+      "condition": "success()",
+      "id": "436a6459-f1c2-4a00-a707-813fc6300b42",
+      "name": "__actions_checkout"
+    },
+    {
+      "type": "action",
+      "reference": {
+        "type": "repository",
+        "name": "actions/setup-python",
+        "ref": "v5",
+        "repositoryType": "GitHub"
+      },
+      "displayNameToken": {
+        "type": 0,
+        "file": 1,
+        "line": 20,
+        "col": 13,
+        "lit": "Настройка Python 3.12"
+      },
+      "contextName": "__actions_setup-python",
+      "inputs": {
+        "type": 2,
+        "file": 1,
+        "line": 23,
+        "col": 9,
+        "map": [
+          {
+            "key": {
+              "type": 0,
+              "file": 1,
+              "line": 23,
+              "col": 9,
+              "lit": "python-version"
+            },
+            "value": {
+              "type": 0,
+              "file": 1,
+              "line": 23,
+              "col": 25,
+              "lit": "3.12"
+            }
+          }
+        ]
+      },
+      "condition": "success()",
+      "id": "687487fa-c99d-40be-b75c-7bcd088272b9",
+      "name": "__actions_setup-python"
+    },
+    {
+      "type": "action",
+      "reference": {
+        "type": "script"
+      },
+      "displayNameToken": {
+        "type": 0,
+        "file": 1,
+        "line": 25,
+        "col": 13,
+        "lit": "Установка зависимостей"
+      },
+      "contextName": "__run",
+      "inputs": {
+        "type": 2,
+        "map": [
+          {
+            "key": "script",
+            "value": {
+              "type": 0,
+              "file": 1,
+              "line": 26,
+              "col": 12,
+              "lit": "python -m pip install --upgrade pip\npip install -r requirements.txt\n"
+            }
+          }
+        ]
+      },
+      "condition": "success()",
+      "id": "5cb8d0a2-da68-48a2-82dd-a14df9ea42e8",
+      "name": "__run"
+    },
+    {
+      "type": "action",
+      "reference": {
+        "type": "script"
+      },
+      "displayNameToken": {
+        "type": 0,
+        "file": 1,
+        "line": 30,
+        "col": 13,
+        "lit": "Запуск тестов через Pytest (Параллельно на 2 стендах)"
+      },
+      "contextName": "__run_2",
+      "environment": {
+        "type": 2,
+        "file": 1,
+        "line": 32,
+        "col": 9,
+        "map": [
+          {
+            "key": {
+              "type": 0,
+              "file": 1,
+              "line": 32,
+              "col": 9,
+              "lit": "PROFINANSY_USER_EMAIL"
+            },
+            "value": {
+              "type": 3,
+              "file": 1,
+              "line": 32,
+              "col": 32,
+              "expr": "secrets.PROFINANSY_USER_EMAIL"
+            }
+          },
+          {
+            "key": {
+              "type": 0,
+              "file": 1,
+              "line": 33,
+              "col": 9,
+              "lit": "PROFINANSY_USER_PASSWORD"
+            },
+            "value": {
+              "type": 3,
+              "file": 1,
+              "line": 33,
+              "col": 35,
+              "expr": "secrets.PROFINANSY_USER_PASSWORD"
+            }
+          },
+          {
+            "key": {
+              "type": 0,
+              "file": 1,
+              "line": 34,
+              "col": 9,
+              "lit": "CI"
+            },
+            "value": {
+              "type": 0,
+              "file": 1,
+              "line": 34,
+              "col": 13,
+              "lit": "true"
+            }
+          }
+        ]
+      },
+      "inputs": {
+        "type": 2,
+        "map": [
+          {
+            "key": "script",
+            "value": {
+              "type": 0,
+              "file": 1,
+              "line": 36,
+              "col": 12,
+              "lit": "python -m pytest -n 2 -v --alluredir=allure-results"
+            }
+          }
+        ]
+      },
+      "condition": "success()",
+      "id": "ec072a9d-4456-4536-8d71-4b26feade347",
+      "name": "__run_2"
+    },
+    {
+      "type": "action",
+      "reference": {
+        "type": "repository",
+        "name": "simple-elf/allure-report-action",
+        "ref": "master",
+        "repositoryType": "GitHub"
+      },
+      "displayNameToken": {
+        "type": 0,
+        "file": 1,
+        "line": 38,
+        "col": 13,
+        "lit": "Генерация отчета Allure"
+      },
+      "contextName": "__simple-elf_allure-report-action",
+      "inputs": {
+        "type": 2,
+        "file": 1,
+        "line": 42,
+        "col": 9,
+        "map": [
+          {
+            "key": {
+              "type": 0,
+              "file": 1,
+              "line": 42,
+              "col": 9,
+              "lit": "allure_results"
+            },
+            "value": {
+              "type": 0,
+              "file": 1,
+              "line": 42,
+              "col": 25,
+              "lit": "allure-results"
+            }
+          },
+          {
+            "key": {
+              "type": 0,
+              "file": 1,
+              "line": 43,
+              "col": 9,
+              "lit": "gh_pages"
+            },
+            "value": {
+              "type": 0,
+              "file": 1,
+              "line": 43,
+              "col": 19,
+              "lit": "gh-pages"
+            }
+          },
+          {
+            "key": {
+              "type": 0,
+              "file": 1,
+              "line": 44,
+              "col": 9,
+              "lit": "allure_report"
+            },
+            "value": {
+              "type": 0,
+              "file": 1,
+              "line": 44,
+              "col": 24,
+              "lit": "allure-report"
+            }
+          },
+          {
+            "key": {
+              "type": 0,
+              "file": 1,
+              "line": 45,
+              "col": 9,
+              "lit": "allure_history"
+            },
+            "value": {
+              "type": 0,
+              "file": 1,
+              "line": 45,
+              "col": 25,
+              "lit": "allure-history"
+            }
+          }
+        ]
+      },
+      "condition": "always()",
+      "id": "29c96121-ab5a-4398-acec-84759af87df4",
+      "name": "__simple-elf_allure-report-action"
+    },
+    {
+      "type": "action",
+      "reference": {
+        "type": "repository",
+        "name": "peaceiris/actions-gh-pages",
+        "ref": "v3",
+        "repositoryType": "GitHub"
+      },
+      "displayNameToken": {
+        "type": 0,
+        "file": 1,
+        "line": 47,
+        "col": 13,
+        "lit": "Публикация отчета на GitHub Pages"
+      },
+      "contextName": "__peaceiris_actions-gh-pages",
+      "inputs": {
+        "type": 2,
+        "file": 1,
+        "line": 51,
+        "col": 9,
+        "map": [
+          {
+            "key": {
+              "type": 0,
+              "file": 1,
+              "line": 51,
+              "col": 9,
+              "lit": "github_token"
+            },
+            "value": {
+              "type": 3,
+              "file": 1,
+              "line": 51,
+              "col": 23,
+              "expr": "secrets.GITHUB_TOKEN"
+            }
+          },
+          {
+            "key": {
+              "type": 0,
+              "file": 1,
+              "line": 52,
+              "col": 9,
+              "lit": "publish_branch"
+            },
+            "value": {
+              "type": 0,
+              "file": 1,
+              "line": 52,
+              "col": 25,
+              "lit": "gh-pages"
+            }
+          },
+          {
+            "key": {
+              "type": 0,
+              "file": 1,
+              "line": 53,
+              "col": 9,
+              "lit": "publish_dir"
+            },
+            "value": {
+              "type": 0,
+              "file": 1,
+              "line": 53,
+              "col": 22,
+              "lit": "allure-history"
+            }
+          }
+        ]
+      },
+      "condition": "always()",
+      "id": "2f67efba-7e5f-40b9-aeb0-0e1217189ff2",
+      "name": "__peaceiris_actions-gh-pages"
+    }
+  ],
+  "variables": {
+    "Actions.EnableHttpRedirects": {
+      "value": "true"
+    },
+    "DistributedTask.AddWarningToNode12Action": {
+      "value": "true"
+    },
+    "DistributedTask.AddWarningToNode16Action": {
+      "value": "true"
+    },
+    "DistributedTask.AllowRunnerContainerHooks": {
+      "value": "true"
+    },
+    "DistributedTask.DeprecateStepOutputCommands": {
+      "value": "true"
+    },
+    "DistributedTask.DetailUntarFailure": {
+      "value": "true"
+    },
+    "DistributedTask.EnableCompositeActions": {
+      "value": "true"
+    },
+    "DistributedTask.EnableJobServerQueueTelemetry": {
+      "value": "true"
+    },
+    "DistributedTask.EnhancedAnnotations": {
+      "value": "true"
+    },
+    "DistributedTask.ForceGithubJavascriptActionsToNode16": {
+      "value": "true"
+    },
+    "DistributedTask.ForceGithubJavascriptActionsToNode20": {
+      "value": "true"
+    },
+    "DistributedTask.LogTemplateErrorsAsDebugMessages": {
+      "value": "true"
+    },
+    "DistributedTask.MarkJobAsFailedOnWorkerCrash": {
+      "value": "true"
+    },
+    "DistributedTask.NewActionMetadata": {
+      "value": "true"
+    },
+    "DistributedTask.UploadStepSummary": {
+      "value": "true"
+    },
+    "DistributedTask.UseActionArchiveCache": {
+      "value": "true"
+    },
+    "DistributedTask.UseWhich2": {
+      "value": "true"
+    },
+    "PROFINANSY_USER_EMAIL": {
+      "value": "***",
+      "isSecret": true
+    },
+    "PROFINANSY_USER_PASSWORD": {
+      "value": "***",
+      "isSecret": true
+    },
+    "RunService.FixEmbeddedIssues": {
+      "value": "true"
+    },
+    "actions.runner.requirenode24": {
+      "value": "false"
+    },
+    "actions.runner.usenode24bydefault": {
+      "value": "true"
+    },
+    "actions.runner.warnonnode20": {
+      "value": "true"
+    },
+    "actions_add_check_run_id_to_job_context": {
+      "value": "true"
+    },
+    "actions_batch_action_resolution": {
+      "value": "false"
+    },
+    "actions_container_action_runner_temp": {
+      "value": "true"
+    },
+    "actions_display_helpful_actions_download_errors": {
+      "value": "true"
+    },
+    "actions_runner_allow_artifacts_file": {
+      "value": "false"
+    },
+    "actions_runner_compare_workflow_parser": {
+      "value": "false"
+    },
+    "actions_runner_deprecate_linux_arm32": {
+      "value": "true"
+    },
+    "actions_runner_emit_composite_markers": {
+      "value": "true"
+    },
+    "actions_runner_kill_linux_arm32": {
+      "value": "false"
+    },
+    "actions_runner_node20_removal_date": {
+      "value": ""
+    },
+    "actions_runner_node24_default_date": {
+      "value": "June 16th, 2026"
+    },
+    "actions_self_repository": {
+      "value": "true"
+    },
+    "actions_service_container_command": {
+      "value": "true"
+    },
+    "actions_set_orchestration_id_env_for_actions": {
+      "value": "true"
+    },
+    "actions_skip_retry_complete_job_upon_known_errors": {
+      "value": "true"
+    },
+    "actions_snapshot_preflight_hosted_runner_check": {
+      "value": "false"
+    },
+    "actions_snapshot_preflight_image_gen_pool_check": {
+      "value": "false"
+    },
+    "actions_use_bearer_token_for_codeload": {
+      "value": "false"
+    },
+    "actions_uses_cache_service_v2": {
+      "value": "true"
+    },
+    "github_token": {
+      "value": "***",
+      "isSecret": true
+    },
+    "system.from_run_service": {
+      "value": "true"
+    },
+    "system.github.job": {
+      "value": "run-tests"
+    },
+    "system.github.launch_endpoint": {
+      "value": "https://launch.actions.githubusercontent.com"
+    },
+    "system.github.results_endpoint": {
+      "value": "https://results-receiver.actions.githubusercontent.com/"
+    },
+    "system.github.results_upload_with_sdk": {
+      "value": "true"
+    },
+    "system.github.token": {
+      "value": "***",
+      "isSecret": true
+    },
+    "system.github.token.permissions": {
+      "value": "{\"Contents\":\"write\",\"Metadata\":\"read\"}"
+    },
+    "system.orchestrationId": {
+      "value": "9c803566-11fc-4b10-b288-6152e9530fdf.run-tests.__default"
+    },
+    "system.phaseDisplayName": {
+      "value": "run-tests"
+    },
+    "system.runner.lowdiskspacethreshold": {
+      "value": "100"
+    },
+    "system.runnerEnvironment": {
+      "value": "self-hosted"
+    },
+    "system.runnerGroupName": {
+      "value": "Default"
+    }
+  },
+  "messageType": "RunnerJobRequest",
+  "plan": {
+    "scopeIdentifier": "00000000-0000-0000-0000-000000000000",
+    "planType": "actions",
+    "version": 0,
+    "planId": "9c803566-11fc-4b10-b288-6152e9530fdf",
+    "planGroup": null,
+    "artifactUri": null,
+    "artifactLocation": null,
+    "definition": null,
+    "owner": null
+  },
+  "timeline": {
+    "id": "9c803566-11fc-4b10-b288-6152e9530fdf",
+    "changeId": 0,
+    "location": null
+  },
+  "jobId": "f6610348-1c83-5a16-916a-67f15d5fbea7",
+  "jobDisplayName": "run-tests",
+  "jobName": "__default",
+  "requestId": 0,
+  "lockedUntil": "0001-01-01T00:00:00",
+  "resources": {
+    "endpoints": [
+      {
+        "data": {
+          "ServerId": "",
+          "ServerName": "",
+          "CacheServerUrl": "https://artifactcache.actions.githubusercontent.com/xxU0y6aUoufkT5GIT4EsNGqJKe1Bvf538hGe4ns44DSEXFgj0K/",
+          "FeedStreamUrl": "wss://results-receiver.actions.githubusercontent.com/_ws/ingest.sock",
+          "ResultsServiceUrl": "https://results-receiver.actions.githubusercontent.com/",
+          "PipelinesServiceUrl": "https://pipelinesghubeus26.actions.githubusercontent.com/xxU0y6aUoufkT5GIT4EsNGqJKe1Bvf538hGe4ns44DSEXFgj0K/",
+          "GenerateIdTokenUrl": "",
+          "ConnectivityChecks": "[\"https://broker.actions.githubusercontent.com/health\",\"https://token.actions.githubusercontent.com/ready\",\"https://run.actions.githubusercontent.com/health\"]",
+          "ConnectivityAndDNSChecks": ""
+        },
+        "name": "SystemVssConnection",
+        "url": "https://run-actions-1-azure-eastus.actions.githubusercontent.com/22/",
+        "authorization": {
+          "parameters": {
+            "AccessToken": "***"
+          },
+          "scheme": "OAuth"
+        },
+        "isShared": false,
+        "isReady": true
+      }
+    ]
+  },
+  "contextData": {
+    "github": {
+      "t": 2,
+      "d": [
+        {
+          "k": "ref",
+          "v": "refs/heads/main"
+        },
+        {
+          "k": "sha",
+          "v": "2b1baaf77983bb6535e41f291f6e357058d9ca1c"
+        },
+        {
+          "k": "repository",
+          "v": "Anna-Shirokaya/profinansyweb"
+        },
+        {
+          "k": "repository_owner",
+          "v": "Anna-Shirokaya"
+        },
+        {
+          "k": "repository_owner_id",
+          "v": "137277621"
+        },
+        {
+          "k": "repositoryUrl",
+          "v": "git://github.com/Anna-Shirokaya/profinansyweb.git"
+        },
+        {
+          "k": "run_id",
+          "v": "32840837675"
+        },
+        {
+          "k": "run_number",
+          "v": "26"
+        },
+        {
+          "k": "retention_days",
+          "v": "90"
+        },
+        {
+          "k": "run_attempt",
+          "v": "1"
+        },
+        {
+          "k": "artifact_cache_size_limit",
+          "v": "10"
+        },
+        {
+          "k": "repository_visibility",
+          "v": "public"
+        },
+        {
+          "k": "actor_id",
+          "v": "137277621"
+        },
+        {
+          "k": "actor",
+          "v": "Anna-Shirokaya"
+        },
+        {
+          "k": "workflow",
+          "v": "Прогон UI Автотестов"
+        },
+        {
+          "k": "head_ref",
+          "v": ""
+        },
+        {
+          "k": "base_ref",
+          "v": ""
+        },
+        {
+          "k": "event_name",
+          "v": "push"
+        },
+        {
+          "k": "server_url",
+          "v": "https://github.com"
+        },
+        {
+          "k": "api_url",
+          "v": "https://api.github.com"
+        },
+        {
+          "k": "graphql_url",
+          "v": "https://api.github.com/graphql"
+        },
+        {
+          "k": "ref_name",
+          "v": "main"
+        },
+        {
+          "k": "ref_protected",
+          "v": false
+        },
+        {
+          "k": "ref_type",
+          "v": "branch"
+        },
+        {
+          "k": "secret_source",
+          "v": "Actions"
+        },
+        {
+          "k": "event",
+          "v": {
+            "t": 2,
+            "d": [
+              {
+                "k": "after",
+                "v": "2b1baaf77983bb6535e41f291f6e357058d9ca1c"
+              },
+              {
+                "k": "base_ref",
+                "v": null
+              },
+              {
+                "k": "before",
+                "v": "2e37e6732f1d2c505f450dd06e2f7d0226aef68c"
+              },
+              {
+                "k": "commits",
+                "v": {
+                  "t": 1,
+                  "a": [
+                    {
+                      "t": 2,
+                      "d": [
+                        {
+                          "k": "author",
+                          "v": {
+                            "t": 2,
+                            "d": [
+                              {
+                                "k": "email",
+                                "v": "anton.glovatsky@developertools.com"
+                              },
+                              {
+                                "k": "name",
+                                "v": "Anton"
+                              },
+                              {
+                                "k": "username",
+                                "v": "antonglovatsky"
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "k": "committer",
+                          "v": {
+                            "t": 2,
+                            "d": [
+                              {
+                                "k": "email",
+                                "v": "anton.glovatsky@developertools.com"
+                              },
+                              {
+                                "k": "name",
+                                "v": "Anton"
+                              },
+                              {
+                                "k": "username",
+                                "v": "antonglovatsky"
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "k": "distinct",
+                          "v": true
+                        },
+                        {
+                          "k": "id",
+                          "v": "2b1baaf77983bb6535e41f291f6e357058d9ca1c"
+                        },
+                        {
+                          "k": "message",
+                          "v": "ci: update tests and config"
+                        },
+                        {
+                          "k": "timestamp",
+                          "v": "2026-08-25T13:07:50+02:00"
+                        },
+                        {
+                          "k": "tree_id",
+                          "v": "a91780e5b195ea1a1593029fc6cde8d968075201"
+                        },
+                        {
+                          "k": "url",
+                          "v": "https://github.com/Anna-Shirokaya/profinansyweb/commit/2b1baaf77983bb6535e41f291f6e357058d9ca1c"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              },
+              {
+                "k": "compare",
+                "v": "https://github.com/Anna-Shirokaya/profinansyweb/compare/2e37e6732f1d...2b1baaf77983"
+              },
+              {
+                "k": "created",
+                "v": false
+              },
+              {
+                "k": "deleted",
+                "v": false
+              },
+              {
+                "k": "forced",
+                "v": false
+              },
+              {
+                "k": "head_commit",
+                "v": {
+                  "t": 2,
+                  "d": [
+                    {
+                      "k": "author",
+                      "v": {
+                        "t": 2,
+                        "d": [
+                          {
+                            "k": "email",
+                            "v": "anton.glovatsky@developertools.com"
+                          },
+                          {
+                            "k": "name",
+                            "v": "Anton"
+                          },
+                          {
+                            "k": "username",
+                            "v": "antonglovatsky"
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "k": "committer",
+                      "v": {
+                        "t": 2,
+                        "d": [
+                          {
+                            "k": "email",
+                            "v": "anton.glovatsky@developertools.com"
+                          },
+                          {
+                            "k": "name",
+                            "v": "Anton"
+                          },
+                          {
+                            "k": "username",
+                            "v": "antonglovatsky"
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "k": "distinct",
+                      "v": true
+                    },
+                    {
+                      "k": "id",
+                      "v": "2b1baaf77983bb6535e41f291f6e357058d9ca1c"
+                    },
+                    {
+                      "k": "message",
+                      "v": "ci: update tests and config"
+                    },
+                    {
+                      "k": "timestamp",
+                      "v": "2026-08-25T13:07:50+02:00"
+                    },
+                    {
+                      "k": "tree_id",
+                      "v": "a91780e5b195ea1a1593029fc6cde8d968075201"
+                    },
+                    {
+                      "k": "url",
+                      "v": "https://github.com/Anna-Shirokaya/profinansyweb/commit/2b1baaf77983bb6535e41f291f6e357058d9ca1c"
+                    }
+                  ]
+                }
+              },
+              {
+                "k": "pusher",
+                "v": {
+                  "t": 2,
+                  "d": [
+                    {
+                      "k": "email",
+                      "v": "137277621+Anna-Shirokaya@users.noreply.github.com"
+                    },
+                    {
+                      "k": "name",
+                      "v": "Anna-Shirokaya"
+                    }
+                  ]
+                }
+              },
+              {
+                "k": "ref",
+                "v": "refs/heads/main"
+              },
+              {
+                "k": "repository",
+                "v": {
+                  "t": 2,
+                  "d": [
+                    {
+                      "k": "allow_forking",
+                      "v": true
+                    },
+                    {
+                      "k": "archive_url",
+                      "v": "https://api.github.com/repos/Anna-Shirokaya/profinansyweb/{archive_format}{/ref}"
+                    },
+                    {
+                      "k": "archived",
+                      "v": false
+                    },
+                    {
+                      "k": "assignees_url",
+                      "v": "https://api.github.com/repos/Anna-Shirokaya/profinansyweb/assignees{/user}"
+                    },
+                    {
+                      "k": "blobs_url",
+                      "v": "https://api.github.com/repos/Anna-Shirokaya/profinansyweb/git/blobs{/sha}"
+                    },
+                    {
+                      "k": "branches_url",
+                      "v": "https://api.github.com/repos/Anna-Shirokaya/profinansyweb/branches{/branch}"
+                    },
+                    {
+                      "k": "clone_url",
+                      "v": "https://github.com/Anna-Shirokaya/profinansyweb.git"
+                    },
+                    {
+                      "k": "collaborators_url",
+                      "v": "https://api.github.com/repos/Anna-Shirokaya/profinansyweb/collaborators{/collaborator}"
+                    },
+                    {
+                      "k": "comments_url",
+                      "v": "https://api.github.com/repos/Anna-Shirokaya/profinansyweb/comments{/number}"
+                    },
+                    {
+                      "k": "commits_url",
+                      "v": "https://api.github.com/repos/Anna-Shirokaya/profinansyweb/commits{/sha}"
+                    },
+                    {
+                      "k": "compare_url",
+                      "v": "https://api.github.com/repos/Anna-Shirokaya/profinansyweb/compare/{base}...{head}"
+                    },
+                    {
+                      "k": "contents_url",
+                      "v": "https://api.github.com/repos/Anna-Shirokaya/profinansyweb/contents/{+path}"
+                    },
+                    {
+                      "k": "contributors_url",
+                      "v": "https://api.github.com/repos/Anna-Shirokaya/profinansyweb/contributors"
+                    },
+                    {
+                      "k": "created_at",
+                      "v": 1787144980.0
+                    },
+                    {
+                      "k": "default_branch",
+                      "v": "main"
+                    },
+                    {
+                      "k": "deployments_url",
+                      "v": "https://api.github.com/repos/Anna-Shirokaya/profinansyweb/deployments"
+                    },
+                    {
+                      "k": "description",
+                      "v": null
+                    },
+                    {
+                      "k": "disabled",
+                      "v": false
+                    },
+                    {
+                      "k": "downloads_url",
+                      "v": "https://api.github.com/repos/Anna-Shirokaya/profinansyweb/downloads"
+                    },
+                    {
+                      "k": "events_url",
+                      "v": "https://api.github.com/repos/Anna-Shirokaya/profinansyweb/events"
+                    },
+                    {
+                      "k": "fork",
+                      "v": false
+                    },
+                    {
+                      "k": "forks",
+                      "v": 0.0
+                    },
+                    {
+                      "k": "forks_count",
+                      "v": 0.0
+                    },
+                    {
+                      "k": "forks_url",
+                      "v": "https://api.github.com/repos/Anna-Shirokaya/profinansyweb/forks"
+                    },
+                    {
+                      "k": "full_name",
+                      "v": "Anna-Shirokaya/profinansyweb"
+                    },
+                    {
+                      "k": "git_commits_url",
+                      "v": "https://api.github.com/repos/Anna-Shirokaya/profinansyweb/git/commits{/sha}"
+                    },
+                    {
+                      "k": "git_refs_url",
+                      "v": "https://api.github.com/repos/Anna-Shirokaya/profinansyweb/git/refs{/sha}"
+                    },
+                    {
+                      "k": "git_tags_url",
+                      "v": "https://api.github.com/repos/Anna-Shirokaya/profinansyweb/git/tags{/sha}"
+                    },
+                    {
+                      "k": "git_url",
+                      "v": "git://github.com/Anna-Shirokaya/profinansyweb.git"
+                    },
+                    {
+                      "k": "has_discussions",
+                      "v": false
+                    },
+                    {
+                      "k": "has_downloads",
+                      "v": true
+                    },
+                    {
+                      "k": "has_issues",
+                      "v": true
+                    },
+                    {
+                      "k": "has_pages",
+                      "v": true
+                    },
+                    {
+                      "k": "has_projects",
+                      "v": true
+                    },
+                    {
+                      "k": "has_pull_requests",
+                      "v": true
+                    },
+                    {
+                      "k": "has_wiki",
+                      "v": false
+                    },
+                    {
+                      "k": "homepage",
+                      "v": null
+                    },
+                    {
+                      "k": "hooks_url",
+                      "v": "https://api.github.com/repos/Anna-Shirokaya/profinansyweb/hooks"
+                    },
+                    {
+                      "k": "html_url",
+                      "v": "https://github.com/Anna-Shirokaya/profinansyweb"
+                    },
+                    {
+                      "k": "id",
+                      "v": 1339598509.0
+                    },
+                    {
+                      "k": "is_template",
+                      "v": false
+                    },
+                    {
+                      "k": "issue_comment_url",
+                      "v": "https://api.github.com/repos/Anna-Shirokaya/profinansyweb/issues/comments{/number}"
+                    },
+                    {
+                      "k": "issue_events_url",
+                      "v": "https://api.github.com/repos/Anna-Shirokaya/profinansyweb/issues/events{/number}"
+                    },
+                    {
+                      "k": "issues_url",
+                      "v": "https://api.github.com/repos/Anna-Shirokaya/profinansyweb/issues{/number}"
+                    },
+                    {
+                      "k": "keys_url",
+                      "v": "https://api.github.com/repos/Anna-Shirokaya/profinansyweb/keys{/key_id}"
+                    },
+                    {
+                      "k": "labels_url",
+                      "v": "https://api.github.com/repos/Anna-Shirokaya/profinansyweb/labels{/name}"
+                    },
+                    {
+                      "k": "language",
+                      "v": "Python"
+                    },
+                    {
+                      "k": "languages_url",
+                      "v": "https://api.github.com/repos/Anna-Shirokaya/profinansyweb/languages"
+                    },
+                    {
+                      "k": "license",
+                      "v": null
+                    },
+                    {
+                      "k": "master_branch",
+                      "v": "main"
+                    },
+                    {
+                      "k": "merges_url",
+                      "v": "https://api.github.com/repos/Anna-Shirokaya/profinansyweb/merges"
+                    },
+                    {
+                      "k": "milestones_url",
+                      "v": "https://api.github.com/repos/Anna-Shirokaya/profinansyweb/milestones{/number}"
+                    },
+                    {
+                      "k": "mirror_url",
+                      "v": null
+                    },
+                    {
+                      "k": "name",
+                      "v": "profinansyweb"
+                    },
+                    {
+                      "k": "node_id",
+                      "v": "R_kgDOT9imrQ"
+                    },
+                    {
+                      "k": "notifications_url",
+                      "v": "https://api.github.com/repos/Anna-Shirokaya/profinansyweb/notifications{?since,all,participating}"
+                    },
+                    {
+                      "k": "open_issues",
+                      "v": 0.0
+                    },
+                    {
+                      "k": "open_issues_count",
+                      "v": 0.0
+                    },
+                    {
+                      "k": "owner",
+                      "v": {
+                        "t": 2,
+                        "d": [
+                          {
+                            "k": "avatar_url",
+                            "v": "https://avatars.githubusercontent.com/u/137277621?v=4"
+                          },
+                          {
+                            "k": "email",
+                            "v": "137277621+Anna-Shirokaya@users.noreply.github.com"
+                          },
+                          {
+                            "k": "events_url",
+                            "v": "https://api.github.com/users/Anna-Shirokaya/events{/privacy}"
+                          },
+                          {
+                            "k": "followers_url",
+                            "v": "https://api.github.com/users/Anna-Shirokaya/followers"
+                          },
+                          {
+                            "k": "following_url",
+                            "v": "https://api.github.com/users/Anna-Shirokaya/following{/other_user}"
+                          },
+                          {
+                            "k": "gists_url",
+                            "v": "https://api.github.com/users/Anna-Shirokaya/gists{/gist_id}"
+                          },
+                          {
+                            "k": "gravatar_id",
+                            "v": ""
+                          },
+                          {
+                            "k": "html_url",
+                            "v": "https://github.com/Anna-Shirokaya"
+                          },
+                          {
+                            "k": "id",
+                            "v": 137277621.0
+                          },
+                          {
+                            "k": "login",
+                            "v": "Anna-Shirokaya"
+                          },
+                          {
+                            "k": "name",
+                            "v": "Anna-Shirokaya"
+                          },
+                          {
+                            "k": "node_id",
+                            "v": "U_kgDOCC6wtQ"
+                          },
+                          {
+                            "k": "organizations_url",
+                            "v": "https://api.github.com/users/Anna-Shirokaya/orgs"
+                          },
+                          {
+                            "k": "received_events_url",
+                            "v": "https://api.github.com/users/Anna-Shirokaya/received_events"
+                          },
+                          {
+                            "k": "repos_url",
+                            "v": "https://api.github.com/users/Anna-Shirokaya/repos"
+                          },
+                          {
+                            "k": "site_admin",
+                            "v": false
+                          },
+                          {
+                            "k": "starred_url",
+                            "v": "https://api.github.com/users/Anna-Shirokaya/starred{/owner}{/repo}"
+                          },
+                          {
+                            "k": "subscriptions_url",
+                            "v": "https://api.github.com/users/Anna-Shirokaya/subscriptions"
+                          },
+                          {
+                            "k": "type",
+                            "v": "User"
+                          },
+                          {
+                            "k": "url",
+                            "v": "https://api.github.com/users/Anna-Shirokaya"
+                          },
+                          {
+                            "k": "user_view_type",
+                            "v": "public"
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "k": "private",
+                      "v": false
+                    },
+                    {
+                      "k": "pull_request_creation_policy",
+                      "v": "all"
+                    },
+                    {
+                      "k": "pulls_url",
+                      "v": "https://api.github.com/repos/Anna-Shirokaya/profinansyweb/pulls{/number}"
+                    },
+                    {
+                      "k": "pushed_at",
+                      "v": 1787656156.0
+                    },
+                    {
+                      "k": "releases_url",
+                      "v": "https://api.github.com/repos/Anna-Shirokaya/profinansyweb/releases{/id}"
+                    },
+                    {
+                      "k": "size",
+                      "v": 18740.0
+                    },
+                    {
+                      "k": "ssh_url",
+                      "v": "git@github.com:Anna-Shirokaya/profinansyweb.git"
+                    },
+                    {
+                      "k": "stargazers",
+                      "v": 0.0
+                    },
+                    {
+                      "k": "stargazers_count",
+                      "v": 0.0
+                    },
+                    {
+                      "k": "stargazers_url",
+                      "v": "https://api.github.com/repos/Anna-Shirokaya/profinansyweb/stargazers"
+                    },
+                    {
+                      "k": "statuses_url",
+                      "v": "https://api.github.com/repos/Anna-Shirokaya/profinansyweb/statuses/{sha}"
+                    },
+                    {
+                      "k": "subscribers_url",
+                      "v": "https://api.github.com/repos/Anna-Shirokaya/profinansyweb/subscribers"
+                    },
+                    {
+                      "k": "subscription_url",
+                      "v": "https://api.github.com/repos/Anna-Shirokaya/profinansyweb/subscription"
+                    },
+                    {
+                      "k": "svn_url",
+                      "v": "https://github.com/Anna-Shirokaya/profinansyweb"
+                    },
+                    {
+                      "k": "tags_url",
+                      "v": "https://api.github.com/repos/Anna-Shirokaya/profinansyweb/tags"
+                    },
+                    {
+                      "k": "teams_url",
+                      "v": "https://api.github.com/repos/Anna-Shirokaya/profinansyweb/teams"
+                    },
+                    {
+                      "k": "topics",
+                      "v": {
+                        "t": 1
+                      }
+                    },
+                    {
+                      "k": "trees_url",
+                      "v": "https://api.github.com/repos/Anna-Shirokaya/profinansyweb/git/trees{/sha}"
+                    },
+                    {
+                      "k": "updated_at",
+                      "v": "2026-08-25T11:08:23Z"
+                    },
+                    {
+                      "k": "url",
+                      "v": "https://api.github.com/repos/Anna-Shirokaya/profinansyweb"
+                    },
+                    {
+                      "k": "visibility",
+                      "v": "public"
+                    },
+                    {
+                      "k": "watchers",
+                      "v": 0.0
+                    },
+                    {
+                      "k": "watchers_count",
+                      "v": 0.0
+                    },
+                    {
+                      "k": "web_commit_signoff_required",
+                      "v": false
+                    }
+                  ]
+                }
+              },
+              {
+                "k": "sender",
+                "v": {
+                  "t": 2,
+                  "d": [
+                    {
+                      "k": "avatar_url",
+                      "v": "https://avatars.githubusercontent.com/u/137277621?v=4"
+                    },
+                    {
+                      "k": "events_url",
+                      "v": "https://api.github.com/users/Anna-Shirokaya/events{/privacy}"
+                    },
+                    {
+                      "k": "followers_url",
+                      "v": "https://api.github.com/users/Anna-Shirokaya/followers"
+                    },
+                    {
+                      "k": "following_url",
+                      "v": "https://api.github.com/users/Anna-Shirokaya/following{/other_user}"
+                    },
+                    {
+                      "k": "gists_url",
+                      "v": "https://api.github.com/users/Anna-Shirokaya/gists{/gist_id}"
+                    },
+                    {
+                      "k": "gravatar_id",
+                      "v": ""
+                    },
+                    {
+                      "k": "html_url",
+                      "v": "https://github.com/Anna-Shirokaya"
+                    },
+                    {
+                      "k": "id",
+                      "v": 137277621.0
+                    },
+                    {
+                      "k": "login",
+                      "v": "Anna-Shirokaya"
+                    },
+                    {
+                      "k": "node_id",
+                      "v": "U_kgDOCC6wtQ"
+                    },
+                    {
+                      "k": "organizations_url",
+                      "v": "https://api.github.com/users/Anna-Shirokaya/orgs"
+                    },
+                    {
+                      "k": "received_events_url",
+                      "v": "https://api.github.com/users/Anna-Shirokaya/received_events"
+                    },
+                    {
+                      "k": "repos_url",
+                      "v": "https://api.github.com/users/Anna-Shirokaya/repos"
+                    },
+                    {
+                      "k": "site_admin",
+                      "v": false
+                    },
+                    {
+                      "k": "starred_url",
+                      "v": "https://api.github.com/users/Anna-Shirokaya/starred{/owner}{/repo}"
+                    },
+                    {
+                      "k": "subscriptions_url",
+                      "v": "https://api.github.com/users/Anna-Shirokaya/subscriptions"
+                    },
+                    {
+                      "k": "type",
+                      "v": "User"
+                    },
+                    {
+                      "k": "url",
+                      "v": "https://api.github.com/users/Anna-Shirokaya"
+                    },
+                    {
+                      "k": "user_view_type",
+                      "v": "public"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        {
+          "k": "workflow_ref",
+          "v": "Anna-Shirokaya/profinansyweb/.github/workflows/tests.yml@refs/heads/main"
+        },
+        {
+          "k": "workflow_sha",
+          "v": "2b1baaf77983bb6535e41f291f6e357058d9ca1c"
+        },
+        {
+          "k": "repository_id",
+          "v": "1339598509"
+        },
+        {
+          "k": "triggering_actor",
+          "v": "Anna-Shirokaya"
+        }
+      ]
+    },
+    "inputs": {
+      "t": 2
+    },
+    "job": {
+      "t": 2,
+      "d": [
+        {
+          "k": "check_run_id",
+          "v": 97779744182.0
+        },
+        {
+          "k": "workflow_ref",
+          "v": "Anna-Shirokaya/profinansyweb/.github/workflows/tests.yml@refs/heads/main"
+        },
+        {
+          "k": "workflow_sha",
+          "v": "2b1baaf77983bb6535e41f291f6e357058d9ca1c"
+        },
+        {
+          "k": "workflow_repository",
+          "v": "Anna-Shirokaya/profinansyweb"
+        },
+        {
+          "k": "workflow_file_path",
+          "v": ".github/workflows/tests.yml"
+        }
+      ]
+    },
+    "matrix": null,
+    "needs": {
+      "t": 2
+    },
+    "strategy": {
+      "t": 2,
+      "d": [
+        {
+          "k": "fail-fast",
+          "v": true
+        },
+        {
+          "k": "job-index",
+          "v": 0.0
+        },
+        {
+          "k": "job-total",
+          "v": 1.0
+        },
+        {
+          "k": "max-parallel",
+          "v": 1.0
+        }
+      ]
+    },
+    "vars": {
+      "t": 2
+    }
+  },
+  "billingOwnerId": "U_kgDOCC6wtQ"
+}
+[2026-08-25 11:08:28Z INFO JobRunner] Job ID f6610348-1c83-5a16-916a-67f15d5fbea7
+[2026-08-25 11:08:28Z INFO ConfigurationStore] currentAssemblyLocation: D:\profinansy_tests_web\actions-runner\bin\Runner.Worker.dll
+[2026-08-25 11:08:28Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:08:28Z INFO ConfigurationStore] binPath: D:\profinansy_tests_web\actions-runner\bin
+[2026-08-25 11:08:28Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:08:28Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:08:28Z INFO ConfigurationStore] RootFolder: D:\profinansy_tests_web\actions-runner
+[2026-08-25 11:08:28Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:08:28Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:08:28Z INFO HostContext] Well known config file 'Runner': 'D:\profinansy_tests_web\actions-runner\.runner'
+[2026-08-25 11:08:28Z INFO ConfigurationStore] ConfigFilePath: D:\profinansy_tests_web\actions-runner\.runner
+[2026-08-25 11:08:28Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:08:28Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:08:28Z INFO HostContext] Well known config file 'MigratedRunner': 'D:\profinansy_tests_web\actions-runner\.runner_migrated'
+[2026-08-25 11:08:28Z INFO ConfigurationStore] MigratedConfigFilePath: D:\profinansy_tests_web\actions-runner\.runner_migrated
+[2026-08-25 11:08:28Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:08:28Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:08:28Z INFO HostContext] Well known config file 'Credentials': 'D:\profinansy_tests_web\actions-runner\.credentials'
+[2026-08-25 11:08:28Z INFO ConfigurationStore] CredFilePath: D:\profinansy_tests_web\actions-runner\.credentials
+[2026-08-25 11:08:28Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:08:28Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:08:28Z INFO HostContext] Well known config file 'MigratedCredentials': 'D:\profinansy_tests_web\actions-runner\.credentials_migrated'
+[2026-08-25 11:08:28Z INFO ConfigurationStore] MigratedCredFilePath: D:\profinansy_tests_web\actions-runner\.credentials_migrated
+[2026-08-25 11:08:28Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:08:28Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:08:28Z INFO HostContext] Well known config file 'Service': 'D:\profinansy_tests_web\actions-runner\.service'
+[2026-08-25 11:08:28Z INFO ConfigurationStore] ServiceConfigFilePath: D:\profinansy_tests_web\actions-runner\.service
+[2026-08-25 11:08:28Z INFO ConfigurationStore] Read setting file: 408 chars
+[2026-08-25 11:08:28Z INFO JobRunner] Initializing launch client
+[2026-08-25 11:08:28Z INFO JobServerQueue] Initializing results client
+[2026-08-25 11:08:28Z INFO ResultServer] Creating websocket client ...wss://results-receiver.actions.githubusercontent.com/_ws/ingest.sock
+[2026-08-25 11:08:28Z INFO ResultServer] Attempting to start websocket client with delay 00:00:00.
+[2026-08-25 11:08:29Z INFO JobServerQueue] Start process web console line queue.
+[2026-08-25 11:08:29Z INFO JobServerQueue] Start process file upload queue.
+[2026-08-25 11:08:29Z INFO JobServerQueue] Start results file upload queue.
+[2026-08-25 11:08:29Z INFO JobServerQueue] Starting results-based upload queue...
+[2026-08-25 11:08:29Z INFO JobServerQueue] Start process timeline update queue.
+[2026-08-25 11:08:29Z INFO ExecutionContext] Initializing Job context
+[2026-08-25 11:08:29Z INFO ExecutionContext] Initialize GitHub context
+[2026-08-25 11:08:29Z INFO ExecutionContext] Initialize Env context
+[2026-08-25 11:08:29Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:08:29Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:08:29Z INFO HostContext] Well known directory 'Diag': 'D:\profinansy_tests_web\actions-runner\_diag'
+[2026-08-25 11:08:29Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:08:29Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:08:29Z INFO HostContext] Well known directory 'Diag': 'D:\profinansy_tests_web\actions-runner\_diag'
+[2026-08-25 11:08:29Z INFO JobRunner] Starting the job execution context.
+[2026-08-25 11:08:29Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:08:29Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:08:29Z INFO HostContext] Well known directory 'Work': 'D:\profinansy_tests_web\actions-runner\_work'
+[2026-08-25 11:08:29Z INFO JobRunner] Validating directory permissions for: 'D:\profinansy_tests_web\actions-runner\_work'
+[2026-08-25 11:08:29Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:08:29Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:08:29Z INFO HostContext] Well known directory 'Work': 'D:\profinansy_tests_web\actions-runner\_work'
+[2026-08-25 11:08:29Z INFO HostContext] Well known directory 'Tools': 'D:\profinansy_tests_web\actions-runner\_work\_tool'
+[2026-08-25 11:08:29Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:08:29Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:08:29Z INFO HostContext] Well known directory 'Work': 'D:\profinansy_tests_web\actions-runner\_work'
+[2026-08-25 11:08:29Z INFO HostContext] Well known directory 'Temp': 'D:\profinansy_tests_web\actions-runner\_work\_temp'
+[2026-08-25 11:08:29Z INFO JobRunner] Getting job extension.
+[2026-08-25 11:08:29Z INFO JobRunner] Initialize job. Getting all job steps.
+[2026-08-25 11:08:29Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:08:29Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:08:29Z INFO HostContext] Well known directory 'Diag': 'D:\profinansy_tests_web\actions-runner\_diag'
+[2026-08-25 11:08:29Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:08:29Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:08:29Z INFO HostContext] Well known directory 'Diag': 'D:\profinansy_tests_web\actions-runner\_diag'
+[2026-08-25 11:08:29Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:08:29Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:08:29Z INFO HostContext] Well known config file 'Credentials': 'D:\profinansy_tests_web\actions-runner\.credentials'
+[2026-08-25 11:08:29Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:08:29Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:08:29Z INFO HostContext] Well known config file 'SetupInfo': 'D:\profinansy_tests_web\actions-runner\.setup_info'
+[2026-08-25 11:08:29Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:08:29Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:08:29Z INFO HostContext] Well known directory 'Work': 'D:\profinansy_tests_web\actions-runner\_work'
+[2026-08-25 11:08:29Z INFO PipelineDirectoryManager] Loading tracking config if exists: D:\profinansy_tests_web\actions-runner\_work\_PipelineMapping\Anna-Shirokaya/profinansyweb\PipelineFolder.json
+[2026-08-25 11:08:29Z INFO PipelineDirectoryManager] Updating job run properties.
+[2026-08-25 11:08:29Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:08:29Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:08:29Z INFO HostContext] Well known directory 'Work': 'D:\profinansy_tests_web\actions-runner\_work'
+[2026-08-25 11:08:29Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:08:29Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:08:29Z INFO HostContext] Well known directory 'Work': 'D:\profinansy_tests_web\actions-runner\_work'
+[2026-08-25 11:08:29Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:08:29Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:08:29Z INFO HostContext] Well known directory 'Work': 'D:\profinansy_tests_web\actions-runner\_work'
+[2026-08-25 11:08:29Z INFO JobExtension] Downloading actions
+[2026-08-25 11:08:29Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:08:29Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:08:29Z INFO HostContext] Well known directory 'Work': 'D:\profinansy_tests_web\actions-runner\_work'
+[2026-08-25 11:08:29Z INFO HostContext] Well known directory 'Actions': 'D:\profinansy_tests_web\actions-runner\_work\_actions'
+[2026-08-25 11:08:29Z INFO Worker] Listening for cancel message from the channel.
+[2026-08-25 11:08:29Z INFO Worker] Waiting for the job to complete or for a cancel message from the channel.
+[2026-08-25 11:08:29Z INFO ResultServer] Successfully started websocket client.
+[2026-08-25 11:08:29Z INFO JobServerQueue] Try to append 1 batches web console lines for record '3db6505b-985b-4406-a8ba-1cd742962ea1', success rate: 1/1.
+[2026-08-25 11:08:29Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:08:29Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:08:29Z INFO HostContext] Well known directory 'Work': 'D:\profinansy_tests_web\actions-runner\_work'
+[2026-08-25 11:08:29Z INFO HostContext] Well known directory 'Actions': 'D:\profinansy_tests_web\actions-runner\_work\_actions'
+[2026-08-25 11:08:29Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:08:29Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:08:29Z INFO HostContext] Well known directory 'Work': 'D:\profinansy_tests_web\actions-runner\_work'
+[2026-08-25 11:08:29Z INFO HostContext] Well known directory 'Actions': 'D:\profinansy_tests_web\actions-runner\_work\_actions'
+[2026-08-25 11:08:29Z INFO ActionManager] Save archive 'https://codeload.github.com/actions/checkout/zip/11d5960a326750d5838078e36cf38b85af677262' into D:\profinansy_tests_web\actions-runner\_work\_actions\_temp_ec5c64a2-3d67-4d80-be22-68b6ad0b4deb\7330c314-2107-46d7-9c32-b3e264104143.zip.
+[2026-08-25 11:08:29Z INFO ActionManager] Using Basic token for action archive download.
+[2026-08-25 11:08:29Z INFO JobServerQueue] Try to append 1 batches web console lines for record '3db6505b-985b-4406-a8ba-1cd742962ea1', success rate: 1/1.
+[2026-08-25 11:08:29Z INFO JobServerQueue] Job timeline record has been updated for the first time.
+[2026-08-25 11:08:30Z INFO ActionManager] Request URL: https://codeload.github.com/actions/checkout/zip/11d5960a326750d5838078e36cf38b85af677262 X-GitHub-Request-Id: CBB4:209534:4D88:5C6C:6A8D77E3 Http Status: OK
+[2026-08-25 11:08:30Z INFO ActionManager] Finished getting action repository.
+[2026-08-25 11:08:30Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:08:30Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:08:30Z INFO HostContext] Well known directory 'Work': 'D:\profinansy_tests_web\actions-runner\_work'
+[2026-08-25 11:08:30Z INFO HostContext] Well known directory 'Actions': 'D:\profinansy_tests_web\actions-runner\_work\_actions'
+[2026-08-25 11:08:30Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:08:30Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:08:30Z INFO HostContext] Well known directory 'Work': 'D:\profinansy_tests_web\actions-runner\_work'
+[2026-08-25 11:08:30Z INFO HostContext] Well known directory 'Actions': 'D:\profinansy_tests_web\actions-runner\_work\_actions'
+[2026-08-25 11:08:30Z INFO ActionManager] Save archive 'https://codeload.github.com/actions/setup-python/zip/a26af69be951a213d495a4c3e4e4022e16d87065' into D:\profinansy_tests_web\actions-runner\_work\_actions\_temp_8cf106ec-e2e3-46d5-a05e-0e5ba21827f4\d1ce3495-c695-4f2f-8c4d-2aacdaf72352.zip.
+[2026-08-25 11:08:30Z INFO ActionManager] Using Basic token for action archive download.
+[2026-08-25 11:08:30Z INFO JobServerQueue] Try to append 1 batches web console lines for record '3db6505b-985b-4406-a8ba-1cd742962ea1', success rate: 1/1.
+[2026-08-25 11:08:31Z INFO ActionManager] Request URL: https://codeload.github.com/actions/setup-python/zip/a26af69be951a213d495a4c3e4e4022e16d87065 X-GitHub-Request-Id: CBB5:205F10:311999:47DBF6:6A8D77E4 Http Status: OK
+[2026-08-25 11:08:31Z INFO ActionManager] Finished getting action repository.
+[2026-08-25 11:08:31Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:08:31Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:08:31Z INFO HostContext] Well known directory 'Work': 'D:\profinansy_tests_web\actions-runner\_work'
+[2026-08-25 11:08:31Z INFO HostContext] Well known directory 'Actions': 'D:\profinansy_tests_web\actions-runner\_work\_actions'
+[2026-08-25 11:08:31Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:08:31Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:08:31Z INFO HostContext] Well known directory 'Work': 'D:\profinansy_tests_web\actions-runner\_work'
+[2026-08-25 11:08:31Z INFO HostContext] Well known directory 'Actions': 'D:\profinansy_tests_web\actions-runner\_work\_actions'
+[2026-08-25 11:08:31Z INFO ActionManager] Save archive 'https://codeload.github.com/simple-elf/allure-report-action/zip/385367cde61ac68c2568a117f7579f7f148dc459' into D:\profinansy_tests_web\actions-runner\_work\_actions\_temp_3acf9ab7-281d-4de3-9956-95fa75233dc5\54ee005f-0e3b-4de6-a510-e68c21885996.zip.
+[2026-08-25 11:08:31Z INFO ActionManager] Using Basic token for action archive download.
+[2026-08-25 11:08:31Z INFO JobServerQueue] Try to append 1 batches web console lines for record '3db6505b-985b-4406-a8ba-1cd742962ea1', success rate: 1/1.
+[2026-08-25 11:08:32Z INFO ActionManager] Request URL: https://codeload.github.com/simple-elf/allure-report-action/zip/385367cde61ac68c2568a117f7579f7f148dc459 X-GitHub-Request-Id: E46C:4063C:3968:488A:6A8D77E5 Http Status: OK
+[2026-08-25 11:08:32Z INFO ActionManager] Finished getting action repository.
+[2026-08-25 11:08:32Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:08:32Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:08:32Z INFO HostContext] Well known directory 'Work': 'D:\profinansy_tests_web\actions-runner\_work'
+[2026-08-25 11:08:32Z INFO HostContext] Well known directory 'Actions': 'D:\profinansy_tests_web\actions-runner\_work\_actions'
+[2026-08-25 11:08:32Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:08:32Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:08:32Z INFO HostContext] Well known directory 'Work': 'D:\profinansy_tests_web\actions-runner\_work'
+[2026-08-25 11:08:32Z INFO HostContext] Well known directory 'Actions': 'D:\profinansy_tests_web\actions-runner\_work\_actions'
+[2026-08-25 11:08:32Z INFO ActionManager] Save archive 'https://codeload.github.com/peaceiris/actions-gh-pages/zip/373f7f263a76c20808c831209c920827a82a2847' into D:\profinansy_tests_web\actions-runner\_work\_actions\_temp_2bae3184-052c-45ba-9a83-51caf546d4be\b4a85395-5019-4c0a-af5a-f2062d9052f0.zip.
+[2026-08-25 11:08:32Z INFO ActionManager] Using Basic token for action archive download.
+[2026-08-25 11:08:32Z INFO JobServerQueue] Try to append 1 batches web console lines for record '3db6505b-985b-4406-a8ba-1cd742962ea1', success rate: 1/1.
+[2026-08-25 11:08:33Z INFO ActionManager] Request URL: https://codeload.github.com/peaceiris/actions-gh-pages/zip/373f7f263a76c20808c831209c920827a82a2847 X-GitHub-Request-Id: E46D:205F10:311AD0:47DD62:6A8D77E6 Http Status: OK
+[2026-08-25 11:08:33Z INFO ActionManager] Finished getting action repository.
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Work': 'D:\profinansy_tests_web\actions-runner\_work'
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Actions': 'D:\profinansy_tests_web\actions-runner\_work\_actions'
+[2026-08-25 11:08:33Z INFO ActionManifestManagerLegacy] Load schema file with definitions: [
+  "null",
+  "boolean",
+  "number",
+  "string",
+  "sequence",
+  "mapping",
+  "any",
+  "action-root",
+  "inputs",
+  "input",
+  "outputs",
+  "output-definition",
+  "runs",
+  "container-runs",
+  "container-runs-args",
+  "container-runs-env",
+  "node-runs",
+  "plugin-runs",
+  "composite-runs",
+  "composite-steps",
+  "composite-step",
+  "run-step",
+  "uses-step",
+  "container-runs-context",
+  "output-value",
+  "input-default-context",
+  "non-empty-string",
+  "string-steps-context",
+  "boolean-steps-context",
+  "step-env",
+  "step-if",
+  "step-with"
+]
+[2026-08-25 11:08:33Z INFO ActionManifestManager] Load schema file with definitions: [
+  "null",
+  "boolean",
+  "number",
+  "string",
+  "sequence",
+  "mapping",
+  "any",
+  "action-root",
+  "inputs",
+  "input",
+  "outputs",
+  "output-definition",
+  "runs",
+  "container-runs",
+  "container-runs-args",
+  "container-runs-env",
+  "node-runs",
+  "plugin-runs",
+  "composite-runs",
+  "composite-steps",
+  "composite-step",
+  "run-step",
+  "uses-step",
+  "container-runs-context",
+  "output-value",
+  "input-default-context",
+  "non-empty-string",
+  "string-steps-context",
+  "boolean-steps-context",
+  "step-env",
+  "step-if",
+  "step-with"
+]
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Work': 'D:\profinansy_tests_web\actions-runner\_work'
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Actions': 'D:\profinansy_tests_web\actions-runner\_work\_actions'
+[2026-08-25 11:08:33Z INFO ActionManifestManagerLegacy] Loaded action.yml file: {
+  "name": "Checkout",
+  "description": "Checkout a Git repository at a particular version",
+  "inputs": {
+    "type": 2,
+    "map": [
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 4,
+          "col": 3,
+          "lit": "repository"
+        },
+        "value": {
+          "type": 3,
+          "file": 2,
+          "line": 6,
+          "col": 14,
+          "expr": "github.repository"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 7,
+          "col": 3,
+          "lit": "ref"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 12,
+          "col": 3,
+          "lit": "token"
+        },
+        "value": {
+          "type": 3,
+          "file": 2,
+          "line": 24,
+          "col": 14,
+          "expr": "github.token"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 25,
+          "col": 3,
+          "lit": "ssh-key"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 37,
+          "col": 3,
+          "lit": "ssh-known-hosts"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 42,
+          "col": 3,
+          "lit": "ssh-strict"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 47,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 48,
+          "col": 3,
+          "lit": "ssh-user"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 51,
+          "col": 14,
+          "lit": "git"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 52,
+          "col": 3,
+          "lit": "persist-credentials"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 54,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 55,
+          "col": 3,
+          "lit": "path"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 57,
+          "col": 3,
+          "lit": "clean"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 59,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 60,
+          "col": 3,
+          "lit": "filter"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 64,
+          "col": 14,
+          "lit": ""
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 65,
+          "col": 3,
+          "lit": "sparse-checkout"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 69,
+          "col": 14,
+          "lit": ""
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 70,
+          "col": 3,
+          "lit": "sparse-checkout-cone-mode"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 73,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 74,
+          "col": 3,
+          "lit": "fetch-depth"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 76,
+          "col": 14,
+          "lit": "1"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 77,
+          "col": 3,
+          "lit": "fetch-tags"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 79,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 80,
+          "col": 3,
+          "lit": "show-progress"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 82,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 83,
+          "col": 3,
+          "lit": "lfs"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 85,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 86,
+          "col": 3,
+          "lit": "submodules"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 94,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 95,
+          "col": 3,
+          "lit": "set-safe-directory"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 97,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 98,
+          "col": 3,
+          "lit": "github-server-url"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 101,
+          "col": 3,
+          "lit": "allow-unsafe-pr-checkout"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 109,
+          "col": 14,
+          "lit": "false"
+        }
+      }
+    ]
+  },
+  "execution": {
+    "executionType": "nodeJS",
+    "hasPre": false,
+    "hasPost": true,
+    "script": "dist/index.js",
+    "pre": null,
+    "post": "dist/index.js",
+    "nodeVersion": "node20",
+    "cleanupCondition": "always()",
+    "initCondition": "always()"
+  },
+  "deprecated": null
+}
+[2026-08-25 11:08:33Z INFO ActionManager] Action node.js file: dist/index.js, no more preparation.
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Work': 'D:\profinansy_tests_web\actions-runner\_work'
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Actions': 'D:\profinansy_tests_web\actions-runner\_work\_actions'
+[2026-08-25 11:08:33Z INFO ActionManager] Load action that reference repository from 'D:\profinansy_tests_web\actions-runner\_work\_actions\actions\checkout\v4'
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Work': 'D:\profinansy_tests_web\actions-runner\_work'
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Actions': 'D:\profinansy_tests_web\actions-runner\_work\_actions'
+[2026-08-25 11:08:33Z INFO ActionManifestManagerLegacy] Loaded action.yml file: {
+  "name": "Checkout",
+  "description": "Checkout a Git repository at a particular version",
+  "inputs": {
+    "type": 2,
+    "map": [
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 4,
+          "col": 3,
+          "lit": "repository"
+        },
+        "value": {
+          "type": 3,
+          "file": 2,
+          "line": 6,
+          "col": 14,
+          "expr": "github.repository"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 7,
+          "col": 3,
+          "lit": "ref"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 12,
+          "col": 3,
+          "lit": "token"
+        },
+        "value": {
+          "type": 3,
+          "file": 2,
+          "line": 24,
+          "col": 14,
+          "expr": "github.token"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 25,
+          "col": 3,
+          "lit": "ssh-key"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 37,
+          "col": 3,
+          "lit": "ssh-known-hosts"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 42,
+          "col": 3,
+          "lit": "ssh-strict"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 47,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 48,
+          "col": 3,
+          "lit": "ssh-user"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 51,
+          "col": 14,
+          "lit": "git"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 52,
+          "col": 3,
+          "lit": "persist-credentials"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 54,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 55,
+          "col": 3,
+          "lit": "path"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 57,
+          "col": 3,
+          "lit": "clean"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 59,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 60,
+          "col": 3,
+          "lit": "filter"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 64,
+          "col": 14,
+          "lit": ""
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 65,
+          "col": 3,
+          "lit": "sparse-checkout"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 69,
+          "col": 14,
+          "lit": ""
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 70,
+          "col": 3,
+          "lit": "sparse-checkout-cone-mode"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 73,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 74,
+          "col": 3,
+          "lit": "fetch-depth"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 76,
+          "col": 14,
+          "lit": "1"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 77,
+          "col": 3,
+          "lit": "fetch-tags"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 79,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 80,
+          "col": 3,
+          "lit": "show-progress"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 82,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 83,
+          "col": 3,
+          "lit": "lfs"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 85,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 86,
+          "col": 3,
+          "lit": "submodules"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 94,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 95,
+          "col": 3,
+          "lit": "set-safe-directory"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 97,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 98,
+          "col": 3,
+          "lit": "github-server-url"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 101,
+          "col": 3,
+          "lit": "allow-unsafe-pr-checkout"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 109,
+          "col": 14,
+          "lit": "false"
+        }
+      }
+    ]
+  },
+  "execution": {
+    "executionType": "nodeJS",
+    "hasPre": false,
+    "hasPost": true,
+    "script": "dist/index.js",
+    "pre": null,
+    "post": "dist/index.js",
+    "nodeVersion": "node20",
+    "cleanupCondition": "always()",
+    "initCondition": "always()"
+  },
+  "deprecated": null
+}
+[2026-08-25 11:08:33Z INFO ActionManager] Action pre node.js file: N/A.
+[2026-08-25 11:08:33Z INFO ActionManager] Action node.js file: dist/index.js.
+[2026-08-25 11:08:33Z INFO ActionManager] Action post node.js file: dist/index.js.
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Work': 'D:\profinansy_tests_web\actions-runner\_work'
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Actions': 'D:\profinansy_tests_web\actions-runner\_work\_actions'
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Work': 'D:\profinansy_tests_web\actions-runner\_work'
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Actions': 'D:\profinansy_tests_web\actions-runner\_work\_actions'
+[2026-08-25 11:08:33Z INFO ActionManifestManagerLegacy] Ignore action property author.
+[2026-08-25 11:08:33Z INFO ActionManifestManagerLegacy] Ignore action property branding.
+[2026-08-25 11:08:33Z INFO ActionManifestManagerLegacy] Loaded action.yml file: {
+  "name": "Setup Python",
+  "description": "Set up a specific version of Python and add the command-line tools to the PATH.",
+  "inputs": {
+    "type": 2,
+    "map": [
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 6,
+          "col": 3,
+          "lit": "python-version"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 8,
+          "col": 3,
+          "lit": "python-version-file"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 10,
+          "col": 3,
+          "lit": "cache"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 13,
+          "col": 3,
+          "lit": "architecture"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 15,
+          "col": 3,
+          "lit": "check-latest"
+        },
+        "value": {
+          "type": 0,
+          "file": 3,
+          "line": 17,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 18,
+          "col": 3,
+          "lit": "token"
+        },
+        "value": {
+          "type": 3,
+          "file": 3,
+          "line": 20,
+          "col": 14,
+          "expr": "github.server_url == 'https://github.com' && github.token || ''"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 21,
+          "col": 3,
+          "lit": "cache-dependency-path"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 23,
+          "col": 3,
+          "lit": "update-environment"
+        },
+        "value": {
+          "type": 0,
+          "file": 3,
+          "line": 25,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 26,
+          "col": 3,
+          "lit": "allow-prereleases"
+        },
+        "value": {
+          "type": 0,
+          "file": 3,
+          "line": 28,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 29,
+          "col": 3,
+          "lit": "freethreaded"
+        },
+        "value": {
+          "type": 0,
+          "file": 3,
+          "line": 31,
+          "col": 14,
+          "lit": "false"
+        }
+      }
+    ]
+  },
+  "execution": {
+    "executionType": "nodeJS",
+    "hasPre": false,
+    "hasPost": true,
+    "script": "dist/setup/index.js",
+    "pre": null,
+    "post": "dist/cache-save/index.js",
+    "nodeVersion": "node20",
+    "cleanupCondition": "success()",
+    "initCondition": "always()"
+  },
+  "deprecated": null
+}
+[2026-08-25 11:08:33Z INFO ActionManager] Action node.js file: dist/setup/index.js, no more preparation.
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Work': 'D:\profinansy_tests_web\actions-runner\_work'
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Actions': 'D:\profinansy_tests_web\actions-runner\_work\_actions'
+[2026-08-25 11:08:33Z INFO ActionManager] Load action that reference repository from 'D:\profinansy_tests_web\actions-runner\_work\_actions\actions\setup-python\v5'
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Work': 'D:\profinansy_tests_web\actions-runner\_work'
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Actions': 'D:\profinansy_tests_web\actions-runner\_work\_actions'
+[2026-08-25 11:08:33Z INFO ActionManifestManagerLegacy] Ignore action property author.
+[2026-08-25 11:08:33Z INFO ActionManifestManagerLegacy] Ignore action property branding.
+[2026-08-25 11:08:33Z INFO ActionManifestManagerLegacy] Loaded action.yml file: {
+  "name": "Setup Python",
+  "description": "Set up a specific version of Python and add the command-line tools to the PATH.",
+  "inputs": {
+    "type": 2,
+    "map": [
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 6,
+          "col": 3,
+          "lit": "python-version"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 8,
+          "col": 3,
+          "lit": "python-version-file"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 10,
+          "col": 3,
+          "lit": "cache"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 13,
+          "col": 3,
+          "lit": "architecture"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 15,
+          "col": 3,
+          "lit": "check-latest"
+        },
+        "value": {
+          "type": 0,
+          "file": 3,
+          "line": 17,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 18,
+          "col": 3,
+          "lit": "token"
+        },
+        "value": {
+          "type": 3,
+          "file": 3,
+          "line": 20,
+          "col": 14,
+          "expr": "github.server_url == 'https://github.com' && github.token || ''"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 21,
+          "col": 3,
+          "lit": "cache-dependency-path"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 23,
+          "col": 3,
+          "lit": "update-environment"
+        },
+        "value": {
+          "type": 0,
+          "file": 3,
+          "line": 25,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 26,
+          "col": 3,
+          "lit": "allow-prereleases"
+        },
+        "value": {
+          "type": 0,
+          "file": 3,
+          "line": 28,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 29,
+          "col": 3,
+          "lit": "freethreaded"
+        },
+        "value": {
+          "type": 0,
+          "file": 3,
+          "line": 31,
+          "col": 14,
+          "lit": "false"
+        }
+      }
+    ]
+  },
+  "execution": {
+    "executionType": "nodeJS",
+    "hasPre": false,
+    "hasPost": true,
+    "script": "dist/setup/index.js",
+    "pre": null,
+    "post": "dist/cache-save/index.js",
+    "nodeVersion": "node20",
+    "cleanupCondition": "success()",
+    "initCondition": "always()"
+  },
+  "deprecated": null
+}
+[2026-08-25 11:08:33Z INFO ActionManager] Action pre node.js file: N/A.
+[2026-08-25 11:08:33Z INFO ActionManager] Action node.js file: dist/setup/index.js.
+[2026-08-25 11:08:33Z INFO ActionManager] Action post node.js file: dist/cache-save/index.js.
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Work': 'D:\profinansy_tests_web\actions-runner\_work'
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Actions': 'D:\profinansy_tests_web\actions-runner\_work\_actions'
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Work': 'D:\profinansy_tests_web\actions-runner\_work'
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Actions': 'D:\profinansy_tests_web\actions-runner\_work\_actions'
+[2026-08-25 11:08:33Z INFO ActionManifestManagerLegacy] Ignore action property author.
+[2026-08-25 11:08:33Z INFO ActionManifestManagerLegacy] Ignore action property branding.
+[2026-08-25 11:08:33Z INFO ActionManifestManagerLegacy] Loaded action.yml file: {
+  "name": "Allure Report with history",
+  "description": "Generate Allure Report with history",
+  "inputs": {
+    "type": 2,
+    "map": [
+      {
+        "key": {
+          "type": 0,
+          "file": 4,
+          "line": 8,
+          "col": 3,
+          "lit": "allure_results"
+        },
+        "value": {
+          "type": 0,
+          "file": 4,
+          "line": 11,
+          "col": 14,
+          "lit": "allure-results"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 4,
+          "line": 12,
+          "col": 3,
+          "lit": "allure_report"
+        },
+        "value": {
+          "type": 0,
+          "file": 4,
+          "line": 15,
+          "col": 14,
+          "lit": "allure-report"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 4,
+          "line": 16,
+          "col": 3,
+          "lit": "gh_pages"
+        },
+        "value": {
+          "type": 0,
+          "file": 4,
+          "line": 19,
+          "col": 14,
+          "lit": "gh-pages"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 4,
+          "line": 20,
+          "col": 3,
+          "lit": "allure_history"
+        },
+        "value": {
+          "type": 0,
+          "file": 4,
+          "line": 23,
+          "col": 14,
+          "lit": "allure-history"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 4,
+          "line": 24,
+          "col": 3,
+          "lit": "subfolder"
+        },
+        "value": {
+          "type": 0,
+          "file": 4,
+          "line": 27,
+          "col": 14,
+          "lit": ""
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 4,
+          "line": 28,
+          "col": 3,
+          "lit": "keep_reports"
+        },
+        "value": {
+          "type": 0,
+          "file": 4,
+          "line": 31,
+          "col": 14,
+          "lit": "20"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 4,
+          "line": 32,
+          "col": 3,
+          "lit": "github_run_num"
+        },
+        "value": {
+          "type": 3,
+          "file": 4,
+          "line": 35,
+          "col": 14,
+          "expr": "github.run_number"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 4,
+          "line": 36,
+          "col": 3,
+          "lit": "github_run_id"
+        },
+        "value": {
+          "type": 3,
+          "file": 4,
+          "line": 39,
+          "col": 14,
+          "expr": "github.run_id"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 4,
+          "line": 40,
+          "col": 3,
+          "lit": "github_repo"
+        },
+        "value": {
+          "type": 3,
+          "file": 4,
+          "line": 43,
+          "col": 14,
+          "expr": "github.repository"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 4,
+          "line": 44,
+          "col": 3,
+          "lit": "github_repo_owner"
+        },
+        "value": {
+          "type": 3,
+          "file": 4,
+          "line": 47,
+          "col": 14,
+          "expr": "github.repository_owner"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 4,
+          "line": 48,
+          "col": 3,
+          "lit": "github_tests_repo"
+        },
+        "value": {
+          "type": 3,
+          "file": 4,
+          "line": 51,
+          "col": 14,
+          "expr": "github.repository"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 4,
+          "line": 52,
+          "col": 3,
+          "lit": "report_url"
+        },
+        "value": {
+          "type": 0,
+          "file": 4,
+          "line": 55,
+          "col": 14,
+          "lit": ""
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 4,
+          "line": 56,
+          "col": 3,
+          "lit": "github_server_url"
+        },
+        "value": {
+          "type": 3,
+          "file": 4,
+          "line": 59,
+          "col": 14,
+          "expr": "github.server_url"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 4,
+          "line": 60,
+          "col": 3,
+          "lit": "report_name"
+        },
+        "value": ""
+      }
+    ]
+  },
+  "execution": {
+    "executionType": "container",
+    "hasPre": false,
+    "hasPost": false,
+    "image": "Dockerfile",
+    "entryPoint": null,
+    "arguments": null,
+    "environment": null,
+    "pre": null,
+    "post": null,
+    "cleanupCondition": "always()",
+    "initCondition": "always()"
+  },
+  "deprecated": null
+}
+[2026-08-25 11:08:33Z INFO ActionManager] Action __simple-elf_allure-report-action (29c96121-ab5a-4398-acec-84759af87df4) from repository 'simple-elf/allure-report-action@master' needs to build image 'D:\profinansy_tests_web\actions-runner\_work\_actions\simple-elf\allure-report-action\master\Dockerfile'
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Work': 'D:\profinansy_tests_web\actions-runner\_work'
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Actions': 'D:\profinansy_tests_web\actions-runner\_work\_actions'
+[2026-08-25 11:08:33Z INFO ActionManager] Load action that reference repository from 'D:\profinansy_tests_web\actions-runner\_work\_actions\simple-elf\allure-report-action\master'
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Work': 'D:\profinansy_tests_web\actions-runner\_work'
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Actions': 'D:\profinansy_tests_web\actions-runner\_work\_actions'
+[2026-08-25 11:08:33Z INFO ActionManifestManagerLegacy] Ignore action property author.
+[2026-08-25 11:08:33Z INFO ActionManifestManagerLegacy] Ignore action property branding.
+[2026-08-25 11:08:33Z INFO ActionManifestManagerLegacy] Loaded action.yml file: {
+  "name": "Allure Report with history",
+  "description": "Generate Allure Report with history",
+  "inputs": {
+    "type": 2,
+    "map": [
+      {
+        "key": {
+          "type": 0,
+          "file": 4,
+          "line": 8,
+          "col": 3,
+          "lit": "allure_results"
+        },
+        "value": {
+          "type": 0,
+          "file": 4,
+          "line": 11,
+          "col": 14,
+          "lit": "allure-results"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 4,
+          "line": 12,
+          "col": 3,
+          "lit": "allure_report"
+        },
+        "value": {
+          "type": 0,
+          "file": 4,
+          "line": 15,
+          "col": 14,
+          "lit": "allure-report"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 4,
+          "line": 16,
+          "col": 3,
+          "lit": "gh_pages"
+        },
+        "value": {
+          "type": 0,
+          "file": 4,
+          "line": 19,
+          "col": 14,
+          "lit": "gh-pages"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 4,
+          "line": 20,
+          "col": 3,
+          "lit": "allure_history"
+        },
+        "value": {
+          "type": 0,
+          "file": 4,
+          "line": 23,
+          "col": 14,
+          "lit": "allure-history"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 4,
+          "line": 24,
+          "col": 3,
+          "lit": "subfolder"
+        },
+        "value": {
+          "type": 0,
+          "file": 4,
+          "line": 27,
+          "col": 14,
+          "lit": ""
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 4,
+          "line": 28,
+          "col": 3,
+          "lit": "keep_reports"
+        },
+        "value": {
+          "type": 0,
+          "file": 4,
+          "line": 31,
+          "col": 14,
+          "lit": "20"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 4,
+          "line": 32,
+          "col": 3,
+          "lit": "github_run_num"
+        },
+        "value": {
+          "type": 3,
+          "file": 4,
+          "line": 35,
+          "col": 14,
+          "expr": "github.run_number"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 4,
+          "line": 36,
+          "col": 3,
+          "lit": "github_run_id"
+        },
+        "value": {
+          "type": 3,
+          "file": 4,
+          "line": 39,
+          "col": 14,
+          "expr": "github.run_id"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 4,
+          "line": 40,
+          "col": 3,
+          "lit": "github_repo"
+        },
+        "value": {
+          "type": 3,
+          "file": 4,
+          "line": 43,
+          "col": 14,
+          "expr": "github.repository"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 4,
+          "line": 44,
+          "col": 3,
+          "lit": "github_repo_owner"
+        },
+        "value": {
+          "type": 3,
+          "file": 4,
+          "line": 47,
+          "col": 14,
+          "expr": "github.repository_owner"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 4,
+          "line": 48,
+          "col": 3,
+          "lit": "github_tests_repo"
+        },
+        "value": {
+          "type": 3,
+          "file": 4,
+          "line": 51,
+          "col": 14,
+          "expr": "github.repository"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 4,
+          "line": 52,
+          "col": 3,
+          "lit": "report_url"
+        },
+        "value": {
+          "type": 0,
+          "file": 4,
+          "line": 55,
+          "col": 14,
+          "lit": ""
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 4,
+          "line": 56,
+          "col": 3,
+          "lit": "github_server_url"
+        },
+        "value": {
+          "type": 3,
+          "file": 4,
+          "line": 59,
+          "col": 14,
+          "expr": "github.server_url"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 4,
+          "line": 60,
+          "col": 3,
+          "lit": "report_name"
+        },
+        "value": ""
+      }
+    ]
+  },
+  "execution": {
+    "executionType": "container",
+    "hasPre": false,
+    "hasPost": false,
+    "image": "Dockerfile",
+    "entryPoint": null,
+    "arguments": null,
+    "environment": null,
+    "pre": null,
+    "post": null,
+    "cleanupCondition": "always()",
+    "initCondition": "always()"
+  },
+  "deprecated": null
+}
+[2026-08-25 11:08:33Z INFO ActionManager] Action container Dockerfile/image: Dockerfile.
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Work': 'D:\profinansy_tests_web\actions-runner\_work'
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Actions': 'D:\profinansy_tests_web\actions-runner\_work\_actions'
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Work': 'D:\profinansy_tests_web\actions-runner\_work'
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Actions': 'D:\profinansy_tests_web\actions-runner\_work\_actions'
+[2026-08-25 11:08:33Z INFO ActionManifestManagerLegacy] Ignore action property author.
+[2026-08-25 11:08:33Z INFO ActionManifestManagerLegacy] Ignore action property branding.
+[2026-08-25 11:08:33Z INFO ActionManifestManagerLegacy] Loaded action.yml file: {
+  "name": "GitHub Pages action",
+  "description": "GitHub Actions for GitHub Pages 🚀 Deploy static files and publish your site easily. Static-Site-Generators-friendly.",
+  "inputs": {
+    "type": 2,
+    "map": [
+      {
+        "key": {
+          "type": 0,
+          "file": 5,
+          "line": 11,
+          "col": 3,
+          "lit": "deploy_key"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 5,
+          "line": 14,
+          "col": 3,
+          "lit": "github_token"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 5,
+          "line": 17,
+          "col": 3,
+          "lit": "personal_token"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 5,
+          "line": 20,
+          "col": 3,
+          "lit": "publish_branch"
+        },
+        "value": {
+          "type": 0,
+          "file": 5,
+          "line": 23,
+          "col": 14,
+          "lit": "gh-pages"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 5,
+          "line": 24,
+          "col": 3,
+          "lit": "publish_dir"
+        },
+        "value": {
+          "type": 0,
+          "file": 5,
+          "line": 27,
+          "col": 14,
+          "lit": "public"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 5,
+          "line": 28,
+          "col": 3,
+          "lit": "destination_dir"
+        },
+        "value": {
+          "type": 0,
+          "file": 5,
+          "line": 31,
+          "col": 14,
+          "lit": ""
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 5,
+          "line": 32,
+          "col": 3,
+          "lit": "external_repository"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 5,
+          "line": 35,
+          "col": 3,
+          "lit": "allow_empty_commit"
+        },
+        "value": {
+          "type": 0,
+          "file": 5,
+          "line": 38,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 5,
+          "line": 39,
+          "col": 3,
+          "lit": "keep_files"
+        },
+        "value": {
+          "type": 0,
+          "file": 5,
+          "line": 42,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 5,
+          "line": 43,
+          "col": 3,
+          "lit": "force_orphan"
+        },
+        "value": {
+          "type": 0,
+          "file": 5,
+          "line": 46,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 5,
+          "line": 47,
+          "col": 3,
+          "lit": "user_name"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 5,
+          "line": 50,
+          "col": 3,
+          "lit": "user_email"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 5,
+          "line": 53,
+          "col": 3,
+          "lit": "commit_message"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 5,
+          "line": 56,
+          "col": 3,
+          "lit": "full_commit_message"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 5,
+          "line": 59,
+          "col": 3,
+          "lit": "tag_name"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 5,
+          "line": 62,
+          "col": 3,
+          "lit": "tag_message"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 5,
+          "line": 65,
+          "col": 3,
+          "lit": "enable_jekyll"
+        },
+        "value": {
+          "type": 0,
+          "file": 5,
+          "line": 68,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 5,
+          "line": 69,
+          "col": 3,
+          "lit": "disable_nojekyll"
+        },
+        "value": {
+          "type": 0,
+          "file": 5,
+          "line": 72,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 5,
+          "line": 73,
+          "col": 3,
+          "lit": "cname"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 5,
+          "line": 76,
+          "col": 3,
+          "lit": "exclude_assets"
+        },
+        "value": {
+          "type": 0,
+          "file": 5,
+          "line": 79,
+          "col": 14,
+          "lit": ".github"
+        }
+      }
+    ]
+  },
+  "execution": {
+    "executionType": "nodeJS",
+    "hasPre": false,
+    "hasPost": false,
+    "script": "lib/index.js",
+    "pre": null,
+    "post": null,
+    "nodeVersion": "node16",
+    "cleanupCondition": "always()",
+    "initCondition": "always()"
+  },
+  "deprecated": null
+}
+[2026-08-25 11:08:33Z INFO ActionManager] Action node.js file: lib/index.js, no more preparation.
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Work': 'D:\profinansy_tests_web\actions-runner\_work'
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Actions': 'D:\profinansy_tests_web\actions-runner\_work\_actions'
+[2026-08-25 11:08:33Z INFO ActionManager] Load action that reference repository from 'D:\profinansy_tests_web\actions-runner\_work\_actions\peaceiris\actions-gh-pages\v3'
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Work': 'D:\profinansy_tests_web\actions-runner\_work'
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Actions': 'D:\profinansy_tests_web\actions-runner\_work\_actions'
+[2026-08-25 11:08:33Z INFO ActionManifestManagerLegacy] Ignore action property author.
+[2026-08-25 11:08:33Z INFO ActionManifestManagerLegacy] Ignore action property branding.
+[2026-08-25 11:08:33Z INFO ActionManifestManagerLegacy] Loaded action.yml file: {
+  "name": "GitHub Pages action",
+  "description": "GitHub Actions for GitHub Pages 🚀 Deploy static files and publish your site easily. Static-Site-Generators-friendly.",
+  "inputs": {
+    "type": 2,
+    "map": [
+      {
+        "key": {
+          "type": 0,
+          "file": 5,
+          "line": 11,
+          "col": 3,
+          "lit": "deploy_key"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 5,
+          "line": 14,
+          "col": 3,
+          "lit": "github_token"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 5,
+          "line": 17,
+          "col": 3,
+          "lit": "personal_token"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 5,
+          "line": 20,
+          "col": 3,
+          "lit": "publish_branch"
+        },
+        "value": {
+          "type": 0,
+          "file": 5,
+          "line": 23,
+          "col": 14,
+          "lit": "gh-pages"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 5,
+          "line": 24,
+          "col": 3,
+          "lit": "publish_dir"
+        },
+        "value": {
+          "type": 0,
+          "file": 5,
+          "line": 27,
+          "col": 14,
+          "lit": "public"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 5,
+          "line": 28,
+          "col": 3,
+          "lit": "destination_dir"
+        },
+        "value": {
+          "type": 0,
+          "file": 5,
+          "line": 31,
+          "col": 14,
+          "lit": ""
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 5,
+          "line": 32,
+          "col": 3,
+          "lit": "external_repository"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 5,
+          "line": 35,
+          "col": 3,
+          "lit": "allow_empty_commit"
+        },
+        "value": {
+          "type": 0,
+          "file": 5,
+          "line": 38,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 5,
+          "line": 39,
+          "col": 3,
+          "lit": "keep_files"
+        },
+        "value": {
+          "type": 0,
+          "file": 5,
+          "line": 42,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 5,
+          "line": 43,
+          "col": 3,
+          "lit": "force_orphan"
+        },
+        "value": {
+          "type": 0,
+          "file": 5,
+          "line": 46,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 5,
+          "line": 47,
+          "col": 3,
+          "lit": "user_name"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 5,
+          "line": 50,
+          "col": 3,
+          "lit": "user_email"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 5,
+          "line": 53,
+          "col": 3,
+          "lit": "commit_message"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 5,
+          "line": 56,
+          "col": 3,
+          "lit": "full_commit_message"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 5,
+          "line": 59,
+          "col": 3,
+          "lit": "tag_name"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 5,
+          "line": 62,
+          "col": 3,
+          "lit": "tag_message"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 5,
+          "line": 65,
+          "col": 3,
+          "lit": "enable_jekyll"
+        },
+        "value": {
+          "type": 0,
+          "file": 5,
+          "line": 68,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 5,
+          "line": 69,
+          "col": 3,
+          "lit": "disable_nojekyll"
+        },
+        "value": {
+          "type": 0,
+          "file": 5,
+          "line": 72,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 5,
+          "line": 73,
+          "col": 3,
+          "lit": "cname"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 5,
+          "line": 76,
+          "col": 3,
+          "lit": "exclude_assets"
+        },
+        "value": {
+          "type": 0,
+          "file": 5,
+          "line": 79,
+          "col": 14,
+          "lit": ".github"
+        }
+      }
+    ]
+  },
+  "execution": {
+    "executionType": "nodeJS",
+    "hasPre": false,
+    "hasPost": false,
+    "script": "lib/index.js",
+    "pre": null,
+    "post": null,
+    "nodeVersion": "node16",
+    "cleanupCondition": "always()",
+    "initCondition": "always()"
+  },
+  "deprecated": null
+}
+[2026-08-25 11:08:33Z INFO ActionManager] Action pre node.js file: N/A.
+[2026-08-25 11:08:33Z INFO ActionManager] Action node.js file: lib/index.js.
+[2026-08-25 11:08:33Z INFO ActionManager] Action post node.js file: N/A.
+[2026-08-25 11:08:33Z INFO ActionManager] 1 steps need to build image from 'D:\profinansy_tests_web\actions-runner\_work\_actions\simple-elf\allure-report-action\master\Dockerfile'
+[2026-08-25 11:08:33Z INFO JobExtension] Adding .
+[2026-08-25 11:08:33Z INFO JobExtension] Adding .
+[2026-08-25 11:08:33Z INFO JobExtension] Adding .
+[2026-08-25 11:08:33Z INFO JobExtension] Adding .
+[2026-08-25 11:08:33Z INFO JobExtension] Adding .
+[2026-08-25 11:08:33Z INFO JobExtension] Adding .
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Diag': 'D:\profinansy_tests_web\actions-runner\_diag'
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Diag': 'D:\profinansy_tests_web\actions-runner\_diag'
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Diag': 'D:\profinansy_tests_web\actions-runner\_diag'
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Diag': 'D:\profinansy_tests_web\actions-runner\_diag'
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Diag': 'D:\profinansy_tests_web\actions-runner\_diag'
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Diag': 'D:\profinansy_tests_web\actions-runner\_diag'
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Diag': 'D:\profinansy_tests_web\actions-runner\_diag'
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Diag': 'D:\profinansy_tests_web\actions-runner\_diag'
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Diag': 'D:\profinansy_tests_web\actions-runner\_diag'
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Diag': 'D:\profinansy_tests_web\actions-runner\_diag'
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Diag': 'D:\profinansy_tests_web\actions-runner\_diag'
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Diag': 'D:\profinansy_tests_web\actions-runner\_diag'
+[2026-08-25 11:08:33Z INFO JobExtension] Total accessible running process: 324.
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Work': 'D:\profinansy_tests_web\actions-runner\_work'
+[2026-08-25 11:08:33Z INFO JobExtension] Start checking server connectivity.
+[2026-08-25 11:08:33Z INFO JobExtension] Check server connectivity for https://broker.actions.githubusercontent.com/health.
+[2026-08-25 11:08:33Z INFO JobExtension] Check server connectivity for https://token.actions.githubusercontent.com/ready.
+[2026-08-25 11:08:33Z INFO JobExtension] Check server connectivity for https://run.actions.githubusercontent.com/health.
+[2026-08-25 11:08:33Z INFO JobExtension] Start checking service connectivity in background.
+[2026-08-25 11:08:33Z INFO ExecutionContext] Publish step telemetry for current step {
+  "action": "setup_job",
+  "type": "runner",
+  "stage": "Pre",
+  "stepId": "3db6505b-985b-4406-a8ba-1cd742962ea1",
+  "result": "succeeded",
+  "errorMessages": [],
+  "executionTimeInSeconds": 5,
+  "startTime": "2026-08-25T11:08:29.0635554Z",
+  "finishTime": "2026-08-25T11:08:33.6269959Z"
+}.
+[2026-08-25 11:08:33Z INFO JobRunner] Total job steps: 6.
+[2026-08-25 11:08:33Z INFO JobRunner] Run all job steps.
+[2026-08-25 11:08:33Z INFO DapDebugger] DapDebugger initialized
+[2026-08-25 11:08:33Z INFO StepsRunner] Processing step: DisplayName='Скачивание кода из репозитория'
+[2026-08-25 11:08:33Z INFO StepsRunner] Evaluating: success()
+[2026-08-25 11:08:33Z INFO StepsRunner] Result: true
+[2026-08-25 11:08:33Z INFO StepsRunner] Starting the step.
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Work': 'D:\profinansy_tests_web\actions-runner\_work'
+[2026-08-25 11:08:33Z INFO StepsRunner] Which2: 'chcp'
+[2026-08-25 11:08:33Z INFO StepsRunner] Location: 'C:\Windows\system32\chcp.COM'
+[2026-08-25 11:08:33Z INFO ProcessInvokerWrapper] Starting process:
+[2026-08-25 11:08:33Z INFO ProcessInvokerWrapper]   File name: 'C:\Windows\system32\chcp.COM'
+[2026-08-25 11:08:33Z INFO ProcessInvokerWrapper]   Arguments: '65001'
+[2026-08-25 11:08:33Z INFO ProcessInvokerWrapper]   Working directory: 'D:\profinansy_tests_web\actions-runner\_work'
+[2026-08-25 11:08:33Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2026-08-25 11:08:33Z INFO ProcessInvokerWrapper]   Encoding web name:  ; code page: ''
+[2026-08-25 11:08:33Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2026-08-25 11:08:33Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2026-08-25 11:08:33Z INFO ProcessInvokerWrapper]   Persist current code page: 'True'
+[2026-08-25 11:08:33Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2026-08-25 11:08:33Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2026-08-25 11:08:33Z INFO ProcessInvokerWrapper] Process started with process id 12036, waiting for process exit.
+[2026-08-25 11:08:33Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2026-08-25 11:08:33Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2026-08-25 11:08:33Z INFO ProcessInvokerWrapper] Finished process 12036 with exit code 0, and elapsed time 00:00:00.0154372.
+[2026-08-25 11:08:33Z INFO StepsRunner] Successfully returned to code page 65001 (UTF8)
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Work': 'D:\profinansy_tests_web\actions-runner\_work'
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Actions': 'D:\profinansy_tests_web\actions-runner\_work\_actions'
+[2026-08-25 11:08:33Z INFO ActionManager] Load action that reference repository from 'D:\profinansy_tests_web\actions-runner\_work\_actions\actions\checkout\v4'
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Work': 'D:\profinansy_tests_web\actions-runner\_work'
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Actions': 'D:\profinansy_tests_web\actions-runner\_work\_actions'
+[2026-08-25 11:08:33Z INFO ActionManifestManagerLegacy] Loaded action.yml file: {
+  "name": "Checkout",
+  "description": "Checkout a Git repository at a particular version",
+  "inputs": {
+    "type": 2,
+    "map": [
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 4,
+          "col": 3,
+          "lit": "repository"
+        },
+        "value": {
+          "type": 3,
+          "file": 2,
+          "line": 6,
+          "col": 14,
+          "expr": "github.repository"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 7,
+          "col": 3,
+          "lit": "ref"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 12,
+          "col": 3,
+          "lit": "token"
+        },
+        "value": {
+          "type": 3,
+          "file": 2,
+          "line": 24,
+          "col": 14,
+          "expr": "github.token"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 25,
+          "col": 3,
+          "lit": "ssh-key"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 37,
+          "col": 3,
+          "lit": "ssh-known-hosts"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 42,
+          "col": 3,
+          "lit": "ssh-strict"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 47,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 48,
+          "col": 3,
+          "lit": "ssh-user"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 51,
+          "col": 14,
+          "lit": "git"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 52,
+          "col": 3,
+          "lit": "persist-credentials"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 54,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 55,
+          "col": 3,
+          "lit": "path"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 57,
+          "col": 3,
+          "lit": "clean"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 59,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 60,
+          "col": 3,
+          "lit": "filter"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 64,
+          "col": 14,
+          "lit": ""
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 65,
+          "col": 3,
+          "lit": "sparse-checkout"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 69,
+          "col": 14,
+          "lit": ""
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 70,
+          "col": 3,
+          "lit": "sparse-checkout-cone-mode"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 73,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 74,
+          "col": 3,
+          "lit": "fetch-depth"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 76,
+          "col": 14,
+          "lit": "1"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 77,
+          "col": 3,
+          "lit": "fetch-tags"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 79,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 80,
+          "col": 3,
+          "lit": "show-progress"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 82,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 83,
+          "col": 3,
+          "lit": "lfs"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 85,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 86,
+          "col": 3,
+          "lit": "submodules"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 94,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 95,
+          "col": 3,
+          "lit": "set-safe-directory"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 97,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 98,
+          "col": 3,
+          "lit": "github-server-url"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 101,
+          "col": 3,
+          "lit": "allow-unsafe-pr-checkout"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 109,
+          "col": 14,
+          "lit": "false"
+        }
+      }
+    ]
+  },
+  "execution": {
+    "executionType": "nodeJS",
+    "hasPre": false,
+    "hasPost": true,
+    "script": "dist/index.js",
+    "pre": null,
+    "post": "dist/index.js",
+    "nodeVersion": "node20",
+    "cleanupCondition": "always()",
+    "initCondition": "always()"
+  },
+  "deprecated": null
+}
+[2026-08-25 11:08:33Z INFO ActionManager] Action pre node.js file: N/A.
+[2026-08-25 11:08:33Z INFO ActionManager] Action node.js file: dist/index.js.
+[2026-08-25 11:08:33Z INFO ActionManager] Action post node.js file: dist/index.js.
+[2026-08-25 11:08:33Z INFO ExecutionContext] Reserve record order 8 to 14 for post job actions.
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Diag': 'D:\profinansy_tests_web\actions-runner\_diag'
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Diag': 'D:\profinansy_tests_web\actions-runner\_diag'
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Work': 'D:\profinansy_tests_web\actions-runner\_work'
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Temp': 'D:\profinansy_tests_web\actions-runner\_work\_temp'
+[2026-08-25 11:08:33Z INFO ExecutionContext] Write event payload to D:\profinansy_tests_web\actions-runner\_work\_temp\_github_workflow\event.json
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Work': 'D:\profinansy_tests_web\actions-runner\_work'
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Temp': 'D:\profinansy_tests_web\actions-runner\_work\_temp'
+[2026-08-25 11:08:33Z INFO ExtensionManager] Getting extensions for interface: 'GitHub.Runner.Worker.IFileCommandExtension'
+[2026-08-25 11:08:33Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.AddPathFileCommand, Runner.Worker
+[2026-08-25 11:08:33Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.SetEnvFileCommand, Runner.Worker
+[2026-08-25 11:08:33Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.CreateStepSummaryCommand, Runner.Worker
+[2026-08-25 11:08:33Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.SaveStateFileCommand, Runner.Worker
+[2026-08-25 11:08:33Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.SetOutputFileCommand, Runner.Worker
+[2026-08-25 11:08:33Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.CreateArtifactsFileCommand, Runner.Worker
+[2026-08-25 11:08:33Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.ArtifactsListFileCommand, Runner.Worker
+[2026-08-25 11:08:33Z INFO JobServerQueue] Try to append 1 batches web console lines for record '3db6505b-985b-4406-a8ba-1cd742962ea1', success rate: 1/1.
+[2026-08-25 11:08:33Z INFO ActionManifestManagerLegacy] Input 'repository': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 6,
+  "col": 14,
+  "lit": "Anna-Shirokaya/profinansyweb"
+}
+[2026-08-25 11:08:33Z INFO ActionManifestManagerLegacy] Input 'ref': default value evaluate result: ""
+[2026-08-25 11:08:33Z INFO ActionManifestManagerLegacy] Input 'token': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 24,
+  "col": 14,
+  "lit": "***"
+}
+[2026-08-25 11:08:33Z INFO ActionManifestManagerLegacy] Input 'ssh-key': default value evaluate result: ""
+[2026-08-25 11:08:33Z INFO ActionManifestManagerLegacy] Input 'ssh-known-hosts': default value evaluate result: ""
+[2026-08-25 11:08:33Z INFO ActionManifestManagerLegacy] Input 'ssh-strict': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 47,
+  "col": 14,
+  "lit": "true"
+}
+[2026-08-25 11:08:33Z INFO ActionManifestManagerLegacy] Input 'ssh-user': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 51,
+  "col": 14,
+  "lit": "git"
+}
+[2026-08-25 11:08:33Z INFO ActionManifestManagerLegacy] Input 'persist-credentials': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 54,
+  "col": 14,
+  "lit": "true"
+}
+[2026-08-25 11:08:33Z INFO ActionManifestManagerLegacy] Input 'path': default value evaluate result: ""
+[2026-08-25 11:08:33Z INFO ActionManifestManagerLegacy] Input 'clean': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 59,
+  "col": 14,
+  "lit": "true"
+}
+[2026-08-25 11:08:33Z INFO ActionManifestManagerLegacy] Input 'filter': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 64,
+  "col": 14,
+  "lit": ""
+}
+[2026-08-25 11:08:33Z INFO ActionManifestManagerLegacy] Input 'sparse-checkout': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 69,
+  "col": 14,
+  "lit": ""
+}
+[2026-08-25 11:08:33Z INFO ActionManifestManagerLegacy] Input 'sparse-checkout-cone-mode': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 73,
+  "col": 14,
+  "lit": "true"
+}
+[2026-08-25 11:08:33Z INFO ActionManifestManagerLegacy] Input 'fetch-depth': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 76,
+  "col": 14,
+  "lit": "1"
+}
+[2026-08-25 11:08:33Z INFO ActionManifestManagerLegacy] Input 'fetch-tags': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 79,
+  "col": 14,
+  "lit": "false"
+}
+[2026-08-25 11:08:33Z INFO ActionManifestManagerLegacy] Input 'show-progress': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 82,
+  "col": 14,
+  "lit": "true"
+}
+[2026-08-25 11:08:33Z INFO ActionManifestManagerLegacy] Input 'lfs': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 85,
+  "col": 14,
+  "lit": "false"
+}
+[2026-08-25 11:08:33Z INFO ActionManifestManagerLegacy] Input 'submodules': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 94,
+  "col": 14,
+  "lit": "false"
+}
+[2026-08-25 11:08:33Z INFO ActionManifestManagerLegacy] Input 'set-safe-directory': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 97,
+  "col": 14,
+  "lit": "true"
+}
+[2026-08-25 11:08:33Z INFO ActionManifestManagerLegacy] Input 'github-server-url': default value evaluate result: ""
+[2026-08-25 11:08:33Z INFO ActionManifestManagerLegacy] Input 'allow-unsafe-pr-checkout': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 109,
+  "col": 14,
+  "lit": "false"
+}
+[2026-08-25 11:08:33Z INFO ExtensionManager] Getting extensions for interface: 'GitHub.Runner.Worker.IActionCommandExtension'
+[2026-08-25 11:08:33Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.InternalPluginSetRepoPathCommandExtension, Runner.Worker
+[2026-08-25 11:08:33Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.SetEnvCommandExtension, Runner.Worker
+[2026-08-25 11:08:33Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.SetOutputCommandExtension, Runner.Worker
+[2026-08-25 11:08:33Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.SaveStateCommandExtension, Runner.Worker
+[2026-08-25 11:08:33Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.AddPathCommandExtension, Runner.Worker
+[2026-08-25 11:08:33Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.AddMaskCommandExtension, Runner.Worker
+[2026-08-25 11:08:33Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.AddMatcherCommandExtension, Runner.Worker
+[2026-08-25 11:08:33Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.RemoveMatcherCommandExtension, Runner.Worker
+[2026-08-25 11:08:33Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.WarningCommandExtension, Runner.Worker
+[2026-08-25 11:08:33Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.ErrorCommandExtension, Runner.Worker
+[2026-08-25 11:08:33Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.NoticeCommandExtension, Runner.Worker
+[2026-08-25 11:08:33Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.DebugCommandExtension, Runner.Worker
+[2026-08-25 11:08:33Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.GroupCommandExtension, Runner.Worker
+[2026-08-25 11:08:33Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.EndGroupCommandExtension, Runner.Worker
+[2026-08-25 11:08:33Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.EchoCommandExtension, Runner.Worker
+[2026-08-25 11:08:33Z INFO ActionCommandManager] Register action command extension for command internal-set-repo-path
+[2026-08-25 11:08:33Z INFO ActionCommandManager] Register action command extension for command set-env
+[2026-08-25 11:08:33Z INFO ActionCommandManager] Register action command extension for command set-output
+[2026-08-25 11:08:33Z INFO ActionCommandManager] Register action command extension for command save-state
+[2026-08-25 11:08:33Z INFO ActionCommandManager] Register action command extension for command add-path
+[2026-08-25 11:08:33Z INFO ActionCommandManager] Register action command extension for command add-mask
+[2026-08-25 11:08:33Z INFO ActionCommandManager] Register action command extension for command add-matcher
+[2026-08-25 11:08:33Z INFO ActionCommandManager] Register action command extension for command remove-matcher
+[2026-08-25 11:08:33Z INFO ActionCommandManager] Register action command extension for command warning
+[2026-08-25 11:08:33Z INFO ActionCommandManager] Register action command extension for command error
+[2026-08-25 11:08:33Z INFO ActionCommandManager] Register action command extension for command notice
+[2026-08-25 11:08:33Z INFO ActionCommandManager] Register action command extension for command debug
+[2026-08-25 11:08:33Z INFO ActionCommandManager] Register action command extension for command group
+[2026-08-25 11:08:33Z INFO ActionCommandManager] Register action command extension for command endgroup
+[2026-08-25 11:08:33Z INFO ActionCommandManager] Register action command extension for command echo
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Bin': 'D:\profinansy_tests_web\actions-runner\bin'
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Root': 'D:\profinansy_tests_web\actions-runner'
+[2026-08-25 11:08:33Z INFO HostContext] Well known directory 'Externals': 'D:\profinansy_tests_web\actions-runner\externals'
+[2026-08-25 11:08:33Z INFO ProcessInvokerWrapper] Starting process:
+[2026-08-25 11:08:33Z INFO ProcessInvokerWrapper]   File name: 'D:\profinansy_tests_web\actions-runner\externals\node24\bin\node.exe'
+[2026-08-25 11:08:33Z INFO ProcessInvokerWrapper]   Arguments: '"D:\profinansy_tests_web\actions-runner\_work\_actions\actions\checkout\v4\dist/index.js"'
+[2026-08-25 11:08:33Z INFO ProcessInvokerWrapper]   Working directory: 'D:\profinansy_tests_web\actions-runner\_work\profinansyweb\profinansyweb'
+[2026-08-25 11:08:33Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2026-08-25 11:08:33Z INFO ProcessInvokerWrapper]   Encoding web name: utf-8 ; code page: '65001'
+[2026-08-25 11:08:33Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2026-08-25 11:08:33Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2026-08-25 11:08:33Z INFO ProcessInvokerWrapper]   Persist current code page: 'True'
+[2026-08-25 11:08:33Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2026-08-25 11:08:33Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2026-08-25 11:08:34Z INFO JobServerQueue] Try to append 1 batches web console lines for record '436a6459-f1c2-4a00-a707-813fc6300b42', success rate: 1/1.
+[2026-08-25 11:08:34Z INFO JobServerQueue] Got a step log file to send to results service.
+[2026-08-25 11:08:34Z INFO JobServerQueue] Starting upload of step log file to results service ResultsLog, D:\profinansy_tests_web\actions-runner\_diag\blocks\9c803566-11fc-4b10-b288-6152e9530fdf_3db6505b-985b-4406-a8ba-1cd742962ea1.1
+[2026-08-25 11:08:34Z INFO JobServerQueue] Try to upload 1 log files or attachments, success rate: 1/1.
+[2026-08-25 11:08:34Z INFO ProcessInvokerWrapper] Process started with process id 30260, waiting for process exit.
+[2026-08-25 11:08:34Z INFO AddMaskCommandExtension] Add new secret mask with length of 524
+[2026-08-25 11:08:34Z INFO JobServerQueue] Try to append 1 batches web console lines for record '436a6459-f1c2-4a00-a707-813fc6300b42', success rate: 1/1.
+[2026-08-25 11:08:34Z INFO JobServerQueue] Try to append 1 batches web console lines for record '436a6459-f1c2-4a00-a707-813fc6300b42', success rate: 1/1.
+[2026-08-25 11:08:34Z INFO JobServerQueue] Try to append 1 batches web console lines for record '436a6459-f1c2-4a00-a707-813fc6300b42', success rate: 1/1.
+[2026-08-25 11:08:35Z INFO JobServerQueue] Tried to upload 1 file(s) to results, success rate: 1/1.
+[2026-08-25 11:08:35Z INFO JobServerQueue] Try to append 1 batches web console lines for record '436a6459-f1c2-4a00-a707-813fc6300b42', success rate: 1/1.

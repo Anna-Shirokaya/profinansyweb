@@ -1,0 +1,11 @@
+﻿{
+  "agentId": 21,
+  "agentName": "LAPTOP-63033Q89",
+  "poolId": 1,
+  "poolName": "Default",
+  "serverUrl": "https://pipelinesghubeus26.actions.githubusercontent.com/xxU0y6aUoufkT5GIT4EsNGqJKe1Bvf538hGe4ns44DSEXFgj0K/",
+  "gitHubUrl": "https://github.com/Anna-Shirokaya/profinansyweb",
+  "workFolder": "_work",
+  "useV2Flow": true,
+  "serverUrlV2": "https://broker.actions.githubusercontent.com/"
+}

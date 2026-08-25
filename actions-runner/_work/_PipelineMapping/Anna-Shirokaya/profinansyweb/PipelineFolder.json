@@ -1,0 +1,12 @@
+﻿{
+  "repositoryName": "Anna-Shirokaya/profinansyweb",
+  "pipelineDirectory": "profinansyweb",
+  "workspaceDirectory": "profinansyweb\\profinansyweb",
+  "repositories": {
+    "Anna-Shirokaya/profinansyweb": {
+      "repositoryPath": "profinansyweb\\profinansyweb",
+      "lastRunOn": "08/25/2026 13:04:56 +02:00"
+    }
+  },
+  "lastRunOn": "08/25/2026 13:08:29 +02:00"
+}
