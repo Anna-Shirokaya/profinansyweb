@@ -15,6 +15,13 @@ jobs:
       - name: Скачивание кода из репозитория
         uses: actions/checkout@v4
 
+      # --- ДОБАВЛЕННЫЙ ШАГ УСТАНОВКИ ЗАВИСИМОСТЕЙ ---
+      - name: Установка зависимостей
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      # ----------------------------------------------
+
       - name: Запуск тестов через Pytest
         env:
           PROFINANSY_USER_EMAIL: ${{ secrets.PROFINANSY_USER_EMAIL }}
