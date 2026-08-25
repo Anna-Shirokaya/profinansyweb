@@ -2,10 +2,16 @@ name: Прогон UI Автотестов
 
 on:
   workflow_dispatch:
+  push:
+    branches: [ main, master ]
+
+# Обязательный блок прав для публикации Allure-отчета на GitHub Pages
+permissions:
+  contents: write
 
 jobs:
   run-tests:
-    runs-on: self-hosted
+    runs-on: self-hosted # Запуск на вашем ПК с активным VPN
 
     steps:
     - name: Скачивание кода из репозитория
@@ -21,16 +27,15 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
-    - name: Запуск тестов через Pytest
+    - name: Запуск тестов через Pytest (Параллельно на 2 стендах)
       env:
         PROFINANSY_USER_EMAIL: ${{ secrets.PROFINANSY_USER_EMAIL }}
         PROFINANSY_USER_PASSWORD: ${{ secrets.PROFINANSY_USER_PASSWORD }}
         CI: "true"
-      # ДОБАВЛЕНО: флаг --alluredir для сбора результатов
-      run: python -m pytest -v --alluredir=allure-results
+      # Флаг -n 2 берет ваш параметризованный fixture и пускает QA и Prod в 2 потока
+      run: python -m pytest -n 2 -v --alluredir=allure-results
 
     - name: Генерация отчета Allure
-      # if: always() гарантирует, что отчет соберется, даже если тесты упали (а они у нас падают)
       if: always()
       uses: simple-elf/allure-report-action@master
       with:
