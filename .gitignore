@@ -1,2 +1,21 @@
-actions-runner/
+# Виртуальное окружение
 venv/
+env/
+
+# Кэш и временные файлы Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Отчеты и скриншоты (они генерируются заново)
+allure-results/
+screenshots/actual/
+screenshots/diff/
+# Базовые скриншоты (screenshots/baselines/) оставляем для сравнения
+
+# Файлы сред и секреты
+.env
+
+actions-runner/
+actions-runner/*
+_work/
