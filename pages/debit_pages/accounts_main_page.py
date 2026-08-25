@@ -130,16 +130,25 @@ class AccountsMainPage:
 
     @allure.step("Нажать кнопку 'Создать счёт +'")
     def click_create_account_button(self):
-        """Нажатие кнопки 'Создать счёт' с защитой от re-render в React"""
+        """Нажатие кнопки 'Создать счёт' с защитой от re-render и ожиданием формы"""
         for _ in range(3):
             try:
                 btn = WebDriverWait(self.driver, 10).until(
                     EC.element_to_be_clickable(self.CREATE_ACCOUNT_BTN)
                 )
                 self.driver.execute_script("arguments[0].click();", btn)
+                
+                # КРИТИЧНОЕ ИЗМЕНЕНИЕ: Ждем появления модального окна (шага выбора типа счета)
+                WebDriverWait(self.driver, 10).until(
+                    EC.visibility_of_element_located(self.DEBIT_TYPE_CARD)
+                )
+                print("[DEBIT PAGE] Модальное окно создания счета успешно открыто")
                 break
             except StaleElementReferenceException:
                 continue
+            except TimeoutException:
+                print("[DEBIT PAGE] Ошибка: Модальное окно не открылось после клика!")
+                raise
 
     @allure.step("Выбрать тип счёта 'Дебетовый'")
     def select_debit_account_type(self):

@@ -68,6 +68,9 @@ def driver(request):
     if os.getenv("CI") == "true":
         print("[SETUP] Обнаружена CI-среда. Запуск в фоновом (headless) режиме...")
         options.add_argument("--headless=new")
+        # Эти флаги жизненно важны для React-приложений в фоне
+        options.add_argument("--blink-settings=imagesEnabled=true")
+        options.add_argument("--force-device-scale-factor=1")
         
     browser = webdriver.Chrome(options=options)
     browser.base_url = current_domain
