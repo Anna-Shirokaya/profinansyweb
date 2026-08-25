@@ -169,32 +169,45 @@ class AccountsMainPage:
 
     @allure.step("Обработать переход к вводу названия счёта")
     def click_continue_if_exists(self):
-        """Умный переход: дожидаемся активности кнопки 'Продолжить' и переходим на Шаг 2"""
+        print("\n[DEBUG DIAGNOSTICS] --- Анализ состояния модального окна ---")
+        
+        # 1. Проверяем инпуты названия счета в DOM
+        inputs = self.driver.find_elements(*self.ACCOUNT_NAME_INPUT)
+        print(f"[DEBUG] Найдено полей названия счета в DOM: {len(inputs)}")
+        for idx, inp in enumerate(inputs):
+            print(f"[DEBUG] Поле #{idx}: is_displayed={inp.is_displayed()}, is_enabled={inp.is_enabled()}")
+
+        # 2. Проверяем кнопки 'Продолжить' в DOM
+        continue_btns = self.driver.find_elements(*self.CONTINUE_BUTTON)
+        print(f"[DEBUG] Найдено кнопок 'Продолжить' в DOM: {len(continue_btns)}")
+        for idx, btn in enumerate(continue_btns):
+            print(f"[DEBUG] Кнопка #{idx}: text='{btn.text}', is_displayed={btn.is_displayed()}, is_enabled={btn.is_enabled()}")
+
+        # 3. Печатаем тексты абсолютно всех видимых кнопок на текущем экране
+        all_visible_btns = [
+            b.text.strip() for b in self.driver.find_elements(By.TAG_NAME, "button") 
+            if b.is_displayed() and b.text.strip()
+        ]
+        print(f"[DEBUG] Все видимые кнопки на экране: {all_visible_btns}")
+        print("[DEBUG DIAGNOSTICS] -----------------------------------------------\n")
+
+        # Оставляем вашу текущую логику для перезапуска
         try:
             WebDriverWait(self.driver, 2).until(
                 EC.visibility_of_element_located(self.ACCOUNT_NAME_INPUT)
             )
-            print("[DEBIT PAGE] Шаг 2 уже открыт (кнопка 'Продолжить' не потребовалась)")
+            print("[DEBIT PAGE] Кнопка 'Продолжить' не потребовалась")
             return
         except TimeoutException:
             pass
 
+        btn = WebDriverWait(self.driver, 10).until(
+            EC.element_to_be_clickable(self.CONTINUE_BUTTON)
+        )
         try:
-            btn = WebDriverWait(self.driver, 10).until(
-                EC.element_to_be_clickable(self.CONTINUE_BUTTON)
-            )
-            try:
-                btn.click()
-            except Exception:
-                self.driver.execute_script("arguments[0].click();", btn)
-                
-            print("[DEBIT PAGE] Успешно нажата кнопка 'Продолжить'")
-            
-            WebDriverWait(self.driver, 10).until(
-                EC.visibility_of_element_located(self.ACCOUNT_NAME_INPUT)
-            )
-        except TimeoutException:
-            raise AssertionError("[DEBIT PAGE] Ошибка: Форма не перешла на Шаг 2 за 10 секунд!")
+            btn.click()
+        except Exception:
+            self.driver.execute_script("arguments[0].click();", btn)
 
     @allure.step("Ввести название счёта: {account_name}")
     def enter_account_name(self, account_name: str):

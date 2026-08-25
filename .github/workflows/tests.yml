@@ -27,7 +27,7 @@ jobs:
           PROFINANSY_USER_EMAIL: ${{ secrets.PROFINANSY_USER_EMAIL }}
           PROFINANSY_USER_PASSWORD: ${{ secrets.PROFINANSY_USER_PASSWORD }}
           CI: "true"
-        run: python -m pytest -n 2 -v --alluredir=allure-results
+        run: python -m pytest -v --alluredir=allure-results
 
       - name: Сохранение результатов Allure в артефакты
         if: always()
