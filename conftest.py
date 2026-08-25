@@ -155,3 +155,80 @@ def pytest_runtest_makereport(item, call):
                 name=f"page_source_{rep.when}_failure",
                 attachment_type=AttachmentType.HTML
             )
+
+@pytest.fixture
+def api_logged_in_driver(driver):
+    """
+    Быстрая авторизация через API без прохождения UI-шагов входа.
+    Получает токен через REST API и инжектит его в браузер.
+    """
+    print("\n[AUTH API] Запуск авто-авторизации через API...")
+
+    email = os.getenv("PROFINANSY_USER_EMAIL")
+    password = os.getenv("PROFINANSY_USER_PASSWORD")
+
+    if not email or not password:
+        raise ValueError("[AUTH API ERROR] Переменные PROFINANSY_USER_EMAIL или PROFINANSY_USER_PASSWORD не найдены!")
+
+    base_url = driver.base_url
+    session = requests.Session()
+
+    # 1. Шаг 1: Получение анонимного токена сессии
+    session_url = f"{base_url}/api/auth/session?type=web"
+    res_session = session.get(session_url)
+    res_session.raise_for_status()
+    
+    session_data = res_session.json()
+    anon_token = session_data.get("token") or session_data.get("data", {}).get("token")
+    
+    if not anon_token:
+        raise ValueError(f"[AUTH API ERROR] Не удалось извлечь токен из ответа: {session_data}")
+
+    # 2. Шаг 2: Авторизация с передачей анонимного токена в заголовок
+    login_url = f"{base_url}/api/auth/login"
+    headers = {
+        "token": anon_token,
+        "Content-Type": "application/json"
+    }
+    payload = {
+        "acc_type": "email",
+        "login": email,
+        "pass": password,
+        "web": True
+    }
+
+    res_login = session.post(login_url, json=payload, headers=headers)
+    res_login.raise_for_status()
+    
+    login_data = res_login.json()
+    auth_token = login_data.get("token") or login_data.get("data", {}).get("token") or anon_token
+
+    # 3. Открываем домен (необходимо перед записью в localStorage/Cookie)
+    driver.get(base_url)
+
+    # 4. Прокидываем токен в localStorage браузера
+    driver.execute_script(f"window.localStorage.setItem('token', '{auth_token}');")
+    driver.execute_script(f"window.localStorage.setItem('auth_token', '{auth_token}');")
+
+    # 5. Прокидываем куки сессии
+    for cookie in session.cookies:
+        try:
+            driver.add_cookie({
+                "name": cookie.name,
+                "value": cookie.value,
+                "path": cookie.path or "/",
+            })
+        except Exception:
+            pass
+
+    # 6. Обновляем страницу для применения авторизации
+    driver.refresh()
+
+    # Ждем прогрузки личного кабинета
+    dashboard_page = DashboardPage(driver)
+    WebDriverWait(driver, 15).until(
+        EC.visibility_of_element_located(dashboard_page.MY_MONEY_HEADER)
+    )
+
+    print("[AUTH API] Успешная авторизация! Сессия прокинута в браузер.")
+    yield driver
