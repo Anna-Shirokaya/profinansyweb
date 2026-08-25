@@ -1,0 +1,63 @@
+
+[SETUP] Запуск браузера для окружения: https://profinansy.ru
+
+[AUTH SETUP] Начало автоматической авторизации...
+
+[PAGE] Баннер куки успешно закрыт.
+
+[PAGE] Промо-модальное окно не появилось, продолжаем тест.
+
+[PAGE] Обычный клик перехвачен, используем JavaScript-клик...
+[LOGIN PAGE] Введен email: anna1038@yandex.ru
+[LOGIN PAGE] Введен пароль.
+
+[LOGIN PAGE] Обычный клик перехвачен анимацией подложки, используем JavaScript-клик...
+[AUTH SETUP] Авторизация завершена.
+
+[SETUP LOCAL] Создаем счет для модификации: 'Счет-Редакт-43511'
+[DASHBOARD] Кликнули по меню 'Бюджет' обычным кликом
+[DASHBOARD] Кликнули по активному меню 'Счета' обычным кликом
+[DEBIT PAGE] Текущий URL страницы: https://profinansy.ru/wallet/accounts
+[DEBIT PAGE] Нажата кнопка 'Создать счёт +'
+[DEBIT PAGE] Выбран тип счёта: Дебетовый (обычный клик)
+[DEBIT PAGE] Нажата кнопка 'Продолжить'
+[DEBIT PAGE] Введено название счёта длиной 17 символов
+[DEBIT PAGE] Введен баланс счета: 500
+[DEBIT PAGE] Раскрыли список валют обычным кликом.
+[DEBIT PAGE] Выбрана первая опция списка обычным кликом.
+[DEBIT PAGE] Секция выбора иконки открыта.
+[DEBIT PAGE] Выбрана первая стандартная иконка счета.
+[DEBIT PAGE] Палитра цветов иконки успешно раскрыта.
+[DEBIT PAGE] Выбран первый цвет иконки (серый).
+[DEBIT PAGE] Нажата кнопка 'Сохранить' обычным кликом
+[DEBIT PAGE] Ждем появления карточки с именем: Счет-Редакт-43511...
+[DEBIT PAGE] Карточка 'Счет-Редакт-43511' успешно появилась.
+[DEBIT PAGE] Нажаты 3 точки для счета 'Счет-Редакт-43511'
+
+[TEARDOWN LOCAL] Начинаем автоматическое удаление счета: 'Счет-Редакт-43511'
+[DEBIT PAGE] Текущий URL страницы: https://profinansy.ru/wallet/accounts
+[DEBIT PAGE] Нажаты 3 точки для счета 'Счет-Редакт-43511'
+[TEARDOWN LOCAL] Предупреждение: Не удалось выполнить авто-удаление. Ошибка: Message: 
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff707940d25+155a5]
+	chromedriver!GetHandleVerifier [0x7ff707940d80+15600]
+	chromedriver!(No symbol) [0x7ff70749594d]
+	chromedriver!(No symbol) [0x7ff7074f08e9]
+	chromedriver!(No symbol) [0x7ff7074f0bec]
+	chromedriver!(No symbol) [0x7ff707541437]
+	chromedriver!(No symbol) [0x7ff70753e01b]
+	chromedriver!(No symbol) [0x7ff7074e2e6c]
+	chromedriver!(No symbol) [0x7ff7074e3d93]
+	chromedriver!GetHandleVerifier [0x7ff707f26431+5facb1]
+	chromedriver!GetHandleVerifier [0x7ff707f20a9b+5f531b]
+	chromedriver!GetHandleVerifier [0x7ff707f45865+61a0e5]
+	chromedriver!GetHandleVerifier [0x7ff70795dace+3234e]
+	chromedriver!GetHandleVerifier [0x7ff70796661c+3ae9c]
+	chromedriver!GetHandleVerifier [0x7ff70794ab74+1f3f4]
+	chromedriver!GetHandleVerifier [0x7ff70794ad04+1f584]
+	chromedriver!GetHandleVerifier [0x7ff70792d9d7+2257]
+	KERNEL32!BaseThreadInitThunk [0x7ff8fd31e957+17]
+	ntdll!RtlUserThreadStart [0x7ff8fe66ad6c+2c]
+
+
+[TEARDOWN] Закрытие браузера для https://profinansy.ru...
