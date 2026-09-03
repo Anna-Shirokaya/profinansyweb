@@ -1,6 +1,7 @@
 import time
 import allure
 import os
+import re
 from PIL import Image, ImageChops
 
 from selenium.webdriver.common.by import By
@@ -24,13 +25,12 @@ class AccountsMainPage:
         self.CONTINUE_BUTTON = (By.XPATH, "//button[contains(., 'Продолжить')] | //*[text()='Продолжить']")
         self.ACCOUNT_NAME_INPUT = (By.XPATH, "//input[@name='title' or @placeholder='Введите название']")
         self.BALANCE_INPUT = (By.XPATH, "//input[@name='balance']")
-        # Локатор кликабельного контейнера поля валюты (соседний div после label)
+        
         self.CURRENCY_SELECT_TRIGGER = (
             By.XPATH,
             "//*[contains(string(), 'Валюта счета')]/following::input[1] | "
             "//input[@placeholder='Выберите валюту из списка']"
         )
-        # Динамический локатор пункта валюты в выпадающем списке <ul>
         self.CURRENCY_OPTION_BY_NAME = lambda name: (
             By.XPATH, 
             f"//li[@role='button' and text()='{name}'] | //ul[contains(@class, 'Selectstyled__List')]//li[text()='{name}']"
@@ -57,42 +57,61 @@ class AccountsMainPage:
         self.ALL_ACCOUNTS_BTN = (By.XPATH, "//div[contains(@class, 'ButtonsBlock')]//button[1]")
         self.ALL_ACCOUNTS_HEADER = (By.XPATH, "//*[text()='Все счета']")
         
-        # Динамический локатор строки счета в модальном окне "Все счета"
         self.MODAL_ACCOUNT_CARD_BY_NAME = lambda name: (
             By.XPATH, f"//span[contains(text(), '{name}')]/ancestor::div[contains(@class, 'AccountListCardstyled__Root')][1]"
         )
 
-        # ЛОКАТОРЫ при тапе на 3 точки на карточке счета
+        # ЛОКАТОРЫ УДАЛЕНИЯ И НАСТРОЙКИ
         self.DELETE_DROPDOWN_ITEM = (By.XPATH, "//button[@class='removeBtn'] | //*[text()='Удалить счет']")
         self.BTN_EDIT_IN_DROPDOWN = (
-        By.XPATH, 
-        "//button[contains(., 'Настроить счёт') or contains(., 'Настроить счет')]"
-    )
+            By.XPATH, 
+            "//button[contains(., 'Настроить счёт') or contains(., 'Настроить счет')]"
+        )
         self.CONFIRM_DELETE_FIRST_BTN = (By.XPATH, "//button[contains(., 'Удалить счет')]")
         self.DELETE_CHECKBOX_1 = (By.XPATH, "//*[contains(text(), 'Я понимаю, что удаление счета')]")
         self.DELETE_CHECKBOX_2 = (By.XPATH, "//*[contains(text(), 'Я осознаю, что мое решение')]")
         self.CONFIRM_DELETE_FINAL_BTN = (By.XPATH, "//div[contains(@class, 'DeleteAccountModal')]//button[contains(., 'Удалить счет')] | (//button[contains(., 'Удалить счет')])[last()]")
 
-        # Универсальный локатор крестиков во всех всплывающих окнах и модалках
-        self.PROMO_CLOSE_BTN = (
-        By.XPATH,
-        "//*[contains(@class, 'close') or contains(@class, 'Close') or @aria-label='Закрыть' or @aria-label='Close'] | "
-        "//*[contains(@class, 'modal') or contains(@class, 'Modal') or contains(@class, 'popup') or contains(@class, 'overlay')]//*[self::button or self::div or self::span][.//svg or contains(@class, 'close') or contains(@class, 'Close')]"
-    )
-
-        # Точечные динамические локаторы карточки и её трех точек
-        self.ACCOUNT_CARD_BY_NAME = lambda name: (
-            By.XPATH, f"//p[contains(text(), '{name}')]/ancestor::div[contains(@class, 'AccountCardstyled__Root')][1]"
-        )
+        # КАРТОЧКИ И МЕНЮ
+        
         self.THREE_DOTS_BY_NAME = lambda name: (
             By.XPATH, f"//p[contains(text(), '{name}')]/ancestor::div[contains(@class, 'AccountCardstyled__Root')][1]//button[@aria-haspopup='dialog']"
         )
 
-        # Универсальный локатор закрытия баннеров
         self.PROMO_CLOSE_BTN = (
             By.XPATH,
             "//button[@aria-label='Закрыть' or @aria-label='Close'] | "
             "//*[contains(@class, 'Modal') or contains(@class, 'modal') or contains(@class, 'popup') or contains(@class, 'overlay')]//button[.//svg or contains(@class, 'close') or contains(@class, 'Close')]"
+        )
+
+        # Динамические локаторы табов и карточек счетов
+        self.TAB_BUTTON_BY_NAME = lambda tab_name: (
+            By.XPATH, 
+            f"//button[./span[contains(text(), '{tab_name}')]] | //button[contains(., '{tab_name}')]"
+        )
+
+        self.ACCOUNT_CARD_BY_NAME = lambda name: (
+            By.XPATH, 
+            f"//*[contains(normalize-space(.), '{name}')]"
+            f"/ancestor::div[contains(@class, 'PortfolioCardstyled') or contains(@class, 'AccountCardstyled') or contains(@class, 'Card')][1]"
+        )
+        
+        self.ACCOUNT_CARD_CONTAINER_BY_NAME = lambda account_name: (
+            By.XPATH, 
+            f"//*[contains(text(), '{account_name}')]/ancestor::div[contains(@class, 'PortfolioCard') or contains(@class, 'AccountCard') or contains(@class, 'Card') or contains(@class, 'card')][1]"
+        )
+        
+        # Внутренний локатор блока баланса внутри карточки
+        self.CARD_BALANCE_SUB_ELEMENT = (
+            By.XPATH, 
+            ".//p[contains(@class, 'Amount')] | .//*[contains(@class, 'BalanceMain')]"
+        )
+
+        # Локатор кнопки-триггера суммы в блоке "Всего денег"
+        self.TOTAL_MONEY_BALANCE = (
+            By.XPATH,
+            "//*[contains(@class, 'TotalMoneyRow')]//button | "
+            "//*[contains(text(), 'Всего денег')]/following-sibling::*[1]"
         )
 
     def is_page_loaded(self) -> bool:
@@ -138,7 +157,6 @@ class AccountsMainPage:
                 )
                 self.driver.execute_script("arguments[0].click();", btn)
                 
-                # КРИТИЧНОЕ ИЗМЕНЕНИЕ: Ждем появления модального окна (шага выбора типа счета)
                 WebDriverWait(self.driver, 10).until(
                     EC.visibility_of_element_located(self.DEBIT_TYPE_CARD)
                 )
@@ -171,19 +189,16 @@ class AccountsMainPage:
     def click_continue_if_exists(self):
         print("\n[DEBUG DIAGNOSTICS] --- Анализ состояния модального окна ---")
         
-        # 1. Проверяем инпуты названия счета в DOM
         inputs = self.driver.find_elements(*self.ACCOUNT_NAME_INPUT)
         print(f"[DEBUG] Найдено полей названия счета в DOM: {len(inputs)}")
         for idx, inp in enumerate(inputs):
             print(f"[DEBUG] Поле #{idx}: is_displayed={inp.is_displayed()}, is_enabled={inp.is_enabled()}")
 
-        # 2. Проверяем кнопки 'Продолжить' в DOM
         continue_btns = self.driver.find_elements(*self.CONTINUE_BUTTON)
         print(f"[DEBUG] Найдено кнопок 'Продолжить' в DOM: {len(continue_btns)}")
         for idx, btn in enumerate(continue_btns):
             print(f"[DEBUG] Кнопка #{idx}: text='{btn.text}', is_displayed={btn.is_displayed()}, is_enabled={btn.is_enabled()}")
 
-        # 3. Печатаем тексты абсолютно всех видимых кнопок на текущем экране
         all_visible_btns = [
             b.text.strip() for b in self.driver.find_elements(By.TAG_NAME, "button") 
             if b.is_displayed() and b.text.strip()
@@ -191,7 +206,6 @@ class AccountsMainPage:
         print(f"[DEBUG] Все видимые кнопки на экране: {all_visible_btns}")
         print("[DEBUG DIAGNOSTICS] -----------------------------------------------\n")
 
-        # Оставляем вашу текущую логику для перезапуска
         try:
             WebDriverWait(self.driver, 2).until(
                 EC.visibility_of_element_located(self.ACCOUNT_NAME_INPUT)
@@ -275,10 +289,8 @@ class AccountsMainPage:
                 print("[DEBUG] Поле найдено. Выполняем скролл к нему...")
                 self.driver.execute_script("arguments[0].scrollIntoView({block: 'center'});", currency_trigger)
                 
-                print("[DEBUG] ⏳ Пауза 2 сек: Посмотрите на экран. Видно ли поле? Перекрыто ли оно чем-то?")
                 time.sleep(2)
                 
-                print("[DEBUG] Пробуем кликнуть по полю для открытия списка...")
                 try:
                     currency_trigger.click()
                     print("[DEBUG] Успешно выполнен обычный Selenium-клик.")
@@ -287,11 +299,10 @@ class AccountsMainPage:
                     self.driver.execute_script("arguments[0].click();", currency_trigger)
                     print("[DEBUG] JS-клик выполнен.")
                 
-                print("[DEBUG] ⏳ Пауза 2 сек: Посмотрите на экран. Открылся ли выпадающий список?")
                 time.sleep(2)
                 break
             except StaleElementReferenceException:
-                print("[DEBUG] Элемент устарел (StaleElementReferenceException) из-за перерендера. Повторяем поиск...")
+                print("[DEBUG] Элемент устарел из-за перерендера. Повторяем поиск...")
                 time.sleep(1)
                 if attempt == 2:
                     raise
@@ -301,14 +312,12 @@ class AccountsMainPage:
 
         print(f"[DEBUG] Ищем пункт с названием валюты '{currency_name}'...")
         try:
-            # Используем presence вместо visibility на случай, если список перекрыт другим невидимым слоем
             option = WebDriverWait(self.driver, 10).until(
                 EC.presence_of_element_located(self.CURRENCY_OPTION_BY_NAME(currency_name))
             )
             print("[DEBUG] Пункт валюты найден в коде. Скроллим к нему...")
             self.driver.execute_script("arguments[0].scrollIntoView({block: 'nearest'});", option)
             
-            print("[DEBUG] ⏳ Пауза 1 сек перед кликом по валюте...")
             time.sleep(1)
             
             try:
@@ -358,7 +367,7 @@ class AccountsMainPage:
 
     @allure.step("Выбрать самую первую иконку из стандартной секции 'Иконки'")
     def select_first_regular_icon(self):
-        """Находит и кликает по первой иконке (лапке) в стандартной вкладке оформления"""
+        """Находит и кликает по первой иконке в стандартной вкладке оформления"""
         icon = WebDriverWait(self.driver, 10).until(
             EC.element_to_be_clickable(self.FIRST_REGULAR_ICON)
         )
@@ -384,7 +393,7 @@ class AccountsMainPage:
 
     @allure.step("Выбрать первый (серый) цвет из палитры")
     def select_first_color(self):
-        """Кликает по первому доступному квадрату цвета на основе стабильного role='button'"""
+        """Кликает по первому доступному квадрату цвета"""
         color_square = WebDriverWait(self.driver, 10).until(
             EC.element_to_be_clickable(self.FIRST_COLOR_OPTION)
         )
@@ -402,23 +411,21 @@ class AccountsMainPage:
             btn.click()
             print("[DEBIT PAGE] Нажата кнопка 'Сохранить' обычным кликом")
         except Exception:
-            print("[DEBIT PAGE] Обычный клик заблокирован, используем JavaScript-клик для 'Сохранить'...")
+            print("[DEBIT PAGE] Использование JS-клика для кнопки 'Сохранить'...")
             self.driver.execute_script("arguments[0].click();", btn)
 
     @allure.step("Нажать 'Настроить счет' в выпадающем меню")
     def click_edit_account_in_dropdown(self):
         """Ожидает появления выпадающего меню и нажимает видимую кнопку 'Настроить счет'"""
-        # Ждем присутствия всех таких кнопок в коде страницы
         buttons = WebDriverWait(self.driver, 10).until(
             EC.presence_of_all_elements_located(self.BTN_EDIT_IN_DROPDOWN)
         )
         
         clicked = False
         for btn in buttons:
-            # Ищем именно ту кнопку, меню которой мы только что открыли
             if btn.is_displayed():
                 self.driver.execute_script("arguments[0].scrollIntoView({block: 'center'});", btn)
-                time.sleep(0.3)  # Пауза на окончание анимации появления меню
+                time.sleep(0.3)
                 try:
                     btn.click()
                 except Exception:
@@ -429,7 +436,7 @@ class AccountsMainPage:
                 break
                 
         if not clicked:
-            raise TimeoutException("Ни одна кнопка 'Настроить счёт' не стала видимой. Возможно, меню не раскрылось.")
+            raise TimeoutException("Ни одна кнопка 'Настроить счёт' не стала видимой.")
 
     # === МЕТОДЫ ВАЛИДАЦИИ И ОШИБОК ===
 
@@ -482,7 +489,6 @@ class AccountsMainPage:
         )
         try:
             card_container = self.driver.find_element(By.XPATH, card_container_xpath)
-            print(f"[DEBIT PAGE] Родительский контейнер для карточки '{name}' успешно найден.")
             
             with allure.step("Проверить тип счета 'Дебетовый'"):
                 card_type = card_container.find_element(By.XPATH, ".//*[text()='Дебетовый']")
@@ -497,11 +503,10 @@ class AccountsMainPage:
 
     @allure.step("Проверить, что в карточке '{name}' отображается баланс '150,78 $', тип 'Дебетовый' и выбранная иконка с атрибутом alt")
     def check_card_with_icon_and_usd(self, name: str):
-        """Глубокая проверка созданной карточки: проверяет тип, сумму, валюту $ и наличие иконки с alt"""
+        """Глубокая проверка созданной карточки"""
         card_container_xpath = f"//*[text()='{name}']/ancestor::div[contains(@class, 'Slide') or contains(@class, 'Card')][1]"
         try:
             card_container = self.driver.find_element(By.XPATH, card_container_xpath)
-            print(f"[DEBIT PAGE] Контейнер для детальной проверки карточки '{name}' найден.")
             
             with allure.step("Проверить тип счета 'Дебетовый'"):
                 card_type = card_container.find_element(By.XPATH, ".//*[text()='Дебетовый']")
@@ -521,7 +526,6 @@ class AccountsMainPage:
                 
                 assert icon_element.is_displayed(), "Иконка оформления не отображается на карточке счета!"
                 assert alt_text == name, f"Ошибка: Атрибут alt '{alt_text}' не совпадает с именем счета '{name}'!"
-                print(f"[DEBIT PAGE] Иконка успешно отрисовалась! Её атрибут alt равен: '{alt_text}'")
                 
             print(f"[DEBIT PAGE] Глубокая проверка карточки '{name}' пройдена успешно!")
         except Exception as e:
@@ -529,26 +533,19 @@ class AccountsMainPage:
 
     @allure.step("Проверить, что в карточке '{name}' отображается максимальный баланс и кастомная иконка")
     def check_card_with_huge_balance_and_icon(self, name: str):
-        """Глубокая проверка созданной карточки: верифицирует тип, максимальную сумму баланса и иконку"""
         card_container_xpath = f"//p[contains(text(), '{name}')]/ancestor::div[contains(@class, 'AccountCardstyled__Root')][1]"
         try:
             card_container = self.driver.find_element(By.XPATH, card_container_xpath)
-            print(f"[DEBIT PAGE] Контейнер для проверки сверхбольшого баланса карточки '{name}' найден.")
             
-            # 1. Проверяем тип счета
             with allure.step("Проверить тип счета 'Дебетовый'"):
                 card_type = card_container.find_element(By.XPATH, ".//*[text()='Дебетовый']")
                 assert card_type.is_displayed(), f"В карточке '{name}' не найден тип 'Дебетовый'!"
             
-            # 2. Проверяем точную сумму баланса
             with allure.step("Проверить точную сумму баланса '999999999999,99₽'"):
                 cleaned_text = "".join(card_container.text.split())
-                print(f"[DEBIT PAGE] Текст карточки после полной очистки: '{cleaned_text}'")
-                
-                assert "999999999999,99" in cleaned_text, f"Сверхбольшая сумма баланса не найдена в очищенном тексте карточки! Текст: {cleaned_text}"
-                assert "₽" in cleaned_text, f"Значок валюты '₽' не найден в очищенном тексте карточки! Текст: {cleaned_text}"
+                assert "999999999999,99" in cleaned_text, f"Сверхбольшая сумма баланса не найдена! Текст: {cleaned_text}"
+                assert "₽" in cleaned_text, f"Значок валюты '₽' не найден! Текст: {cleaned_text}"
             
-            # 3. НАДЕЖНАЯ ПРОВЕРКА ИКОНКИ (ждем отрисовку именно видимого графического элемента)
             with allure.step("Проверить наличие отрисованной иконки на карточке"):
                 icon_relative_xpath = (
                     ".//img | .//svg | .//i | "
@@ -564,7 +561,6 @@ class AccountsMainPage:
 
                 icon_element = WebDriverWait(self.driver, 5).until(find_visible_icon)
                 assert icon_element is not None, "Выбранная иконка оформления не отображается внутри карточки счета!"
-                print("[DEBIT PAGE] Проверка стандартной иконки и огромного баланса на карточке пройдена успешно!")
                 
         except Exception as e:
             raise AssertionError(f"Не удалось найти карточку '{name}' или обязательные элементы внутри неё! Ошибка: {e}")
@@ -584,50 +580,40 @@ class AccountsMainPage:
 
     @allure.step("Проверить созданный аккаунт '{name}' внутри списка 'Все счета'")
     def check_account_in_all_accounts_modal(self, name: str):
-        """Проверяет наличие строки созданного счета, его триллионный баланс и плашку иконки"""
         WebDriverWait(self.driver, 10).until(
             EC.visibility_of_element_located(self.ALL_ACCOUNTS_HEADER)
         )
-        print("[DEBIT PAGE] Модальное окно 'Все счета' успешно открыто.")
         
         try:
-            # 1. Находим корневой контейнер карточки счета в списке
             card_container = WebDriverWait(self.driver, 10).until(
                 EC.presence_of_element_located(self.MODAL_ACCOUNT_CARD_BY_NAME(name))
             )
             
-            # 2. Проверяем баланс внутри найденой карточки
             with allure.step("Проверить баланс счета в списке 'Все счета'"):
                 balance_element = card_container.find_element(
                     By.XPATH, ".//div[contains(@class, 'BalanceWrapper')]"
                 )
                 cleaned_balance_text = "".join(balance_element.text.split())
-                print(f"[DEBIT PAGE] Текст баланса в модальном окне после очистки: '{cleaned_balance_text}'")
-                
                 assert "999999999999,99" in cleaned_balance_text, f"Ошибка: Сумма баланса не найдена! Текст: {cleaned_balance_text}"
                 assert "₽" in cleaned_balance_text, "Ошибка: Значок валюты '₽' отсутствует!"
 
-            # 3. Проверяем плашку с иконкой справа (BalanceCard__Root)
             with allure.step("Проверить отображение иконки у счета в списке"):
                 icon_element = card_container.find_element(
                     By.XPATH, ".//div[contains(@class, 'BalanceCard__Root')]"
                 )
                 assert icon_element.is_displayed(), f"Иконка оформления для счета '{name}' не отображается в списке!"
-                print(f"[DEBIT PAGE] УСПЕХ! Строка счета '{name}' содержит плашку иконки.")
 
         except Exception as e:
             raise AssertionError(f"Не удалось выполнить проверку счета '{name}' в окне 'Все счета'! Ошибка: {e}")
 
     @allure.step("Убедиться, что счёт с новым именем '{name}' отображается в списке 'Все счета'")
     def assert_account_name_visible_in_modal(self, name: str):
-        """Проверяет, что элемент с новым названием счёта присутствует на экране внутри модального окна"""
         name_xpath = f"//div[contains(@class, 'TitleWrapper')]//*[text()='{name}'] | //*[contains(@class, 'AccountListCard')]//*[text()='{name}']"
         try:
             element = WebDriverWait(self.driver, 10).until(
                 EC.visibility_of_element_located((By.XPATH, name_xpath))
             )
             assert element.is_displayed(), f"Новое имя счёта '{name}' не отображается в модальном окне!"
-            print(f"[DEBIT PAGE] Переименованный счёт '{name}' успешно найден в списке 'Все счета'.")
         except TimeoutException:
             raise AssertionError(f"Ошибка: Новое имя счёта '{name}' не появилось в окне 'Все счета' за 10 секунд!")
 
@@ -635,16 +621,13 @@ class AccountsMainPage:
 
     @allure.step("Нажать на 3 точки у карточки счета '{name}'")
     def click_three_dots_for_account(self, name: str):
-        """Находит и открывает меню 3 точек конкретной карточки по её названию"""
         self.close_promo_popup_if_present()
         
-        # 1. Находим карточку в DOM
         card = WebDriverWait(self.driver, 10).until(
             EC.presence_of_element_located(self.ACCOUNT_CARD_BY_NAME(name))
         )
         self.driver.execute_script("arguments[0].scrollIntoView({block: 'center', inline: 'center'});", card)
         
-        # 2. Находим 3 точки именно этой карточки по aria-haspopup='dialog'
         btn = WebDriverWait(self.driver, 10).until(
             EC.presence_of_element_located(self.THREE_DOTS_BY_NAME(name))
         )
@@ -662,8 +645,6 @@ class AccountsMainPage:
 
     @allure.step("Нажать 'Удалить' в выпадающем меню")
     def click_delete_account_in_dropdown(self):
-        """Ожидает появления выпадающего меню и нажимает видимую кнопку 'Удалить'"""
-        # Предполагается, что ваш локатор называется self.BTN_DELETE_IN_DROPDOWN
         buttons = WebDriverWait(self.driver, 10).until(
             EC.presence_of_all_elements_located(self.DELETE_DROPDOWN_ITEM)
         )
@@ -692,7 +673,6 @@ class AccountsMainPage:
             confirm_btn.click()
         except Exception:
             self.driver.execute_script("arguments[0].click();", confirm_btn)
-        print("[DEBIT PAGE] В первом модальном окне нажата кнопка 'Удалить счет'")
         time.sleep(0.5)
 
     @allure.step("Выбрать оба чекбокса (согласия) во втором модальном окне")
@@ -704,13 +684,11 @@ class AccountsMainPage:
             cb1.click()
         except Exception:
             self.driver.execute_script("arguments[0].click();", cb1)
-        print("[DEBIT PAGE] Выбран первый чекбокс согласия.")
         
         try:
             cb2.click()
         except Exception:
             self.driver.execute_script("arguments[0].click();", cb2)
-        print("[DEBIT PAGE] Выбран второй чекбокс согласия.")
         
         time.sleep(0.3)
 
@@ -727,7 +705,6 @@ class AccountsMainPage:
             pass
             
         self.driver.execute_script("arguments[0].click();", btn)
-        print("[DEBIT PAGE] Финальная кнопка 'Удалить счет' успешно нажата.")
         time.sleep(1)
 
     @allure.step("Убедиться, что счет '{name}' полностью исчез с экрана")
@@ -736,14 +713,9 @@ class AccountsMainPage:
         card_locator = (By.XPATH, f"//*[text()='{name}']")
         is_invisible = WebDriverWait(self.driver, 10).until(EC.invisibility_of_element_located(card_locator))
         assert is_invisible, f"Ошибка: Счет '{name}' всё еще отображается на странице после удаления!"
-        print(f"[DEBIT PAGE] Проверка успешна: Счет '{name}' полностью удален с экрана.")
 
     @allure.step("Выполнить визуальную проверку страницы по скриншоту-эталону '{baseline_name}'")
     def verify_visual_screenshot(self, baseline_name: str):
-        """
-        Делает скриншот страницы и сравнивает его с эталоном пиксель-в-пиксель.
-        Если эталона нет — создает его автоматически.
-        """
         base_dir = "screenshots"
         baseline_path = os.path.join(base_dir, "baselines", f"{baseline_name}.png")
         actual_path = os.path.join(base_dir, "actual", f"{baseline_name}_actual.png")
@@ -761,8 +733,6 @@ class AccountsMainPage:
         if not os.path.exists(baseline_path):
             self.driver.save_screenshot(baseline_path)
             allure.attach.file(baseline_path, name="Создан новый эталон (Baseline)", attachment_type=allure.attachment_type.PNG)
-            print(f"\n[VISUAL] Создан новый скриншот-эталон: {baseline_path}")
-            print("[VISUAL] При следующем прогоне этот тест будет сравниваться с ним.")
             return
 
         img_baseline = Image.open(baseline_path).convert('RGB')
@@ -776,29 +746,118 @@ class AccountsMainPage:
             allure.attach.file(diff_path, name="Разница в верстке (Diff)", attachment_type=allure.attachment_type.PNG)
             
             raise AssertionError(
-                f"Визуальная проверка провалена! Обнаружены расхождения с фото-эталоном '{baseline_name}'. "
-                f"Посмотрите разницу (Diff) в отчете Allure."
+                f"Визуальная проверка провалена! Обнаружены расхождения с фото-эталоном '{baseline_name}'."
             )
-        else:
-            print(f"[VISUAL] Успех! Страница полностью соответствует скриншот-эталону '{baseline_name}'.")
 
     def close_promo_popup_if_present(self):
-        """Безопасное закрытие промо-окна (ищет крестик строго рядом с рекламным текстом)"""
+        """Безопасное закрытие промо-окна и онбординга"""
         try:
-            # Ищем кнопку закрытия только в тех контейнерах, где есть слова из промо-баннера
             promo_xpath = (
-                "//*[contains(text(), 'ПОДАРОК') or contains(text(), 'Пройдите тест') or contains(text(), '1 минуту')]"
-                "/ancestor::div[position()<=5]//*[self::button or name()='svg' or contains(@class, 'close')]"
+                "//div[contains(@class, 'modal-content')]//button[@aria-label='Закрыть' or .//*[contains(@class, 'modal-closeBtn')]] | "
+                "//*[contains(text(), 'ПОДАРОК') or contains(text(), 'Пройдите тест') or contains(text(), '1 минуту') or contains(text(), 'интерфейс под свой способ')]"
+                "/ancestor::div[position()<=5]//*[self::button or local-name()='svg' or contains(@class, 'close')]"
             )
             close_buttons = self.driver.find_elements(By.XPATH, promo_xpath)
             for btn in close_buttons:
                 try:
                     if btn.is_displayed():
                         self.driver.execute_script("arguments[0].click();", btn)
-                        print("[DEBIT PAGE] Рекламное промо-окно успешно закрыто.")
                         time.sleep(0.5)
                         break
                 except Exception:
                     continue
         except Exception:
             pass
+
+    @allure.step("Создать дебетовый счет '{account_name}'")
+    def create_debit_account(self, account_name: str, balance: str = "1000", currency: str = "Доллар США"):
+        target_url = f"{self.driver.base_url.rstrip('/')}/wallet/accounts"
+        if "/wallet/accounts" not in self.driver.current_url:
+            self.driver.get(target_url)
+
+        self.close_promo_popup_if_present()
+        self.click_create_account_button()
+        self.select_debit_account_type()
+        self.click_continue_if_exists()
+
+        self.select_currency_by_name(currency)
+
+        self.enter_account_name(account_name)
+        self.click_save_button()
+        self.wait_until_account_created(account_name)
+
+    @allure.step("Создать накопительный счет '{account_name}'")
+    def create_savings_account(self, account_name: str, balance: str = "1000", currency: str = "Доллар США"):
+        target_url = f"{self.driver.base_url.rstrip('/')}/wallet/accounts"
+        if "/wallet/accounts" not in self.driver.current_url:
+            self.driver.get(target_url)
+
+        self.close_promo_popup_if_present()
+        self.click_create_account_button()
+        
+        savings_type = WebDriverWait(self.driver, 10).until(
+            EC.element_to_be_clickable((By.XPATH, "//*[contains(text(), 'Накопительный')]"))
+        )
+        savings_type.click()
+        
+        self.click_continue_if_exists()
+
+        self.select_currency_by_name(currency)
+
+        self.enter_account_name(account_name)
+        self.click_save_button()
+
+    # === ИСПРАВЛЕННЫЕ МЕТОДЫ ПЕРЕКЛЮЧЕНИЯ ТАБОВ И ПОЛУЧЕНИЯ БАЛАНСА ===
+
+    @allure.step("Переключить вкладку категории счетов на '{tab_name}'")
+    def switch_to_tab(self, tab_name: str):
+        """Переключает вкладки счетов: 'Дебетовые и кредитки', 'Накопительные' и т.д."""
+        tab = WebDriverWait(self.driver, 10).until(
+            EC.presence_of_element_located(self.TAB_BUTTON_BY_NAME(tab_name)),
+            message=f"Вкладка '{tab_name}' не найдена"
+        )
+        
+        self.driver.execute_script("arguments[0].scrollIntoView({block: 'center'});", tab)
+        
+        try:
+            tab.click()
+        except Exception:
+            self.driver.execute_script("arguments[0].click();", tab)
+            
+        time.sleep(1)
+        print(f"[ACCOUNTS PAGE] Переключились на вкладку '{tab_name}'.")
+
+    @allure.step("Получить баланс карточки счета '{account_name}'")
+    def get_account_card_balance(self, account_name: str) -> str:
+        """Забирает весь текст из тэга <p class='Amount'> и форматирует в '100,00 ₽'"""
+        import re
+        
+        card = WebDriverWait(self.driver, 10).until(
+            EC.presence_of_element_located(self.ACCOUNT_CARD_BY_NAME(account_name)),
+            message=f"Не удалось найти карточку счета '{account_name}'"
+        )
+        
+        elem = card.find_element(*self.CARD_BALANCE_SUB_ELEMENT)
+        
+        raw_text = elem.text
+        clean_text = " ".join(raw_text.split())
+        clean_text = re.sub(r'\s*,\s*', ',', clean_text)
+        
+        print(f"[ACCOUNTS PAGE] Считан баланс счета '{account_name}': '{clean_text}' (сырой: '{raw_text}')")
+        return clean_text
+
+    @allure.step("Получить общий баланс 'Всего денег'")
+    def get_total_money_balance(self) -> str:
+        """Считывает значение суммы из блока 'Всего денег' и форматирует его"""
+        import re
+        
+        elem = WebDriverWait(self.driver, 10).until(
+            EC.presence_of_element_located(self.TOTAL_MONEY_BALANCE),
+            message="Не удалось найти элемент общего баланса 'Всего денег'"
+        )
+        raw_text = elem.text
+        clean_text = " ".join(raw_text.split())
+        clean_text = re.sub(r'\s*,\s*', ',', clean_text)
+        
+        print(f"[ACCOUNTS PAGE] Считан общий баланс 'Всего денег': '{clean_text}'")
+        return clean_text

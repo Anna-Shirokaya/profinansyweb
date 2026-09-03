@@ -1,20 +1,23 @@
 import os
+import time
 import urllib3
 import requests
 import pytest
 from selenium import webdriver
 from dotenv import load_dotenv
+from api.accounts_api import AccountsAPI
 
 import allure
 from allure_commons.types import AttachmentType
-
+from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-
+from selenium.common.exceptions import StaleElementReferenceException, TimeoutException
 from pages.auth_pages.welcome_page import WelcomePage
 from pages.auth_pages.login_page import LoginPage
 from pages.dashboard_pages.dashboard_page import DashboardPage
 from pages.debit_pages.accounts_main_page import AccountsMainPage
+from api.accounts_api import AccountsAPI
 
 # Отключаем предупреждения urllib3 о незащищенных SSL-запросах (verify=False)
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
@@ -101,100 +104,130 @@ def driver(request):
 
 @pytest.fixture
 def api_logged_in_driver(driver):
-    """Авторизация через API с отключенной проверкой SSL-сертификата"""
-    print("\n[AUTH API] Запуск авто-авторизации через API...")
+    """Авторизация через API с сохранением JWT-токена и умным фоллбэком на UI-логин через PageObjects"""
+    print("\n[DEBUG AUTH] --- СТАРТ АВТОРИЗАЦИИ ---")
 
     email = os.getenv("PROFINANSY_USER_EMAIL")
     password = os.getenv("PROFINANSY_USER_PASSWORD")
-
     if not email or not password:
-        raise ValueError("[AUTH API ERROR] Переменные PROFINANSY_USER_EMAIL или PROFINANSY_USER_PASSWORD не найдены!")
+        raise ValueError("[DEBUG AUTH] ОШИБКА: Учетные данные не найдены в .env!")
 
-    base_url = driver.base_url
+    base_url = driver.base_url.rstrip("/")
+    is_qa = "qa.profinansy.dev" in base_url
+    api_base_url = "https://qa.profinansy.dev" if is_qa else base_url
+
     session = requests.Session()
-    session.verify = False  # Отключаем строгую проверку SSL для запросов к QA
+    session.verify = False
 
-    session_url = f"{base_url}/api/auth/session?type=web"
-    res_session = session.get(session_url)
-    res_session.raise_for_status()
-    
-    session_data = res_session.json()
-    anon_token = session_data.get("token") or session_data.get("data", {}).get("token")
-    
-    login_url = f"{base_url}/api/auth/login"
-    headers = {
-        "token": anon_token,
-        "Content-Type": "application/json"
-    }
-    payload = {
-        "acc_type": "email",
-        "login": email,
-        "pass": password,
-        "web": True
+    # 1. ЖЕСТКАЯ ОЧИСТКА кук
+    driver.delete_all_cookies()
+    session.cookies.clear()
+
+    common_headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36",
+        "Origin": base_url,
+        "Referer": f"{base_url}/",
+        "Accept": "application/json, text/plain, */*",
     }
 
-    res_login = session.post(login_url, json=payload, headers=headers)
-    res_login.raise_for_status()
-    
-    login_data = res_login.json()
-    auth_token = login_data.get("token") or login_data.get("data", {}).get("token") or anon_token
-
+    # Открываем базовый URL для генерации гостевой сессии браузером
     driver.get(base_url)
+    time.sleep(2)
+    
+    # Синхронизируем куки браузера с сессией requests
+    for cookie in driver.get_cookies():
+        session.cookies.set(cookie["name"], cookie["value"])
 
-    driver.execute_script(f"window.localStorage.setItem('token', '{auth_token}');")
-    driver.execute_script(f"window.localStorage.setItem('auth_token', '{auth_token}');")
+    # 2. API Логин
+    login_url = f"{api_base_url}/api/auth/login"
+    login_headers = common_headers.copy()
+    login_headers["Content-Type"] = "application/json"
+    
+    payload = {"acc_type": "email", "login": email, "pass": password, "web": True}
+    
+    print(f"[DEBUG AUTH] Отправляем POST запрос на логин: {login_url}")
+    res_login = session.post(login_url, json=payload, headers=login_headers)
+    
+    if res_login.status_code != 200:
+        print(f"[DEBUG AUTH] ОШИБКА БЭКЕНДА: {res_login.text}")
+    res_login.raise_for_status()
 
+    login_data = res_login.json()
+    auth_token = login_data.get("token") or login_data.get("data", {}).get("token")
+    
+    if not auth_token:
+        raise ValueError("[DEBUG AUTH] ОШИБКА: Токен не найден в ответе бэкенда!")
+        
+    # Обязательно сохраняем токен для создания счетов через API-фикстуру
+    driver.api_auth_token = auth_token
+    print(f"[DEBUG AUTH] Боевой токен успешно получен! Длина: {len(auth_token)}")
+
+    # 3. Инъекция токена в localStorage
+    domain_name = ".profinansy.dev" if is_qa else ".profinansy.ru"
     for cookie in session.cookies:
         try:
-            driver.add_cookie({
-                "name": cookie.name,
-                "value": cookie.value,
-                "path": cookie.path or "/",
-            })
+            driver.add_cookie({"name": cookie.name, "value": cookie.value, "path": "/", "domain": domain_name})
         except Exception:
             pass
 
-    driver.refresh()
+    try:
+        driver.execute_script(f"window.localStorage.setItem('token', '{auth_token}');")
+        driver.execute_script("window.localStorage.setItem('isAuth', 'true');")
+    except Exception as e:
+        print(f"[DEBUG AUTH] Ошибка localStorage: {e}")
 
-    dashboard_page = DashboardPage(driver)
-    WebDriverWait(driver, 15).until(
-        EC.visibility_of_element_located(dashboard_page.MY_MONEY_HEADER)
-    )
-
-    print("[AUTH API] Успешная авторизация! Сессия прокинута в браузер.")
+    # 4. Переход в кошелек
+    target_url = f"{base_url}/wallet/accounts"
+    driver.get(target_url)
+    time.sleep(3) 
+    
+    # 5. ПРОВЕРКА РЕДИРЕКТА И UI-ФОЛЛБЭК
+    current_url = driver.current_url
+    if "login" in current_url or "welcome" in current_url:
+        print("[DEBUG AUTH] Обнаружен редирект на логин! Выполняем UI-авторизацию через PageObjects...")
+        
+        welcome_page = WelcomePage(driver)
+        login_page = LoginPage(driver)
+        dashboard_page = DashboardPage(driver)
+        
+        # Если нас кинуло на приветственную страницу, нажимаем "Войти"
+        if "welcome" in current_url:
+            welcome_page.click_login_button()
+            
+        # Заполняем форму через ваши готовые методы
+        login_page.enter_email(email)
+        login_page.enter_password(password)
+        login_page.click_submit_button()
+        
+        # Ждем успешного входа
+        is_header_visible = dashboard_page.is_my_money_header_visible()
+        if not is_header_visible:
+            raise RuntimeError("[DEBUG AUTH] UI-авторизация не удалась (заголовок не найден)!")
+            
+        print("[DEBUG AUTH] UI-авторизация прошла успешно!")
+        
+        # Возвращаемся в кошелек, если после логина оказались не там
+        if "/wallet/accounts" not in driver.current_url:
+            driver.get(target_url)
+            time.sleep(3)
+    else:
+        print("[DEBUG AUTH] --- АВТОРИЗАЦИЯ УСПЕШНА (Инъекция сработала) ---")
+        
     yield driver
+
 
 @pytest.fixture
-def logged_in_driver(driver):
-    print("\n[AUTH SETUP] Начало автоматической авторизации...")
-    login_page = LoginPage(driver)
-    dashboard_page = DashboardPage(driver)
-    accounts_page = AccountsMainPage(driver)
-
-    email = os.getenv("PROFINANSY_USER_EMAIL")
-    password = os.getenv("PROFINANSY_USER_PASSWORD")
+def accounts_api(api_logged_in_driver):
+    """Фикстура для API счетов. Использует 100% валидный токен из фикстуры авторизации"""
+    driver = api_logged_in_driver
     
-    if not email or not password:
-        raise ValueError("[AUTH ERROR] Не найдены переменные окружения EMAIL или PASSWORD!")
-
-    login_page.open()
-    login_page.enter_email(email)
-    login_page.enter_password(password)
-    login_page.click_submit_button()
-
-    WebDriverWait(driver, 15).until_not(
-        EC.url_contains("/login")
-    )
-
-    dashboard_page.close_popup_if_exists()
-    accounts_page.close_promo_popup_if_present()
-
-    WebDriverWait(driver, 15).until(
-        EC.visibility_of_element_located(dashboard_page.MY_MONEY_HEADER)
-    )
-
-    print("[AUTH SETUP] Авторизация успешно завершена.")
-    yield driver
+    # Забираем токен, который мы заботливо сохранили при логине
+    token = getattr(driver, "api_auth_token", None)
+    
+    if not token:
+        raise ValueError("[DEBUG API SETUP] КРИТИЧЕСКАЯ ОШИБКА: Боевой токен не был получен при логине!")
+        
+    return AccountsAPI(base_url=driver.base_url, token=token)
 
 @pytest.fixture(scope="function")
 def account_cleanup_registry(driver):
@@ -226,3 +259,33 @@ def account_cleanup_registry(driver):
                     
         except Exception as e:
             print(f"[TEARDOWN] Предупреждение: Не удалось очистить счета. Ошибка: {e}")
+
+@pytest.fixture
+def api_account_cleanup_registry(accounts_api):
+    """Универсальный реестр очистки счетов через API.
+    Поддерживает банковские счета, накопительные счета и портфели.
+    """
+    registry = []
+    
+    yield registry
+
+    print("\n[TEARDOWN API] Начинаем автоматическую очистку через API...")
+    for item in registry:
+        try:
+            if isinstance(item, tuple):
+                acc_type, acc_id = item
+                if acc_type in ["bank", "debit", "credit"]:
+                    accounts_api.delete_account(acc_id)
+                elif acc_type in ["savings", "accumulation"]:
+                    accounts_api.delete_accumulation_account(acc_id)
+                elif acc_type in ["portfolio", "investment", "invest"]:
+                    accounts_api.delete_investment_account(acc_id)
+                else:
+                    accounts_api.delete_account(acc_id)
+            else:
+                # По умолчанию считаем обычным банковским счетом
+                accounts_api.delete_account(item)
+        except Exception as e:
+            print(f"[TEARDOWN API] Ошибка при удалении {item}: {e}")
+
+

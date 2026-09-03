@@ -11,7 +11,13 @@ class DashboardPage:
         self.driver = driver
 
     # ЛОКАТОРЫ
-    # ЛОКАТОРЫ
+    #кнопка Добавить операцию
+    ADD_TRANSACTION_BTN = (
+        By.XPATH, 
+        "//button[.//span[text()='Добавить операцию']] | "
+        "//button[contains(., 'Добавить операцию')]"
+    )
+    
     MY_MONEY_HEADER = (By.XPATH, "//*[text()='Мои деньги']")
     POPUP_CLOSE_BUTTON = (By.XPATH, (
         "//button[contains(@class, 'close')] | //div[contains(@class, 'close')] | "
@@ -23,6 +29,14 @@ class DashboardPage:
         "//a[@aria-label='Бюджет' or contains(@href, '/wallet')]"
     )
     ACCOUNTS_TEXT_ELEMENTS = (By.XPATH, "//*[text()='Счета']")
+
+    #карточка Все дебетовые
+    ALL_ACCOUNTS_CARD_BY_SUBTITLE = staticmethod(
+        lambda subtitle="Дебетовые": (
+            By.XPATH,
+            f"//div[@role='button' and .//span[contains(@class, 'Title') and text()='Все счета'] and .//span[contains(@class, 'SubTitle') and text()='{subtitle}']]"
+        )
+    )
 
     def is_my_money_header_visible(self) -> bool:
         """Проверяет отображение шапки дашборда"""
@@ -89,3 +103,38 @@ class DashboardPage:
                 time.sleep(0.5)
                 if step == 2:
                     raise
+
+    # Метод клика по кнопке
+    @allure.step("Нажать кнопку '+ Добавить операцию'")
+    def open_add_transaction_modal(self):
+        """Открывает модальное окно создания транзакции"""
+        btn = WebDriverWait(self.driver, 10).until(
+            EC.element_to_be_clickable(self.ADD_TRANSACTION_BTN)
+        )
+        try:
+            btn.click()
+        except Exception:
+            self.driver.execute_script("arguments[0].click();", btn)
+        
+        print("[DASHBOARD PAGE] Нажата фиолетовая кнопка '+ Добавить операцию'")
+
+    @allure.step("Кликнуть на карточку 'Все счета' ({subtitle})")
+    def click_all_accounts_card(self, subtitle="Дебетовые"):
+        """Кликает по интерактивному контейнеру карточки 'Все счета'"""
+        locator = self.ALL_ACCOUNTS_CARD_BY_SUBTITLE(subtitle)
+        
+        card = WebDriverWait(self.driver, 15).until(
+            EC.presence_of_element_located(locator),
+            message=f"Карточка 'Все счета' ({subtitle}) не найдена"
+        )
+        
+        # Центрируем карточку во карусели слайдера перед кликом
+        self.driver.execute_script("arguments[0].scrollIntoView({block: 'center', inline: 'center'});", card)
+        time.sleep(0.5)
+        
+        try:
+            card.click()
+        except Exception:
+            self.driver.execute_script("arguments[0].click();", card)
+            
+        print(f"[DASHBOARD PAGE] Успешно нажата карточка 'Все счета' ({subtitle})")
