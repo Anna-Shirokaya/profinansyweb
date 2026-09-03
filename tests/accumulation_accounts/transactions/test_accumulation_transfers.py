@@ -15,6 +15,7 @@ class TestAccumulationTransfers:
         driver = api_logged_in_driver
         dashboard_page = DashboardPage(driver)
         transaction_modal = TransactionsModalPage(driver)
+        accounts_page = AccountsMainPage(driver)
 
         # 1. Быстрый запрос к API для создания дебетового счета
         debit_name = f"Дебет-{int(time.monotonic())}"
@@ -29,6 +30,9 @@ class TestAccumulationTransfers:
 
         # 3. Обновляем интерфейс для синхронизации
         driver.refresh()
+
+        #закрытие модалки для выбора режима бюджета
+        accounts_page.close_budget_interface_modal_if_present()
 
         # 4. Переходим к добавлению операции
         dashboard_page.open_add_transaction_modal()
@@ -51,6 +55,7 @@ class TestAccumulationTransfers:
         driver = api_logged_in_driver
         dashboard_page = DashboardPage(driver)
         transaction_modal = TransactionsModalPage(driver)
+        accounts_page = AccountsMainPage(driver)
 
         timestamp = int(time.monotonic())
         debit_name = f"Дебет-{timestamp}"
@@ -81,6 +86,9 @@ class TestAccumulationTransfers:
         # 5. Синхронизируем UI
         driver.get(f"{driver.base_url.rstrip('/')}/wallet/accounts")
         time.sleep(3)
+
+        #закрытие модалки для выбора режима бюджета
+        accounts_page.close_budget_interface_modal_if_present()
 
         # 6. Переход в модальное окно и открытие списка
         dashboard_page.click_all_accounts_card("Дебетовые")
@@ -149,6 +157,8 @@ class TestAccumulationTransfers:
             accounts_page.close_promo_popup_if_present()
         except Exception:
             pass # Игнорируем, если метода нет или онбординг не появился
+        #закрытие модалки для выбора режима бюджета
+        accounts_page.close_budget_interface_modal_if_present()
 
 
         dashboard_page.click_all_accounts_card("Дебетовые")
@@ -294,16 +304,26 @@ class TestAccumulationTransfers:
 
         debit_name = f"Дебет-{int(time.monotonic())}"
         savings_name = f"Накоп-{int(time.monotonic())}"
+        
+        # Регистрируем счета в реестре UI-очистки на случай падения теста
+        account_cleanup_registry.append(debit_name)
+        account_cleanup_registry.append(savings_name)
+
         accounts_page.create_debit_account(debit_name, balance="1000")
         accounts_page.create_savings_account(savings_name, balance="1000")
         
         transaction_modal.create_accumulation_transaction(source=debit_name, destination=savings_name, amount="100")
         
+        # Основной шаг: удаляем дебетовый счет
         accounts_page.delete_account_by_name(debit_name)
         
-        assert accounts_page.get_card_balance(savings_name) == "1 000,00 ₽", "Баланс накопительного счета не вернулся к исходному!"
+        # Проверки
+        assert accounts_page.get_account_card_balance(savings_name) == "1 000,00 ₽", "Баланс накопительного счета не вернулся к исходному!"
         assert accounts_page.get_analytics_accumulation_value() == "0 ₽", "В аналитике значение накоплений не стало 0!"
         assert not accounts_page.is_transaction_in_history(debit_name), "Транзакция все еще отображается в истории!"
+
+        # Удаление оставшегося накопительного счета после завершения проверок
+        accounts_page.delete_account_by_name(savings_name)
 
     @allure.title("7. Удаление накопительного счета: отмена транзакции, возврат дебетового баланса и очистка аналитики")
     def test_savings_account_deletion_resets_debit_and_clears_history(self, api_logged_in_driver, account_cleanup_registry):
@@ -312,13 +332,23 @@ class TestAccumulationTransfers:
 
         debit_name = f"Дебет-{int(time.monotonic())}"
         savings_name = f"Накоп-{int(time.monotonic())}"
+
+        # Регистрируем счета в реестре UI-очистки на случай падения теста
+        account_cleanup_registry.append(debit_name)
+        account_cleanup_registry.append(savings_name)
+
         accounts_page.create_debit_account(debit_name, balance="1000")
         accounts_page.create_savings_account(savings_name, balance="1000")
         
         transaction_modal.create_accumulation_transaction(source=debit_name, destination=savings_name, amount="100")
         
+        # Основной шаг: удаляем накопительный счет
         accounts_page.delete_account_by_name(savings_name)
         
-        assert accounts_page.get_card_balance(debit_name) == "1 000,00 ₽", "Баланс дебетового счета не вернулся к исходному!"
+        # Проверки
+        assert accounts_page.get_account_card_balance(debit_name) == "1 000,00 ₽", "Баланс дебетового счета не вернулся к исходному!"
         assert accounts_page.get_analytics_accumulation_value() == "0 ₽", "В аналитике значение накоплений не стало 0!"
         assert not accounts_page.is_transaction_in_history(savings_name), "Транзакция все еще отображается в истории!"
+
+        # Удаление оставшегося дебетового счета после завершения проверок
+        accounts_page.delete_account_by_name(debit_name)

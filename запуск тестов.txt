@@ -1,0 +1,4 @@
+Открой PowerShell на своем компьютере в папке actions-runner
+выполнить:
+
+./run.cmd

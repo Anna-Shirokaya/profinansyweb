@@ -76,6 +76,7 @@ def driver(request):
         options.add_argument("--force-device-scale-factor=1")
         
     browser = webdriver.Chrome(options=options)
+    browser.set_window_size(1920, 1080)
     browser.base_url = current_domain
     
     yield browser
@@ -198,6 +199,19 @@ def api_logged_in_driver(driver):
         login_page.enter_email(email)
         login_page.enter_password(password)
         login_page.click_submit_button()
+
+        # Даем странице время загрузить дашборд и выкинуть первые баннеры
+        time.sleep(4) 
+        
+        # --- БОРЬБА С МНОЖЕСТВЕННЫМИ БАННЕРАМИ НА ПРОДЕ ---
+        accounts_page_for_promo = AccountsMainPage(driver)
+        for _ in range(4):  # Пробуем закрыть до 3 баннеров подряд
+            try:
+                accounts_page_for_promo.close_promo_popup_if_present()
+                time.sleep(1.5)  # Ждем, вдруг после закрытия вылезет следующий
+            except Exception:
+                pass
+        # --------------------------------------------------
         
         # Ждем успешного входа
         is_header_visible = dashboard_page.is_my_money_header_visible()

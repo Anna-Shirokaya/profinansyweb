@@ -114,6 +114,18 @@ class AccountsMainPage:
             "//*[contains(text(), 'Всего денег')]/following-sibling::*[1]"
         )
 
+        # Модалка выбора интерфейса бюджета ("WithoutBalancesOnboardingModal")
+        self.BUDGET_INTERFACE_MODAL_CONTAINER = (
+            By.XPATH,
+            "//div[contains(@class, 'WithoutBalancesOnboardingModal') or contains(., 'Выберите интерфейс под свой способ ведения бюджета')]"
+        )
+
+        self.BUDGET_INTERFACE_MODAL_CLOSE_BUTTON = (
+            By.XPATH,
+            "//div[contains(@class, 'WithoutBalancesOnboardingModal')]//button[@aria-label='Закрыть'] | "
+            "//*[contains(text(), 'Выберите интерфейс под свой способ ведения бюджета')]/ancestor::div[@role='dialog']//button[@aria-label='Закрыть']"
+        )
+
     def is_page_loaded(self) -> bool:
         """Проверяет успешную загрузку раздела счетов"""
         try:
@@ -861,3 +873,22 @@ class AccountsMainPage:
         
         print(f"[ACCOUNTS PAGE] Считан общий баланс 'Всего денег': '{clean_text}'")
         return clean_text
+
+    @allure.step("Закрыть модалку выбора интерфейса бюджета при наличии")
+    def close_budget_interface_modal_if_present(self, timeout: int = 3):
+        """Безопасно закрывает онбординг-модалку бюджета по крестику 'Закрыть', если она присутствует."""
+        try:
+            close_btn = WebDriverWait(self.driver, timeout).until(
+                EC.element_to_be_clickable(self.BUDGET_INTERFACE_MODAL_CLOSE_BUTTON)
+            )
+            try:
+                close_btn.click()
+            except Exception:
+                self.driver.execute_script("arguments[0].click();", close_btn)
+
+            WebDriverWait(self.driver, 5).until(
+                EC.invisibility_of_element_located(self.BUDGET_INTERFACE_MODAL_CONTAINER)
+            )
+            print("[ACCOUNTS PAGE] Модалка выбора интерфейса бюджета успешно закрыта.")
+        except Exception:
+            pass
