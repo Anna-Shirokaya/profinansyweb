@@ -1,0 +1,7 @@
+
+[SETUP] Запуск браузера для окружения: https://frontend.qa.profinansy.dev
+[SETUP] Обнаружена CI-среда. Запуск в фоновом (headless) режиме...
+
+[ТЕСТ] Яндекс: Окно авторизации успешно открылось.
+
+[TEARDOWN] Закрытие браузера для https://frontend.qa.profinansy.dev...

@@ -1,0 +1,7 @@
+
+[SETUP] Запуск браузера для окружения: https://frontend.qa.profinansy.dev
+[SETUP] Обнаружена CI-среда. Запуск в фоновом (headless) режиме...
+
+[ТЕСТ] WAL-T232 Шаг 2 (VK ID): Окно авторизации успешно открылось.
+
+[TEARDOWN] Закрытие браузера для https://frontend.qa.profinansy.dev...
