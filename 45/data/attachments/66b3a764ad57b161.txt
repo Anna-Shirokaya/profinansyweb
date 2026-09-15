@@ -1,0 +1,78 @@
+
+[SETUP] Запуск браузера для окружения: https://frontend.qa.profinansy.dev
+[SETUP] Обнаружена CI-среда. Запуск в фоновом (headless) режиме...
+
+[DEBUG AUTH] --- СТАРТ АВТОРИЗАЦИИ ---
+[DEBUG AUTH] Отправляем POST запрос на логин: https://qa.profinansy.dev/api/auth/login
+[DEBUG AUTH] Боевой токен успешно получен! Длина: 1383
+[DEBUG AUTH] --- АВТОРИЗАЦИЯ УСПЕШНА (Инъекция сработала) ---
+[API] Дебетовый счет 'ДебРУБ1-482685' успешно создан!
+[API] Дебетовый счет 'ДебРУБ2-482685' успешно создан!
+[API] Дебетовый счет 'ДебUSD-482685' успешно создан!
+[API] Накопительный счет 'НакРУБ1-482685' успешно создан!
+[API] Накопительный счет 'НакРУБ2-482685' успешно создан!
+[API] Накопительный счет 'НакUSD-482685' успешно создан!
+[API] Кредитная карта 'КредРУБ1-482685' успешно создана!
+[API] Кредитная карта 'КредРУБ2-482685' успешно создана!
+[API] Кредитная карта 'КредUSD-482685' успешно создана!
+[API] Инвест-счет 'ИнвРУБ1-482685' (RUB) успешно создан!
+[API] Инвест-счет 'ИнвРУБ2-482685' (RUB) успешно создан!
+[API] Инвест-счет 'ИнвUSD-482685' (USD) успешно создан!
+[DASHBOARD PAGE] Успешно нажата карточка 'Все счета' (Дебетовые)
+[DASHBOARD PAGE] Нажата фиолетовая кнопка '+ Добавить операцию'
+[TRANSACTION MODAL] Переход на вкладку 'Накопления' успешно выполнен.
+[MODAL] Счет 'ДебРУБ1-482685' успешно выбран в поле 'Откуда'.
+[MODAL] [Куда] Результат поиска счета 'НакРУБ1-482685': True
+[MODAL] [Куда] Результат поиска счета 'НакРУБ2-482685': True
+[MODAL] [Куда] Результат поиска счета 'ИнвРУБ1-482685': True
+[MODAL] [Куда] Результат поиска счета 'ИнвРУБ2-482685': True
+[MODAL] [Куда] Счет 'ДебРУБ1-482685' НЕ НАЙДЕН.
+[MODAL] [Куда] Счет 'ДебРУБ2-482685' НЕ НАЙДЕН.
+[MODAL] [Куда] Счет 'ДебUSD-482685' НЕ НАЙДЕН.
+[MODAL] [Куда] Счет 'КредРУБ1-482685' НЕ НАЙДЕН.
+[MODAL] [Куда] Счет 'КредРУБ2-482685' НЕ НАЙДЕН.
+[MODAL] [Куда] Счет 'КредUSD-482685' НЕ НАЙДЕН.
+[MODAL] [Куда] Счет 'НакUSD-482685' НЕ НАЙДЕН.
+[MODAL] [Куда] Счет 'ИнвUSD-482685' НЕ НАЙДЕН.
+[MODAL] Счет 'НакРУБ1-482685' успешно выбран в поле 'Откуда'.
+[MODAL] [Куда] Результат поиска счета 'ДебРУБ1-482685': True
+[MODAL] [Куда] Результат поиска счета 'ДебРУБ2-482685': True
+[MODAL] [Куда] Результат поиска счета 'НакРУБ2-482685': True
+
+[TEARDOWN API] Начинаем автоматическую очистку через API...
+[API TEARDOWN ERROR] Исключение при удалении счета 680f69e8-6281-45a5-a5ff-1a5801964f94: HTTPSConnectionPool(host='wallet-api.qa.profinansy.dev', port=443): Max retries exceeded with url: /api/v3/expenses/bank_accounts/680f69e8-6281-45a5-a5ff-1a5801964f94/ (Caused by NameResolutionError("HTTPSConnection(host='wallet-api.qa.profinansy.dev', port=443): Failed to resolve 'wallet-api.qa.profinansy.dev' ([Errno 11001] getaddrinfo failed)"))
+[API TEARDOWN ERROR] Исключение при удалении счета 3a61022a-1890-4c4a-92f2-d41c3ea6410a: HTTPSConnectionPool(host='wallet-api.qa.profinansy.dev', port=443): Max retries exceeded with url: /api/v3/expenses/bank_accounts/3a61022a-1890-4c4a-92f2-d41c3ea6410a/ (Caused by NameResolutionError("HTTPSConnection(host='wallet-api.qa.profinansy.dev', port=443): Failed to resolve 'wallet-api.qa.profinansy.dev' ([Errno 11001] getaddrinfo failed)"))
+[API TEARDOWN ERROR] Исключение при удалении счета 0b0bcbdb-df32-42db-91e1-16c7372c291a: HTTPSConnectionPool(host='wallet-api.qa.profinansy.dev', port=443): Max retries exceeded with url: /api/v3/expenses/bank_accounts/0b0bcbdb-df32-42db-91e1-16c7372c291a/ (Caused by NameResolutionError("HTTPSConnection(host='wallet-api.qa.profinansy.dev', port=443): Failed to resolve 'wallet-api.qa.profinansy.dev' ([Errno 11001] getaddrinfo failed)"))
+[API TEARDOWN ERROR] Исключение при удалении накопительного счета b4d2a560-3372-4f51-8528-26dce5cfe748: HTTPSConnectionPool(host='wallet-api.qa.profinansy.dev', port=443): Max retries exceeded with url: /api/v3/accumulations/accumulations_accounts/b4d2a560-3372-4f51-8528-26dce5cfe748/ (Caused by NameResolutionError("HTTPSConnection(host='wallet-api.qa.profinansy.dev', port=443): Failed to resolve 'wallet-api.qa.profinansy.dev' ([Errno 11001] getaddrinfo failed)"))
+[API TEARDOWN ERROR] Исключение при удалении накопительного счета a2358cc8-e377-4558-8f86-2565f2668ddd: HTTPSConnectionPool(host='wallet-api.qa.profinansy.dev', port=443): Max retries exceeded with url: /api/v3/accumulations/accumulations_accounts/a2358cc8-e377-4558-8f86-2565f2668ddd/ (Caused by NameResolutionError("HTTPSConnection(host='wallet-api.qa.profinansy.dev', port=443): Failed to resolve 'wallet-api.qa.profinansy.dev' ([Errno 11001] getaddrinfo failed)"))
+[API TEARDOWN ERROR] Исключение при удалении накопительного счета c734fb05-3909-4fc3-857b-cdec76dbfec7: HTTPSConnectionPool(host='wallet-api.qa.profinansy.dev', port=443): Max retries exceeded with url: /api/v3/accumulations/accumulations_accounts/c734fb05-3909-4fc3-857b-cdec76dbfec7/ (Caused by NameResolutionError("HTTPSConnection(host='wallet-api.qa.profinansy.dev', port=443): Failed to resolve 'wallet-api.qa.profinansy.dev' ([Errno 11001] getaddrinfo failed)"))
+[API TEARDOWN ERROR] Исключение при удалении счета f6023e35-9228-4bb6-bf32-ff00f325ab29: HTTPSConnectionPool(host='wallet-api.qa.profinansy.dev', port=443): Max retries exceeded with url: /api/v3/expenses/bank_accounts/f6023e35-9228-4bb6-bf32-ff00f325ab29/ (Caused by NameResolutionError("HTTPSConnection(host='wallet-api.qa.profinansy.dev', port=443): Failed to resolve 'wallet-api.qa.profinansy.dev' ([Errno 11001] getaddrinfo failed)"))
+[API TEARDOWN ERROR] Исключение при удалении счета cdd86667-488b-4082-8a4b-e90e3e977b7b: HTTPSConnectionPool(host='wallet-api.qa.profinansy.dev', port=443): Max retries exceeded with url: /api/v3/expenses/bank_accounts/cdd86667-488b-4082-8a4b-e90e3e977b7b/ (Caused by NameResolutionError("HTTPSConnection(host='wallet-api.qa.profinansy.dev', port=443): Failed to resolve 'wallet-api.qa.profinansy.dev' ([Errno 11001] getaddrinfo failed)"))
+[API TEARDOWN ERROR] Исключение при удалении счета 37d6d5ab-7695-41f0-b6b2-d9b5ff9e7e7c: HTTPSConnectionPool(host='wallet-api.qa.profinansy.dev', port=443): Max retries exceeded with url: /api/v3/expenses/bank_accounts/37d6d5ab-7695-41f0-b6b2-d9b5ff9e7e7c/ (Caused by NameResolutionError("HTTPSConnection(host='wallet-api.qa.profinansy.dev', port=443): Failed to resolve 'wallet-api.qa.profinansy.dev' ([Errno 11001] getaddrinfo failed)"))
+[API TEARDOWN ERROR] Исключение при удалении инвест-счета 459426: HTTPSConnectionPool(host='qa.profinansy.dev', port=443): Max retries exceeded with url: /api/portfolios/portfolio/459426?is_archive=false (Caused by NameResolutionError("HTTPSConnection(host='qa.profinansy.dev', port=443): Failed to resolve 'qa.profinansy.dev' ([Errno 11001] getaddrinfo failed)"))
+[API TEARDOWN ERROR] Исключение при удалении инвест-счета 459427: HTTPSConnectionPool(host='qa.profinansy.dev', port=443): Max retries exceeded with url: /api/portfolios/portfolio/459427?is_archive=false (Caused by NameResolutionError("HTTPSConnection(host='qa.profinansy.dev', port=443): Failed to resolve 'qa.profinansy.dev' ([Errno 11001] getaddrinfo failed)"))
+[API TEARDOWN ERROR] Исключение при удалении инвест-счета 459428: HTTPSConnectionPool(host='qa.profinansy.dev', port=443): Max retries exceeded with url: /api/portfolios/portfolio/459428?is_archive=false (Caused by NameResolutionError("HTTPSConnection(host='qa.profinansy.dev', port=443): Failed to resolve 'qa.profinansy.dev' ([Errno 11001] getaddrinfo failed)"))
+[TEARDOWN ERROR] Не удалось сохранить артефакты: Message: invalid session id; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#invalidsessionidexception
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff61e06e035+5745]
+	chromedriver!(No symbol) [0x7ff61df96a90]
+	chromedriver!(No symbol) [0x7ff61ddc5b66]
+	chromedriver!(No symbol) [0x7ff61de11ec3]
+	chromedriver!(No symbol) [0x7ff61de494d2]
+	chromedriver!(No symbol) [0x7ff61de4333a]
+	chromedriver!(No symbol) [0x7ff61de42ae3]
+	chromedriver!(No symbol) [0x7ff61dd8ddbb]
+	chromedriver!(No symbol) [0x7ff61dd8e412]
+	chromedriver!(No symbol) [0x7ff61dd8e9d5]
+	chromedriver!GetHandleVerifier [0x7ff61e482f8b+41a69b]
+	chromedriver!GetHandleVerifier [0x7ff61e4b0132+447842]
+	chromedriver!GetHandleVerifier [0x7ff61e4a3e7e+43b58e]
+	chromedriver!GetHandleVerifier [0x7ff61e163f5e+fb66e]
+	chromedriver!(No symbol) [0x7ff61dfa419c]
+	chromedriver!(No symbol) [0x7ff61dd8d157]
+	chromedriver!GetHandleVerifier [0x7ff61e50e798+4a5ea8]
+	KERNEL32!BaseThreadInitThunk [0x7ffcc665cd87+17]
+	ntdll!RtlUserThreadStart [0x7ffcc7accaec+2c]
+
+
+[TEARDOWN] Закрытие браузера для https://frontend.qa.profinansy.dev...

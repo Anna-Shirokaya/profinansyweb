@@ -1,0 +1,9 @@
+
+[SETUP] Запуск браузера для окружения: https://profinansy.ru
+[SETUP] Обнаружена CI-среда. Запуск в фоновом (headless) режиме...
+
+[DEBUG AUTH] --- СТАРТ АВТОРИЗАЦИИ ---
+[DEBUG AUTH] Отправляем POST запрос на логин: https://profinansy.ru/api/auth/login
+[DEBUG AUTH] ОШИБКА БЭКЕНДА: {"ok":false,"message":"TokenError","code":403001}
+
+[TEARDOWN] Закрытие браузера для https://profinansy.ru...

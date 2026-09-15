@@ -1,7 +1,0 @@
-
-[SETUP] Запуск браузера для окружения: https://frontend.qa.profinansy.dev
-[SETUP] Обнаружена CI-среда. Запуск в фоновом (headless) режиме...
-
-[ТЕСТ] Макс: Вкладка авторизации успешно открылась.
-
-[TEARDOWN] Закрытие браузера для https://frontend.qa.profinansy.dev...
