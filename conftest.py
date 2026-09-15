@@ -229,6 +229,11 @@ def api_logged_in_driver(driver):
         
     yield driver
 
+@pytest.fixture
+def logged_in_driver(api_logged_in_driver):
+    """Алиас для обратной совместимости тестов, использующих имя logged_in_driver"""
+    return api_logged_in_driver
+
 
 @pytest.fixture
 def accounts_api(api_logged_in_driver):
