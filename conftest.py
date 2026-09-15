@@ -213,16 +213,14 @@ def api_logged_in_driver(driver):
                 pass
         # --------------------------------------------------
         
-        # Ждем успешного входа
-        is_header_visible = dashboard_page.is_my_money_header_visible()
-        if not is_header_visible:
-            raise RuntimeError("[DEBUG AUTH] UI-авторизация не удалась (заголовок не найден)!")
-            
-        print("[DEBUG AUTH] UI-авторизация прошла успешно!")
+        try:
+            WebDriverWait(driver, 10).until(lambda d: "login" not in d.current_url)
+        except Exception:
+            raise RuntimeError("[DEBUG AUTH] UI-авторизация не удалась (остались на странице логина)!")
         
         # Возвращаемся в кошелек, если после логина оказались не там
         if "/wallet/accounts" not in driver.current_url:
-            driver.get(target_url)
+            driver.get(f"{base_url}/wallet/accounts")
             time.sleep(3)
     else:
         print("[DEBUG AUTH] --- АВТОРИЗАЦИЯ УСПЕШНА (Инъекция сработала) ---")
@@ -257,17 +255,17 @@ def account_cleanup_registry(driver):
     
     if created_accounts and "/login" not in driver.current_url:
         print("\n[TEARDOWN] Начинаем автоматическую очистку...")
-        dashboard_page = DashboardPage(driver)
         accounts_page = AccountsMainPage(driver)
         
         try:
-            if not accounts_page.is_page_loaded():
-                dashboard_page.open_accounts_section()
+            driver.refresh()
+            time.sleep(2.5)  # Ждем завершения первичных API-запросов после рефреша
+
+            accounts_page.close_budget_interface_modal_if_present()
+            accounts_page.close_promo_popup_if_present()
                 
             for account_name in created_accounts:
                 with allure.step(f"[TEARDOWN] Очистка: удаление счета '{account_name}'"):
-                    accounts_page.close_promo_popup_if_present()
-                    
                     print(f"[TEARDOWN] Удаляем счет: '{account_name}'")
                     accounts_page.click_three_dots_for_account(account_name)
                     accounts_page.click_delete_account_in_dropdown()

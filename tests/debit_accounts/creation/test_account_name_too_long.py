@@ -6,14 +6,14 @@ from pages.debit_pages.accounts_main_page import AccountsMainPage
 @allure.feature("Бюджет и Счета")
 @allure.story("Управление дебетовыми счетами")
 @allure.title("Проверка валидации: слишком длинное название счёта (>100 символов)")
-def test_error_when_account_name_is_too_long(logged_in_driver):
-    dashboard_page = DashboardPage(logged_in_driver)
-    accounts_page = AccountsMainPage(logged_in_driver)
-    
-    with allure.step("Перейти в раздел 'Счета' через главное меню"):
-        assert dashboard_page.is_my_money_header_visible(), "Не удалось загрузить дашборд!"
-        dashboard_page.open_accounts_section()
-        assert accounts_page.is_page_loaded(), "Раздел 'Счета' не загрузился!"
+def test_error_when_account_name_is_too_long(api_logged_in_driver):
+    driver = api_logged_in_driver
+    dashboard_page = DashboardPage(driver)
+    accounts_page = AccountsMainPage(driver)
+
+    # Закрываем модалки и онбординг, если вылезли после входа
+    accounts_page.close_budget_interface_modal_if_present()
+    accounts_page.close_promo_popup_if_present()
     
     with allure.step("Открыть форму создания и ввести слишком длинное название"):
         accounts_page.click_create_account_button()

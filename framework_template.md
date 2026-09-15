@@ -1009,6 +1009,10 @@ def test_error_when_account_name_is_too_long(logged_in_driver):
     accounts_page = AccountsMainPage(logged_in_driver)
     
     with allure.step("Перейти в раздел 'Счета' через главное меню"):
+        # Закрываем модалки онбординга и баннеры, перекрывающие дашборд
+        accounts_page.close_budget_interface_modal_if_present()
+        accounts_page.close_promo_popup_if_present()
+        
         assert dashboard_page.is_my_money_header_visible(), "Не удалось загрузить дашборд!"
         dashboard_page.open_accounts_section()
         assert accounts_page.is_page_loaded(), "Раздел 'Счета' не загрузился!"

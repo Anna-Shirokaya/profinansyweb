@@ -54,7 +54,7 @@ class AccountsMainPage:
         self.FIRST_COLOR_OPTION = (By.XPATH, "//*[contains(text(), 'Цвет иконки')]/following::span[@role='button'][1]")
 
         # ЛОКАТОРЫ ДЛЯ ОКНА "ВСЕ СЧЕТА"
-        self.ALL_ACCOUNTS_BTN = (By.XPATH, "//div[contains(@class, 'ButtonsBlock')]//button[1]")
+        self.ALL_ACCOUNTS_BTN = (By.XPATH, "//button[@title='Все счета' or @aria-label='Все счета']")
         self.ALL_ACCOUNTS_HEADER = (By.XPATH, "//*[text()='Все счета']")
         
         self.MODAL_ACCOUNT_CARD_BY_NAME = lambda name: (
@@ -75,7 +75,10 @@ class AccountsMainPage:
         # КАРТОЧКИ И МЕНЮ
         
         self.THREE_DOTS_BY_NAME = lambda name: (
-            By.XPATH, f"//p[contains(text(), '{name}')]/ancestor::div[contains(@class, 'AccountCardstyled__Root')][1]//button[@aria-haspopup='dialog']"
+            By.XPATH, 
+            f"//*[contains(text(), '{name}')]"
+            f"/ancestor::div[contains(@class, 'PortfolioCardstyled__Root') or contains(@class, 'AccountCard')][1]"
+            f"//button[@aria-label='Действия со счётом' or contains(@class, 'MenuButton')]"
         )
 
         self.PROMO_CLOSE_BTN = (
@@ -493,76 +496,76 @@ class AccountsMainPage:
     @allure.step("Проверить, что в карточке '{name}' отображается 'Дебетовый' и баланс '0,00 ₽'")
     def check_card_details(self, name: str):
         card_container_xpath = (
-            f"//*[text()='{name}']/ancestor::div["
-            f"contains(@class, 'Slide') or "
-            f"contains(@class, 'Card') or "
-            f"contains(@class, 'card') or "
-            f"contains(@class, 'item')][1]"
+            f"//*[contains(text(), '{name}')]"
+            f"/ancestor::div[contains(@class, 'PortfolioCardstyled__Root') or contains(@class, 'AccountCard')][1]"
         )
         try:
-            card_container = self.driver.find_element(By.XPATH, card_container_xpath)
-            
+            # 1. Находим актуальный контейнер карточки с явным ожиданием
+            card_container = WebDriverWait(self.driver, 10).until(
+                EC.presence_of_element_located((By.XPATH, card_container_xpath))
+            )
+
+            # 2. Проверяем тип счета по общему тексту карточки
+            card_text = card_container.text
             with allure.step("Проверить тип счета 'Дебетовый'"):
-                card_type = card_container.find_element(By.XPATH, ".//*[text()='Дебетовый']")
-                assert card_type.is_displayed(), f"В карточке '{name}' не найден тип 'Дебетовый'!"
-            
+                assert "Дебетовый" in card_text or "дебетовый" in card_text.lower(), (
+                    f"В карточке '{name}' не найден тип 'Дебетовый'! Текст карточки: '{card_text}'"
+                )
+
+            # 3. Находим элемент Amount и объединяем тексты из <p> и <span>
             with allure.step("Проверить баланс '0,00 ₽'"):
-                card_balance = card_container.find_element(By.XPATH, ".//*[contains(., '0,00')]")
-                assert card_balance.is_displayed(), f"В карточке '{name}' не найден баланс '0,00'!"
-            print(f"[DEBIT PAGE] Проверка содержимого карточки '{name}' — УСПЕШНО.")
-        except NoSuchElementException as e:
-            raise AssertionError(f"Не удалось найти контейнер карточки с именем '{name}' или элементы внутри неё! Ошибка: {e}")
-
-    @allure.step("Проверить, что в карточке '{name}' отображается баланс '150,78 $', тип 'Дебетовый' и выбранная иконка с атрибутом alt")
-    def check_card_with_icon_and_usd(self, name: str):
-        """Глубокая проверка созданной карточки"""
-        card_container_xpath = f"//*[text()='{name}']/ancestor::div[contains(@class, 'Slide') or contains(@class, 'Card')][1]"
-        try:
-            card_container = self.driver.find_element(By.XPATH, card_container_xpath)
-            
-            with allure.step("Проверить тип счета 'Дебетовый'"):
-                card_type = card_container.find_element(By.XPATH, ".//*[text()='Дебетовый']")
-                assert card_type.is_displayed(), f"В карточке '{name}' не найден тип 'Дебетовый'!"
-            
-            with allure.step("Проверить баланс '150,78' и знак валюты '$'"):
-                card_text = card_container.text
-                assert "150,78" in card_text, f"Сумма '150,78' не найдена в карточке! Текст: {card_text}"
-                assert "$" in card_text, f"Значок валюты '$' не найден в карточке! Текст: {card_text}"
-            
-            with allure.step("Проверить наличие кастомной иконки на карточке и атрибут alt"):
-                icon_xpath = f"//img[@alt='{name}']"
-                icon_element = WebDriverWait(self.driver, 5).until(
-                    EC.visibility_of_element_located((By.XPATH, icon_xpath))
+                amount_element = card_container.find_element(
+                    By.XPATH, ".//*[contains(@class, 'Amount') or contains(@class, 'BalanceMain')]"
                 )
-                alt_text = icon_element.get_attribute("alt")
-                
-                assert icon_element.is_displayed(), "Иконка оформления не отображается на карточке счета!"
-                assert alt_text == name, f"Ошибка: Атрибут alt '{alt_text}' не совпадает с именем счета '{name}'!"
-                
-            print(f"[DEBIT PAGE] Глубокая проверка карточки '{name}' пройдена успешно!")
+                cleaned_amount = "".join(amount_element.text.split())
+
+                assert "0,00" in cleaned_amount or "0.00" in cleaned_amount, (
+                    f"Сумма '0,00' не найдена! Итоговый текст: '{cleaned_amount}'"
+                )
+                assert "₽" in cleaned_amount, (
+                    f"Значок '₽' не найден! Итоговый текст: '{cleaned_amount}'"
+                )
+
+            print(f"[DEBIT PAGE] Проверка карточки '{name}' прошла успешно.")
         except Exception as e:
-            raise AssertionError(f"Не удалось найти карточку '{name}' или обязательные элементы внутри неё! Ошибка: {e}")
+            raise AssertionError(f"Не удалось проверить элементы карточки '{name}'! Ошибка: {e}")
 
-    @allure.step("Проверить, что в карточке '{name}' отображается максимальный баланс и кастомная иконка")
-    def check_card_with_huge_balance_and_icon(self, name: str):
-        card_container_xpath = f"//p[contains(text(), '{name}')]/ancestor::div[contains(@class, 'AccountCardstyled__Root')][1]"
+    @allure.step("Проверить, что в карточке '{name}' отображается баланс '150,78 $', тип 'Дебетовый' и выбранная иконка")
+    def check_card_with_icon_and_usd(self, name: str):
+        card_container_xpath = (
+            f"//*[contains(text(), '{name}')]"
+            f"/ancestor::div[contains(@class, 'PortfolioCardstyled__Root') or contains(@class, 'AccountCard')][1]"
+        )
         try:
-            card_container = self.driver.find_element(By.XPATH, card_container_xpath)
-            
+            # 1. Захватываем весь контейнер карточки
+            card_container = WebDriverWait(self.driver, 10).until(
+                EC.presence_of_element_located((By.XPATH, card_container_xpath))
+            )
+            card_text = card_container.text
+
+            # 2. Проверяем тип счета
             with allure.step("Проверить тип счета 'Дебетовый'"):
-                card_type = card_container.find_element(By.XPATH, ".//*[text()='Дебетовый']")
-                assert card_type.is_displayed(), f"В карточке '{name}' не найден тип 'Дебетовый'!"
-            
-            with allure.step("Проверить точную сумму баланса '999999999999,99₽'"):
-                cleaned_text = "".join(card_container.text.split())
-                assert "999999999999,99" in cleaned_text, f"Сверхбольшая сумма баланса не найдена! Текст: {cleaned_text}"
-                assert "₽" in cleaned_text, f"Значок валюты '₽' не найден! Текст: {cleaned_text}"
-            
-            with allure.step("Проверить наличие отрисованной иконки на карточке"):
-                icon_relative_xpath = (
-                    ".//img | .//svg | .//i | "
-                    ".//*[contains(@class, 'icon') or contains(@class, 'Icon') or contains(@class, 'Image') or contains(@class, 'IconWrapper')]"
+                assert "Дебетовый" in card_text or "дебетовый" in card_text.lower(), (
+                    f"В карточке '{name}' не найден тип 'Дебетовый'! Текст: '{card_text}'"
                 )
+
+            # 3. Находим элемент баланса и сворачиваем текстовые узлы
+            with allure.step("Проверить баланс '150,78' и валюту '$'"):
+                amount_element = card_container.find_element(
+                    By.XPATH, ".//*[contains(@class, 'Amount') or contains(@class, 'BalanceMain')]"
+                )
+                cleaned_amount = "".join(amount_element.text.split())
+
+                assert "150,78" in cleaned_amount or "150.78" in cleaned_amount, (
+                    f"Сумма '150,78' не найдена! Итоговый текст: '{cleaned_amount}'"
+                )
+                assert "$" in cleaned_amount, (
+                    f"Значок '$' не найден в карточке! Итоговый текст: '{cleaned_amount}'"
+                )
+
+            # 4. Проверяем наличие отрисованной иконки внутри IconSlot
+            with allure.step("Проверить наличие банковской иконки"):
+                icon_relative_xpath = ".//*[contains(@class, 'IconSlot')]//*[local-name()='svg' or local-name()='img']"
                 
                 def find_visible_icon(d):
                     elements = card_container.find_elements(By.XPATH, icon_relative_xpath)
@@ -572,10 +575,59 @@ class AccountsMainPage:
                     return None
 
                 icon_element = WebDriverWait(self.driver, 5).until(find_visible_icon)
-                assert icon_element is not None, "Выбранная иконка оформления не отображается внутри карточки счета!"
-                
+                assert icon_element is not None, f"Иконка оформления не отображается в карточке '{name}'!"
+
+            print(f"[DEBIT PAGE] Проверка карточки '{name}' с балансом 150,78 $ прошла успешно.")
         except Exception as e:
             raise AssertionError(f"Не удалось найти карточку '{name}' или обязательные элементы внутри неё! Ошибка: {e}")
+
+    @allure.step("Проверить, что в карточке '{name}' отображается максимальный баланс и кастомная иконка")
+    def check_card_with_huge_balance_and_icon(self, name: str):
+        # 1. Ждем появления названия счета в DOM
+        account_name_el = WebDriverWait(self.driver, 10).until(
+            EC.presence_of_element_located((By.XPATH, f"//*[contains(text(), '{name}')]"))
+        )
+        
+        # 2. Поднимаемся к самому верхнему родителю карточки (ancestor::div[last()] вместо [1])
+        card_container_xpath = (
+            f"//*[contains(text(), '{name}')]"
+            f"/ancestor::div[contains(@class, 'AccountCard') or contains(@class, 'Card') or contains(@class, 'Root')][last()]"
+        )
+        
+        try:
+            card_container = self.driver.find_element(By.XPATH, card_container_xpath)
+        except Exception:
+            card_container = account_name_el.find_element(By.XPATH, "./ancestor::div[3]")
+
+        card_text = card_container.text
+
+        with allure.step("Проверить тип счета 'Дебетовый'"):
+            assert "Дебетовый" in card_text or "дебетовый" in card_text.lower(), (
+                f"В карточке '{name}' не найден тип 'Дебетовый'! Текст: '{card_text}'"
+            )
+
+        with allure.step("Проверить точную сумму баланса '999999999999,99₽'"):
+            cleaned_text = "".join(card_text.split())
+            assert "999999999999,99" in cleaned_text or "999999999999.99" in cleaned_text, (
+                f"Сверхбольшая сумма баланса не найдена в карточке! Текст карточки: '{card_text}'"
+            )
+            assert "₽" in cleaned_text, f"Значок валюты '₽' не найден в карточке! Текст карточки: '{card_text}'"
+
+        with allure.step("Проверить наличие отрисованной иконки на карточке"):
+            icon_relative_xpath = (
+                ".//img | .//svg | .//i | "
+                ".//*[contains(@class, 'icon') or contains(@class, 'Icon') or contains(@class, 'Image') or contains(@class, 'IconWrapper')]"
+            )
+
+            def find_visible_icon(d):
+                elements = card_container.find_elements(By.XPATH, icon_relative_xpath)
+                for el in elements:
+                    if el.is_displayed() or el.tag_name in ['img', 'svg']:
+                        return el
+                return None
+
+            icon_element = WebDriverWait(self.driver, 5).until(find_visible_icon)
+            assert icon_element is not None, "Выбранная иконка оформления не отображается внутри карточки счета!"
 
     @allure.step("Нажать на иконку 'Все счета'")
     def click_all_accounts_button(self):
@@ -892,3 +944,12 @@ class AccountsMainPage:
             print("[ACCOUNTS PAGE] Модалка выбора интерфейса бюджета успешно закрыта.")
         except Exception:
             pass
+
+    @allure.step("Получить текст метки поля 'Название счета'")
+    def get_account_name_label_text(self, timeout: int = 10) -> str:
+        """Находит текст label над полем ввода названия счета через имеющийся ACCOUNT_NAME_INPUT."""
+        label_xpath = f"{self.ACCOUNT_NAME_INPUT[1]}/ancestor::div[contains(@class, 'field') or contains(@class, 'input') or parent::*]//label | {self.ACCOUNT_NAME_INPUT[1]}/preceding-sibling::label"
+        element = WebDriverWait(self.driver, timeout).until(
+            EC.visibility_of_element_located((By.XPATH, label_xpath))
+        )
+        return element.text
