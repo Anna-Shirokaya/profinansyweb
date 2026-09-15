@@ -1,0 +1,17 @@
+
+[SETUP] Запуск браузера для окружения: https://frontend.qa.profinansy.dev
+[SETUP] Обнаружена CI-среда. Запуск в фоновом (headless) режиме...
+
+[DEBUG AUTH] --- СТАРТ АВТОРИЗАЦИИ ---
+[DEBUG AUTH] Отправляем POST запрос на логин: https://qa.profinansy.dev/api/auth/login
+[DEBUG AUTH] Боевой токен успешно получен! Длина: 1383
+[DEBUG AUTH] --- АВТОРИЗАЦИЯ УСПЕШНА (Инъекция сработала) ---
+[API] Дебетовый счет 'Дебет-468257' успешно создан!
+[ACCOUNTS PAGE] Модалка выбора интерфейса бюджета успешно закрыта.
+[DASHBOARD PAGE] Нажата фиолетовая кнопка '+ Добавить операцию'
+[TRANSACTION MODAL] Переход на вкладку 'Накопления' успешно выполнен.
+
+[TEARDOWN API] Начинаем автоматическую очистку через API...
+[API TEARDOWN] Счет fb522fab-6472-4794-b573-3c85f39c300b успешно удален!
+
+[TEARDOWN] Закрытие браузера для https://frontend.qa.profinansy.dev...

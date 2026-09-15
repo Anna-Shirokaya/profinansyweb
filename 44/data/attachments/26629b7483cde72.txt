@@ -1,0 +1,12 @@
+
+[SETUP] Запуск браузера для окружения: https://frontend.qa.profinansy.dev
+[SETUP] Обнаружена CI-среда. Запуск в фоновом (headless) режиме...
+
+[DEBUG AUTH] --- СТАРТ АВТОРИЗАЦИИ ---
+[DEBUG AUTH] Отправляем POST запрос на логин: https://qa.profinansy.dev/api/auth/login
+[DEBUG AUTH] Боевой токен успешно получен! Длина: 1383
+[DEBUG AUTH] --- АВТОРИЗАЦИЯ УСПЕШНА (Инъекция сработала) ---
+
+[FIXTURE SETUP] Создаем тестовый счет для последующего удаления: 'Удаление-469935'
+
+[TEARDOWN] Закрытие браузера для https://frontend.qa.profinansy.dev...
