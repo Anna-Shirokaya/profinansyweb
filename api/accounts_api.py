@@ -61,6 +61,7 @@ class AccountsAPI:
 
         raise RuntimeError(f"[API ERROR] Не удалось создать дебетовый счет '{title}'! [{response.status_code}] {response.text}")
 
+
     @allure.step("API: Создать кредитную карту '{title}'")
     def create_credit_card_account(
         self, 

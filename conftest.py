@@ -305,4 +305,25 @@ def api_account_cleanup_registry(accounts_api):
         except Exception as e:
             print(f"[TEARDOWN API] Ошибка при удалении {item}: {e}")
 
+@pytest.fixture(scope="function")
+def api_created_debit_account(api_logged_in_driver):
+    """Фикстура жизненного цикла: создает счет через AccountsAPI и удаляет его после теста"""
+    driver = api_logged_in_driver
+    token = getattr(driver, "api_auth_token", None)
+    
+    # 1. Инициализируем ваш готовый класс AccountsAPI
+    api_client = AccountsAPI(base_url=driver.base_url, token=token)
+    
+    # 2. Создаем счет перед тестом (SETUP)
+    account_name = f"Счёт-WAL-T518-{int(time.monotonic())}"
+    response = api_client.create_debit_account(title=account_name, initial_balance=0.0)
+    account_id = response.get("id") or response.get("data", {}).get("id")
+
+    # 3. Передаем имя счета в тест
+    yield account_name
+
+    # 4. Удаляем счет после теста (TEARDOWN)
+    if account_id:
+        api_client.delete_account(account_id)
+
 

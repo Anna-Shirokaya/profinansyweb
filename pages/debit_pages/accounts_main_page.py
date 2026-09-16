@@ -93,10 +93,10 @@ class AccountsMainPage:
             f"//button[./span[contains(text(), '{tab_name}')]] | //button[contains(., '{tab_name}')]"
         )
 
-        self.ACCOUNT_CARD_BY_NAME = lambda name: (
-            By.XPATH, 
-            f"//*[contains(normalize-space(.), '{name}')]"
-            f"/ancestor::div[contains(@class, 'PortfolioCardstyled') or contains(@class, 'AccountCardstyled') or contains(@class, 'Card')][1]"
+        self.ACCOUNT_CARD_BY_NAME = lambda account_name: (
+            By.XPATH,
+            f"//span[contains(@class, 'PortfolioCardstyled__Title') and text()='{account_name}']"
+            f"/ancestor::div[contains(@class, 'PortfolioCardstyled')][1]"
         )
         
         self.ACCOUNT_CARD_CONTAINER_BY_NAME = lambda account_name: (
@@ -953,3 +953,26 @@ class AccountsMainPage:
             EC.visibility_of_element_located((By.XPATH, label_xpath))
         )
         return element.text
+
+    
+    @allure.step("Кликнуть по карточке счета '{account_name}'")
+    def click_account_card_by_name(self, account_name: str):
+        """Кликом выделяет карточку счета строго по span заголовка."""
+        title_xpath = (
+            By.XPATH, 
+            f"//span[contains(@class, 'PortfolioCardstyled__Title') and text()='{account_name}']"
+        )
+        
+        element = WebDriverWait(self.driver, 10).until(
+            EC.element_to_be_clickable(title_xpath)
+        )
+        
+        self.driver.execute_script("arguments[0].scrollIntoView({block: 'center', inline: 'center'});", element)
+        time.sleep(0.5)
+        
+        try:
+            element.click()
+        except Exception:
+            self.driver.execute_script("arguments[0].click();", element)
+            
+        print(f"[DEBIT PAGE] Карточка счета '{account_name}' успешно выделена.")
