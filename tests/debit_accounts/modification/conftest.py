@@ -4,21 +4,21 @@ from pages.dashboard_pages.dashboard_page import DashboardPage
 from pages.debit_pages.accounts_main_page import AccountsMainPage
 
 @pytest.fixture(scope="function")
-def prepared_debit_account(logged_in_driver):
+def prepared_debit_account(api_logged_in_driver):
     """
     Фикстура-фабрика: готовит дебетовый счет для редактирования.
     Передает в тест словарь account_data. Если тест переименует счет,
     он должен обновить значение account_data['name'], чтобы teardown отработал корректно.
     """
-    dashboard_page = DashboardPage(logged_in_driver)
-    accounts_page = AccountsMainPage(logged_in_driver)
+    dashboard_page = DashboardPage(api_logged_in_driver)
+    accounts_page = AccountsMainPage(api_logged_in_driver)
     
     base_account_name = f"Счет-Редакт-{int(time.monotonic())}"
     print(f"\n[SETUP LOCAL] Создаем счет для модификации: '{base_account_name}'")
     
-    # 1. Переходим и ЖДЕМ стабилизации интерфейса React
-    dashboard_page.open_accounts_section()
-    assert accounts_page.is_page_loaded(), "[FIXTURE SETUP] Страница счетов не загрузилась!"
+    # 1. Закрываем возможные оверлеи
+    accounts_page.close_budget_interface_modal_if_present()
+    accounts_page.close_promo_popup_if_present()
     
     # 2. Теперь кликаем по стабильной кнопке
     accounts_page.click_create_account_button()

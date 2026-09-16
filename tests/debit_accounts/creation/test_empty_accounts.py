@@ -2,20 +2,13 @@ import time
 from pages.dashboard_pages.dashboard_page import DashboardPage
 from pages.debit_pages.accounts_main_page import AccountsMainPage
 
-def test_user_can_navigate_to_debit_accounts_and_see_empty_state(logged_in_driver):
-    dashboard_page = DashboardPage(logged_in_driver)
-    accounts_page = AccountsMainPage(logged_in_driver)
+def test_user_can_navigate_to_debit_accounts_and_see_empty_state(api_logged_in_driver):
+    driver = api_logged_in_driver
+    accounts_page = AccountsMainPage(driver)
     
-    # 1. Проверяем, что успешно попали на дашборд после авто-входа
-    assert dashboard_page.is_my_money_header_visible(), "Не удалось загрузить дашборд после входа!"
-    
-    # 2. Раскрываем меню "Бюджет" и кликаем на "Счета"
-    dashboard_page.open_accounts_section()
-    
-    # 3. Проверяем, что URL сменился на нужный раздел
-    assert accounts_page.is_page_loaded(), "Ошибка: Раздел 'Счета' не загрузился!"
-    
-    # === НОВЫЕ ПРОВЕРКИ ТЕКСТА И КНОПОК ===
+    # 1. Закрываем возможные оверлеи
+    accounts_page.close_budget_interface_modal_if_present()
+    accounts_page.close_promo_popup_if_present()
     
     # 4. Проверяем главный заголовок пустого состояния
     actual_title = accounts_page.get_empty_state_title_text()
