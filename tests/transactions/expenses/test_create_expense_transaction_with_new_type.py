@@ -41,9 +41,13 @@ def test_create_expense_transaction_with_new_type_wal_t519(api_logged_in_driver,
 
     # 3. Ввод суммы и проверка разделителя разрядов (1050,89)
     with allure.step(f"Ввести сумму {amount_value}"):
-        amount_input = driver.find_element(*transaction_modal.AMOUNT_INPUT)
+        # Добавлено ожидание готовности поля к взаимодействию в headless-режиме
+        amount_input = WebDriverWait(driver, 10).until(
+            EC.element_to_be_clickable(transaction_modal.AMOUNT_INPUT)
+        )
         amount_input.click()
-        amount_input.clear()
+        amount_input.send_keys(Keys.CONTROL + "a")
+        amount_input.send_keys(Keys.DELETE)
         amount_input.send_keys(amount_value)
         
         # Проверяем отображение разделителя разрядов
