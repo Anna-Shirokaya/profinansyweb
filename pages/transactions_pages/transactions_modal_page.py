@@ -73,6 +73,12 @@ class TransactionsModalPage:
 
         self.WHAT_SPENT_LABEL = (By.XPATH, "//*[text()='На что потратили']")
 
+        # Локатор поля 'На что потратили'
+        self.TITLE_INPUT = (
+            By.XPATH, 
+            "//input[contains(@placeholder, 'Например') or contains(@name, 'title')]"
+        )
+
         self.WHAT_SPENT_INPUT = (By.XPATH, "//input[@placeholder='Например: Кофе']")
 
         #иконка лупы у поля на что потратили
@@ -193,7 +199,110 @@ class TransactionsModalPage:
             "//div[contains(@class, 'sidebarSlides')]//button[.//span[text()='Создать']]"
         )
 
-    # --- МЕТОДЫ ВЗАИМОДЕЙСТВИЯ ---
+    # --- ЛОКАТОРЫ ПОЛЯ 'ТИП РАСХОДА' ---
+        self.EXPENSE_TYPE_DROPDOWN = (
+            By.XPATH, 
+            "//*[contains(text(), 'Тип расхода')]/ancestor::div[contains(@class, 'Field') or contains(@class, 'Wrapper') or contains(@class, 'input')][1]//input | "
+            "//*[contains(text(), 'Тип расхода')]/following::input[1]"
+        )
+        # Кнопка '+' строго внутри блока 'Тип расхода'
+        self.ADD_NEW_TYPE_BTN = (
+                By.XPATH, 
+                "//*[contains(text(), 'Тип расхода')]/ancestor::div[contains(@class, 'Field') or contains(@class, 'Wrapper') or contains(@class, 'style')][1]//button"
+            )
+        self.CREATE_TYPE_MODAL_TITLE = (
+            By.XPATH, 
+            "//*[text()='Создание типа расхода'] | //*[contains(text(), 'Новый тип расхода')]"
+        )
+
+        # --- ЛОКАТОРЫ ПОЛЯ И КАЛЕНДАРЯ 'КОГДА ПОТРАТИЛИ' ---
+        self.DATE_INPUT = (
+            By.XPATH, 
+            "//div[contains(@class, 'datepicker-container')]//input | "
+            "//*[contains(text(), 'Когда потратили')]/ancestor::div[contains(@class, 'fieldRow-container') or contains(@class, 'Field')][1]//input"
+        )
+
+        # Локатор поля 'Место для вашей заметки'
+        self.COMMENT_INPUT = (
+            By.XPATH,
+            "//*[contains(text(), 'Место для вашей заметки')]/ancestor::div[1]//textarea | "
+            "//textarea[contains(@placeholder, 'Поле ввода')]"
+        )
+
+        
+    
+    @staticmethod
+    def get_calendar_day_locator(day: int | str):
+        """Возвращает локатор числовой ячейки активного месяца в календаре react-datepicker."""
+        day_str = str(day)
+        return (
+            By.XPATH,
+            f"//div[contains(@class, 'react-datepicker__day') and not(contains(@class, 'outside-month')) and text()='{day_str}']"
+        )
+
+    @allure.step("Кликнуть по полю 'Когда потратили' для открытия календаря")
+    def open_date_picker(self):
+        """Открывает виджет календаря react-datepicker."""
+        date_input = WebDriverWait(self.driver, 10).until(
+            EC.presence_of_element_located(self.DATE_INPUT)
+        )
+        try:
+            date_input.click()
+        except Exception:
+            self.driver.execute_script("arguments[0].click();", date_input)
+        time.sleep(0.3)
+
+    @allure.step("Выбрать день '{day}' в календаре")
+    def select_day_from_calendar(self, day: int | str = 1):
+        """Выбирает указанный день активного месяца в открытом календаре."""
+        day_locator = self.get_calendar_day_locator(day)
+        day_elem = WebDriverWait(self.driver, 5).until(
+            EC.presence_of_element_located(day_locator)
+        )
+        try:
+            day_elem.click()
+        except Exception:
+            self.driver.execute_script("arguments[0].click();", day_elem)
+        time.sleep(0.3)
+
+    @staticmethod
+    def get_expense_type_option_locator(type_name: str):
+        """Возвращает локатор для первого совпадения типа расхода в выпадающем списке."""
+        return (
+            By.XPATH,
+            f"(//div[contains(@class, 'option') or contains(@class, 'Dropdown') or contains(@class, 'menu') or contains(@class, 'List')]//*[contains(text(), '{type_name}')])[1] | "
+            f"(//ul//li[contains(., '{type_name}')])[1]"
+        )
+
+    @staticmethod
+    def get_title_suggestion_option_locator(option_text: str):
+        """Возвращает регистронезависимый локатор элемента из выпадающего списка подсказок 'На что потратили'."""
+        lower_text = option_text.lower()
+        capitalized_text = option_text.capitalize()
+        return (
+            By.XPATH,
+            f"//li[contains(@class, 'Selectstyled__ListItem') and ("
+            f"normalize-space()='{option_text}' or "
+            f"normalize-space()='{lower_text}' or "
+            f"normalize-space()='{capitalized_text}')] | "
+            f"//ul[contains(@class, 'Selectstyled__List')]//li["
+            f"normalize-space()='{option_text}' or "
+            f"normalize-space()='{lower_text}' or "
+            f"normalize-space()='{capitalized_text}']"
+        )
+
+    @allure.step("Выбрать подсказку '{option_text}' из выпадающего списка 'На что потратили'")
+    def select_title_suggestion(self, option_text: str):
+        """Кликает по совпавшему элементу из списка подсказок под полем 'На что потратили'."""
+        locator = self.get_title_suggestion_option_locator(option_text)
+        option_elem = WebDriverWait(self.driver, 5).until(
+            EC.presence_of_element_located(locator)
+        )
+        try:
+            option_elem.click()
+        except Exception:
+            self.driver.execute_script("arguments[0].click();", option_elem)
+        time.sleep(0.3)
 
     def _close_dropdowns_safely(self):
         """Безопасный клик по лейблу, чтобы React закрыл все выпадающие списки"""
@@ -251,6 +360,22 @@ class TransactionsModalPage:
             EC.visibility_of_element_located((By.XPATH, "//*[contains(text(), 'Откуда произведен перевод')]"))
         )
         print("[TRANSACTION MODAL] Переход на вкладку 'Накопления' успешно выполнен.")
+        time.sleep(0.5)
+
+    @allure.step("Перейти на вкладку 'Доход' в модальном окне")
+    def open_income_tab(self):
+        tab = WebDriverWait(self.driver, 5).until(
+            EC.element_to_be_clickable(self.INCOME_TAB)
+        )
+        try:
+            tab.click()
+        except Exception:
+            self.driver.execute_script("arguments[0].click();", tab)
+            
+        WebDriverWait(self.driver, 10).until(
+            EC.visibility_of_element_located((By.XPATH, "//*[contains(text(), 'Куда поступили деньги') or contains(text(), 'Категория дохода') or contains(text(), 'Тип дохода')]"))
+        )
+        print("[TRANSACTION MODAL] Переход на вкладку 'Доход' успешно выполнен.")
         time.sleep(0.5)
 
     @allure.step("Выбрать счет '{account_name}' в поле 'Откуда'")
@@ -349,9 +474,7 @@ class TransactionsModalPage:
         self._close_dropdowns_safely()
         print(f"[MODAL] Счет '{account_name}' успешно выбран в поле 'Куда'.")
 
-    @allure.step("Ввести сумму операции '{amount}'")
-    def enter_amount(self, amount: str):
-        self._safe_type(self.AMOUNT_INPUT, amount)
+
 
     @allure.step("Нажать 'Создать' (сохранить транзакцию)")
     def click_submit_button(self):
@@ -601,3 +724,116 @@ class TransactionsModalPage:
     
         # Возврат в форму транзакции
         WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(self.MODAL_TITLE))
+
+    @allure.step("Выбрать тип расхода '{type_name}' через поиск")
+    def select_expense_type(self, type_name: str):
+        """Раскрывает список типов расхода, вводит значение и выбирает первый совпавший вариант."""
+        type_input_locator = (
+            By.XPATH, 
+            "//input[contains(@placeholder, 'Начните ввод') or contains(@name, 'type') or contains(@name, 'category')] | "
+            "//div[contains(., 'Тип расхода') and contains(@class, 'inputGroup')]//input"
+        )
+        type_input = WebDriverWait(self.driver, 5).until(
+            EC.element_to_be_clickable(type_input_locator)
+        )
+        type_input.click()
+        type_input.send_keys(Keys.CONTROL + "a")
+        type_input.send_keys(Keys.DELETE)
+        type_input.send_keys(type_name)
+        time.sleep(0.3)
+
+        first_option_locator = (
+            By.XPATH, 
+            f"(//div[contains(@class, 'option') or contains(@class, 'Dropdown') or contains(@class, 'menu')]//*[contains(text(), '{type_name}')])[1] | "
+            f"(//ul//li[contains(., '{type_name}')])[1] | "
+            f"//div[contains(@class, 'List')]//button[1]"
+        )
+        first_option = WebDriverWait(self.driver, 5).until(
+            EC.element_to_be_clickable(first_option_locator)
+        )
+        first_option.click()
+
+    @allure.step("Кликнуть по полю 'Тип расхода'")
+    def click_expense_type_field(self):
+        """Открывает выпадающий список типов расхода кликом по полю."""
+        expense_type_input = WebDriverWait(self.driver, 10).until(
+            EC.element_to_be_clickable(self.EXPENSE_TYPE_DROPDOWN)
+        )
+        expense_type_input.click()
+        time.sleep(0.5)
+
+    @allure.step("Нажать '+' в поле типа расхода")
+    def click_add_new_type_button(self):
+        """Нажимает иконку '+' справа для перехода к созданию нового типа расхода."""
+        add_btn = WebDriverWait(self.driver, 10).until(
+            EC.element_to_be_clickable(self.ADD_NEW_TYPE_BTN)
+        )
+        try:
+            add_btn.click()
+        except Exception:
+            self.driver.execute_script("arguments[0].click();", add_btn)
+
+        WebDriverWait(self.driver, 10).until(
+            EC.visibility_of_element_located(self.CREATE_TYPE_MODAL_TITLE)
+        )
+        print("[TRANSACTIONS MODAL] Форма 'Создание типа расхода' успешно открыта.")
+
+    @allure.step("Выбрать тип расхода '{type_name}' из выпадающего списка")
+    def select_expense_type_from_dropdown(self, type_name: str):
+        """Вводит название типа расхода в фокусное поле и выбирает совпадение из списка."""
+        active_elem = self.driver.switch_to.active_element
+        active_elem.send_keys(Keys.CONTROL + "a")
+        active_elem.send_keys(Keys.DELETE)
+        active_elem.send_keys(type_name)
+        time.sleep(0.3)
+
+        option_locator = self.get_expense_type_option_locator(type_name)
+        first_option = WebDriverWait(self.driver, 5).until(
+            EC.element_to_be_clickable(option_locator)
+        )
+        first_option.click()
+
+    @allure.step("Ввести сумму операции '{amount}'")
+    def enter_amount(self, amount: str, check_formatting: bool = False):
+        """Вводит сумму операции и опционально проверяет форматирование разрядов."""
+        self._safe_type(self.AMOUNT_INPUT, amount)
+
+        if check_formatting:
+            amount_input = self.driver.find_element(*self.AMOUNT_INPUT)
+            current_val = amount_input.get_attribute("value")
+            
+            expected_formatted = amount.replace(".", ",")
+            assert (
+                expected_formatted in current_val 
+                or expected_formatted.replace(" ", "") in current_val.replace(" ", "")
+            ), f"Форматирование суммы неверно! Получено: '{current_val}', ожидалось форматирование для '{amount}'"
+
+    @allure.step("Заполнить поле 'На что потратили': '{title_name}'")
+    def enter_title(self, title_name: str):
+        """Заполняет наименование расхода и вызывает появление выпадающих подсказок."""
+        title_input = WebDriverWait(self.driver, 5).until(
+            EC.element_to_be_clickable(self.TITLE_INPUT)
+        )
+        try:
+            title_input.click()
+        except Exception:
+            self.driver.execute_script("arguments[0].click();", title_input)
+
+        title_input.clear()
+        title_input.send_keys(title_name)
+        time.sleep(0.5)
+
+    @allure.step("Заполнить поле 'Место для вашей заметки': '{comment_text}'")
+    def enter_comment(self, comment_text: str):
+        """Заполняет текстовое поле заметки к транзакции."""
+        comment_input = WebDriverWait(self.driver, 10).until(
+            EC.presence_of_element_located(self.COMMENT_INPUT)
+        )
+        try:
+            comment_input.click()
+        except Exception:
+            self.driver.execute_script("arguments[0].click();", comment_input)
+
+        comment_input.clear()
+        comment_input.send_keys(comment_text)
+        time.sleep(0.3)

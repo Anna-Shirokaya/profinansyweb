@@ -1,10 +1,6 @@
 import time
 import allure
 import pytest
-from selenium.webdriver.common.by import By
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
 
 from pages.dashboard_pages.dashboard_page import DashboardPage
 from pages.debit_pages.accounts_main_page import AccountsMainPage
@@ -39,26 +35,13 @@ def test_create_expense_transaction_with_new_type_wal_t519(api_logged_in_driver,
     with allure.step("Нажать кнопку '+ Добавить операцию'"):
         dashboard_page.open_add_transaction_modal()
 
-    # 3. Ввод суммы и проверка разделителя разрядов (1050,89)
-    with allure.step(f"Ввести сумму {amount_value}"):
-        # Добавлено ожидание готовности поля к взаимодействию в headless-режиме
-        amount_input = WebDriverWait(driver, 10).until(
-            EC.element_to_be_clickable(transaction_modal.AMOUNT_INPUT)
-        )
-        amount_input.click()
-        amount_input.send_keys(Keys.CONTROL + "a")
-        amount_input.send_keys(Keys.DELETE)
-        amount_input.send_keys(amount_value)
-        
-        # Проверяем отображение разделителя разрядов
-        current_amount_val = amount_input.get_attribute("value")
-        assert "1050,89" in current_amount_val or "1 050,89" in current_amount_val, (
-            f"Форматирование суммы неверно! Получено: {current_amount_val}"
-        )
+    # 3. Ввод суммы с проверкой разделителя разрядов (1 050,89)
+    transaction_modal.enter_amount(amount_value, check_formatting=True)
 
     # 4. Создание нового типа расхода из модалки
     with allure.step("Открыть форму создания типа расхода и заполнить данные"):
-        transaction_modal.open_create_expense_type_modal()
+        transaction_modal.click_expense_type_field()
+        transaction_modal.click_add_new_type_button()
         transaction_modal.create_new_expense_type(type_name=new_type_name, category="Переменные")
 
     # Гарантированная очистка созданного типа расхода в случае успеха или падения теста
@@ -89,7 +72,6 @@ def test_create_expense_transaction_with_new_type_wal_t519(api_logged_in_driver,
         # Выполняется ВСЕГДА: удаляет тип расхода в Настройках
         with allure.step(f"Очистка: удалить созданный тип расхода '{new_type_name}'"):
             try:
-                
                 dashboard_page.delete_expense_type(new_type_name)
             except Exception as e:
                 print(f"[TEARDOWN WARNING] Не удалось удалить тип расхода: {e}")

@@ -335,7 +335,7 @@ class AccountsMainPage:
         self.BALANCE_INPUT = (By.XPATH, "//*[contains(text(), 'Баланс')]/following::input[1]")
         self.CURRENCY_SELECT_TRIGGER = (By.XPATH, "//input[@placeholder='Выберите валюту из списка']")
         self.FIRST_CURRENCY_OPTION = (By.XPATH, "//div[contains(@class, 'Select-dropdown')]//li[1]")
-        self.SAVE_BUTTON = (By.XPATH, "//button[contains(., 'Сохранить')] | //*[text()='Сохранить']")
+        self.SAVE_BUTTON = (By.XPATH, "//button[contains(., 'Сохранить')] | //*[text()='Создать счёт']")
         
         # ЛОКАТОРЫ ОШИБОК И ВАЛИДАЦИИ
         self.ACCOUNT_NAME_LABEL = (By.XPATH, "//*[contains(text(), 'Название счета')]")
@@ -1330,7 +1330,7 @@ def test_user_can_navigate_to_debit_accounts_and_see_empty_state(logged_in_drive
 
     # 5. Проверяем подзаголовок (описание)
     actual_desc = accounts_page.get_empty_state_description_text()
-    expected_desc = "Чтобы начать пользоваться бюджетом, создайте счет"
+    expected_desc = "Чтобы начать пользоваться бюджетом, создайте счёт"
     assert expected_desc in actual_desc, f"Текст описания не совпадает! На сайте написано: '{actual_desc}'"
     print("[ТЕСТ] Проверка текста описания бюджетов — УСПЕШНО")
 
