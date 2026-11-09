@@ -1,0 +1,18 @@
+
+[SETUP] Запуск браузера для окружения: https://profinansy.ru
+[SETUP] Обнаружена CI-среда. Запуск в фоновом (headless) режиме...
+
+[REGISTRATION PAGE] Выбран чек-бокс 'Согласен с политикой'
+[REGISTRATION PAGE] Выбран чек-бокс 'Рекламная рассылка'
+
+[REGISTRATION PAGE] Нажата кнопка 'Остался один шаг' (обычный клик)
+
+[REGISTRATION PAGE] Нажата кнопка 'Зарегистрироваться'
+
+[REGISTRATION PAGE] Успешно кликнули по чек-боксу reCAPTCHA
+
+[REGISTRATION PAGE] Капча пройдена без картинок, продолжаем тест.
+
+[REGISTRATION PAGE] Нажата кнопка 'Зарегистрироваться'
+
+[TEARDOWN] Закрытие браузера для https://profinansy.ru...

@@ -1,0 +1,73 @@
+
+[SETUP] Запуск браузера для окружения: https://frontend.qa.profinansy.dev
+[SETUP] Обнаружена CI-среда. Запуск в фоновом (headless) режиме...
+
+[DEBUG AUTH] --- СТАРТ АВТОРИЗАЦИИ ---
+[DEBUG AUTH] Отправляем POST запрос на логин: https://qa.profinansy.dev/api/auth/login
+[DEBUG AUTH] Боевой токен успешно получен! Длина: 1482
+[DEBUG AUTH] --- АВТОРИЗАЦИЯ УСПЕШНА (Инъекция сработала) ---
+[DEBIT PAGE] Модальное окно создания счета успешно открыто
+[DEBIT PAGE] Выбран тип счёта: Дебетовый (обычный клик по button)
+
+[DEBUG DIAGNOSTICS] --- Анализ состояния модального окна ---
+[DEBUG] Найдено полей названия счета в DOM: 0
+[DEBUG] Найдено кнопок 'Продолжить' в DOM: 2
+[DEBUG] Кнопка #0: text='Продолжить', is_displayed=True, is_enabled=True
+[DEBUG] Кнопка #1: text='Продолжить', is_displayed=True, is_enabled=True
+[DEBUG] Все видимые кнопки на экране: ['0 ₽', 'Дебетовые и кредитки', 'Накопительные', 'Инвестиции (β)', 'Кредиты', 'Займы', 'Создать счёт', 'Дебетовый', 'Накопительный', 'Кредитная карта', 'Портфели', 'Кредит', 'Займ', 'Продолжить']
+[DEBUG DIAGNOSTICS] -----------------------------------------------
+
+
+[DEBUG] --- НАЧАЛО ВЫБОРА ВАЛЮТЫ ---
+[DEBUG] Попытка 1: Ожидаем появление поля валюты в DOM...
+[DEBUG] КРИТИЧЕСКАЯ ОШИБКА при поиске поля: Message: 
+Stacktrace:
+Symbols not available. Dumping unresolved backtrace:
+	(No symbol) [0x7ff65049be65]
+	(No symbol) [0x7ff6503a35f0]
+	(No symbol) [0x7ff6502126d3]
+	(No symbol) [0x7ff650a1d8e1]
+	(No symbol) [0x7ff650a1db3c]
+	(No symbol) [0x7ff650a4bbb7]
+	(No symbol) [0x7ff650246661]
+	(No symbol) [0x7ff65022b969]
+	(No symbol) [0x7ff65022cca3]
+	(No symbol) [0x7ff650915af1]
+	(No symbol) [0x7ff6509367f7]
+	(No symbol) [0x7ff65092ce20]
+	(No symbol) [0x7ff6505bff8e]
+	(No symbol) [0x7ff6503b2865]
+	(No symbol) [0x7ff6503ad1d4]
+	(No symbol) [0x7ff6503ad364]
+	(No symbol) [0x7ff65039644c]
+	(No symbol) [0x7ffa24c8dda7]
+	(No symbol) [0x7ffa25cfee4c]
+
+
+[TEARDOWN] Начинаем автоматическую очистку...
+[TEARDOWN] Удаляем счет: 'Дебет-636620'
+[TEARDOWN] Предупреждение: Не удалось очистить счета. Ошибка: Message: 
+Stacktrace:
+Symbols not available. Dumping unresolved backtrace:
+	(No symbol) [0x7ff65049be65]
+	(No symbol) [0x7ff6503a35f0]
+	(No symbol) [0x7ff6502126d3]
+	(No symbol) [0x7ff650a1d8e1]
+	(No symbol) [0x7ff650a1db3c]
+	(No symbol) [0x7ff650a4bbb7]
+	(No symbol) [0x7ff650246661]
+	(No symbol) [0x7ff65022b969]
+	(No symbol) [0x7ff65022cca3]
+	(No symbol) [0x7ff650915af1]
+	(No symbol) [0x7ff6509367f7]
+	(No symbol) [0x7ff65092ce20]
+	(No symbol) [0x7ff6505bff8e]
+	(No symbol) [0x7ff6503b2865]
+	(No symbol) [0x7ff6503ad1d4]
+	(No symbol) [0x7ff6503ad364]
+	(No symbol) [0x7ff65039644c]
+	(No symbol) [0x7ffa24c8dda7]
+	(No symbol) [0x7ffa25cfee4c]
+
+
+[TEARDOWN] Закрытие браузера для https://frontend.qa.profinansy.dev...
